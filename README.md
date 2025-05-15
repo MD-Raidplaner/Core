@@ -1,4 +1,4 @@
-# Raidplaner
+# MD-Raidplaner
 The Gamer DKP System.
 
 ## Extensions (Games)
