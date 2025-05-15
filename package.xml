@@ -38,7 +38,6 @@
 		<instruction type="userNotificationEvent" />
 		<instruction type="clipboardAction" />
 		<instruction type="packageInstallationPlugin" />
-		<instruction type="acpMenu" />
 		<instruction type="page" />
 		<instruction type="menuItem" />
 		<instruction type="templateListener" />
