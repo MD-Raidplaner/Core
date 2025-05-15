@@ -1,0 +1,70 @@
+.characterProfileCharacter {
+	.contentHeaderIcon {
+		position: relative;
+
+		a {
+			display: block;
+		}
+	}
+
+	.contentHeaderDescription {
+		margin-top: 20px;
+	}
+
+	@include screen-sm-down {
+		display: flex;
+		flex-wrap: wrap;
+
+		.contentHeaderNavigation {
+			flex: 0 0 100%;
+		}
+	}
+
+	@include screen-sm {
+		.contentHeaderIcon {
+			display: block;
+			flex: 0 0 96px;
+			margin-right: 15px;
+
+			img {
+				width: 96px !important;
+				height: 96px !important;
+			}
+		}
+
+		.contentHeaderTitle {
+			/* The `flex` shorthand fails in IE11 if `calc()` is used. */
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: calc(100% - 111px);
+			max-width: calc(100% - 11px);
+		}
+	}
+
+	@include screen-xs {
+		.contentHeaderIcon {
+			display: block;
+			flex: 0 0 48px;
+			margin-right: 10px;
+
+			img {
+				width: 48px !important;
+				height: 48px !important;
+			}
+		}
+
+		.contentHeaderTitle {
+			/* The `flex` shorthand fails in IE11 if `calc()` is used. */
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: calc(100% - 58px);
+		}
+	}
+
+	@include screen-md-up {
+		.contentHeaderIcon {
+			flex: 0 0 128px;
+			margin-right: 20px;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+name: Version Check
+
+on:
+  push:
+    paths:
+    - 'package.xml'
+    - 'files/lib/system/RPCore.class.php'
+
+permissions:
+  contents: read
+
+jobs:
+  mdf_version:
+    name: "Check that RP_VERSION is in sync"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: |
+        set -x
+        PACKAGE_VERSION="$(sed '/<version>/!d;s!^.*<version>!!;s!</version>$!!' package.xml)"
+        RP_VERSION="$(sed -r '/RP_VERSION/!d;s!^.?define..RP_VERSION., .!!;s!..;$!!' files/lib/system/RPCore.class.php)"
+        if [ "$PACKAGE_VERSION" != "$RP_VERSION" ]; then
+          echo "::error file=package.xml,line=$(awk '/<version>/{print NR}' package.xml),title=Mismatching RP version::This version $PACKAGE_VERSION does not match RPCore.class.php."
+          echo "::error file=files/lib/system/RPCore.class.php,line=$(awk '/RP_VERSION/{print NR}' files/lib/system/RPCore.class.php),title=Mismatching RP version::This version $RP_VERSION does not match package.xml."
+          exit 1
+        fi

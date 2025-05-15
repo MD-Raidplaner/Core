@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/userNotificationEvent.xsd">
+    <import>
+        <event>
+            <name>comment</name>
+            <objecttype>de.md-raidplaner.rp.eventComment.notification</objecttype>
+            <classname>rp\system\user\notification\event\EventCommentUserNotificationEvent</classname>
+            <preset>1</preset>
+        </event>
+        <event>
+            <name>commentResponse</name>
+            <objecttype>de.md-raidplaner.rp.eventComment.response.notification</objecttype>
+            <classname>rp\system\user\notification\event\EventCommentResponseUserNotificationEvent</classname>
+            <preset>1</preset>
+        </event>
+        <event>
+            <name>commentResponseOwner</name>
+            <objecttype>de.md-raidplaner.rp.eventComment.response.notification</objecttype>
+            <classname>rp\system\user\notification\event\EventCommentResponseOwnerUserNotificationEvent</classname>
+            <preset>1</preset>
+        </event>
+        <event>
+            <name>like</name>
+            <objecttype>de.md-raidplaner.rp.eventComment.like.notification</objecttype>
+            <classname>rp\system\user\notification\event\EventCommentLikeUserNotificationEvent</classname>
+            <preset>1</preset>
+            <options>module_like</options>
+        </event>
+        <event>
+            <name>like</name>
+            <objecttype>de.md-raidplaner.rp.eventComment.response.like.notification</objecttype>
+            <classname>rp\system\user\notification\event\EventCommentResponseLikeUserNotificationEvent</classname>
+            <preset>1</preset>
+            <options>module_like</options>
+        </event>
+    </import>
+</data>

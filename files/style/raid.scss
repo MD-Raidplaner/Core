@@ -1,0 +1,48 @@
+:root {
+	--rpProgressbarBackgroundColor: rgba(0, 153, 0, 1);
+	--rpProgressbarTextColor: rgba(0, 0, 0, 0.8);
+}
+
+.raidClassDistribution {
+	border-top: transparent !important;
+	border-bottom: transparent !important;
+}
+
+.rpProgressBarContainer {
+	border: 1px solid var(--wcfContentBorderInner);
+	border-radius: 5px;
+	height: 25px;
+	position: relative;
+	overflow: hidden;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	span {
+		color: transparent;
+		background: linear-gradient(
+			to right,
+			var(--rpProgressbarTextColor) 0%,
+			var(--rpProgressbarTextColor) calc(var(--percent) * 100%),
+			var(--wcfContentText) calc(var(--percent) * 100%),
+			var(--wcfContentText) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		width: 100%;
+		font-weight: bold;
+		text-align: center;
+		z-index: 1;
+		transition: background 0.3s ease;
+	}
+
+	.progressBar {
+		position: absolute;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background-color: var(--rpProgressbarBackgroundColor);
+		transition: width 0.3s ease;
+	}
+}

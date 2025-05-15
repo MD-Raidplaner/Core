@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/option.xsd">
+    <import>
+        <categories>
+            <category name="rp" />
+            <category name="rp.settings">
+                <parent>rp</parent>
+                <showorder>1</showorder>
+            </category>
+            <category name="rp.calendar">
+                <parent>rp</parent>
+                <showorder>2</showorder>
+            </category>
+            <category name="rp.calendar.event">
+                <parent>rp.calendar</parent>
+            </category>
+            <category name="rp.character">
+                <parent>rp</parent>
+                <showorder>3</showorder>
+            </category>
+            <category name="rp.character.list">
+                <parent>rp.character</parent>
+                <showorder>1</showorder>
+            </category>
+            <category name="rp.points">
+                <parent>rp</parent>
+                <showorder>4</showorder>
+            </category>
+            <category name="rp.item">
+                <parent>rp</parent>
+                <showorder>5</showorder>
+            </category>
+        </categories>
+
+        <options>
+            <!-- general -->
+            <option name="rp_install_date">
+                <categoryname>general</categoryname>
+                <optiontype>integer</optiontype>
+                <hidden>1</hidden>
+            </option>
+            <!-- /general -->
+
+            <!-- rp.settings -->
+            <option name="rp_current_game_id">
+                <categoryname>rp.settings</categoryname>
+                <optiontype>gameSelect</optiontype>
+            </option>
+            <!-- /rp.settings -->
+
+            <!-- rp.calendar.event -->
+            <option name="rp_default_event_controller">
+                <categoryname>rp.calendar.event</categoryname>
+                <optiontype>eventControllerSelect</optiontype>
+                <defaultvalue>de.md-raidplaner.rp.event.controller.default</defaultvalue>
+            </option>
+            <option name="rp_calendar_max_event_length">
+                <categoryname>rp.calendar.event</categoryname>
+                <optiontype>integer</optiontype>
+                <defaultvalue>1</defaultvalue>
+                <minvalue>1</minvalue>
+                <suffix>days</suffix>
+            </option>
+            <!-- /rp.calendar.event -->
+
+            <!-- rp.character -->
+            <option name="rp_show_twinks">
+                <categoryname>rp.character</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
+            </option>
+            <!-- /rp.character -->
+
+            <!-- rp.character.list -->
+            <option name="rp_characters_list_per_page">
+                <categoryname>rp.character.list</categoryname>
+                <optiontype>integer</optiontype>
+                <defaultvalue>30</defaultvalue>
+                <minvalue>5</minvalue>
+                <maxvalue>100</maxvalue>
+            </option>
+            <option name="rp_characters_list_default_sort_field">
+                <categoryname>rp.character.list</categoryname>
+                <optiontype>select</optiontype>
+                <defaultvalue>characterName</defaultvalue>
+                <selectoptions>characterName:rp.character.characterName
+created:rp.character.created</selectoptions>
+            </option>
+            <option name="rp_characters_list_default_sort_order">
+                <categoryname>rp.character.list</categoryname>
+                <optiontype>select</optiontype>
+                <defaultvalue>ASC</defaultvalue>
+                <selectoptions>ASC:wcf.global.sortOrder.ascending
+DESC:wcf.global.sortOrder.descending</selectoptions>
+            </option>
+            <!-- /rp.character.list -->
+
+            <!-- rp.points -->
+            <option name="rp_points_enabled">
+                <categoryname>rp.points</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
+                <enableoptions>rp_points_name,rp_round_points,rp_round_points_precision,rp_item_account_easymode_disabled</enableoptions>
+            </option>
+            <option name="rp_points_name">
+                <categoryname>rp.points</categoryname>
+                <optiontype>text</optiontype>
+                <defaultvalue>DKP</defaultvalue>
+            </option>
+            <option name="rp_round_points">
+                <categoryname>rp.points</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
+                <enableoptions>!rp_round_points_precision</enableoptions>
+            </option>
+            <option name="rp_round_points_precision">
+                <categoryname>rp.points</categoryname>
+                <optiontype>integer</optiontype>
+                <defaultvalue>2</defaultvalue>
+                <minvalue>0</minvalue>
+                <maxvalue>2</maxvalue>
+            </option>
+            <option name="rp_item_account_easymode_disabled">
+                <categoryname>rp.points</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
+            </option>
+            <!-- /rp.points -->
+
+            <!-- rp.item -->
+            <option name="rp_enable_item">
+                <categoryname>rp.item</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>0</defaultvalue>
+                <enableoptions>rp_item_databases</enableoptions>
+            </option>
+            <option name="rp_item_databases">
+                <categoryname>rp.item</categoryname>
+                <optiontype>itemDatabases</optiontype>
+                <issortable>1</issortable>
+            </option>
+            <!-- /rp.item -->
+        </options>
+    </import>
+</data>

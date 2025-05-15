@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/objectTypeDefinition.xsd">
+    <import>
+        <definition>
+            <name>de.md-raidplaner.rp.condition.characterSearch</name>
+            <interfacename>rp\system\condition\ICondition</interfacename>
+        </definition>
+        <definition>
+            <name>de.md-raidplaner.rp.event.controller</name>
+            <interfacename>rp\system\event\IEventController</interfacename>
+        </definition>
+        <definition>
+            <name>de.md-raidplaner.rp.event.discussionProvider</name>
+            <interfacename>rp\system\event\discussion\IEventDiscussionProvider</interfacename>
+        </definition>
+    </import>
+</data>

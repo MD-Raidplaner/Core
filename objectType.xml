@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/objectType.xsd">
+    <import>
+        <!-- box controllers -->
+        <type>
+            <name>de.md-raidplaner.rp.myCharacterList</name>
+            <definitionname>com.woltlab.wcf.boxController</definitionname>
+            <classname>rp\system\box\MyCharacterListBoxController</classname>
+        </type>
+        <!-- /box controllers -->
+
+        <!-- character search conditions -->
+        <type>
+            <name>de.md-raidplaner.rp.characterID</name>
+            <definitionname>de.md-raidplaner.rp.condition.characterSearch</definitionname>
+            <classname>rp\system\condition\character\CharacterIDCondition</classname>
+            <conditiongroup>general</conditiongroup>
+        </type>
+        <type>
+            <name>de.md-raidplaner.rp.characterName</name>
+            <definitionname>de.md-raidplaner.rp.condition.characterSearch</definitionname>
+            <classname>rp\system\condition\character\CharacterNameCondition</classname>
+            <conditiongroup>general</conditiongroup>
+        </type>
+        <!-- /character search conditions -->
+
+        <!-- clipboard items -->
+        <type>
+            <name>de.md-raidplaner.rp.character</name>
+            <definitionname>com.woltlab.wcf.clipboardItem</definitionname>
+            <listclassname>rp\data\character\CharacterList</listclassname>
+        </type>
+        <type>
+            <name>de.md-raidplaner.rp.raid.attendee</name>
+            <definitionname>com.woltlab.wcf.clipboardItem</definitionname>
+            <listclassname>rp\data\event\raid\attendee\EventRaidAttendeeList</listclassname>
+        </type>
+        <!-- /clipboard items -->
+
+        <!-- comments -->
+        <type>
+            <name>de.md-raidplaner.rp.eventComment</name>
+            <definitionname>com.woltlab.wcf.comment.commentableContent</definitionname>
+            <classname>rp\system\comment\manager\EventCommentManager</classname>
+        </type>
+        <!-- /comments -->
+
+        <!-- discussion providers -->
+        <type>
+            <name>de.md-raidplaner.rp.event.comment</name>
+            <definitionname>de.md-raidplaner.rp.event.discussionProvider</definitionname>
+            <classname>rp\system\event\discussion\CommentEventDiscussionProvider</classname>
+        </type>
+        <!-- /discussion providers -->
+
+        <!-- event controllers -->
+        <type>
+            <name>de.md-raidplaner.rp.event.controller.appointment</name>
+            <definitionname>de.md-raidplaner.rp.event.controller</definitionname>
+            <classname>rp\system\event\AppointmentEventController</classname>
+        </type>
+        <type>
+            <name>de.md-raidplaner.rp.event.controller.default</name>
+            <definitionname>de.md-raidplaner.rp.event.controller</definitionname>
+            <classname>rp\system\event\DefaultEventController</classname>
+        </type>
+        <type>
+            <name>de.md-raidplaner.rp.event.controller.raid</name>
+            <definitionname>de.md-raidplaner.rp.event.controller</definitionname>
+            <classname>rp\system\event\RaidEventController</classname>
+        </type>
+        <!-- /event controllers -->
+
+        <!-- message -->
+        <type>
+            <name>de.md-raidplaner.rp.event.notes</name>
+            <definitionname>com.woltlab.wcf.message</definitionname>
+        </type>
+        <!-- /message -->
+
+        <!-- modification log -->
+        <type>
+            <name>de.md-raidplaner.rp.event</name>
+            <definitionname>com.woltlab.wcf.modifiableContent</definitionname>
+            <classname>rp\system\log\modification\EventModificationLogHandler</classname>
+        </type>
+        <!-- modification log -->
+
+        <!-- notification -->
+        <type>
+            <name>de.md-raidplaner.rp.eventComment.like.notification</name>
+            <definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+            <classname>wcf\system\user\notification\object\type\LikeUserNotificationObjectType</classname>
+            <category>de.md-raidplaner.rp.event</category>
+            <supportsReactions>1</supportsReactions>
+        </type>
+        <type>
+            <name>de.md-raidplaner.rp.eventComment.response.like.notification</name>
+            <definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+            <classname>wcf\system\user\notification\object\type\LikeUserNotificationObjectType</classname>
+            <category>de.md-raidplaner.rp.event</category>
+            <supportsReactions>1</supportsReactions>
+        </type>
+        <type>
+            <name>de.md-raidplaner.rp.eventComment.notification</name>
+            <definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+            <classname>rp\system\user\notification\object\type\EventCommentUserNotificationObjectType</classname>
+            <category>de.md-raidplaner.rp.event</category>
+        </type>
+        <type>
+            <name>de.md-raidplaner.rp.eventComment.response.notification</name>
+            <definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+            <classname>rp\system\user\notification\object\type\EventCommentResponseUserNotificationObjectType</classname>
+            <category>de.md-raidplaner.rp.event</category>
+        </type>
+        <!-- /notification -->
+
+        <!-- recent activity event -->
+        <type>
+			<name>de.md-raidplaner.rp.event.recentActivityEvent</name>
+			<definitionname>com.woltlab.wcf.user.recentActivityEvent</definitionname>
+			<classname>rp\system\user\activity\event\EventUserActivityEvent</classname>
+		</type>
+        <!-- /recent activity event -->
+
+        <!-- visit tracker -->
+        <type>
+            <name>de.md-raidplaner.rp.event</name>
+            <definitionname>com.woltlab.wcf.visitTracker.objectType</definitionname>
+        </type>
+        <!-- /visit tracker -->
+    </import>
+</data>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wl="http://www.woltlab.com"
+    xmlns="http://md-raidplaner.de"
+    targetNamespace="http://md-raidplaner.de" elementFormDefault="qualified">
+    <!-- include types -->
+    <xs:import namespace="http://www.woltlab.com"
+        schemaLocation="http://www.woltlab.com/XSD/6.0/types.xsd" />
+
+    <!-- data element -->
+    <xs:element name="data">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="import" type="import" minOccurs="0" />
+                <xs:element name="delete" type="delete" minOccurs="0" />
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- import element -->
+    <xs:complexType name="import">
+        <xs:sequence>
+            <xs:element name="database" type="database_import" nillable="true" minOccurs="0"
+                maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- delete element -->
+    <xs:complexType name="delete">
+        <xs:sequence>
+            <xs:element name="database" type="database_delete" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- deleted game -->
+    <xs:complexType name="database_delete">
+        <xs:attribute name="identifier" type="wl:woltlab_varchar" use="required" />
+    </xs:complexType>
+
+    <!-- imported/updated game -->
+    <xs:complexType name="database_import">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="identifier" form="unqualified" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,22 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 6
+    paths:
+        - files
+        - files_wcf
+    scanDirectories:
+        - ../../../../../coding/templates/php/wsc6.2/
+    scanFiles:
+        - constants.php
+        - ../../../../../wscdownload/WCF-6.2/constants.php
+    ignoreErrors:
+        - identifier: match.unhandled
+        - identifier: method.unused
+        - identifier: new.static
+        - identifier: trait.unused 
+    universalObjectCratesClasses:
+    dynamicConstantNames:
+        - MODULE_TAGGING
+        - RELATIVE_WCF_DIR

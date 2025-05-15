@@ -1,0 +1,65 @@
+:root {
+	--rpCalendarEventBackground: var(--wcfButtonBackground);
+	--rpCalendarEventBorder: var(--wcfContentBorderInner);
+}
+
+.rp-calendar {
+	border: 1px solid var(--wcfContentBorder);
+	margin-top: 20px;
+	padding: 15px;
+}
+
+.rpCalendar__month {
+	color: var(--wcfHeaderText);
+	font-size: var(--wcfFontSizeTitle);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.rpCalendar__weekdays,
+.rpCalendar__days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+}
+
+.rpCalendar__weekdays {
+	font-weight: 400;
+}
+
+.rpCalendar__weekday {
+	text-align: center;
+}
+
+.rpCalendar__days {
+	margin-top: 10px;
+}
+
+.rpCalendar__day {
+	border: 1px solid var(--wcfContentBorderInner);
+	min-height: 150px;
+	padding: 5px;
+
+	&.rpCalendar__day__empty {
+		background-color: var(--wcfButtonDisabledBackground);
+	}
+}
+
+.rpCalendar__event {
+	align-items: center;
+	background-color: var(--rpCalendarEventBackground);
+	border: 1px solid var(--rpCalendarEventBorder);
+	display: block;
+	overflow: hidden;
+	padding: 2px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	&:not(:first-child) {
+		margin-top: 5px;
+	}
+}
+
+.rpCalendar__event_time {
+	font-weight: 600;
+	text-transform: uppercase;
+}

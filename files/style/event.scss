@@ -1,0 +1,99 @@
+.eventNavigation {
+	column-gap: 20px;
+	display: grid;
+	grid-template-areas: "previous next";
+	grid-template-columns: 1fr 1fr;
+
+	@include screen-sm-down {
+		column-gap: 0;
+		grid-template-areas:
+			"previous"
+			"next";
+		grid-template-columns: 1fr;
+		row-gap: 20px;
+	}
+}
+
+.eventNavigationEvent {
+	color: var(--wcfContentText);
+	display: grid;
+	grid-template-rows: repeat(2, minmax(0, max-content));
+	position: relative;
+
+	&.previousEventButton {
+		grid-area: previous;
+		grid-template-areas: "icon content";
+		grid-template-columns: 60px auto;
+	}
+
+	&.nextEventButton {
+		grid-area: next;
+		grid-template-areas: "content icon";
+		text-align: right;
+	}
+
+	&.eventNavigationEventWithImage {
+		&.previousEventButton {
+			grid-template-areas: "icon image content";
+			grid-template-columns: 60px 96px auto;
+		}
+
+		&.nextEventButton {
+			grid-template-areas: "content image icon";
+			grid-template-columns: auto 96px 60px;
+			text-align: right;
+		}
+	}
+}
+
+.eventNavigationEventIcon {
+	align-self: center;
+	grid-area: icon;
+}
+
+body:not(.touch) .eventNavigationEvent:hover .eventNavigationEventIcon {
+	color: var(--wcfContentLinkActive);
+}
+
+.eventNavigationEventImage {
+	border-radius: 3px;
+	grid-area: image;
+	overflow: hidden;
+}
+
+.previousEventButton.eventNavigationEventWithImage .eventNavigationEventContent {
+	margin-left: 20px;
+}
+
+.nextEventButton.eventNavigationEventWithImage .eventNavigationEventContent {
+	margin-right: 20px;
+}
+
+.eventNavigationEventContent {
+	grid-area: content;
+}
+
+.eventNavigationEntityName {
+	color: var(--wcfContentDimmedText);
+	display: block;
+}
+
+.eventNavigationEventTitle {
+	display: block;
+	margin-top: 5px;
+
+	@include wcfFontHeadline;
+}
+
+.eventNavigationEventLink {
+	color: var(--wcfContentText);
+
+	&::before {
+		bottom: 0;
+		content: "";
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}

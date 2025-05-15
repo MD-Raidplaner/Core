@@ -1,0 +1,45 @@
+.rpItemList {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(2, 1fr);
+	margin-top: 10px;
+
+	@include screen-lg {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include screen-md {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include screen-sm-down {
+		grid-template-columns: 1fr;
+	}
+
+	.rpItem {
+		background-color: var(--wcfContentContainerBackground);
+		border: 1px solid var(--wcfContentContainerBorder);
+		border-radius: var(--wcfBorderRadius);
+		box-shadow: var(--wcfBoxShadowCard);
+		padding: 10px;
+	}
+
+	.rpItem__infos {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		text-align: center;
+		gap: 20px;
+	}
+
+	.rpItem__infoItem {
+		> div {
+			&:first-child {
+				@include wcfFontBold;
+			}
+		}
+	}
+
+	.rpItem__tooltip {
+		padding-top: 10px;
+	}
+}

@@ -1,0 +1,50 @@
+.attendeeList {
+	padding: 5px;
+
+	> .attendeeList__item {
+		position: relative;
+
+		&:not(:first-child) {
+			margin-top: 5px;
+		}
+	}
+}
+
+.attendee {
+	display: flex;
+
+	&.draggable {
+		&:hover {
+			border: 1px solid var(--wcfContentBorder) !important;
+			background-color: var(--wcfTabularBoxBackgroundActive);
+			cursor: move;
+		}
+	}
+
+	.attendee__avatar {
+		flex: 0 30px;
+	}
+
+	.attendee__name {
+		flex: 1 auto;
+	}
+
+	.attendee__information,
+	.attendee__menu {
+		flex: 0 auto;
+	}
+}
+
+.attendeeBox {
+	> .contentItemLink {
+		display: inline-flex;
+	}
+
+	&.droppable {
+		border: 1px solid var(--wcfContentBorder);
+
+		&.selected {
+			background-color: var(--wcfTabularBoxBackgroundActive);
+		}
+	}
+}
