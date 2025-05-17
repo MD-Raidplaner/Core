@@ -2,9 +2,10 @@
 
 namespace wcf\system\package\plugin;
 
-use rp\data\game\GameCache;
 use rp\data\skill\SkillEditor;
 use rp\data\skill\SkillList;
+use rp\system\cache\eager\data\GameCacheData;
+use rp\system\cache\eager\GameCache;
 use wcf\system\devtools\pip\IDevtoolsPipEntryList;
 use wcf\system\devtools\pip\IGuiPackageInstallationPlugin;
 use wcf\system\devtools\pip\TXmlGuiPackageInstallationPlugin;
@@ -37,6 +38,7 @@ final class RPSkillPackageInstallationPlugin extends AbstractXMLPackageInstallat
      * @inheritDoc
      */
     public $application = 'rp';
+    public GameCacheData $cache;
 
     /**
      * @inheritDoc
@@ -85,7 +87,7 @@ final class RPSkillPackageInstallationPlugin extends AbstractXMLPackageInstallat
                     ) {
                         /** @var SingleSelectionFormField $gameFormField */
                         $gameFormField = $formField->getDocument()->getNodeById('game');
-                        $gameID = GameCache::getInstance()->getGameByIdentifier($gameFormField->getSaveValue())->gameID;
+                        $gameID = $this->getGameCacheData()->getGameByIdentifier($gameFormField->getSaveValue())->gameID;
 
                         $skillList = new SkillList();
                         $skillList->getConditionBuilder()->add('identifier = ?', [$formField->getValue()]);
@@ -111,9 +113,9 @@ final class RPSkillPackageInstallationPlugin extends AbstractXMLPackageInstallat
                 ->label('wcf.acp.pip.rpSkill.game')
                 ->description('wcf.acp.pip.rpSkill.game.description')
                 ->required()
-                ->options(static function () {
+                ->options(function () {
                     $options = [];
-                    foreach (GameCache::getInstance()->getGames() as $game) {
+                    foreach ($this->getGameCacheData()->games as $game) {
                         $options[$game->identifier] = $game->getTitle();
                     }
 
@@ -155,7 +157,7 @@ final class RPSkillPackageInstallationPlugin extends AbstractXMLPackageInstallat
 
         if ($saveData) {
             if (isset($data['game'])) {
-                $data['gameID'] = GameCache::getInstance()->getGameByIdentifier($data['game'])?->gameID;
+                $data['gameID'] = $this->getGameCacheData()->getGameByIdentifier($data['game'])?->gameID;
             }
             unset($data['game']);
 
@@ -226,6 +228,15 @@ final class RPSkillPackageInstallationPlugin extends AbstractXMLPackageInstallat
     public function getElementIdentifier(\DOMElement $element): string
     {
         return $element->getAttribute('identifier');
+    }
+
+    public function getGameCacheData(): GameCacheData
+    {
+        if (!isset($this->cache)) {
+            $this->cache = (new GameCache())->getCache();
+        }
+
+        return $this->cache;
     }
 
     /**
@@ -311,7 +322,7 @@ final class RPSkillPackageInstallationPlugin extends AbstractXMLPackageInstallat
      */
     protected function prepareImport(array $data): array
     {
-        $gameID = GameCache::getInstance()->getGameByIdentifier($data['elements']['game'] ?? '')?->gameID;
+        $gameID = $this->getGameCacheData()->getGameByIdentifier($data['elements']['game'] ?? '')?->gameID;
 
         if ($gameID === null) {
             throw new SystemException("The skill '" . $data['attributes']['identifier'] . "' must either have an associated game or unable to find game '" . $data['elements']['game'] . "'.");

@@ -2,9 +2,9 @@
 
 namespace rp\data\raid\event;
 
-use rp\data\game\GameCache;
 use rp\data\point\account\PointAccount;
 use rp\data\point\account\PointAccountCache;
+use rp\system\cache\eager\GameCache;
 use wcf\data\DatabaseObject;
 use wcf\data\ITitledLinkObject;
 use wcf\data\ITitledObject;
@@ -57,7 +57,7 @@ final class RaidEvent extends DatabaseObject implements ITitledLinkObject
         return \sprintf(
             '%simages/%s/%s.png',
             WCF::getPath('rp'),
-            GameCache::getInstance()->getGameByID($this->gameID)->identifier,
+            (new GameCache())->getCache()->getGame($this->gameID)->identifier,
             $this->icon ?? 'unknown'
         );
     }

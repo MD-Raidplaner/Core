@@ -2,9 +2,10 @@
 
 namespace wcf\system\package\plugin;
 
-use rp\data\game\GameCache;
 use rp\data\role\RoleEditor;
 use rp\data\role\RoleList;
+use rp\system\cache\eager\data\GameCacheData;
+use rp\system\cache\eager\GameCache;
 use wcf\system\devtools\pip\IDevtoolsPipEntryList;
 use wcf\system\devtools\pip\IGuiPackageInstallationPlugin;
 use wcf\system\devtools\pip\TXmlGuiPackageInstallationPlugin;
@@ -37,6 +38,7 @@ final class RPRolePackageInstallationPlugin extends AbstractXMLPackageInstallati
      * @inheritDoc
      */
     public $application = 'rp';
+    public GameCacheData $cache;
 
     /**
      * @inheritDoc
@@ -85,7 +87,7 @@ final class RPRolePackageInstallationPlugin extends AbstractXMLPackageInstallati
                     ) {
                         /** @var SingleSelectionFormField $gameFormField */
                         $gameFormField = $formField->getDocument()->getNodeById('game');
-                        $gameID = GameCache::getInstance()->getGameByIdentifier($gameFormField->getSaveValue())->gameID;
+                        $gameID = $this->getGameCacheData()->getGameByIdentifier($gameFormField->getSaveValue())?->gameID;
 
                         $roleList = new RoleList();
                         $roleList->getConditionBuilder()->add('identifier = ?', [$formField->getValue()]);
@@ -111,9 +113,9 @@ final class RPRolePackageInstallationPlugin extends AbstractXMLPackageInstallati
                 ->label('wcf.acp.pip.rpRole.game')
                 ->description('wcf.acp.pip.rpRole.game.description')
                 ->required()
-                ->options(static function () {
+                ->options(function () {
                     $options = [];
-                    foreach (GameCache::getInstance()->getGames() as $game) {
+                    foreach ($this->getGameCacheData()->games as $game) {
                         $options[$game->identifier] = $game->getTitle();
                     }
 
@@ -155,7 +157,7 @@ final class RPRolePackageInstallationPlugin extends AbstractXMLPackageInstallati
 
         if ($saveData) {
             if (isset($data['game'])) {
-                $data['gameID'] = GameCache::getInstance()->getGameByIdentifier($data['game'])?->gameID;
+                $data['gameID'] = $this->getGameCacheData()->getGameByIdentifier($data['game'])?->gameID;
             }
             unset($data['game']);
 
@@ -226,6 +228,15 @@ final class RPRolePackageInstallationPlugin extends AbstractXMLPackageInstallati
     public function getElementIdentifier(\DOMElement $element): string
     {
         return $element->getAttribute('identifier');
+    }
+
+    public function getGameCacheData(): GameCacheData
+    {
+        if (!isset($this->cache)) {
+            $this->cache = (new GameCache())->getCache();
+        }
+
+        return $this->cache;
     }
 
     /**
@@ -311,7 +322,7 @@ final class RPRolePackageInstallationPlugin extends AbstractXMLPackageInstallati
      */
     protected function prepareImport(array $data): array
     {
-        $gameID = GameCache::getInstance()->getGameByIdentifier($data['elements']['game'] ?? '')?->gameID;
+        $gameID = $this->getGameCacheData()->getGameByIdentifier($data['elements']['game'] ?? '')?->gameID;
 
         if ($gameID === null) {
             throw new SystemException("The role '" . $data['attributes']['identifier'] . "' must either have an associated game or unable to find game '" . $data['elements']['game'] . "'.");

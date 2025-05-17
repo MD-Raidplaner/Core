@@ -3,7 +3,7 @@
 namespace rp\system\option;
 
 use rp\data\game\Game;
-use rp\data\game\GameCache;
+use rp\system\cache\eager\GameCache;
 use wcf\data\option\Option;
 use wcf\system\option\SelectOptionType;
 
@@ -22,7 +22,7 @@ class GameSelectOptionType extends SelectOptionType
      */
     protected function getSelectOptions(Option $option): array
     {
-        $games = GameCache::getInstance()->getGames();
+        $games = (new GameCache())->getCache()->games;
 
         \uasort($games, function (Game $a, Game $b) {
             return \strcmp($a->getTitle(), $b->getTitle());

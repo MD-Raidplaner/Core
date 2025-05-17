@@ -3,8 +3,8 @@
 namespace rp\system;
 
 use rp\data\game\Game;
-use rp\data\game\GameCache;
 use rp\page\CalendarPage;
+use rp\system\cache\eager\GameCache;
 use rp\system\character\point\CharacterPointHandler;
 use wcf\system\application\AbstractApplication;
 
@@ -64,6 +64,6 @@ final class RPCore extends AbstractApplication
      */
     protected function initGame(): void
     {
-        self::$gameObj = GameCache::getInstance()->getCurrentGame();
+        self::$gameObj = (new GameCache())->getCache()->getCurrentGame();
     }
 }

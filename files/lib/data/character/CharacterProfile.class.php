@@ -5,7 +5,7 @@ namespace rp\data\character;
 use rp\data\character\avatar\CharacterAvatar;
 use rp\data\character\avatar\CharacterAvatarDecorator;
 use rp\data\character\avatar\DefaultCharacterAvatar;
-use rp\data\game\GameCache;
+use rp\system\cache\eager\GameCache;
 use wcf\data\DatabaseObjectDecorator;
 use wcf\data\ITitledLinkObject;
 use wcf\system\user\storage\UserStorageHandler;
@@ -92,7 +92,7 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
      */
     public function getGame(): Game
     {
-        return GameCache::getInstance()->getGameByID($this->gameID);
+        return (new GameCache())->getCache()->getGame($this->gameID);
     }
 
     /**

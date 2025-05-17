@@ -3,7 +3,7 @@
 namespace rp\data\server;
 
 use rp\data\game\Game;
-use rp\data\game\GameCache;
+use rp\system\cache\eager\GameCache;
 use wcf\data\DatabaseObject;
 use wcf\data\ITitledObject;
 use wcf\system\WCF;
@@ -30,7 +30,7 @@ final class Server extends DatabaseObject implements ITitledObject
      */
     public function getGame(): ?Game
     {
-        return GameCache::getInstance()->getGameByID($this->gameID);
+        return (new GameCache())->getCache()->getGame($this->gameID);
     }
 
     /**

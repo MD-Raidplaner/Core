@@ -7,12 +7,12 @@ use rp\data\classification\Classification;
 use rp\data\classification\ClassificationCache;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeList;
-use rp\data\game\GameCache;
 use rp\data\point\account\PointAccountCache;
 use rp\data\raid\event\RaidEventCache;
 use rp\data\role\Role;
 use rp\data\role\RoleCache;
 use rp\event\character\AvailableCharactersChecking;
+use rp\system\cache\eager\GameCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
@@ -426,7 +426,7 @@ final class RaidEventController extends AbstractEventController
     {
         $requirements = [];
         $event = $this->getEvent();
-        $game = GameCache::getInstance()->getCurrentGame();
+        $game = (new GameCache())->getCache()->getCurrentGame();
 
         switch ($event->distributionMode) {
             case 'class':
