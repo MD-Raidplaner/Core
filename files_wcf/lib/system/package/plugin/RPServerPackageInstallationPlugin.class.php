@@ -2,9 +2,10 @@
 
 namespace wcf\system\package\plugin;
 
-use rp\data\game\GameCache;
 use rp\data\server\ServerEditor;
 use rp\data\server\ServerList;
+use rp\system\cache\eager\data\GameCacheData;
+use rp\system\cache\eager\GameCache;
 use wcf\system\devtools\pip\IDevtoolsPipEntryList;
 use wcf\system\devtools\pip\IGuiPackageInstallationPlugin;
 use wcf\system\devtools\pip\TXmlGuiPackageInstallationPlugin;
@@ -37,6 +38,7 @@ final class RPServerPackageInstallationPlugin extends AbstractXMLPackageInstalla
      * @inheritDoc
      */
     public $application = 'rp';
+    public GameCacheData $cache;
 
     /**
      * @inheritDoc
@@ -85,7 +87,7 @@ final class RPServerPackageInstallationPlugin extends AbstractXMLPackageInstalla
                     ) {
                         /** @var SingleSelectionFormField $gameFormField */
                         $gameFormField = $formField->getDocument()->getNodeById('game');
-                        $gameID = GameCache::getInstance()->getGameByIdentifier($gameFormField->getSaveValue())->gameID;
+                        $gameID = $this->getGameCacheData()->getGameByIdentifier($gameFormField->getSaveValue())?->gameID;
 
                         $serverList = new ServerList();
                         $serverList->getConditionBuilder()->add('identifier = ?', [$formField->getValue()]);
@@ -111,9 +113,9 @@ final class RPServerPackageInstallationPlugin extends AbstractXMLPackageInstalla
                 ->label('wcf.acp.pip.rpServer.game')
                 ->description('wcf.acp.pip.rpServer.game.description')
                 ->required()
-                ->options(static function () {
+                ->options(function () {
                     $options = [];
-                    foreach (GameCache::getInstance()->getGames() as $game) {
+                    foreach ($this->getGameCacheData()->games as $game) {
                         $options[$game->identifier] = $game->getTitle();
                     }
 
@@ -159,7 +161,7 @@ final class RPServerPackageInstallationPlugin extends AbstractXMLPackageInstalla
 
         if ($saveData) {
             if (isset($data['game'])) {
-                $data['gameID'] = GameCache::getInstance()->getGameByIdentifier($data['game'])?->gameID;
+                $data['gameID'] = $this->getGameCacheData()->getGameByIdentifier($data['game'])?->gameID;
             }
             unset($data['game']);
 
@@ -230,6 +232,15 @@ final class RPServerPackageInstallationPlugin extends AbstractXMLPackageInstalla
     public function getElementIdentifier(\DOMElement $element): string
     {
         return $element->getAttribute('identifier');
+    }
+
+    public function getGameCacheData(): GameCacheData
+    {
+        if (!isset($this->cache)) {
+            $this->cache = (new GameCache())->getCache();
+        }
+
+        return $this->cache;
     }
 
     /**
@@ -316,7 +327,7 @@ final class RPServerPackageInstallationPlugin extends AbstractXMLPackageInstalla
      */
     protected function prepareImport(array $data): array
     {
-        $gameID = GameCache::getInstance()->getGameByIdentifier($data['elements']['game'] ?? '')?->gameID;
+        $gameID = $this->getGameCacheData()->getGameByIdentifier($data['elements']['game'] ?? '')?->gameID;
 
         if ($gameID === null) {
             throw new SystemException("The server '" . $data['attributes']['identifier'] . "' must either have an associated game or unable to find game '" . $data['elements']['game'] . "'.");
