@@ -31,6 +31,9 @@ return static function (): void {
             $event->register(new \wcf\system\endpoint\controller\rp\attendees\DeleteAttendee);
             $event->register(new \wcf\system\endpoint\controller\rp\attendees\RenderAttendee);
             $event->register(new \wcf\system\endpoint\controller\rp\attendees\UpdateAttendeeStatus);
+            $event->register(new \wcf\system\endpoint\controller\rp\characters\DeleteCharacter);
+            $event->register(new \wcf\system\endpoint\controller\rp\characters\DisableCharacter);
+            $event->register(new \wcf\system\endpoint\controller\rp\characters\EnableCharacter);
             $event->register(new \wcf\system\endpoint\controller\rp\events\AvailableCharacters);
             $event->register(new \wcf\system\endpoint\controller\rp\events\CancelEvent);
             $event->register(new \wcf\system\endpoint\controller\rp\events\DeleteEvent);

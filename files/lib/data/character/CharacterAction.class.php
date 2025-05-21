@@ -92,56 +92,9 @@ class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAct
         return $character;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function delete(): int
+    public function delete(): void
     {
-        if (empty($this->objects)) {
-            $this->readObjects();
-        }
-
-        // delete avatars
-        $avatarIDs = [];
-        foreach ($this->getObjects() as $character) {
-            if ($character->avatarID) {
-                $avatarIDs[] = $character->avatarID;
-            }
-        }
-        if (!empty($avatarIDs)) {
-            $action = new CharacterAvatarAction($avatarIDs, 'delete');
-            $action->executeAction();
-        }
-
-        return parent::delete();
-    }
-
-    /**
-     * Disables characters.
-     */
-    public function disable(): void
-    {
-        foreach ($this->getObjects() as $character) {
-            $character->update([
-                'isDisabled' => 1
-            ]);
-        }
-
-        $this->unmarkItems();
-    }
-
-    /**
-     * Enables characters.
-     */
-    public function enable(): void
-    {
-        foreach ($this->getObjects() as $character) {
-            $character->update([
-                'isDisabled' => 0
-            ]);
-        }
-
-        $this->unmarkItems();
+        throw new \BadMethodCallException('delete() is not supported');
     }
 
     /**
@@ -265,26 +218,6 @@ class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAct
                 $avatarFile->setProcessed($avatar->getLocation());
             } catch (\RuntimeException $e) {
             }
-        }
-    }
-
-    /**
-     * Validates the disable action.
-     */
-    public function validateDisable()
-    {
-        $this->validateEnable();
-    }
-
-    /**
-     * Validates the enable action.
-     */
-    public function validateEnable(): void
-    {
-        WCF::getSession()->checkPermissions(['admin.rp.canEnableCharacter']);
-
-        if (empty($this->objects)) {
-            $this->readObjects();
         }
     }
 

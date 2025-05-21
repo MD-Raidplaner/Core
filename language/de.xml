@@ -4,10 +4,11 @@
     languagecode="de" languagename="Deutsch">
     <import>
         <category name="rp.acp.character">
+            <item name="rp.acp.character.button.viewCharacter"><![CDATA[Charakter anzeigen]]></item>
             <item name="rp.acp.character.condition.conditionGroup.general"><![CDATA[Allgemein]]></item>
             <item name="rp.acp.character.disable"><![CDATA[Deaktivieren]]></item>
             <item name="rp.acp.character.enable"><![CDATA[Aktivieren]]></item>
-            <item name="rp.acp.character.isDisabled"><![CDATA[Charakter ist deaktiviert]]></item>
+            <item name="rp.acp.character.game"><![CDATA[Spiel]]></item>
             <item name="rp.acp.character.list"><![CDATA[Charakter]]></item>
             <item name="rp.acp.character.owner"><![CDATA[Besitzer]]></item>
             <item name="rp.acp.character.quickSearch"><![CDATA[Schnellsuche]]></item>
@@ -72,7 +73,7 @@
             <item name="rp.character.list"><![CDATA[Charaktere]]></item>
             <item name="rp.character.noCharacters"><![CDATA[Es wurden keine Charaktere gefunden. <a href="{link application='rp' controller='CharacterList'}{/link}">Die aktiven Filter zurücksetzen.</a>]]></item>
             <item name="rp.character.notes"><![CDATA[Notizen]]></item>
-            <item name="rp.character.primary"><![CDATA[Main]]></item>
+            <item name="rp.character.primary"><![CDATA[Main Charakter]]></item>
             <item name="rp.character.profile.about.noData"><![CDATA[{if $userID == $__wcf->getUser()->userID}{if LANGUAGE_USE_INFORMAL_VARIANT}Du hast{else}Sie haben{/if} noch keine Informationen hinterlegt.{else}Der Charakter hat noch keine Informationen hinterlegt.{/if}]]></item>
             <item name="rp.character.profile.menu.about"><![CDATA[Über Charakter]]></item>
             <item name="rp.character.search"><![CDATA[Charaktersuche]]></item>

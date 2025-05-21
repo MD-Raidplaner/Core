@@ -27,11 +27,6 @@
 
         <!-- clipboard items -->
         <type>
-            <name>de.md-raidplaner.rp.character</name>
-            <definitionname>com.woltlab.wcf.clipboardItem</definitionname>
-            <listclassname>rp\data\character\CharacterList</listclassname>
-        </type>
-        <type>
             <name>de.md-raidplaner.rp.raid.attendee</name>
             <definitionname>com.woltlab.wcf.clipboardItem</definitionname>
             <listclassname>rp\data\event\raid\attendee\EventRaidAttendeeList</listclassname>

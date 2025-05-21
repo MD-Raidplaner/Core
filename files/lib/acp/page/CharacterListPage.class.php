@@ -3,12 +3,11 @@
 namespace rp\acp\page;
 
 use CuyZ\Valinor\Mapper\MappingError;
-use rp\data\character\CharacterProfileList;
+use rp\system\gridView\admin\CharacterGridView;
 use wcf\http\Helper;
-use wcf\page\SortablePage;
-use wcf\system\clipboard\ClipboardHandler;
-use wcf\system\database\util\PreparedStatementConditionBuilder;
+use wcf\page\AbstractGridViewPage;
 use wcf\system\exception\IllegalLinkException;
+use wcf\system\request\LinkHandler;
 use wcf\system\WCF;
 
 /**
@@ -18,151 +17,70 @@ use wcf\system\WCF;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @property    CharacterProfileList    $objectList
+ * @extends AbstractGridViewPage<CharacterGridView>
  */
-final class CharacterListPage extends SortablePage
+final class CharacterListPage extends AbstractGridViewPage
 {
-    /**
-     * list of character ids
-     * @var int[]
-     */
-    public array $characterIDs = [];
-
-    /**
-     * condition builder for character filtering
-     */
-    public PreparedStatementConditionBuilder $conditions;
-
-    /**
-     * @inheritDoc
-     */
-    public $defaultSortField = 'characterName';
-
-    /**
-     * @inheritDoc
-     */
-    public $itemsPerPage = 50;
-
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['admin.rp.canSearchCharacter'];
-
-    /**
-     * @inheritDoc
-     */
-    public $objectListClassName = CharacterProfileList::class;
 
     /**
      * id of a character search
      */
-    public int $searchID = 0;
+    public ?int $searchID;
 
-    /**
-     * @inheritDoc
-     */
-    public $validSortFields = [
-        'characterID',
-        'characterName',
-        'created',
-        'username',
-    ];
-
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
 
         WCF::getTPL()->assign([
-            'hasMarkedItems' => ClipboardHandler::getInstance()->hasMarkedItems(ClipboardHandler::getInstance()->getObjectTypeID('de.md-raidplaner.rp.character')),
             'searchID' => $this->searchID,
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
-    protected function initObjectList(): void
+    #[\Override]
+    protected function createGridView(): CharacterGridView
     {
-        parent::initObjectList();
-
-        $this->objectList->sqlSelects = " user.username";
-        $this->objectList->sqlJoins .= " LEFT JOIN wcf" . WCF_N . "_user user ON (user.userID = member.userID)";
-
-        $this->objectList->setConditionBuilder($this->conditions);
+        return new CharacterGridView($this->searchID ?? null);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
+    protected function initGridView(): void
+    {
+        parent::initGridView();
+
+        if ($this->searchID) {
+            $this->gridView->setBaseUrl(LinkHandler::getInstance()->getControllerLink(static::class, [
+                'id' => $this->searchID,
+            ]));
+        }
+    }
+
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();
-
-        $this->conditions = new PreparedStatementConditionBuilder();
 
         try {
             $parameters = Helper::mapQueryParameters(
                 $_GET,
                 <<<'EOT'
-                array {
-                    id?: positive-int
-                }
-                EOT
+                    array {
+                        id?: positive-int
+                    }
+                    EOT
             );
 
-            $this->searchID = $parameters['id'] ?? 0;
-
-            if ($this->searchID) {
-                $this->readSearchResult();
-
-                if (empty($this->characterIDs)) {
-                    throw new IllegalLinkException();
-                }
-
-                $this->conditions->add('member.characterID IN (?)', [$this->characterIDs]);
-            }
+            $this->searchID = $parameters['id'] ?? null;
         } catch (MappingError) {
             throw new IllegalLinkException();
         }
     }
 
-    /**
-     * Fetches the result of the search with the given search id.
-     */
-    protected function readSearchResult(): void
-    {
-        //get character search from database
-        $sql = "SELECT  searchData
-                FROM    wcf1_search
-                WHERE   searchID = ?
-                    AND userID = ?
-                    AND searchType = ?";
-        $statement = WCF::getDB()->prepare($sql);
-        $statement->execute([
-            $this->searchID,
-            WCF::getUser()->userID,
-            'characters'
-        ]);
-        $search = $statement->fetchArray();
-        if (!isset($search['searchData'])) {
-            throw new IllegalLinkException();
-        }
-
-        $data = \unserialize($search['searchData']);
-        $this->characterIDs = $data['matches'];
-        $this->itemsPerPage = $data['itemsPerPage'];
-        unset($data);
-    }
-
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function show(): void
     {
-        $this->activeMenuItem = 'rp.acp.menu.link.character.' . ($this->searchID ? 'search' : 'list');
+        $this->activeMenuItem = 'rp.acp.menu.link.character.' . (isset($this->searchID) ? 'search' : 'list');
 
         parent::show();
     }
