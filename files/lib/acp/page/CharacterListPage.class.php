@@ -21,7 +21,7 @@ use wcf\system\WCF;
  */
 final class CharacterListPage extends AbstractGridViewPage
 {
-    public $neededPermissions = ['admin.rp.canSearchCharacter'];
+    public $neededPermissions = ['admin.rp.canEditCharacter'];
 
     /**
      * id of a character search

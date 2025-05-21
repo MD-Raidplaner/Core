@@ -5,7 +5,6 @@
     <import>
         <category name="rp.acp.character">
             <item name="rp.acp.character.button.viewCharacter"><![CDATA[Charakter anzeigen]]></item>
-            <item name="rp.acp.character.condition.conditionGroup.general"><![CDATA[Allgemein]]></item>
             <item name="rp.acp.character.disable"><![CDATA[Deaktivieren]]></item>
             <item name="rp.acp.character.enable"><![CDATA[Aktivieren]]></item>
             <item name="rp.acp.character.game"><![CDATA[Spiel]]></item>
@@ -66,6 +65,7 @@
             <item name="rp.character.characterName.error.notUnique"><![CDATA[Dieser Charaktername ist bereits vergeben.]]></item>
             <item name="rp.character.characters"><![CDATA[Charaktere]]></item>
             <item name="rp.character.charactersList.created"><![CDATA[Hinzugefügt am {unsafe:$character->created|date}]]></item>
+            <item name="rp.character.condition.conditionGroup.general"><![CDATA[Allgemein]]></item>
             <item name="rp.character.created"><![CDATA[Erstellt]]></item>
             <item name="rp.character.edit"><![CDATA[Charakter bearbeiten]]></item>
             <item name="rp.character.filter"><![CDATA[Filter Characters]]></item>
@@ -285,7 +285,6 @@
             <item name="wcf.acp.group.option.admin.rp.canManageGame"><![CDATA[Kann Spiele verwalten]]></item>
             <item name="wcf.acp.group.option.admin.rp.canManagePointAccount"><![CDATA[Kann Punktekonten verwalten]]></item>
             <item name="wcf.acp.group.option.admin.rp.canManageRaidEvent"><![CDATA[Kann Raid-Termine verwalten]]></item>
-            <item name="wcf.acp.group.option.admin.rp.canSearchCharacter"><![CDATA[Kann Charaktere suchen]]></item>
             <item name="wcf.acp.group.option.category.admin.rp"><![CDATA[Raidplaner]]></item>
             <item name="wcf.acp.group.option.category.admin.rp.character"><![CDATA[Charakter]]></item>
             <item name="wcf.acp.group.option.category.admin.rp.raid"><![CDATA[Raid]]></item>

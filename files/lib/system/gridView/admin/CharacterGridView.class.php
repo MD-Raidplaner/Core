@@ -175,7 +175,7 @@ final class CharacterGridView extends AbstractGridView
     #[\Override]
     public function isAccessible(): bool
     {
-        return WCF::getSession()->getPermission('admin.rp.canSearchCharacter');
+        return WCF::getSession()->getPermission('admin.rp.canEditCharacter');
     }
 
     #[\Override]

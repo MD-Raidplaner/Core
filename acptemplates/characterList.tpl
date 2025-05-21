@@ -1,10 +1,4 @@
-{if $searchID}
-    {assign var='pageTitle' value='rp.acp.character.search'}
-{else}
-    {assign var='pageTitle' value='rp.acp.character.list'}
-{/if}
-
-{include file='header'}
+{include file='header' pageTitle='rp.acp.character.list'}
 
 <header class="contentHeader">
     <div class="contentHeaderTitle">
@@ -18,22 +12,6 @@
     <nav class="contentHeaderNavigation">
         <ul>
             {content}
-            {if $__wcf->session->getPermission('admin.rp.canSearchCharacter')}
-                <li class="dropdown">
-                    <a class="button dropdownToggle">
-                        {icon name='magnifying-glass'}
-                        <span>{lang}rp.acp.character.quickSearch{/lang}</span>
-                    </a>
-                    <ul class="dropdownMenu">
-                        <li>
-                            <a href="{link application='rp' controller='CharacterQuickSearch'}mode=disabled{/link}">
-                                {lang}rp.acp.character.quickSearch.disabled{/lang}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            {/if}
-
             {if $__wcf->session->getPermission('admin.rp.canAddCharacter')}
                 <li>
                     <a href="{link application='rp' controller='CharacterAdd'}{/link}" class="button">
