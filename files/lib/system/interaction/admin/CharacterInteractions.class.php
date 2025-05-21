@@ -9,6 +9,7 @@ use wcf\system\event\EventHandler;
 use wcf\system\interaction\AbstractInteractionProvider;
 use wcf\system\interaction\DeleteInteraction;
 use wcf\system\interaction\LinkableObjectInteraction;
+use wcf\system\interaction\RpcInteraction;
 
 /**
  * Interaction provider for characters.
@@ -26,6 +27,15 @@ final class CharacterInteractions extends AbstractInteractionProvider
             new DeleteInteraction('rp/characters/%s', static function (CharacterProfile $character): bool {
                 return $character->canDelete();
             }),
+            new RpcInteraction(
+                'setPrimary',
+                'rp/characters/%s/setPrimary',
+                'rp.character.button.setPrimary',
+                isAvailableCallback: static function (CharacterProfile $character): bool {
+                    return $character->isPrimary === 0;
+                },
+                invalidatesAllItems: true,
+            ),
         ]);
 
         EventHandler::getInstance()->fire(

@@ -34,6 +34,7 @@ return static function (): void {
             $event->register(new \wcf\system\endpoint\controller\rp\characters\DeleteCharacter);
             $event->register(new \wcf\system\endpoint\controller\rp\characters\DisableCharacter);
             $event->register(new \wcf\system\endpoint\controller\rp\characters\EnableCharacter);
+            $event->register(new \wcf\system\endpoint\controller\rp\characters\SetPrimaryCharacter);
             $event->register(new \wcf\system\endpoint\controller\rp\events\AvailableCharacters);
             $event->register(new \wcf\system\endpoint\controller\rp\events\CancelEvent);
             $event->register(new \wcf\system\endpoint\controller\rp\events\DeleteEvent);
@@ -59,21 +60,12 @@ return static function (): void {
                 parentMenuItem: 'rp.acp.menu.link.rp',
             )
         );
-        if (WCF::getSession()->getPermission('admin.rp.canSearchCharacter')) {
+        if (WCF::getSession()->getPermission('admin.rp.canEditCharacter')) {
             $event->register(
                 new AcpMenuItem(
                     'rp.acp.menu.link.character.list',
                     parentMenuItem: 'rp.acp.menu.link.character',
                     link: LinkHandler::getInstance()->getControllerLink(\rp\acp\page\CharacterListPage::class),
-                )
-            );
-            $event->register(
-                new AcpMenuItem(
-                    'rp.acp.menu.link.character.search',
-                    WCF::getLanguage()->get('rp.acp.menu.link.character.search'),
-                    'rp.acp.menu.link.character.list',
-                    LinkHandler::getInstance()->getControllerLink(\rp\acp\form\CharacterSearchForm::class),
-                    FontAwesomeIcon::fromValues('search'),
                 )
             );
             if (WCF::getSession()->getPermission('admin.rp.canAddCharacter')) {

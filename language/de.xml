@@ -59,6 +59,7 @@
             <item name="rp.character.add"><![CDATA[Charakter hinzufügen]]></item>
             <item name="rp.character.avatar"><![CDATA[Avatar]]></item>
             <item name="rp.character.avatar.description"><![CDATA[Avatare dürfen die Dateiendungen {"\n"|str_replace:', ':$__wcf->session->getPermission('user.rp.characterAvatarAllowedFileExtensions')} und maximal eine Dateigröße von {unsafe:$__wcf->session->getPermission('user.rp.characterAvatarMaxSize')|filesize} besitzen. Die Mindestgröße für Avatare liegt bei 128×128 Pixel.]]></item>
+            <item name="rp.character.button.setPrimary"><![CDATA[Als Main-Charakter setzen]]></item>
             <item name="rp.character.category.character"><![CDATA[Charakter]]></item>
             <item name="rp.character.characterID"><![CDATA[Charakter-ID]]></item>
             <item name="rp.character.characterName"><![CDATA[Charaktername]]></item>
