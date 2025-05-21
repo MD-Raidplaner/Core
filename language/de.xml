@@ -392,14 +392,6 @@
             <item name="wcf.acp.pip.rpRole.identifier"><![CDATA[Bezeichner der Rolle]]></item>
         </category>
 
-        <category name="wcf.clipboard">
-            <item name="wcf.clipboard.label.de.md-raidplaner.rp.character.marked"><![CDATA[{if $count == 1}Ein{else}{#$count}{/if} Charakter{if $count != 1}e{/if}]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.delete"><![CDATA[Löschen ({#$count})]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.delete.confirmMessage"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} wirklich {if $count == 1}einen{else}{#$count}{/if} Charakter{if $count != 1}e{/if} löschen?]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.disable"><![CDATA[Deaktivieren ({#$count})]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.enable"><![CDATA[Aktivieren ({#$count})]]></item>
-        </category>
-
         <category name="wcf.like">
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment"><![CDATA[Hat mit {@$reaction->render()} auf den Kommentar {if $commentAuthor}von <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}eines Gasts{/if} zum Termin <a href="{$comment->getLink()}">{$event->getTitle()}</a> reagiert.]]></item>
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment.response"><![CDATA[Hat mit {@$reaction->render()} auf die Antwort {if $responseAuthor}von <a href="{link controller='User' object=$responseAuthor}{/link}">{$responseAuthor->username}</a>{else}eines Gasts{/if} zum Kommentar {if $commentAuthor}von <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}eines Gasts{/if} zum Termin <a href="{$response->getLink()}">{$event->getTitle()}</a> reagiert.]]></item>

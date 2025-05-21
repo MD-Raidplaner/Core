@@ -391,14 +391,6 @@
             <item name="wcf.acp.pip.rpRole.identifier"><![CDATA[Role Identifier]]></item>
         </category>
 
-        <category name="wcf.clipboard">
-            <item name="wcf.clipboard.label.de.md-raidplaner.rp.character.marked"><![CDATA[{if $count == 1}One{else}{#$count}{/if} character{if $count != 1}s{/if}]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.delete"><![CDATA[Delete ({#$count})]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.delete.confirmMessage"><![CDATA[Do you really want to delete {if $count == 1}an{else}{#$count}{/if} character{if $count != 1}s{/if}?]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.disable"><![CDATA[Disable ({#$count})]]></item>
-            <item name="wcf.clipboard.item.de.md-raidplaner.rp.character.enable"><![CDATA[Enable ({#$count})]]></item>
-        </category>
-
         <category name="wcf.like">
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment"><![CDATA[Reacted with {@$reaction->render()} to the comment by {if $commentAuthor}<a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}a guest{/if} on the event <a href="{$comment->getLink()}">{$event->getTitle()}</a>.]]></item>
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment.response"><![CDATA[Reacted with {@$reaction->render()} to the response by {if $responseAuthor}<a href="{link controller='User' object=$responseAuthor}{/link}">{$responseAuthor->username}</a>{else}a guest{/if} on the comment by {if $commentAuthor}<a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}a guest{/if} on the event <a href="{$response->getLink()}">{$event->getTitle()}</a>.]]></item>
