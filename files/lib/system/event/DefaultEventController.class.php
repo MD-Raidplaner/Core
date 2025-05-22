@@ -16,19 +16,8 @@ use wcf\system\WCF;
  */
 class DefaultEventController extends AbstractEventController
 {
-    /**
-     * @inheritDoc
-     */
     protected string $eventController = 'de.md-raidplaner.rp.event.controller.default';
-
-    /**
-     * event nodes position
-     */
     protected string $eventNodesPosition = 'center';
-
-    /**
-     * @inheritDoc
-     */
     protected array $savedFields = [
         'enableComments',
         'endTime',
@@ -40,9 +29,7 @@ class DefaultEventController extends AbstractEventController
         'username'
     ];
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function createForm(IFormDocument $form): void
     {
         $dataContainer = FormContainer::create('data')
@@ -61,9 +48,7 @@ class DefaultEventController extends AbstractEventController
         parent::createForm($form);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContent(): string
     {
         return '';

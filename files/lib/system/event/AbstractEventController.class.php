@@ -50,9 +50,7 @@ abstract class AbstractEventController implements IEventController
      */
     protected array $savedFields = [];
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function checkPermissions(): void
     {
         if (!$this->event->isVisible()) {
@@ -60,9 +58,7 @@ abstract class AbstractEventController implements IEventController
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function createForm(IFormDocument $form): void
     {
         $event = new EventCreateForm($form, $this->eventController);
@@ -257,58 +253,44 @@ abstract class AbstractEventController implements IEventController
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContentHeaderNavigation(): string
     {
         return '';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getEvent(): ?Event
     {
         return $this->event;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getIcon(int $size = 16): string
     {
         $fa = FontAwesomeIcon::fromValues('calendar-days', true);
         return $fa->toHtml($size);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTitle(): string
     {
         return $this->getEvent()->title;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isAccessible(): bool
     {
         return WCF::getSession()->getPermission('user.rp.canCreateEvent');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isExpired(): bool
     {
         return false;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function saveForm(array $formData): array
     {
         if (empty($this->savedFields)) return $formData;
@@ -328,17 +310,13 @@ abstract class AbstractEventController implements IEventController
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function setEvent(Event $event): void
     {
         $this->event = $event;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function showEventNodes(string $position): bool
     {
         return ($this->eventNodesPosition === $position);

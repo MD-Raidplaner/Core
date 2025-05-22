@@ -42,20 +42,8 @@ final class RaidEventController extends AbstractEventController
      * content data
      */
     protected ?array $contentData = null;
-
-    /**
-     * @inheritDoc
-     */
     protected string $eventController = 'de.md-raidplaner.rp.event.controller.raid';
-
-    /**
-     * @inheritDoc
-     */
     protected string $eventNodesPosition = 'right';
-
-    /**
-     * @inheritDoc
-     */
     protected array $savedFields = [
         'enableComments',
         'endTime',
@@ -93,9 +81,7 @@ final class RaidEventController extends AbstractEventController
         $tab->appendChild($classDistributionContainer);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function createForm(IFormDocument $form): void
     {
         $tabMenu = TabMenuFormContainer::create('raidEventTab');
@@ -280,9 +266,7 @@ final class RaidEventController extends AbstractEventController
         $tab->appendChild($roleDistributionContainer);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContent(): string
     {
         WCF::getTPL()->assign($this->getContentData());
@@ -378,9 +362,7 @@ final class RaidEventController extends AbstractEventController
         return $key === null ? $this->contentData : ($this->contentData[$key] ?? null);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContentHeaderNavigation(): string
     {
         $canParticipate = true;
@@ -398,9 +380,7 @@ final class RaidEventController extends AbstractEventController
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getIcon(?int $size = null): string
     {
         $raidEvent = RaidEventCache::getInstance()->getEventByID($this->getEvent()->raidEventID);
@@ -473,18 +453,14 @@ final class RaidEventController extends AbstractEventController
         return $requirements;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTitle(): string
     {
         $raidEvent = RaidEventCache::getInstance()->getEventByID($this->getEvent()->raidEventID) ?? 'Unknown';
         return $raidEvent instanceof RaidEvent ? $raidEvent->getTitle() : $raidEvent;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isExpired(): bool
     {
         $event = $this->getEvent();
@@ -502,9 +478,7 @@ final class RaidEventController extends AbstractEventController
         return !empty(\array_intersect($characterIDs, $eventLeaders));
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function saveForm(array $formData): array
     {
         $formData['data']['leaders'] = $formData['leaders'] ?? [];

@@ -14,19 +14,10 @@ use wcf\system\WCF;
  */
 final class AppointmentEventController extends DefaultEventController
 {
-    /**
-     * @inheritDoc
-     */
     protected string $eventController = 'de.md-raidplaner.rp.event.controller.appointment';
-
-    /**
-     * event nodes position
-     */
     protected string $eventNodesPosition = 'right';
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContent(): string
     {
         $accepted = $canceled = $maybe =  [];
@@ -44,9 +35,9 @@ final class AppointmentEventController extends DefaultEventController
             }
         }
 
-        return WCF::getTPL()->fetch(
-            'eventAppointment',
+        return WCF::getTPL()->render(
             'rp',
+            'eventAppointment',
             [
                 'eventStatuses' => [
                     'accepted' => $accepted,
@@ -57,9 +48,7 @@ final class AppointmentEventController extends DefaultEventController
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContentHeaderNavigation(): string
     {
         $myStatus = "";
@@ -73,18 +62,16 @@ final class AppointmentEventController extends DefaultEventController
             }
         }
 
-        return WCF::getTPL()->fetch(
-            'eventAppointmentHeaderNavigation',
+        return WCF::getTPL()->render(
             'rp',
+            'eventAppointmentHeaderNavigation',
             [
                 'myStatus' => $myStatus,
             ]
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isExpired(): bool
     {
         if ($this->getEvent()->startTime < TIME_NOW) return true;

@@ -27,9 +27,6 @@ use wcf\util\HeaderUtil;
  */
 class EventAddForm extends AbstractFormBuilderForm
 {
-    /**
-     * @inheritDoc
-     */
     public $objectActionClass = EventAction::class;
 
     /**
@@ -37,9 +34,7 @@ class EventAddForm extends AbstractFormBuilderForm
      */
     public ?ObjectType $eventController = null;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function createForm(): void
     {
         parent::createForm();
@@ -47,9 +42,7 @@ class EventAddForm extends AbstractFormBuilderForm
         $this->eventController->getProcessor()->createForm($this->form);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();
@@ -77,6 +70,7 @@ class EventAddForm extends AbstractFormBuilderForm
         }
     }
 
+    #[\Override]
     public function save(): void
     {
         AbstractForm::save();
@@ -110,9 +104,7 @@ class EventAddForm extends AbstractFormBuilderForm
         exit;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function saved(): void
     {
         AbstractForm::saved();
@@ -130,9 +122,7 @@ class EventAddForm extends AbstractFormBuilderForm
         exit;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function setFormAction(): void
     {
         $parameters = [
