@@ -132,9 +132,9 @@
             </div>
         </div>
 
-        <ol class="containerList characterList">
+        <ol class="characterCardList">
             {foreach from=$objects item=character}
-                {include application='rp' file='characterListItem'}
+                {include application='rp' file='characterCard'}
             {/foreach}
         </ol>
     </div>

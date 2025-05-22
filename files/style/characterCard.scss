@@ -1,0 +1,149 @@
+.characterCardList {
+	--column-count: 3;
+
+	display: grid;
+	gap: 20px;
+	grid-auto-rows: minmax(200px, auto);
+	grid-template-columns: repeat(var(--column-count), 1fr);
+	padding: 20px 0;
+
+	@include screen-lg-only {
+		--column-count: 2;
+	}
+	@include screen-sm {
+		--column-count: 2;
+	}
+	@include screen-xs {
+		--column-count: 1;
+	}
+}
+
+.characterCard {
+	background-color: var(--wcfContentBackground);
+	border: 1px solid var(--wcfContentBorderInner);
+	border-radius: var(--wcfBorderRadius);
+	box-shadow: var(--wcfBoxShadowCard);
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.characterCard__button {
+	color: inherit;
+
+	a {
+		&:hover {
+			color: inherit;
+		}
+	}
+}
+
+.characterCard__buttons {
+	background: var(--wcfContentContainerBackground);
+	border-radius: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 5px;
+	margin: 5px auto 0 auto;
+	padding: 5px 10px;
+}
+
+.characterCard__content {
+	display: flex;
+	flex-direction: column;
+	flex: 1 auto;
+	row-gap: 5px;
+	padding: 10px 20px 20px 20px;
+	text-align: center;
+}
+
+.userCard__details {
+	@include wcfFontSmall;
+	margin-top: auto;
+	padding-top: 5px;
+
+	.dataList {
+		dd {
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+	}
+}
+
+.characterCard__header {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.characterCard__header__avatar {
+	border-radius: 50%;
+	border: 5px solid var(--wcfContentBackground);
+	margin: auto;
+	position: relative;
+}
+
+.characterCard__footer {
+	border-top: 1px solid var(--wcfContentBorderInner);
+	padding: 10px 5px;
+}
+
+.characterCard__footer__stats {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 5px;
+}
+
+.characterCard__footer__statsItem {
+	color: inherit;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	&:nth-child(n + 4) {
+		display: none;
+	}
+
+	a {
+		&:hover {
+			color: inherit;
+		}
+	}
+}
+
+.characterCard__name {
+	@include wcfFontHeadline;
+	@include wcfFontBold;
+	text-align: center;
+
+	a {
+		color: inherit;
+	}
+
+	.characterPrimary {
+		display: inherit;
+	}
+}
+
+.characterCard__footer__statsItem__key {
+	@include wcfFontSmall;
+	color: var(--wcfContentDimmedText);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.popoverContainer[data-identifier="de.md-raidplaner.rp.customer"] {
+	--padding: 0;
+	--maxHeight: none;
+	--maxWidth: 300px;
+	width: 300px;
+
+	.customerCard {
+		border-width: 0;
+		box-shadow: none;
+	}
+}

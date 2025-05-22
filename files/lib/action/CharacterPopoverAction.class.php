@@ -37,7 +37,7 @@ final class CharacterPopoverAction implements RequestHandlerInterface
         }
 
         return new HtmlResponse(
-            WCF::getTPL()->fetch('characterListItem', 'rp', ['character' => $character])
+            WCF::getTPL()->render('rp', 'characterCard', ['character' => $character])
         );
     }
 }

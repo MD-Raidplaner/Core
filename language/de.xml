@@ -65,7 +65,6 @@
             <item name="rp.character.characterName"><![CDATA[Charaktername]]></item>
             <item name="rp.character.characterName.error.notUnique"><![CDATA[Dieser Charaktername ist bereits vergeben.]]></item>
             <item name="rp.character.characters"><![CDATA[Charaktere]]></item>
-            <item name="rp.character.charactersList.created"><![CDATA[Hinzugefügt am {unsafe:$character->created|date}]]></item>
             <item name="rp.character.condition.conditionGroup.general"><![CDATA[Allgemein]]></item>
             <item name="rp.character.created"><![CDATA[Erstellt]]></item>
             <item name="rp.character.edit"><![CDATA[Charakter bearbeiten]]></item>
