@@ -33,6 +33,10 @@ final class CharacterInteractions extends AbstractInteractionProvider
                 'rp/characters/%s/setPrimary',
                 'rp.character.button.setPrimary',
                 isAvailableCallback: static function (CharacterProfile $character): bool {
+                    if (!$character->canEdit()) {
+                        return false;
+                    }
+                    
                     return $character->isPrimary === 0;
                 },
                 invalidatesAllItems: true,
