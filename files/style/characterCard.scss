@@ -18,6 +18,12 @@
 	}
 }
 
+.listView__items {
+	.characterCardList {
+		padding: 0;
+	}
+}
+
 .characterCard {
 	background-color: var(--wcfContentBackground);
 	border: 1px solid var(--wcfContentBorderInner);
