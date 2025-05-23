@@ -73,6 +73,7 @@
             <item name="rp.character.list"><![CDATA[Charaktere]]></item>
             <item name="rp.character.noCharacters"><![CDATA[Es wurden keine Charaktere gefunden. <a href="{link application='rp' controller='CharacterList'}{/link}">Die aktiven Filter zurücksetzen.</a>]]></item>
             <item name="rp.character.notes"><![CDATA[Notizen]]></item>
+            <item name="rp.character.ownCharacters"><![CDATA[Eigene Charaktere anzeigen]]></item>
             <item name="rp.character.primary"><![CDATA[Main Charakter]]></item>
             <item name="rp.character.profile.about.noData"><![CDATA[{if $userID == $__wcf->getUser()->userID}{if LANGUAGE_USE_INFORMAL_VARIANT}Du hast{else}Sie haben{/if} noch keine Informationen hinterlegt.{else}Der Charakter hat noch keine Informationen hinterlegt.{/if}]]></item>
             <item name="rp.character.profile.menu.about"><![CDATA[Über Charakter]]></item>
@@ -80,11 +81,6 @@
             <item name="rp.character.search.error.noMatches"><![CDATA[Zu den angegebenen Kriterien wurde kein Charakter gefunden.]]></item>
             <item name="rp.character.search.results"><![CDATA[Suchergebnisse]]></item>
             <item name="rp.character.selection"><![CDATA[Charakter auswählen]]></item>
-            <item name="rp.character.sort.letters"><![CDATA[Anfangsbuchstabe]]></item>
-            <item name="rp.character.sort.letters.all"><![CDATA[Alle]]></item>
-            <item name="rp.character.sort.ownCharacters"><![CDATA[Eigene Charaktere anzeigen]]></item>
-            <item name="rp.character.sortField.characterName"><![CDATA[Charctername]]></item>
-            <item name="rp.character.sortField.created"><![CDATA[Erstellt]]></item>
             <item name="rp.character.views"><![CDATA[Aufrufe]]></item>
         </category>
 
