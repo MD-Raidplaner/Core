@@ -4,7 +4,7 @@ namespace rp\system\interaction\bulk\admin;
 
 use rp\data\character\CharacterProfile;
 use rp\data\character\CharacterProfileList;
-use rp\event\character\interaction\bulk\admin\CharacterBulkInteractionCollecting;
+use rp\event\interaction\bulk\admin\CharacterBulkInteractionCollecting;
 use wcf\system\event\EventHandler;
 use wcf\system\interaction\bulk\AbstractBulkInteractionProvider;
 use wcf\system\interaction\bulk\BulkDeleteInteraction;

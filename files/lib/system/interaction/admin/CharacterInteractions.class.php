@@ -4,7 +4,7 @@ namespace rp\system\interaction\admin;
 
 use rp\data\character\Character;
 use rp\data\character\CharacterProfile;
-use rp\event\character\interaction\admin\CharacterInteractionCollecting;
+use rp\event\interaction\admin\CharacterInteractionCollecting;
 use wcf\system\event\EventHandler;
 use wcf\system\interaction\AbstractInteractionProvider;
 use wcf\system\interaction\DeleteInteraction;
