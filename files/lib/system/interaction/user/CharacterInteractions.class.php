@@ -1,14 +1,16 @@
 <?php
 
-namespace rp\system\interaction\admin;
+namespace rp\system\interaction\user;
 
 use rp\data\character\Character;
 use rp\data\character\CharacterProfile;
-use rp\event\interaction\admin\CharacterInteractionCollecting;
+use rp\event\interaction\user\CharacterInteractionCollecting;
+use rp\form\CharacterEditForm;
 use wcf\system\event\EventHandler;
 use wcf\system\interaction\AbstractInteractionProvider;
 use wcf\system\interaction\DeleteInteraction;
-use wcf\system\interaction\LinkableObjectInteraction;
+use wcf\system\interaction\Divider;
+use wcf\system\interaction\EditInteraction;
 use wcf\system\interaction\RpcInteraction;
 
 /**
@@ -16,15 +18,14 @@ use wcf\system\interaction\RpcInteraction;
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
- * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  */
 final class CharacterInteractions extends AbstractInteractionProvider
 {
     public function __construct()
     {
         $this->addInteractions([
-            new LinkableObjectInteraction('view', 'rp.acp.character.button.viewCharacter'),
-            new DeleteInteraction('rp/characters/%s', static function (CharacterProfile $character): bool {
+            new DeleteInteraction('rp/characters/%s', function (CharacterProfile $character) {
                 return $character->canDelete();
             }),
             new RpcInteraction(
@@ -36,6 +37,10 @@ final class CharacterInteractions extends AbstractInteractionProvider
                 },
                 invalidatesAllItems: true,
             ),
+            new Divider(),
+            new EditInteraction(CharacterEditForm::class, function (CharacterProfile $character) {
+                return $character->canEdit();
+            }),
         ]);
 
         EventHandler::getInstance()->fire(

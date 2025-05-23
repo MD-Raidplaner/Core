@@ -1,6 +1,6 @@
 <?php
 
-namespace rp\event\character\interaction\bulk\admin;
+namespace rp\event\interaction\bulk\admin;
 
 use rp\system\interaction\bulk\admin\CharacterBulkInteractions;
 use wcf\event\IPsr14Event;

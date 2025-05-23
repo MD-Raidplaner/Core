@@ -73,6 +73,7 @@
             <item name="rp.character.list"><![CDATA[Characters]]></item>
             <item name="rp.character.noCharacters"><![CDATA[No characters matched your criteria. <a href="{link application='rp' controller='CharacterList'}{/link}">Reset the applied filters.</a>]]></item>
             <item name="rp.character.notes"><![CDATA[Notes]]></item>
+            <item name="rp.character.ownCharacters"><![CDATA[Show own characters]]></item>
             <item name="rp.character.primary"><![CDATA[Main Character]]></item>
             <item name="rp.character.profile.about.noData"><![CDATA[{if $userID == $__wcf->getUser()->userID}You have not provided any details yet.{else}There are no details visible to you.{/if}]]></item>
             <item name="rp.character.profile.menu.about"><![CDATA[About Character]]></item>
@@ -80,11 +81,6 @@
             <item name="rp.character.search.error.noMatches"><![CDATA[No characters matched your criteria.]]></item>
             <item name="rp.character.search.results"><![CDATA[Search Results]]></item>
             <item name="rp.character.selection"><![CDATA[Charakter auswählen]]></item>
-            <item name="rp.character.sort.letters"><![CDATA[First Letter]]></item>
-            <item name="rp.character.sort.letters.all"><![CDATA[All]]></item>
-            <item name="rp.character.sort.ownCharacters"><![CDATA[Show own characters]]></item>
-            <item name="rp.character.sortField.characterName"><![CDATA[Charctername]]></item>
-            <item name="rp.character.sortField.created"><![CDATA[Created]]></item>
             <item name="rp.character.views"><![CDATA[Views]]></item>
         </category>
 

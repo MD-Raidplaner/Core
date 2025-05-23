@@ -1,8 +1,8 @@
 <?php
 
-namespace rp\event\character\interaction\admin;
+namespace rp\event\interaction\user;
 
-use rp\system\interaction\admin\CharacterInteractions;
+use rp\system\interaction\user\CharacterInteractions;
 use wcf\event\IPsr14Event;
 
 /**
@@ -14,7 +14,5 @@ use wcf\event\IPsr14Event;
  */
 final class CharacterInteractionCollecting implements IPsr14Event
 {
-    public function __construct(
-        private readonly CharacterInteractions $provider
-    ) {}
+    public function __construct(public readonly CharacterInteractions $provider) {}
 }
