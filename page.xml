@@ -92,20 +92,6 @@
                 <title>Charakter bearbeiten</title>
             </content>
         </page>
-        <page identifier="de.md-raidplaner.rp.CharacterSearch">
-            <pageType>system</pageType>
-            <controller>rp\form\CharacterSearchForm</controller>
-            <name language="de">Charakter suchen</name>
-            <name language="en">Search Characters</name>
-            <parent>de.md-raidplaner.rp.CharacterList</parent>
-            <permissions>user.rp.canViewCharacterList</permissions>
-            <content language="en">
-                <title>Search Characters</title>
-            </content>
-            <content language="de">
-                <title>Charakter suchen</title>
-            </content>
-        </page>
 
         <page identifier="de.md-raidplaner.rp.PointList">
             <pageType>system</pageType>

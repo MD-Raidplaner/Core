@@ -10,9 +10,6 @@
             <item name="rp.acp.character.game"><![CDATA[Spiel]]></item>
             <item name="rp.acp.character.list"><![CDATA[Charakter]]></item>
             <item name="rp.acp.character.owner"><![CDATA[Besitzer]]></item>
-            <item name="rp.acp.character.quickSearch"><![CDATA[Schnellsuche]]></item>
-            <item name="rp.acp.character.quickSearch.disabled"><![CDATA[Nicht aktivierte Charakter]]></item>
-            <item name="rp.acp.character.search"><![CDATA[Charakter suchen]]></item>
         </category>
 
         <category name="rp.acp.item">
@@ -26,7 +23,6 @@
             <item name="rp.acp.menu.link.character"><![CDATA[Charakter]]></item>
             <item name="rp.acp.menu.link.character.add"><![CDATA[Charakter hinzufügen]]></item>
             <item name="rp.acp.menu.link.character.list"><![CDATA[Charaktere]]></item>
-            <item name="rp.acp.menu.link.character.search"><![CDATA[Charakter suchen]]></item>
             <item name="rp.acp.menu.link.point.account.add"><![CDATA[Punktekonto hinzufügen]]></item>
             <item name="rp.acp.menu.link.point.account.list"><![CDATA[Punktekonten]]></item>
             <item name="rp.acp.menu.link.raid"><![CDATA[Raid]]></item>
@@ -77,9 +73,6 @@
             <item name="rp.character.primary"><![CDATA[Main Charakter]]></item>
             <item name="rp.character.profile.about.noData"><![CDATA[{if $userID == $__wcf->getUser()->userID}{if LANGUAGE_USE_INFORMAL_VARIANT}Du hast{else}Sie haben{/if} noch keine Informationen hinterlegt.{else}Der Charakter hat noch keine Informationen hinterlegt.{/if}]]></item>
             <item name="rp.character.profile.menu.about"><![CDATA[Über Charakter]]></item>
-            <item name="rp.character.search"><![CDATA[Charaktersuche]]></item>
-            <item name="rp.character.search.error.noMatches"><![CDATA[Zu den angegebenen Kriterien wurde kein Charakter gefunden.]]></item>
-            <item name="rp.character.search.results"><![CDATA[Suchergebnisse]]></item>
             <item name="rp.character.selection"><![CDATA[Charakter auswählen]]></item>
             <item name="rp.character.views"><![CDATA[Aufrufe]]></item>
         </category>

@@ -10,21 +10,6 @@
         </type>
         <!-- /box controllers -->
 
-        <!-- character search conditions -->
-        <type>
-            <name>de.md-raidplaner.rp.characterID</name>
-            <definitionname>de.md-raidplaner.rp.condition.characterSearch</definitionname>
-            <classname>rp\system\condition\character\CharacterIDCondition</classname>
-            <conditiongroup>general</conditiongroup>
-        </type>
-        <type>
-            <name>de.md-raidplaner.rp.characterName</name>
-            <definitionname>de.md-raidplaner.rp.condition.characterSearch</definitionname>
-            <classname>rp\system\condition\character\CharacterNameCondition</classname>
-            <conditiongroup>general</conditiongroup>
-        </type>
-        <!-- /character search conditions -->
-
         <!-- clipboard items -->
         <type>
             <name>de.md-raidplaner.rp.raid.attendee</name>

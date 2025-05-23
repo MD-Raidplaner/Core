@@ -10,9 +10,6 @@
             <item name="rp.acp.character.game"><![CDATA[Game]]></item>
             <item name="rp.acp.character.list"><![CDATA[Characters]]></item>
             <item name="rp.acp.character.owner"><![CDATA[Owner]]></item>
-            <item name="rp.acp.character.quickSearch"><![CDATA[Quick Search]]></item>
-            <item name="rp.acp.character.quickSearch.disabled"><![CDATA[Disabled Characters]]></item>
-            <item name="rp.acp.character.search"><![CDATA[Search Characters]]></item>
         </category>
 
         <category name="rp.acp.item">
@@ -26,7 +23,6 @@
             <item name="rp.acp.menu.link.character"><![CDATA[Character]]></item>
             <item name="rp.acp.menu.link.character.add"><![CDATA[Add Character]]></item>
             <item name="rp.acp.menu.link.character.list"><![CDATA[Characters]]></item>
-            <item name="rp.acp.menu.link.character.search"><![CDATA[Search Characters]]></item>
             <item name="rp.acp.menu.link.point.account.add"><![CDATA[Add Points Account]]></item>
             <item name="rp.acp.menu.link.point.account.list"><![CDATA[Points Accounts]]></item>
             <item name="rp.acp.menu.link.raid"><![CDATA[Raid]]></item>
@@ -77,9 +73,6 @@
             <item name="rp.character.primary"><![CDATA[Main Character]]></item>
             <item name="rp.character.profile.about.noData"><![CDATA[{if $userID == $__wcf->getUser()->userID}You have not provided any details yet.{else}There are no details visible to you.{/if}]]></item>
             <item name="rp.character.profile.menu.about"><![CDATA[About Character]]></item>
-            <item name="rp.character.search"><![CDATA[Search Characters]]></item>
-            <item name="rp.character.search.error.noMatches"><![CDATA[No characters matched your criteria.]]></item>
-            <item name="rp.character.search.results"><![CDATA[Search Results]]></item>
             <item name="rp.character.selection"><![CDATA[Charakter auswählen]]></item>
             <item name="rp.character.views"><![CDATA[Views]]></item>
         </category>

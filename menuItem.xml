@@ -14,12 +14,6 @@
 			<title language="en">Characters</title>
 			<page>de.md-raidplaner.rp.CharacterList</page>
 		</item>
-		<item identifier="de.md-raidplaner.rp.CharacterSearch">
-			<parent>de.md-raidplaner.rp.CharacterList</parent>
-			<title language="de">Charaktersuche</title>
-			<title language="en">Search Characters</title>
-			<page>de.md-raidplaner.rp.CharacterSearch</page>
-		</item>
 		<item identifier="de.md-raidplaner.rp.PointList">
             <menu>com.woltlab.wcf.MainMenu</menu>
             <title language="de">Punktestand</title>
