@@ -3,8 +3,8 @@
 namespace rp\page;
 
 use CuyZ\Valinor\Mapper\MappingError;
-use rp\data\classification\ClassificationCache;
 use rp\data\raid\Raid;
+use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\runtime\RaidRuntimeCache;
 use wcf\http\Helper;
 use wcf\page\AbstractPage;
@@ -43,7 +43,7 @@ final class RaidPage extends AbstractPage
         $classDistributions = [];
         foreach ($attendees as $attendee) {
             $classificationID = $attendee['classificationID'];
-            $classification = ClassificationCache::getInstance()->getClassificationByID($classificationID);
+            $classification = (new ClassificationCache)->getCache()->getClassification($classificationID);
 
             if ($classification === null) {
                 continue;
