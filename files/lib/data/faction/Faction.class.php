@@ -51,17 +51,13 @@ final class Faction extends DatabaseObject implements ITitledObject
         return WCF::getPath('rp') . 'images/' . $this->getGame()->identifier . '/' . $this->icon . '.png';
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getTitle(): string
     {
         return WCF::getLanguage()->get($this->title);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __toString(): string
     {
         return $this->getTitle();

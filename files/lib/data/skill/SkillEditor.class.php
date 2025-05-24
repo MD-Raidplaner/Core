@@ -22,14 +22,9 @@ use wcf\system\WCF;
  */
 class SkillEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Skill::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public static function create(array $parameters = []): Skill
     {
         $titles = '';
@@ -52,9 +47,7 @@ class SkillEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $skill;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public static function resetCache(): void
     {
         SkillCacheBuilder::getInstance()->reset();
@@ -124,9 +117,7 @@ class SkillEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => $title]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

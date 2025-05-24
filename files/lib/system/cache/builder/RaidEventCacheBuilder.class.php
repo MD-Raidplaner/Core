@@ -14,9 +14,7 @@ use wcf\system\cache\builder\AbstractCacheBuilder;
  */
 final class RaidEventCacheBuilder extends AbstractCacheBuilder
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function rebuild(array $parameters): array
     {
         $list = new I18nRaidEventList();

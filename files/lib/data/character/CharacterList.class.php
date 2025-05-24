@@ -18,14 +18,8 @@ use wcf\data\DatabaseObjectList;
  */
 class CharacterList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = Character::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

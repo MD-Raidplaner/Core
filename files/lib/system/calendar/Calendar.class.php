@@ -18,39 +18,13 @@ use wcf\util\DateUtil;
  */
 final class Calendar
 {
-    /**
-     * calendar days
-     */
     private array $calendarDays  = [];
-
-    /**
-     * events
-     */
     private array $events = [];
-
-    /**
-     * the first day of the last month
-     */
     private \DateTimeImmutable $firstDayOfLastMonth;
-
-    /**
-     * the first day of the current month.
-     */
     private \DateTimeImmutable $firstDayOfMonth;
-
-    /**
-     * the first day of the next month.
-     */
     private \DateTimeImmutable $firstDayOfNextMonth;
-
-    /**
-     * the localized name of the month.
-     */
     private string $monthName;
 
-    /**
-     * Constructor to initialize the Calendar object with the given year and month.
-     */
     public function __construct(
         private readonly int $year,
         private readonly int $month

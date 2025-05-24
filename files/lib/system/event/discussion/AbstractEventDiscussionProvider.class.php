@@ -14,14 +14,8 @@ use rp\data\event\Event;
  */
 abstract class AbstractEventDiscussionProvider implements IEventDiscussionProvider
 {
-    /**
-     * event object
-     */
     protected Event $event;
-
-    /**
-     * AbstractEventDiscussionProvider constructor.
-     */
+    
     public function __construct(Event $event)
     {
         $this->event = $event;

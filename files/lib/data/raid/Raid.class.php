@@ -27,14 +27,7 @@ use wcf\system\WCF;
  */
 final class Raid extends DatabaseObject implements IRouteController, ITitledLinkObject
 {
-    /**
-     * attendees
-     */
     protected ?array $attendees = null;
-
-    /**
-     * raid event object
-     */
     protected ?RaidEvent $raidEvent = null;
 
     /**
@@ -67,9 +60,7 @@ final class Raid extends DatabaseObject implements IRouteController, ITitledLink
         return $this->getRaidEvent()->getIcon($size);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getLink(): string
     {
         return LinkHandler::getInstance()->getLink('Raid', [
@@ -91,17 +82,13 @@ final class Raid extends DatabaseObject implements IRouteController, ITitledLink
         return $this->raidEvent;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getTitle(): string
     {
         return $this->getRaidEvent()->getTitle();
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __toString(): string
     {
         return $this->getTitle();

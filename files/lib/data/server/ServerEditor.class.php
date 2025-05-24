@@ -22,14 +22,9 @@ use wcf\system\WCF;
  */
 class ServerEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Server::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public static function create(array $parameters = []): Server
     {
         $titles = '';
@@ -52,9 +47,7 @@ class ServerEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $server;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public static function resetCache(): void
     {
         ServerCacheBuilder::getInstance()->reset();
@@ -124,9 +117,7 @@ class ServerEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => $title]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

@@ -23,9 +23,7 @@ class RaidEditForm extends RaidAddForm
 {
     public $formAction = 'edit';
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();
@@ -49,9 +47,7 @@ class RaidEditForm extends RaidAddForm
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function finalizeForm(): void
     {
         /** @var ItemFormField $itemFormField */

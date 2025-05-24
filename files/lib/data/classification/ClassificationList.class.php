@@ -18,14 +18,8 @@ use wcf\data\DatabaseObjectList;
  */
 class ClassificationList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = Classification::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

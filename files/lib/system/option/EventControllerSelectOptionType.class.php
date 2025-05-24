@@ -17,9 +17,7 @@ use wcf\system\WCF;
  */
 class EventControllerSelectOptionType extends SelectOptionType
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function getSelectOptions(Option $option): array
     {
         $availableEventControllers = ObjectTypeCache::getInstance()->getObjectTypes('de.md-raidplaner.rp.event.controller');

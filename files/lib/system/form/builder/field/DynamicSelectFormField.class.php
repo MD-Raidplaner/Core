@@ -17,14 +17,7 @@ use wcf\system\form\builder\field\validation\FormFieldValidationError;
  */
 class DynamicSelectFormField extends SingleSelectionFormField
 {
-    /**
-     * @inheritDoc
-     */
     protected $templateApplication = 'rp';
-
-    /**
-     * @inheritDoc
-     */
     protected $templateName = 'shared_dynamicSelectFormField';
 
     /**
@@ -129,9 +122,7 @@ class DynamicSelectFormField extends SingleSelectionFormField
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function validate(): void
     {
         parent::validate();

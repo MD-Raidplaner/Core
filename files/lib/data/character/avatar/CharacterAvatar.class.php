@@ -36,10 +36,6 @@ final class CharacterAvatar extends DatabaseObject implements ICharacterAvatar, 
      * @var int
      */
     const AVATAR_SIZE_2X = 256;
-
-    /**
-     * @inheritDoc
-     */
     protected static $databaseTableName = 'member_avatar';
 
     /**
@@ -67,17 +63,13 @@ final class CharacterAvatar extends DatabaseObject implements ICharacterAvatar, 
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getHeight(): int
     {
         return $this->height;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getImageTag(?int $size = null, bool $lazyLoading = true): string
     {
         return \sprintf(
@@ -97,33 +89,25 @@ final class CharacterAvatar extends DatabaseObject implements ICharacterAvatar, 
         return RP_DIR . 'images/avatars/' . $this->getFilename($size, $forceWebP);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getSafeImageTag(?int $size = null): string
     {
         return '<img src="' . StringUtil::encodeHTML($this->getSafeURL($size)) . '" width="' . $size . '" height="' . $size . '" alt="" class="characterAvatarImage">';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getSafeURL(?int $size = null): string
     {
         return WCF::getPath('rp') . 'images/avatars/' . $this->getFilename(null, false);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getURL(?int $size = null): string
     {
         return WCF::getPath('rp') . 'images/avatars/' . $this->getFilename();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getWidth(): int
     {
         return $this->width;

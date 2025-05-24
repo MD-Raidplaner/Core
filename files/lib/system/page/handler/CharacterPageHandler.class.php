@@ -18,9 +18,7 @@ final class CharacterPageHandler extends AbstractLookupPageHandler implements IO
     use TCharacterLookupPageHandler;
     use TCharacterOnlineLocationPageHandler;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink($objectID): string
     {
         return UserRuntimeCache::getInstance()->getObject($objectID)->getLink();

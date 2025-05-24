@@ -65,9 +65,7 @@ final class RaceCache extends SingletonFactory
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     protected function init(): void
     {
         $this->cachedIdentifier = RaceCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID], 'identifier');

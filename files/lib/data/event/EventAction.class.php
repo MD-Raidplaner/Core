@@ -29,9 +29,6 @@ use wcf\system\WCF;
  */
 class EventAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * event object
-     */
     protected ?Event $event = null;
 
     public function appointmentSetStatus(): array
@@ -84,9 +81,7 @@ class EventAction extends AbstractDatabaseObjectAction
         UserStorageHandler::getInstance()->resetAll('rpUnreadEvents');
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function create(): Event
     {
         $this->parameters['data']['userID'] ??= WCF::getUser()->userID;
@@ -120,9 +115,7 @@ class EventAction extends AbstractDatabaseObjectAction
         return new Event($event->eventID);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function delete(): void
     {
         $eventIDs = [];

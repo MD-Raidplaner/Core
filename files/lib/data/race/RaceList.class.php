@@ -18,14 +18,8 @@ use wcf\data\DatabaseObjectList;
  */
 class RaceList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = Race::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

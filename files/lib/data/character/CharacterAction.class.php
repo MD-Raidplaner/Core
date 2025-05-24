@@ -30,34 +30,13 @@ use wcf\util\ImageUtil;
  */
 class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $allowGuestAccess = ['getSearchResultList'];
-
-    /**
-     * @inheritDoc
-     */
     protected $className = CharacterEditor::class;
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsCreate = ['admin.rp.canAddCharacter'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsDelete = ['admin.rp.canDeleteCharacter'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsUpdate = ['admin.rp.canEditCharacter'];
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function create(): Character
     {
         $this->parameters['data']['created'] = TIME_NOW;
@@ -92,14 +71,13 @@ class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAct
         return $character;
     }
 
+    #[\Override]
     public function delete(): void
     {
         throw new \BadMethodCallException('delete() is not supported');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getSearchResultList(): array
     {
         $searchString = $this->parameters['data']['searchString'];
@@ -143,9 +121,7 @@ class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAct
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function update(): void
     {
         $this->parameters['data']['lastUpdateTime'] = TIME_NOW;
@@ -221,9 +197,7 @@ class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAct
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function validateGetSearchResultList(): void
     {
         $this->readString('searchString', false, 'data');

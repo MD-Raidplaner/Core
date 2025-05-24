@@ -57,9 +57,7 @@ final class Server extends DatabaseObject implements ITitledObject
         return WCF::getLanguage()->get($this->title);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function __toString(): string
     {
         return $this->getTitle();

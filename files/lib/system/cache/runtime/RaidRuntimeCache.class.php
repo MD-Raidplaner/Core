@@ -18,8 +18,5 @@ use wcf\system\cache\runtime\AbstractRuntimeCache;
  */
 final class RaidRuntimeCache extends AbstractRuntimeCache
 {
-    /**
-     * @inheritDoc
-     */
     protected $listClassName = RaidList::class;
 }

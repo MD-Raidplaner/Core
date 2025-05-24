@@ -17,28 +17,9 @@ use wcf\data\AbstractDatabaseObjectAction;
  */
 class FactionAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $className = FactionEditor::class;
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsCreate = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsDelete = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsUpdate = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $requireACP = ['create', 'delete', 'update'];
 }

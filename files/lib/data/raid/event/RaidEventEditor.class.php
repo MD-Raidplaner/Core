@@ -20,14 +20,9 @@ use wcf\data\IEditableCachedObject;
  */
 class RaidEventEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = RaidEvent::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         RaidEventCacheBuilder::getInstance()->reset();

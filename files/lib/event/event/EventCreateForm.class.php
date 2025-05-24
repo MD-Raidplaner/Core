@@ -17,6 +17,5 @@ final class EventCreateForm implements IPsr14Event
     public function __construct(
         public readonly IFormDocument $form,
         public readonly string $eventController
-    ) {
-    }
+    ) {}
 }

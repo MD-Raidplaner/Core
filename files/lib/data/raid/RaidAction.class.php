@@ -17,19 +17,8 @@ use wcf\system\WCF;
  */
 class RaidAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $permissionsCreate = ['mod.rp.canAddRaid'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsDelete = ['mod.rp.canDeleteRaid'];
-
-    /**
-     * @inheritDoc
-     */
     protected $className = RaidEditor::class;
 
     /**
@@ -70,9 +59,7 @@ class RaidAction extends AbstractDatabaseObjectAction
         RaidEditor::resetCache();
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function create(): Raid
     {
         $this->parameters['data']['gameID'] = RP_CURRENT_GAME_ID;
@@ -90,9 +77,7 @@ class RaidAction extends AbstractDatabaseObjectAction
         return $raid;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(): void
     {
         $this->parameters['data']['updatedBy'] = WCF::getUser()->username;

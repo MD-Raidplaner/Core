@@ -17,9 +17,9 @@ use wcf\system\option\SelectOptionType;
 class GameSelectOptionType extends SelectOptionType
 {
     /**
-     * @inheritDoc
      * @return  Game[]
      */
+    #[\Override]
     protected function getSelectOptions(Option $option): array
     {
         $games = (new GameCache())->getCache()->games;

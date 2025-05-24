@@ -25,9 +25,6 @@ ITestableUserNotificationEvent
     use TTestableEventCommentUserNotificationEvent;
     use TReactionUserNotificationEvent;
 
-    /**
-     * @inheritDoc
-     */
     protected $stackable = true;
 
     /**
@@ -39,33 +36,25 @@ ITestableUserNotificationEvent
         return $this->getUserNotificationObject()->objectID;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getEmailMessage($notificationType = 'instant'): void
     {
         // not supported
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getEventHash(): string
     {
         return \sha1($this->eventID . '-' . $this->getCommentID());
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink(): string
     {
         return ViewableEventRuntimeCache::getInstance()->getObject($this->additionalData['objectID'])->getLink() . '#comment' . $this->getCommentID();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getMessage(): string
     {
         $event = ViewableEventRuntimeCache::getInstance()->getObject($this->additionalData['objectID']);
@@ -92,9 +81,7 @@ ITestableUserNotificationEvent
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTitle(): string
     {
         $count = \count($this->getAuthors());
@@ -108,17 +95,13 @@ ITestableUserNotificationEvent
         return $this->getLanguage()->get('rp.user.notification.eventComment.like.title');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function prepare(): void
     {
         ViewableEventRuntimeCache::getInstance()->cacheObjectID($this->additionalData['objectID']);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function supportsEmailNotification(): bool
     {
         return false;

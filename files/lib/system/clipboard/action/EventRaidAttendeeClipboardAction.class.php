@@ -16,25 +16,17 @@ use wcf\system\WCF;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-class EventRaidAttendeeClipboardAction extends AbstractClipboardAction {
-    /**
-     * @inheritDoc
-     */
+class EventRaidAttendeeClipboardAction extends AbstractClipboardAction
+{
     protected $actionClassActions = [
         'delete'
     ];
-
-    /**
-     * @inheritDoc
-     */
     protected $supportedActions = [
         'updateStatus',
         'delete'
     ];
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function execute($objects, ClipboardAction $action): ?ClipboardEditorItem
     {
         $item = parent::execute($objects, $action);
@@ -47,19 +39,19 @@ class EventRaidAttendeeClipboardAction extends AbstractClipboardAction {
         switch ($action->actionName) {
             case 'updateStatus':
                 $item->addInternalData('template', WCF::getTPL()->fetch('eventRaidAttendeeStatusDialog', 'rp', [
-                        'statusData' => [
-                            EventRaidAttendee::STATUS_CONFIRMED => WCF::getLanguage()->get('rp.event.raid.container.confirmed'),
-                            EventRaidAttendee::STATUS_LOGIN => WCF::getLanguage()->get('rp.event.raid.container.login'),
-                            EventRaidAttendee::STATUS_RESERVE => WCF::getLanguage()->get('rp.event.raid.container.reserve'),
-                            EventRaidAttendee::STATUS_LOGOUT => WCF::getLanguage()->get('rp.event.raid.container.logout'),
-                        ]
+                    'statusData' => [
+                        EventRaidAttendee::STATUS_CONFIRMED => WCF::getLanguage()->get('rp.event.raid.container.confirmed'),
+                        EventRaidAttendee::STATUS_LOGIN => WCF::getLanguage()->get('rp.event.raid.container.login'),
+                        EventRaidAttendee::STATUS_RESERVE => WCF::getLanguage()->get('rp.event.raid.container.reserve'),
+                        EventRaidAttendee::STATUS_LOGOUT => WCF::getLanguage()->get('rp.event.raid.container.logout'),
+                    ]
                 ]));
                 $item->addInternalData('objectIDs', $item->getParameters()['objectIDs']);
                 break;
 
             case 'delete':
                 $item->addInternalData('confirmMessage', WCF::getLanguage()->getDynamicVariable('wcf.clipboard.item.de.md-raidplaner.rp.raid.attendee.delete.confirmMessage', [
-                        'count' => $item->getCount()
+                    'count' => $item->getCount()
                 ]));
                 break;
         }
@@ -67,17 +59,13 @@ class EventRaidAttendeeClipboardAction extends AbstractClipboardAction {
         return $item;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getClassName(): string
     {
         return EventRaidAttendeeAction::class;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTypeName(): string
     {
         return 'de.md-raidplaner.rp.raid.attendee';

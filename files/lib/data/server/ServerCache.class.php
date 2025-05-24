@@ -60,14 +60,12 @@ final class ServerCache extends SingletonFactory
     public function getServersByIDs(array $serverIDs): array
     {
         return \array_filter(
-            \array_map(fn ($serverID) => $this->getEventByID($serverID), $serverIDs),
-            fn ($server) => $server !== null
+            \array_map(fn($serverID) => $this->getEventByID($serverID), $serverIDs),
+            fn($server) => $server !== null
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function init(): void
     {
         $this->cachedIdentifier = ServerCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID], 'identifier');

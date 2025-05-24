@@ -65,9 +65,7 @@ final class SkillCache extends SingletonFactory
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function init(): void
     {
         $this->cachedIdentifier = SkillCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID], 'identifier');

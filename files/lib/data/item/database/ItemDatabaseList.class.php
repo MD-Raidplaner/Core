@@ -19,8 +19,5 @@ use wcf\data\DatabaseObjectList;
  */
 class ItemDatabaseList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = ItemDatabase::class;
 }

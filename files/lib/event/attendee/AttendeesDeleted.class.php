@@ -18,6 +18,5 @@ final class AttendeesDeleted implements IPsr14Event
 {
     public function __construct(
         public readonly array $attendees,
-    ) {
-    }
+    ) {}
 }

@@ -166,9 +166,7 @@ final class AddParticipantAction implements RequestHandlerInterface
         return $form;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parameters = Helper::mapQueryParameters(

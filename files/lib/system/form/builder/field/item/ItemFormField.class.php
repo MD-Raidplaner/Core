@@ -26,24 +26,11 @@ class ItemFormField extends AbstractFormField
     use TDefaultIdFormField;
 
     /**
-     * character objects
      * @var Character[]
      */
     protected ?array $characters = null;
-
-    /**
-     * @inheritDoc
-     */
     protected $templateApplication = 'rp';
-
-    /**
-     * @inheritDoc
-     */
     protected $templateName = 'shared_itemFormField';
-
-    /**
-     * @inheritDoc
-     */
     protected $value = [];
 
     public function getCharacters(): array
@@ -59,9 +46,7 @@ class ItemFormField extends AbstractFormField
         return $this->characters;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected static function getDefaultId(): string
     {
         return 'items';
@@ -75,17 +60,13 @@ class ItemFormField extends AbstractFormField
         return PointAccountCache::getInstance()->getAccounts();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function hasSaveValue(): bool
     {
         return false;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function populate(): self
     {
         parent::populate();
@@ -104,9 +85,7 @@ class ItemFormField extends AbstractFormField
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readValue(): void
     {
         if ($this->getDocument()->hasRequestData($this->getPrefixedId()) && \is_array($this->getDocument()->getRequestData($this->getPrefixedId()))) {
@@ -116,9 +95,7 @@ class ItemFormField extends AbstractFormField
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function validate(): void
     {
         if ($this->isRequired() && ($this->getValue() === null || empty($this->getValue()))) {
@@ -139,9 +116,7 @@ class ItemFormField extends AbstractFormField
         parent::validate();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function value($value): self
     {
         if (!\is_array($value)) $value = [];

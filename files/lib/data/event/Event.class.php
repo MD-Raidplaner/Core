@@ -53,24 +53,9 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
 {
     use TUserContent;
 
-    /**
-     * event controller
-     */
     protected ?IEventController $controller = null;
-
-    /**
-     * discussion provider
-     */
     protected ?IEventDiscussionProvider $discussionProvider = null;
-
-    /**
-     * end time object
-     */
     private \DateTime $endTimeObj;
-
-    /**
-     * start time object
-     */
     private \DateTime $startTimeObj;
 
     public function __construct($id, ?array $row = null, ?self $object = null)
@@ -262,9 +247,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $this->discussionProvider;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getExcerpt($maxLength = 255): string
     {
         return  MessageUtil::truncateFormattedMessage($this->getSimplifiedFormattedNotes(), $maxLength);
@@ -285,9 +268,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return DateUtil::format($this->endTimeObj, $format);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getFormattedMessage(): string
     {
         $processor = new HtmlOutputProcessor();
@@ -320,9 +301,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $this->getController()->getIcon($size);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getLink(): string
     {
         return LinkHandler::getInstance()->getLink('Event', [
@@ -332,9 +311,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getMessage(): string
     {
         return $this->notes;
@@ -365,25 +342,19 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $processor->getHtml();
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getTime(): int
     {
         return $this->created;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getTitle(): string
     {
         return $this->getController()->getTitle();
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     protected function handleData($data): void
     {
         parent::handleData($data);
@@ -406,9 +377,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return false;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function isVisible(): bool
     {
         return $this->canRead();
@@ -422,9 +391,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         $this->discussionProvider = $discussionProvider;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __get($name): mixed
     {
         $value = parent::__get($name);
@@ -435,9 +402,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $value;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __toString(): string
     {
         return $this->getFormattedMessage();

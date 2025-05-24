@@ -11,14 +11,6 @@ namespace rp\form;
  */
 class CharacterAddForm extends \rp\acp\form\CharacterAddForm
 {
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['user.rp.canAddCharacter'];
-
-    /**
-     * @inheritDoc
-     */
     public $objectEditLinkController = CharacterEditForm::class;
-
 }

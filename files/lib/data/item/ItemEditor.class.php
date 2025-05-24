@@ -19,14 +19,9 @@ use wcf\data\IEditableCachedObject;
  */
 class ItemEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Item::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         ItemCacheBuilder::getInstance()->reset();

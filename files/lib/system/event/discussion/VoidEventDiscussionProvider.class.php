@@ -14,41 +14,31 @@ use rp\data\event\Event;
  */
 final class VoidEventDiscussionProvider extends AbstractEventDiscussionProvider
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getDiscussionCount(): int
     {
         return 0;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getDiscussionCountPhrase(): string
     {
         return '';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getDiscussionLink(): string
     {
         return '';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public static function isResponsible(Event $event): bool
     {
         return true;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function renderDiscussions(): string
     {
         return '';

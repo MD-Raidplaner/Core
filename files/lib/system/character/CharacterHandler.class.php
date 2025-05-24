@@ -51,9 +51,7 @@ final class CharacterHandler extends SingletonFactory
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function init(): void
     {
         if (WCF::getUser()->userID) {

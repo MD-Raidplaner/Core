@@ -15,9 +15,7 @@ use wcf\system\WCF;
  */
 final class PointAccountCacheBuilder extends AbstractCacheBuilder
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function rebuild(array $parameters): array
     {
         $data = [];

@@ -14,20 +14,13 @@ use wcf\util\DateUtil;
  */
 final class Day
 {
-    /**
-     * day object
-     */
     private \DateTimeImmutable $dayObj;
 
     /**
-     * events
      * @var DayEvent[]
      */
     private array $events = [];
 
-/**
- * Creates a new Day object for the specified date.
- */
     public function __construct(
         private readonly int $year,
         private readonly int $month,

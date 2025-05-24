@@ -17,8 +17,5 @@ use wcf\data\DatabaseObjectEditor;
  */
 class ItemDatabaseEditor extends DatabaseObjectEditor
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = ItemDatabase::class;
 }

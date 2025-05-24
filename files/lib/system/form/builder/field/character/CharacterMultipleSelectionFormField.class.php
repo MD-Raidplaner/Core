@@ -13,16 +13,10 @@ use wcf\system\form\builder\field\MultipleSelectionFormField;
  */
 class CharacterMultipleSelectionFormField extends MultipleSelectionFormField
 {
-    /**
-     * @inheritDoc
-     */
     protected $templateApplication = 'rp';
-
-    /**
-     * @inheritDoc
-     */
     protected $templateName = 'shared_characterMultipleSelectionFormField';
 
+    #[\Override]
     public function options($options, $nestedOptions = false, $labelLanguageItems = true): self
     {
         parent::options($options, $nestedOptions, $labelLanguageItems);

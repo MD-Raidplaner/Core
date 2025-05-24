@@ -43,24 +43,11 @@ use wcf\util\HeaderUtil;
  */
 class RaidAddForm extends AbstractFormBuilderForm
 {
-    /**
-     * event object
-     */
     public ?Event $event = null;
-
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['mod.rp.canAddRaid'];
-
-    /**
-     * @inheritDoc
-     */
     public $objectActionClass = RaidAction::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function checkPermissions(): void
     {
         if ($this->formAction == 'create' && $this->event !== null) {
@@ -74,9 +61,7 @@ class RaidAddForm extends AbstractFormBuilderForm
         parent::checkPermissions();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function createForm(): void
     {
         parent::createForm();
@@ -220,6 +205,7 @@ class RaidAddForm extends AbstractFormBuilderForm
         }
     }
 
+    #[\Override]
     public function readData(): void
     {
         parent::readData();
@@ -243,9 +229,7 @@ class RaidAddForm extends AbstractFormBuilderForm
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();
@@ -272,9 +256,7 @@ class RaidAddForm extends AbstractFormBuilderForm
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function save(): void
     {
         AbstractForm::save();
@@ -304,9 +286,7 @@ class RaidAddForm extends AbstractFormBuilderForm
         $this->saved();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function saved(): void
     {
         if ($this->event !== null) {
@@ -322,9 +302,7 @@ class RaidAddForm extends AbstractFormBuilderForm
         exit;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function setFormAction(): void
     {
         $parameters = [];

@@ -25,8 +25,7 @@ final class AvailableCharactersChecking implements IPsr14Event
     public function __construct(
         private readonly array $characters,
         private readonly Event $event
-    ) {
-    }
+    ) {}
 
     /**
      * Returns the available characters.

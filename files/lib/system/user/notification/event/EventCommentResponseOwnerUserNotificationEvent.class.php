@@ -38,9 +38,7 @@ final class EventCommentResponseOwnerUserNotificationEvent extends AbstractComme
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getEmailMessage($notificationType = 'instant'): array
     {
         $messageID = \sprintf(
@@ -65,17 +63,13 @@ final class EventCommentResponseOwnerUserNotificationEvent extends AbstractComme
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink(): string
     {
         return ViewableEventRuntimeCache::getInstance()->getObject($this->additionalData['objectID'])->getLink() . '#comment' . $this->getUserNotificationObject()->commentID . '/response' . $this->getUserNotificationObject()->responseID;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getMessage(): string
     {
         $authors = $this->getAuthors();
@@ -112,26 +106,20 @@ final class EventCommentResponseOwnerUserNotificationEvent extends AbstractComme
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function getObjectTitle(): string
     {
         return ViewableEventRuntimeCache::getInstance()
             ->getObject($this->additionalData['objectID'])->getTitle();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function getTypeName(): string
     {
         return $this->getLanguage()->get('wcf.user.recentActivity.de.md-raidplaner.rp.event.recentActivityEvent');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function prepare(): void
     {
         parent::prepare();

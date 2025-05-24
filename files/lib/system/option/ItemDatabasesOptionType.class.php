@@ -21,9 +21,7 @@ class ItemDatabasesOptionType extends AbstractOptionType
      */
     protected static ?array $databases = null;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getData(Option $option, $newValue): string
     {
         if (!\is_array($newValue)) {
@@ -50,9 +48,7 @@ class ItemDatabasesOptionType extends AbstractOptionType
         return self::$databases;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getFormElement(Option $option, $value): string
     {
         $databases = self::getDatabases();
@@ -75,9 +71,7 @@ class ItemDatabasesOptionType extends AbstractOptionType
         return WCF::getTPL()->fetch('itemDatabaseOptionType', 'rp');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function validate(Option $option, $newValue): void
     {
         if (!\is_array($newValue)) {

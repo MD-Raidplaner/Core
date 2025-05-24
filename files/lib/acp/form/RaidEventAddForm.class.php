@@ -29,34 +29,13 @@ use wcf\util\DirectoryUtil;
  */
 class RaidEventAddForm extends AbstractFormBuilderForm
 {
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'rp.acp.menu.link.raid.event.add';
-
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['admin.rp.canManageRaidEvent'];
-
-    /**
-     * @inheritDoc
-     */
     public $objectActionClass = RaidEventAction::class;
-
-    /**
-     * @inheritDoc
-     */
     public $objectEditLinkApplication = 'rp';
-
-    /**
-     * @inheritDoc
-     */
     public $objectEditLinkController = RaidEventEditForm::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function createForm(): void
     {
         parent::createForm();
@@ -101,9 +80,11 @@ class RaidEventAddForm extends AbstractFormBuilderForm
                         $files = DirectoryUtil::getInstance(RP_DIR . 'images/raid/event/')->getFiles(SORT_DESC, $fileNameRegex);
 
                         $options = [];
-                        foreach (\array_flip(
-                            \array_map('basename', $files)
-                        ) as $filename => $fullName) {
+                        foreach (
+                            \array_flip(
+                                \array_map('basename', $files)
+                            ) as $filename => $fullName
+                        ) {
                             $ext = \explode('.', $filename);
                             \array_pop($ext);
                             $options[\implode($ext)] = '<img src="' . RELATIVE_RP_DIR . 'images/raid/event/' . $filename . '" alt="" style="width: 25px; height: 25px"> ' . $filename;

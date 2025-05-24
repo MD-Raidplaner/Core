@@ -19,19 +19,9 @@ use wcf\data\I18nDatabaseObjectList;
  */
 class I18nPointAccountList extends I18nDatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $i18nFields = ['title' => 'titleI18n'];
-
-    /**
-     * @inheritDoc
-     */
     public $className = PointAccount::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

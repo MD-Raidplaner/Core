@@ -18,14 +18,8 @@ use wcf\data\DatabaseObjectList;
  */
 class ServerList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = Server::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

@@ -20,19 +20,10 @@ use wcf\system\WCF;
  */
 final class RaidPage extends AbstractPage
 {
-    /**
-     * class distributions
-     */
     public array $classDistributions = [];
-
-    /**
-     * raid object
-     */
     public Raid $raid;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
@@ -43,9 +34,7 @@ final class RaidPage extends AbstractPage
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readData(): void
     {
         parent::readData();
@@ -83,9 +72,7 @@ final class RaidPage extends AbstractPage
         $this->classDistributions = $classDistributions;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

@@ -26,9 +26,6 @@ use wcf\system\WCF;
  */
 class RaidEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Raid::class;
 
     /**
@@ -121,9 +118,7 @@ class RaidEditor extends DatabaseObjectEditor implements IEditableCachedObject
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache()
     {
         CharacterPointCacheBuilder::getInstance()->reset();

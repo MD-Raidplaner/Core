@@ -27,39 +27,28 @@ final class EventCommentResponseLikeUserNotificationEvent  extends AbstractShare
     use TTestableArticleCommentUserNotificationEvent;
     use TReactionUserNotificationEvent;
 
-    /**
-     * @inheritDoc
-     */
     protected $stackable = true;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getEmailMessage($notificationType = 'instant'): void
     {
         // not supported
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getEventHash(): string
     {
         return \sha1($this->eventID . '-' . $this->getUserNotificationObject()->objectID);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink(): string
     {
         return ViewableEventRuntimeCache::getInstance()->getObject($this->additionalData['objectID'])->getLink()
             . '#comment' . $this->additionalData['commentID'] . '/response' . $this->getUserNotificationObject()->objectID;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getMessage(): string
     {
         $event = ViewableEventRuntimeCache::getInstance()->getObject($this->additionalData['objectID']);
@@ -96,9 +85,7 @@ final class EventCommentResponseLikeUserNotificationEvent  extends AbstractShare
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTitle(): string
     {
         $count = \count($this->getAuthors());
@@ -115,18 +102,14 @@ final class EventCommentResponseLikeUserNotificationEvent  extends AbstractShare
         return $this->getLanguage()->get('rp.user.notification.eventComment.response.like.title');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function prepare(): void
     {
         ViewableEventRuntimeCache::getInstance()->cacheObjectID($this->additionalData['objectID']);
         UserRuntimeCache::getInstance()->cacheObjectID($this->additionalData['commentUserID']);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function supportsEmailNotification(): bool
     {
         return false;

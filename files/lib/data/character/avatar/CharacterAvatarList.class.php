@@ -19,8 +19,5 @@ use wcf\data\DatabaseObjectList;
  */
 class CharacterAvatarList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = CharacterAvatar::class;
 }

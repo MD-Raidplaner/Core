@@ -16,9 +16,7 @@ use wcf\system\WCF;
  */
 final class EventUserActivityEvent  extends SingletonFactory implements IUserActivityEvent 
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function prepare(array $events)
     {
         $objectIDs = [];

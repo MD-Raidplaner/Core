@@ -16,19 +16,10 @@ namespace rp\data\character;
  */
 class CharacterProfileList extends CharacterList
 {
-    /**
-     * @inheritDoc
-     */
     public $sqlOrderBy = 'characterName';
-
-    /**
-     * @inheritDoc
-     */
     public $decoratorClassName = CharacterProfile::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readObjects(): void
     {
         if ($this->objectIDs === null) {

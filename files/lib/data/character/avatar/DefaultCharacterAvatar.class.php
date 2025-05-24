@@ -24,9 +24,6 @@ class DefaultCharacterAvatar implements ICharacterAvatar, ISafeFormatAvatar
      */
     protected string $src = '';
 
-    /**
-     * DefaultCharacterAvatar constructor
-     */
     public function __construct(string $characterName = '')
     {
         if (\defined('AVATAR_DEFAULT_TYPE') && \AVATAR_DEFAULT_TYPE === 'initials' && !empty($characterName)) {
@@ -63,17 +60,13 @@ SVG;
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getHeight(): int
     {
         return $this->size;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getImageTag(?int $size = null): string
     {
         if ($size === null) $size = $this->size;
@@ -89,33 +82,25 @@ SVG;
         return 1 - (0.299 * $r + 0.587 * $g + 0.114 * $b) / 255;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getSafeImageTag(?int $size = null): string
     {
         return '<img src="' . StringUtil::encodeHTML($this->getSafeURL($size)) . '" width="' . $size . '" height="' . $size . '" alt="" class="characterAvatarImage">';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getSafeURL(?int $size = null): string
     {
         return WCF::getPath('rp') . 'images/avatars/avatar-default.svg';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getURL(?int $size = null): string
     {
         return $this->src;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getWidth(): int
     {
         return $this->size;

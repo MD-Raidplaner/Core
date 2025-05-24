@@ -25,24 +25,11 @@ use wcf\system\WCF;
  */
 final class CharacterPage extends AbstractPage
 {
-    /**
-     * character id
-     */
     public int $characterID = 0;
-
-    /**
-     * character object
-     */
     public ?CharacterProfile $character;
-
-    /**
-     * character menus
-     */
     private iterable $menus;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
@@ -54,9 +41,7 @@ final class CharacterPage extends AbstractPage
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readData(): void
     {
         parent::readData();
@@ -96,9 +81,7 @@ final class CharacterPage extends AbstractPage
         MetaTagHandler::getInstance()->addTag('og:image', 'og:image', $this->character->getAvatar()->getURL(), true);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         try {

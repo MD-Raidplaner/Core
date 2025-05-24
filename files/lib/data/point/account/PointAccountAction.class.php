@@ -20,34 +20,13 @@ use wcf\system\WCF;
  */
 class PointAccountAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $className = PointAccountEditor::class;
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsCreate = ['admin.rp.canManagePointAccount'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsDelete = ['admin.rp.canManagePointAccount'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsUpdate = ['admin.rp.canManagePointAccount'];
-
-    /**
-     * @inheritDoc
-     */
     protected $requireACP = ['create', 'delete', 'update'];
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function create(): PointAccount
     {
         $this->parameters['data']['gameID'] ??= RP_CURRENT_GAME_ID;
@@ -98,9 +77,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
         return $account;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function delete(): void
     {
         parent::delete();
@@ -135,9 +112,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(): void
     {
         parent::update();

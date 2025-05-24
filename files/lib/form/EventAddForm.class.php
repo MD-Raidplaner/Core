@@ -28,10 +28,6 @@ use wcf\util\HeaderUtil;
 class EventAddForm extends AbstractFormBuilderForm
 {
     public $objectActionClass = EventAction::class;
-
-    /**
-     * event controller
-     */
     public ?ObjectType $eventController = null;
 
     #[\Override]

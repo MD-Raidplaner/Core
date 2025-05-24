@@ -18,34 +18,13 @@ use wcf\system\WCF;
  */
 final class RaidListPage extends MultipleLinkPage
 {
-    /**
-     * @inheritDoc
-     */
     public $itemsPerPage = 60;
-
-    /**
-     * @inheritDoc
-     */
     public $objectListClassName = RaidList::class;
-
-    /**
-     * raid event object
-     */
     public ?RaidEvent $raidEvent = null;
-
-    /**
-     * @inheritDoc
-     */
     public $sortField = 'time';
-
-    /**
-     * @inheritDoc
-     */
     public $sortOrder = 'DESC';
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
@@ -55,9 +34,7 @@ final class RaidListPage extends MultipleLinkPage
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function initObjectList(): void
     {
         parent::initObjectList();
@@ -67,9 +44,7 @@ final class RaidListPage extends MultipleLinkPage
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

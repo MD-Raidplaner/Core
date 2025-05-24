@@ -20,24 +20,11 @@ use wcf\system\application\AbstractApplication;
  */
 final class RPCore extends AbstractApplication
 {
-    /**
-     * @inheritDoc
-     */
     protected $abbreviation = 'rp';
-
-    /**
-     * game object
-     */
     protected static Game $gameObj;
-
-    /**
-     * @inheritDoc
-     */
     protected $primaryController = CalendarPage::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __run()
     {
         $this->initGame();

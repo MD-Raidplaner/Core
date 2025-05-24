@@ -17,9 +17,6 @@ use wcf\system\WCF;
 
 class AccessibleEventList extends ViewableEventList
 {
-    /**
-     * Creates a new AccessibleEventList object.
-     */
     public function __construct(int $start = 0, int $end = 0)
     {
         parent::__construct();
@@ -37,9 +34,7 @@ class AccessibleEventList extends ViewableEventList
         if (!WCF::getSession()->getPermission('mod.rp.canViewDeletedEvent')) $this->getConditionBuilder()->add('event.isDeleted = ?', [0]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function readObjects(): void
     {
         if ($this->objectIDs === null) $this->readObjectIDs();

@@ -18,14 +18,8 @@ use wcf\data\DatabaseObjectList;
  */
 class SkillList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = Skill::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

@@ -16,19 +16,10 @@ use wcf\system\exception\IllegalLinkException;
  */
 class RaidEventEditForm extends RaidEventAddForm
 {
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'rp.acp.menu.link.raid.event.list';
-
-    /**
-     * @inheritDoc
-     */
     public $formAction = 'edit';
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

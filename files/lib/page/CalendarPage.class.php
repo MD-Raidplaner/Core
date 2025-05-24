@@ -24,19 +24,10 @@ use wcf\util\HeaderUtil;
  */
 final class CalendarPage extends AbstractPage
 {
-    /**
-     * calendar object
-     */
     public Calendar $calendar;
-
-    /**
-     * link current day
-     */
     public string $currentLink;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
@@ -63,9 +54,7 @@ final class CalendarPage extends AbstractPage
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readData(): void
     {
         $currentDate = new \DateTimeImmutable('now');
@@ -83,9 +72,7 @@ final class CalendarPage extends AbstractPage
         $this->calendar->calculate($eventList);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

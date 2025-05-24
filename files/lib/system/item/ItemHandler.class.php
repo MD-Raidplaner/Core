@@ -146,9 +146,7 @@ final class ItemHandler extends SingletonFactory
         return $item;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function init(): void
     {
         if (!empty(RP_ITEM_DATABASES)) {

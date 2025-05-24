@@ -16,6 +16,5 @@ final class CharacterEditData implements IPsr14Event
     public function __construct(
         public readonly IFormDocument $form,
         public readonly IStorableObject $formObject,
-    ) {
-    }
+    ) {}
 }

@@ -22,14 +22,9 @@ use wcf\system\WCF;
  */
 class ClassificationEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Classification::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function create(array $parameters = []): Classification
     {
         $titles = '';
@@ -52,9 +47,7 @@ class ClassificationEditor extends DatabaseObjectEditor implements IEditableCach
         return $classification;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         ClassificationCacheBuilder::getInstance()->reset();
@@ -124,9 +117,7 @@ class ClassificationEditor extends DatabaseObjectEditor implements IEditableCach
         $this->update(['title' => $title]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

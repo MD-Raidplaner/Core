@@ -13,13 +13,6 @@ use wcf\system\form\builder\field\TextFormField;
  */
 class CharacterNameFormField extends TextFormField
 {
-    /**
-     * @inheritDoc
-     */
     protected $templateApplication = 'rp';
-
-    /**
-     * @inheritDoc
-     */
     protected $templateName = 'shared_characterNameFormField';
 }

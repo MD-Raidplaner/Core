@@ -18,8 +18,5 @@ use wcf\data\DatabaseObjectList;
  */
 class GameList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = Game::class;
 }

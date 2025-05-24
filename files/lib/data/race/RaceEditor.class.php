@@ -22,14 +22,9 @@ use wcf\system\WCF;
  */
 class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Race::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function create(array $parameters = []): Race
     {
         $titles = '';
@@ -52,9 +47,7 @@ class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $race;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         RaceCacheBuilder::getInstance()->reset();
@@ -124,9 +117,7 @@ class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => $title]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

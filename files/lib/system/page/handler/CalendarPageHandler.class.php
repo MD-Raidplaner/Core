@@ -15,17 +15,13 @@ use wcf\system\WCF;
  */
 final class CalendarPageHandler extends AbstractMenuPageHandler
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getOutstandingItemCount($objectID = null): int
     {
         return ViewableEvent::getUnreadEvents();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isVisible($objectID = null): bool
     {
         return WCF::getSession()->getPermission('user.rp.canReadEvent');

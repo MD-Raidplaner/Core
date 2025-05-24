@@ -16,19 +16,10 @@ use wcf\system\exception\IllegalLinkException;
  */
 class PointAccountEditForm extends PointAccountAddForm
 {
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'rp.acp.menu.link.point.account.list';
-
-    /**
-     * @inheritDoc
-     */
     public $formAction = 'edit';
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

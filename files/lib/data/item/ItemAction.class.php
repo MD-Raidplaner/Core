@@ -19,14 +19,9 @@ use wcf\system\WCF;
  */
 class ItemAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $className = ItemEditor::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function create(): Item
     {
         $this->parameters['data']['time'] = TIME_NOW;

@@ -23,14 +23,9 @@ use wcf\system\WCF;
  */
 class FactionEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Faction::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function create(array $parameters = []): Faction
     {
         $titles = '';
@@ -53,9 +48,7 @@ class FactionEditor extends DatabaseObjectEditor implements IEditableCachedObjec
         return $faction;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         FactionCacheBuilder::getInstance()->reset();
@@ -125,9 +118,7 @@ class FactionEditor extends DatabaseObjectEditor implements IEditableCachedObjec
         $this->update(['title' => $title]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

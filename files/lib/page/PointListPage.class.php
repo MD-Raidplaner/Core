@@ -20,38 +20,14 @@ use wcf\system\WCF;
  */
 class PointListPage extends MultipleLinkPage
 {
-    /**
-     * available letters
-     */
     public static string $availableLetters = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    /**
-     * @inheritDoc
-     */
     public $itemsPerPage = 60;
-
-    /**
-     * letter
-     */
     public string $letter = '';
-
-    /**
-     * @inheritDoc
-     */
     public $objectListClassName = CharacterProfileList::class;
-
-    /**
-     * @inheritDoc
-     */
     public $sortField = 'characterName';
-    /**
-     * @inheritDoc
-     */
     public $sortOrder = 'ASC';
 
-    /**
-     * @inheritDoc
-     */
+    /#[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
@@ -63,9 +39,7 @@ class PointListPage extends MultipleLinkPage
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function initObjectList(): void
     {
         parent::initObjectList();
@@ -82,9 +56,7 @@ class PointListPage extends MultipleLinkPage
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

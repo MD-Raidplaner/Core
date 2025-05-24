@@ -16,14 +16,9 @@ use wcf\system\WCF;
  */
 final class MyCharactersCacheBuilder extends AbstractCacheBuilder
 {
-    /**
-     * @inheritDoc
-     */
     protected $maxLifetime = 300;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function rebuild(array $parameters): array
     {
         $data = [];

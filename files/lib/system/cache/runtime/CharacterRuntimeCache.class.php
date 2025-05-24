@@ -19,8 +19,5 @@ use wcf\system\cache\runtime\AbstractRuntimeCache;
  */
 final class CharacterRuntimeCache extends AbstractRuntimeCache
 {
-    /**
-     * @inheritDoc
-     */
     protected $listClassName = CharacterList::class;
 }

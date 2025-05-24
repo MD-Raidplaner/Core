@@ -21,14 +21,9 @@ use wcf\system\WCF;
  */
 class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Game::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function create(array $parameters = []): Game
     {
         $titles = [];
@@ -56,6 +51,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $game;
     }
 
+    [\Override]
     public static function deleteAll(array $objectIDs = []): int
     {
         // delete language items
@@ -80,9 +76,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return parent::deleteAll($objectIDs);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         GameCache::getInstance()->resetCache();
@@ -146,9 +140,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => 'rp.game.' . $this->identifier]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

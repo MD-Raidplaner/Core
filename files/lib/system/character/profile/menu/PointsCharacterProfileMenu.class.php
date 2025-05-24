@@ -19,9 +19,7 @@ use wcf\system\WCF;
  */
 final class PointsCharacterProfileMenu implements ICharacterProfileMenu
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContent(int $characterID): string
     {
         $character = CharacterRuntimeCache::getInstance()->getObject($characterID);
@@ -108,9 +106,7 @@ final class PointsCharacterProfileMenu implements ICharacterProfileMenu
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isVisible(int $characterID): bool
     {
         return true;

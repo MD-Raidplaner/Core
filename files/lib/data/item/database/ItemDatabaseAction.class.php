@@ -17,8 +17,5 @@ use wcf\data\AbstractDatabaseObjectAction;
  */
 class ItemDatabaseAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $className = ItemDatabaseEditor::class;
 }

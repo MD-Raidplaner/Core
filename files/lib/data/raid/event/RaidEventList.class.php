@@ -18,14 +18,8 @@ use wcf\data\DatabaseObjectList;
  */
 class RaidEventList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = RaidEvent::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

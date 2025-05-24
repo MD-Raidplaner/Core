@@ -16,6 +16,5 @@ final class CharacterAddCreateForm implements IPsr14Event
 {
     public function __construct(
         public readonly IFormDocument $form
-    ) {
-    }
+    ) {}
 }

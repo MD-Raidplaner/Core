@@ -24,28 +24,12 @@ use wcf\util\StringUtil;
  */
 final class EventPage extends AbstractPage
 {
-    /**
-     * event object
-     */
     public ?ViewableEvent $event;
-    /**
-     * event id
-     */
     public int $eventID = 0;
-
-    /**
-     * next event
-     */
     public ?ViewableEvent $nextEvent = null;
-
-    /**
-     * previous event
-     */
     public ?ViewableEvent $previousEvent = null;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
@@ -58,9 +42,7 @@ final class EventPage extends AbstractPage
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function checkPermissions(): void
     {
         parent::checkPermissions();
@@ -68,9 +50,7 @@ final class EventPage extends AbstractPage
         $this->event->getController()->checkPermissions();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readData(): void
     {
         parent::readData();
@@ -121,9 +101,7 @@ final class EventPage extends AbstractPage
         MetaTagHandler::getInstance()->addTag('og:end_time', 'og:end_time', $endDateTime->format('c'), true);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

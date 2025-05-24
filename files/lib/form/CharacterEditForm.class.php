@@ -13,14 +13,9 @@ use wcf\system\exception\PermissionDeniedException;
  */
 class CharacterEditForm extends \rp\acp\form\CharacterEditForm
 {
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = [];
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();

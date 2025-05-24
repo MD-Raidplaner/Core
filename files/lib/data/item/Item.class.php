@@ -88,9 +88,7 @@ final class Item extends DatabaseObject implements IRouteController, ILinkableOb
         return $this->url;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getLink(): string
     {
         return LinkHandler::getInstance()->getLink('Item', [
@@ -100,9 +98,7 @@ final class Item extends DatabaseObject implements IRouteController, ILinkableOb
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getTitle(): string
     {
         $itemName = $this->additionalData[WCF::getLanguage()->languageCode]['name'] ?? null;
@@ -135,9 +131,7 @@ final class Item extends DatabaseObject implements IRouteController, ILinkableOb
         return $tooltip ?? '';
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     protected function handleData($data): void
     {
         parent::handleData($data);
@@ -160,9 +154,7 @@ final class Item extends DatabaseObject implements IRouteController, ILinkableOb
         return [];
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __get($name): mixed
     {
         $value = parent::__get($name);

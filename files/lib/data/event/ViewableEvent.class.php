@@ -23,34 +23,11 @@ use wcf\system\WCF;
  */
 class ViewableEvent extends DatabaseObjectDecorator
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Event::class;
-
-    /**
-     * effective visit time
-     */
     protected ?int $effectiveVisitTime = null;
-
-    /**
-     * event days
-     */
     protected ?array $eventDays = null;
-
-    /**
-     * log entry
-     */
     protected ?ViewableEventModificationLog $logEntry = null;
-
-    /**
-     * number of unseen events
-     */
     protected static ?int $unreadEvents = null;
-
-    /**
-     * user profile object
-     */
     protected ?UserProfile $userProfile = null;
 
     /**

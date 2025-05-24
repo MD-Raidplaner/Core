@@ -14,9 +14,7 @@ use wcf\system\WCF;
  */
 final class AboutCharacterProfileMenu implements ICharacterProfileMenu
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getContent(int $characterID): string
     {
         $character = CharacterProfileRuntimeCache::getInstance()->getObject($characterID);
@@ -26,9 +24,7 @@ final class AboutCharacterProfileMenu implements ICharacterProfileMenu
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isVisible(int $characterID): bool
     {
         return true;

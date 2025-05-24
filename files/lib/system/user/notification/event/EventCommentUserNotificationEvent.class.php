@@ -20,9 +20,7 @@ final class EventCommentUserNotificationEvent  extends AbstractCommentUserNotifi
     use TTestableCommentUserNotificationEvent;
     use TTestableEventCommentUserNotificationEvent;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getEmailMessage($notificationType = 'instant'): array
     {
         return [
@@ -41,17 +39,13 @@ final class EventCommentUserNotificationEvent  extends AbstractCommentUserNotifi
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink(): string
     {
         return ViewableEventRuntimeCache::getInstance()->getObject($this->getUserNotificationObject()->objectID)->getLink() . '#comment' . $this->getUserNotificationObject()->commentID;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getMessage(): string
     {
         $authors = $this->getAuthors();
@@ -81,26 +75,20 @@ final class EventCommentUserNotificationEvent  extends AbstractCommentUserNotifi
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function getObjectTitle(): string
     {
         return ViewableEventRuntimeCache::getInstance()
             ->getObject($this->getUserNotificationObject()->objectID)->getTitle();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function getTypeName(): string
     {
         return $this->getLanguage()->get('wcf.user.recentActivity.de.md-raidplaner.rp.event.recentActivityEvent');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function prepare(): void
     {
         ViewableEventRuntimeCache::getInstance()->cacheObjectID($this->getUserNotificationObject()->objectID);

@@ -22,17 +22,13 @@ final class EventPageHandler extends AbstractLookupPageHandler implements IOnlin
 {
     use TOnlineLocationPageHandler;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink($objectID): string
     {
         return ViewableEventRuntimeCache::getInstance()->getObject($objectID)->getLink();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getOnlineLocation(Page $page, UserOnline $user): string
     {
         if ($user->pageObjectID === null) {
@@ -47,25 +43,19 @@ final class EventPageHandler extends AbstractLookupPageHandler implements IOnlin
         return WCF::getLanguage()->getDynamicVariable('wcf.page.onlineLocation.' . $page->identifier, ['event' => $event]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isValid($objectID): bool
     {
         return ViewableEventRuntimeCache::getInstance()->getObject($objectID) !== null;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isVisible($objectID = null): bool
     {
         return ViewableEventRuntimeCache::getInstance()->getObject($objectID)->canRead();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function lookup($searchString): array
     {
         $eventList = new ViewableEventList();
@@ -88,9 +78,7 @@ final class EventPageHandler extends AbstractLookupPageHandler implements IOnlin
         return $results;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function prepareOnlineLocation(Page $page, UserOnline $user): void
     {
         if ($user->pageObjectID !== null) {

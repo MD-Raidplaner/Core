@@ -15,9 +15,7 @@ use wcf\system\WCF;
  */
 final class ItemCacheBuilder extends AbstractCacheBuilder
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function rebuild(array $parameters): array
     {
         $data = [

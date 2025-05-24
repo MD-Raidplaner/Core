@@ -17,9 +17,6 @@ use wcf\system\log\modification\AbstractExtendedModificationLogHandler;
  */
 final class EventModificationLogHandler extends AbstractExtendedModificationLogHandler
 {
-    /**
-     * @inheritDoc
-     */
     protected $objectTypeName = 'de.md-raidplaner.rp.event';
 
     /**
@@ -81,9 +78,7 @@ final class EventModificationLogHandler extends AbstractExtendedModificationLogH
         // TODO
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getAvailableActions(): array
     {
         return [
@@ -97,9 +92,7 @@ final class EventModificationLogHandler extends AbstractExtendedModificationLogH
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function processItems(array $items): array
     {
         $eventIDs = \array_map(fn($item) => $item->objectID, $items);

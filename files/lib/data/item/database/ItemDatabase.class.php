@@ -17,18 +17,7 @@ use wcf\data\DatabaseObject;
  */
 final class ItemDatabase extends DatabaseObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $databaseTableIndexName = 'identifier';
-
-    /**
-     * @inheritDoc
-     */
     protected static $databaseTableIndexIsIdentity = false;
-
-    /**
-     * @inheritDoc
-     */
     protected static $databaseTableName = 'item_database';
 }

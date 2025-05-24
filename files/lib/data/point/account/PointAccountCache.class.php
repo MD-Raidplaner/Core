@@ -51,9 +51,7 @@ final class PointAccountCache extends SingletonFactory
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     protected function init(): void
     {
         $this->cachedPointAccounts = PointAccountCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID]);

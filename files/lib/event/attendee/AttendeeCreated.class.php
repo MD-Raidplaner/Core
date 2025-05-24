@@ -16,6 +16,5 @@ final class AttendeeCreated implements IPsr14Event
 {
     public function __construct(
         public readonly EventRaidAttendee $attendee,
-    ) {
-    }
+    ) {}
 }

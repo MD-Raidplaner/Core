@@ -23,10 +23,6 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
      * character avatar
      */
     protected ?CharacterAvatarDecorator $avatar = null;
-
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Character::class;
 
     /**
@@ -95,25 +91,19 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
         return (new GameCache())->getCache()->getGame($this->gameID);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink(): string
     {
         return $this->getDecoratedObject()->getLink();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTitle(): string
     {
         return $this->getDecoratedObject()->getTitle();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function __toString(): string
     {
         return $this->getDecoratedObject()->__toString();

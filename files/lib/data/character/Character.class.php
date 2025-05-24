@@ -33,9 +33,6 @@ use wcf\system\WCF;
  */
 final class Character extends DatabaseObject implements IPopoverObject, IRouteController
 {
-    /**
-     * @inheritDoc
-     */
     protected static $databaseTableName = 'member';
 
     /**
@@ -137,9 +134,7 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         return new self(null, $row);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink(): string
     {
         return LinkHandler::getInstance()->getLink('Character', [
@@ -149,9 +144,7 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         ]);
     }
 
-        /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getPopoverLinkClass()
     {
         return 'rpCharacterLink';
@@ -188,14 +181,13 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTitle(): string
     {
         return $this->characterName;
     }
 
+    #[\Override]
     protected function handleData($data): void
     {
         parent::handleData($data);
@@ -204,6 +196,7 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         $this->data['additionalData'] = (empty($data['additionalData']) ? [] : @\unserialize($data['additionalData']));
     }
 
+    #[\Override]
     public function __get($name): mixed
     {
         $value = parent::__get($name);

@@ -26,39 +26,12 @@ use wcf\system\WCF;
  */
 final class EventCommentManager extends AbstractCommentManager implements IViewableLikeProvider, ICommentPermissionManager
 {
-    /**
-     * @inheritDoc
-     */
     protected $permissionAdd = 'user.rp.canAddEventComment';
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionAddWithoutModeration = 'user.rp.canAddEventCommentWithoutModeration';
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionCanModerate = 'mod.rp.canModerateEventComment';
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionDelete = 'user.rp.canDeleteEventComment';
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionEdit = 'user.rp.canEditEventComment';
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionModDelete = 'mod.rp.canDeleteEventComment';
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionModEdit = 'mod.rp.canEditEventComment';
 
     #[\Override]
@@ -72,9 +45,7 @@ final class EventCommentManager extends AbstractCommentManager implements IViewa
         return (bool)$user->getPermission($this->permissionCanModerate);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getLink($objectTypeID, $objectID): string
     {
         $event = ViewableEventRuntimeCache::getInstance()->getObject($objectID);
@@ -85,9 +56,7 @@ final class EventCommentManager extends AbstractCommentManager implements IViewa
         return '';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getTitle($objectTypeID, $objectID, $isResponse = false): string
     {
         if ($isResponse) {
@@ -97,9 +66,7 @@ final class EventCommentManager extends AbstractCommentManager implements IViewa
         return WCF::getLanguage()->getDynamicVariable('rp.event.comment');
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isAccessible($objectID, $validateWritePermission = false): bool
     {
         // check object id
@@ -111,9 +78,7 @@ final class EventCommentManager extends AbstractCommentManager implements IViewa
         return true;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function isContentAuthor($commentOrResponse): bool
     {
         $event = ViewableEventRuntimeCache::getInstance()->getObject($this->getObjectID($commentOrResponse));
@@ -121,9 +86,7 @@ final class EventCommentManager extends AbstractCommentManager implements IViewa
         return $commentOrResponse->userID && $event->userID == $commentOrResponse->userID;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function prepare(array $likes): void
     {
         $commentLikeObjectType = ObjectTypeCache::getInstance()
@@ -238,9 +201,7 @@ final class EventCommentManager extends AbstractCommentManager implements IViewa
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function updateCounter($objectID, $value): void
     {
         $editor = new EventEditor(new Event($objectID));

@@ -17,8 +17,5 @@ use wcf\data\DatabaseObjectEditor;
  */
 class EventRaidAttendeeEditor extends DatabaseObjectEditor
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = EventRaidAttendee::class;
 }

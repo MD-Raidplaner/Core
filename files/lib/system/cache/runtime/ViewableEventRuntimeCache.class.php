@@ -18,8 +18,5 @@ use wcf\system\cache\runtime\AbstractRuntimeCache;
  */
 final class ViewableEventRuntimeCache extends AbstractRuntimeCache
 {
-    /**
-     * @inheritDoc
-     */
     protected $listClassName = ViewableEventList::class;
 }

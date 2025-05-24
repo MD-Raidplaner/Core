@@ -18,19 +18,9 @@ use wcf\data\DatabaseObjectList;
  */
 class EventList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = Event::class;
-
-    /**
-     * @inheritDoc
-     */
     public $sqlOrderBy = 'event.startTime';
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

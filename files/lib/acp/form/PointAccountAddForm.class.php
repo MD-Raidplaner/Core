@@ -20,42 +20,17 @@ use wcf\system\form\builder\field\TitleFormField;
  */
 class PointAccountAddForm extends AbstractFormBuilderForm
 {
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'rp.acp.menu.link.point.account.add';
-
-    /**
-     * @inheritDoc
-     */
     public $neededModules = [
         'RP_POINTS_ENABLED',
         'RP_ITEM_ACCOUNT_EASYMODE_DISABLED'
     ];
-
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['admin.rp.canManagePointAccount'];
-
-    /**
-     * @inheritDoc
-     */
     public $objectActionClass = PointAccountAction::class;
-
-    /**
-     * @inheritDoc
-     */
     public $objectEditLinkApplication = 'rp';
-
-    /**
-     * @inheritDoc
-     */
     public $objectEditLinkController = PointAccountEditForm::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function createForm(): void
     {
         parent::createForm();

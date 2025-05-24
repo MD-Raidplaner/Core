@@ -29,9 +29,6 @@ use wcf\util\StringUtil;
  */
 final class RaidEvent extends DatabaseObject implements ITitledLinkObject
 {
-    /**
-     * point account object
-     */
     protected ?PointAccount $pointAccount = null;
 
     /**
@@ -62,9 +59,7 @@ final class RaidEvent extends DatabaseObject implements ITitledLinkObject
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getLink(): string
     {
         return LinkHandler::getInstance()->getLink(
@@ -93,17 +88,13 @@ final class RaidEvent extends DatabaseObject implements ITitledLinkObject
         return $this->pointAccount;
     }
 
-    /**
-     * @inheritDoc
-     */
+   [\Override]
     public function getTitle(): string
     {
         return WCF::getLanguage()->get($this->title);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __toString(): string
     {
         return $this->getTitle();

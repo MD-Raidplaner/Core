@@ -15,17 +15,12 @@ use wcf\system\WCF;
  */
 final class MyCharacterListBoxController extends AbstractBoxController
 {
-    /**
-     * @inheritDoc
-     */
     protected static $supportedPositions = [
         'sidebarLeft',
         'sidebarRight',
     ];
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function loadContent(): void
     {
         if (!WCF::getUser()->userID)  return;

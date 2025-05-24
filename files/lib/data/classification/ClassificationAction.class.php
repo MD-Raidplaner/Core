@@ -17,28 +17,9 @@ use wcf\data\AbstractDatabaseObjectAction;
  */
 class ClassificationAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $className = ClassificationEditor::class;
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsCreate = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsDelete = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsUpdate = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $requireACP = ['create', 'delete', 'update'];
 }

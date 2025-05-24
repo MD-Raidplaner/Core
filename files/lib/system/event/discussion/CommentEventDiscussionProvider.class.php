@@ -15,17 +15,13 @@ use wcf\system\WCF;
  */
 final class CommentEventDiscussionProvider extends AbstractEventDiscussionProvider
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getDiscussionCount(): int
     {
         return $this->event->comments;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getDiscussionCountPhrase(): string
     {
         return WCF::getLanguage()->getDynamicVariable('rp.event.eventComments', [
@@ -33,25 +29,19 @@ final class CommentEventDiscussionProvider extends AbstractEventDiscussionProvid
         ]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getDiscussionLink(): string
     {
         return $this->event->getLink() . '#comments';
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public static function isResponsible(Event $event): bool
     {
         return !!$event->enableComments;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function renderDiscussions(): string
     {
         $commentCanAdd = WCF::getSession()->getPermission('user.rp.canAddEventComment');

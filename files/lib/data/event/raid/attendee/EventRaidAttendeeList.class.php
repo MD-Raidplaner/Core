@@ -18,8 +18,5 @@ use wcf\data\DatabaseObjectList;
  */
 class EventRaidAttendeeList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = EventRaidAttendee::class;
 }

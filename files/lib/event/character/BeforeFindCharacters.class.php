@@ -13,8 +13,7 @@ final class BeforeFindCharacters implements IPsr14Event
 {
     public function __construct(
         private readonly string $searchString
-    ) {
-    }
+    ) {}
 
     public function getSearchString(): string
     {

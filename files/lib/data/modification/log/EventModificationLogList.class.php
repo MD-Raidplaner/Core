@@ -19,9 +19,6 @@ use wcf\data\modification\log\ModificationLogList;
  */
 class EventModificationLogList extends ModificationLogList
 {
-    /**
-     * @inheritDoc
-     */
     public $decoratorClassName = ViewableEventModificationLog::class;
 
     /**

@@ -23,9 +23,6 @@ use wcf\system\WCF;
  */
 class ViewableEventList extends EventList
 {
-    /**
-     * @inheritDoc
-     */
     public $decoratorClassName = ViewableEvent::class;
 
     /**
@@ -44,9 +41,6 @@ class ViewableEventList extends EventList
      */
     public bool $loadDeleteNote = true;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();
@@ -83,9 +77,7 @@ class ViewableEventList extends EventList
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function readObjects(): void
     {
         parent::readObjects();

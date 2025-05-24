@@ -11,31 +11,23 @@ namespace rp\data\character\avatar;
  */
 final class CharacterAvatarDecorator implements ICharacterAvatar, ISafeFormatAvatar
 {
-
     public function __construct(
         private readonly ICharacterAvatar $avatar
-    ) {
-    }
+    ) {}
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getHeight(): int
     {
         return $this->avatar->getHeight();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getImageTag($size = null, bool $lazyLoading = true): string
     {
         return $this->avatar->getImageTag($size, $lazyLoading);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getSafeImageTag(?int $size = null): string
     {
         if ($this->avatar instanceof ISafeFormatAvatar) {
@@ -45,9 +37,7 @@ final class CharacterAvatarDecorator implements ICharacterAvatar, ISafeFormatAva
         return $this->avatar->getURL($size);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getSafeURL(?int $size = null): string
     {
         if ($this->avatar instanceof ISafeFormatAvatar) {
@@ -57,17 +47,13 @@ final class CharacterAvatarDecorator implements ICharacterAvatar, ISafeFormatAva
         return $this->avatar->getURL($size);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getURL($size = null): string
     {
         return $this->avatar->getURL();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getWidth(): int
     {
         return $this->avatar->getWidth();

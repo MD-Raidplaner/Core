@@ -61,17 +61,13 @@ final class Race extends DatabaseObject implements ITitledObject
         return WCF::getPath('rp') . 'images/' . $this->getGame()->identifier . '/' . $filename . '.png';
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getTitle(): string
     {
         return WCF::getLanguage()->get($this->title);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __toString(): string
     {
         return $this->getTitle();

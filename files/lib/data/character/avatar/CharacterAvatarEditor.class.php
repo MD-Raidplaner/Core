@@ -19,9 +19,6 @@ use wcf\util\ImageUtil;
  */
 class CharacterAvatarEditor extends DatabaseObjectEditor
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = CharacterAvatar::class;
 
     /**
@@ -60,9 +57,7 @@ class CharacterAvatarEditor extends DatabaseObjectEditor
         return false;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function delete(): void
     {
         $sql = "DELETE FROM rp1_member_avatar
@@ -73,9 +68,7 @@ class CharacterAvatarEditor extends DatabaseObjectEditor
         $this->deleteFiles();
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public static function deleteAll(array $objectIDs = []): int
     {
         $sql = "SELECT  *

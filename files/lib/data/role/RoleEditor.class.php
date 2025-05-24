@@ -22,14 +22,9 @@ use wcf\system\WCF;
  */
 class RoleEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = Role::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function create(array $parameters = []): Role
     {
         $titles = '';
@@ -52,9 +47,7 @@ class RoleEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $role;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         RoleCacheBuilder::getInstance()->reset();
@@ -124,9 +117,7 @@ class RoleEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => $title]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

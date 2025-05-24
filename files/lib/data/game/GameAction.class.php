@@ -18,28 +18,9 @@ use wcf\system\WCF;
  */
 class GameAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $className = GameEditor::class;
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsCreate = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsDelete = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsUpdate = ['admin.rp.canManageGame'];
-
-    /**
-     * @inheritDoc
-     */
     protected $requireACP = ['create', 'delete', 'update'];
 }

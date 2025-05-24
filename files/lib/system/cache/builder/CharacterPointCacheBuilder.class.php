@@ -92,9 +92,7 @@ final class CharacterPointCacheBuilder extends AbstractCacheBuilder
         return $characterPoints;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function rebuild(array $parameters): array
     {
         $data = [];

@@ -19,14 +19,9 @@ use wcf\data\IEditableCachedObject;
  */
 class PointAccountEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = PointAccount::class;
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public static function resetCache(): void
     {
         PointAccountCacheBuilder::getInstance()->reset();

@@ -35,9 +35,6 @@ use wcf\system\WCF;
  */
 class CharacterAddForm extends AbstractFormBuilderForm
 {
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'rp.acp.menu.link.character.add';
 
     /**
@@ -50,30 +47,12 @@ class CharacterAddForm extends AbstractFormBuilderForm
         'notes',
         'userID',
     ];
-
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['admin.rp.canAddCharacter'];
-
-    /**
-     * @inheritDoc
-     */
     public $objectActionClass = CharacterAction::class;
-
-    /**
-     * @inheritDoc
-     */
     public $objectEditLinkApplication = 'rp';
-
-    /**
-     * @inheritDoc
-     */
     public $objectEditLinkController = CharacterEditForm::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function createForm(): void
     {
         parent::createForm();
@@ -174,9 +153,7 @@ class CharacterAddForm extends AbstractFormBuilderForm
         );
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function save(): void
     {
         AbstractForm::save();

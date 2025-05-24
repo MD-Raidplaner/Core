@@ -19,24 +19,11 @@ use wcf\system\form\builder\field\IFormField;
  */
 class CharacterEditForm extends CharacterAddForm
 {
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'rp.acp.menu.link.character.list';
-
-    /**
-     * @inheritDoc
-     */
     public $formAction = 'edit';
-
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['admin.rp.canEditCharacter'];
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function readParameters(): void
     {
         parent::readParameters();
@@ -60,9 +47,7 @@ class CharacterEditForm extends CharacterAddForm
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function setFormObjectData(): void
     {
         parent::setFormObjectData();

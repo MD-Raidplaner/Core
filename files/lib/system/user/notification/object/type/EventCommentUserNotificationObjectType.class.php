@@ -23,24 +23,11 @@ final class EventCommentUserNotificationObjectType extends AbstractUserNotificat
     ICommentUserNotificationObjectType,
     IMultiRecipientCommentUserNotificationObjectType
 {
-    /**
-     * @inheritDoc
-     */
     protected static $decoratorClassName = CommentUserNotificationObject::class;
-
-    /**
-     * @inheritDoc
-     */
     protected static $objectClassName = Comment::class;
-
-    /**
-     * @inheritDoc
-     */
     protected static $objectListClassName = CommentList::class;
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getOwnerID($objectID): int
     {
         $sql = "SELECT      event.userID
@@ -54,9 +41,7 @@ final class EventCommentUserNotificationObjectType extends AbstractUserNotificat
         return $statement->fetchSingleColumn() ?: 0;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     public function getRecipientIDs(Comment $comment): array
     {
         $event = new Event($comment->objectID);

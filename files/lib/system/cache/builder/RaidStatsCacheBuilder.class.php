@@ -14,9 +14,7 @@ use wcf\system\WCF;
  */
 final class RaidStatsCacheBuilder extends AbstractCacheBuilder
 {
-    /**
-     * @inheritDoc
-     */
+    #[\Override]
     protected function rebuild(array $parameters): array
     {
         $stats = [];

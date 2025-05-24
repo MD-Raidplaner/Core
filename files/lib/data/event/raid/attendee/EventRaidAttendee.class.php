@@ -35,25 +35,14 @@ final class EventRaidAttendee extends DatabaseObject implements ITitledLinkObjec
 {
     // states of column 'status'
     const STATUS_LOGIN = 0;
-
     const STATUS_CONFIRMED = 1;
-
     const STATUS_LOGOUT = 2;
-
     const STATUS_RESERVE = 3;
 
-    /**
-     * character profile object
-     */
     protected ?CharacterProfile $character = null;
-
-    /**
-     * event object
-     */
     protected ?Event $event = null;
 
     /**
-     * possible distribution
      * @var mixed[]
      */
     protected ?array $possibleDistribution = null;
@@ -88,9 +77,7 @@ final class EventRaidAttendee extends DatabaseObject implements ITitledLinkObjec
         return $this->event ??= EventRuntimeCache::getInstance()->getObject($this->eventID);
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getLink(): string
     {
         return $this->getCharacter()->getLink();
@@ -127,17 +114,13 @@ final class EventRaidAttendee extends DatabaseObject implements ITitledLinkObjec
         return $this->possibleDistribution;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getTitle(): string
     {
         return $this->characterName;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function __toString(): string
     {
         return $this->getTitle();

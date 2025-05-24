@@ -19,34 +19,13 @@ use wcf\system\language\I18nHandler;
  */
 class RaidEventAction extends AbstractDatabaseObjectAction
 {
-    /**
-     * @inheritDoc
-     */
     protected $className = RaidEventEditor::class;
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsCreate = ['admin.rp.canManageRaidEvent'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsDelete = ['admin.rp.canManageRaidEvent'];
-
-    /**
-     * @inheritDoc
-     */
     protected $permissionsUpdate = ['admin.rp.canManageRaidEvent'];
-
-    /**
-     * @inheritDoc
-     */
     protected $requireACP = ['create', 'delete', 'update'];
 
-     /**
-     * @inheritDoc
-     */
+    [\Override]
     public function create(): RaidEvent
     {
         $this->parameters['data']['gameID'] ??= RP_CURRENT_GAME_ID;
@@ -103,9 +82,7 @@ class RaidEventAction extends AbstractDatabaseObjectAction
         return $event;
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function update(): void
     {
         parent::update();

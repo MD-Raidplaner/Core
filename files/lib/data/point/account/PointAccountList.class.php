@@ -18,14 +18,8 @@ use wcf\data\DatabaseObjectList;
  */
 class PointAccountList extends DatabaseObjectList
 {
-    /**
-     * @inheritDoc
-     */
     public $className = PointAccount::class;
 
-    /**
-     * @inheritDoc
-     */
     public function __construct()
     {
         parent::__construct();

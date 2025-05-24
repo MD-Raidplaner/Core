@@ -20,14 +20,7 @@ use wcf\system\WCF;
  */
 class ViewableEventModificationLog extends DatabaseObjectDecorator implements IViewableModificationLog
 {
-    /**
-     * @inheritDoc
-     */
     protected static $baseClass = ModificationLog::class;
-
-    /**
-     * event object
-     */
     public ?Event $event = null;
 
     /**
@@ -40,9 +33,7 @@ class ViewableEventModificationLog extends DatabaseObjectDecorator implements IV
         }
     }
 
-    /**
-     * @inheritDoc
-     */
+    [\Override]
     public function getAffectedObject(): ?Event
     {
         return $this->event;
