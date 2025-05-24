@@ -18,7 +18,9 @@
 
         {event name='afterCharacterName'}
 
-        {include application='rp' file='characterCardButtons'}
+        {if !$disableCharacterCardButtons|isset || $disableCharacterCardButtons != true}
+            {include application='rp' file='characterCardButtons'}
+        {/if}
 
         {event name='afterButtons'}
 
