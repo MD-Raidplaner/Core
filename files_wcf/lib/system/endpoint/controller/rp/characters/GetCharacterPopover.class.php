@@ -5,6 +5,7 @@ namespace wcf\system\endpoint\controller\rp\characters;
 use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use rp\data\character\Character;
 use rp\data\character\CharacterProfile;
 use wcf\http\Helper;
 use wcf\system\endpoint\GetRequest;
@@ -24,15 +25,19 @@ final class GetCharacterPopover implements IController
     #[\Override]
     public function __invoke(ServerRequestInterface $request, array $variables): ResponseInterface
     {
-        $character = Helper::fetchObjectFromRequestParameter($variables['id'], CharacterProfile::class);
+        $character = Helper::fetchObjectFromRequestParameter($variables['id'], Character::class);
+        $characterProfile = new CharacterProfile($character);
 
         return new JsonResponse([
-            'template' => $this->renderPopover($character),
+            'template' => $this->renderPopover($characterProfile),
         ]);
     }
 
-    private function renderPopover(CharacterProfile $character): string
+    private function renderPopover(CharacterProfile $characterProfile): string
     {
-        WCF::getTPL()->render('rp', 'characterCard', ['character' => $character])
+        return WCF::getTPL()->render('rp', 'characterCard', [
+            'character' => $characterProfile,
+            'disableCharacterCardButtons' => true,
+        ]);
     }
 }
