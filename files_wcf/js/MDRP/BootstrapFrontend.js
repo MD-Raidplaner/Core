@@ -38,13 +38,13 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
-define(["require", "exports", "WoltLabSuite/Core/LazyLoader"], function (require, exports, LazyLoader_1) {
+define(["require", "exports", "WoltLabSuite/Core/LazyLoader", "./Api/Character/GetCharacterPopover"], function (require, exports, LazyLoader_1, GetCharacterPopover_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.setup = setup;
     function setup(options) {
         window.RP_API_URL = options.RP_API_URL;
-        setupCharacterPopover(options.endpointCharacterPopover);
+        setupCharacterPopover();
         (0, LazyLoader_1.whenFirstSeen)("mdrp-attendee-drag-and-drop-box", () => {
             void new Promise((resolve_1, reject_1) => { require(["./Component/Attendee/DragAndDrop/mdrp-attendee-drag-and-drop-box"], resolve_1, reject_1); }).then(__importStar);
         });
@@ -52,14 +52,13 @@ define(["require", "exports", "WoltLabSuite/Core/LazyLoader"], function (require
             void new Promise((resolve_2, reject_2) => { require(["./Component/Attendee/DragAndDrop/mdrp-attendee-drag-and-drop-item"], resolve_2, reject_2); }).then(__importStar);
         });
     }
-    function setupCharacterPopover(endpoint) {
-        if (endpoint === "") {
-            return;
-        }
+    function setupCharacterPopover() {
         (0, LazyLoader_1.whenFirstSeen)(".rpCharacterLink", () => {
             void new Promise((resolve_3, reject_3) => { require(["WoltLabSuite/Core/Component/Popover"], resolve_3, reject_3); }).then(__importStar).then(({ setupFor }) => {
                 setupFor({
-                    endpoint,
+                    endpoint: async (objectId) => {
+                        return (await (0, GetCharacterPopover_1.getCharacterPopover)(objectId)).unwrap();
+                    },
                     identifier: "de.md-raidplaner.rp.character",
                     selector: ".rpCharacterLink",
                 });
