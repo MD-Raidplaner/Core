@@ -5,6 +5,8 @@ namespace rp\system\cache\tolerant;
 use rp\data\character\CharacterProfileList;
 use rp\data\point\account\PointAccountCache;
 use wcf\system\cache\tolerant\AbstractTolerantCache;
+use wcf\system\database\util\PreparedStatementConditionBuilder;
+use wcf\system\WCF;
 
 /**
  * Eager cache implementation for ch.
