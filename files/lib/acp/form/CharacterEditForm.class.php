@@ -69,9 +69,13 @@ class CharacterEditForm extends CharacterAddForm
 
         if (empty($_POST)) {
             foreach ($this->formObject->additionalData as $key => $value) {
-                /** @var IFormField $field */
                 $field = $this->form->getNodeById($key);
-                $field?->value($value);
+                if ($field === null) {
+                    continue;
+                }
+                
+                \assert($field instanceof IFormField);
+                $field->value($value);
             }
 
             EventHandler::getInstance()->fire(

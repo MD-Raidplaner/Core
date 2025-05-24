@@ -2,6 +2,7 @@
 
 namespace rp\acp\form;
 
+use rp\data\point\account\PointAccount;
 use rp\data\point\account\PointAccountAction;
 use wcf\form\AbstractFormBuilderForm;
 use wcf\system\form\builder\container\FormContainer;
@@ -14,6 +15,8 @@ use wcf\system\form\builder\field\TitleFormField;
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * 
+ * @extends AbstractFormBuilderForm<PointAccount>
  */
 class PointAccountAddForm extends AbstractFormBuilderForm
 {

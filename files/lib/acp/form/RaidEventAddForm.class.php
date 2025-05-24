@@ -3,6 +3,7 @@
 namespace rp\acp\form;
 
 use rp\data\point\account\PointAccountCache;
+use rp\data\raid\event\RaidEvent;
 use rp\data\raid\event\RaidEventAction;
 use wcf\form\AbstractFormBuilderForm;
 use wcf\system\form\builder\container\FormContainer;
@@ -23,6 +24,8 @@ use wcf\util\DirectoryUtil;
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * 
+ * @extends AbstractFormBuilderForm<RaidEvent>
  */
 class RaidEventAddForm extends AbstractFormBuilderForm
 {

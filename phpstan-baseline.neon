@@ -1,28 +1,16 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Access to an undefined property wcf\\data\\IStorableObject\:\:\$characterName\.$#'
-			identifier: property.notFound
+			message: '#^Class rp\\acp\\page\\PointAccountListPage extends generic class wcf\\page\\MultipleLinkPage but does not specify its types\: TDatabaseObjectList$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/acp/form/CharacterAddForm.class.php
+			path: files/lib/acp/page/PointAccountListPage.class.php
 
 		-
-			message: '#^Access to an undefined property wcf\\data\\IStorableObject\:\:\$additionalData\.$#'
-			identifier: property.notFound
+			message: '#^Class rp\\acp\\page\\RaidEventListPage extends generic class wcf\\page\\MultipleLinkPage but does not specify its types\: TDatabaseObjectList$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/acp/form/CharacterEditForm.class.php
-
-		-
-			message: '#^Using nullsafe method call on non\-nullable type wcf\\system\\form\\builder\\field\\IFormField\. Use \-\> instead\.$#'
-			identifier: nullsafe.neverNull
-			count: 1
-			path: files/lib/acp/form/CharacterEditForm.class.php
-
-		-
-			message: '#^Access to an undefined property wcf\\data\\object\\type\\ObjectType\:\:\$conditiongroup\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/acp/form/CharacterSearchForm.class.php
+			path: files/lib/acp/page/RaidEventListPage.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$distributionMode\.$#'
@@ -41,12 +29,6 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: files/lib/action/AddParticipantAction.class.php
-
-		-
-			message: '#^Negated boolean expression is always false\.$#'
-			identifier: booleanNot.alwaysFalse
-			count: 1
-			path: files/lib/action/CharacterPopoverAction.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\character\\Character\:\:\$avatarID\.$#'
@@ -73,15 +55,9 @@ parameters:
 			path: files/lib/data/character/Character.class.php
 
 		-
-			message: '#^Method rp\\data\\character\\Character\:\:handleData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/character/Character.class.php
-
-		-
 			message: '#^Access to an undefined property rp\\data\\character\\CharacterEditor\:\:\$avatarID\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: files/lib/data/character/CharacterAction.class.php
 
 		-
@@ -97,22 +73,46 @@ parameters:
 			path: files/lib/data/character/CharacterAction.class.php
 
 		-
+			message: '#^Class rp\\data\\character\\CharacterAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/character/CharacterAction.class.php
+
+		-
 			message: '#^Method rp\\data\\character\\CharacterAction\:\:unmarkItems\(\) has parameter \$characterIDs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/character/CharacterAction.class.php
 
 		-
-			message: '#^Method rp\\data\\character\\CharacterAction\:\:validateDisable\(\) has no return type specified\.$#'
-			identifier: missingType.return
+			message: '#^Return type \(void\) of method rp\\data\\character\\CharacterAction\:\:delete\(\) should be compatible with return type \(int\) of method wcf\\data\\AbstractDatabaseObjectAction\<wcf\\data\\DatabaseObject,wcf\\data\\DatabaseObjectEditor\<wcf\\data\\DatabaseObject\>\>\:\:delete\(\)$#'
+			identifier: method.childReturnType
 			count: 1
 			path: files/lib/data/character/CharacterAction.class.php
+
+		-
+			message: '#^Return type \(void\) of method rp\\data\\character\\CharacterAction\:\:delete\(\) should be compatible with return type \(int\) of method wcf\\data\\IDeleteAction\:\:delete\(\)$#'
+			identifier: method.childReturnType
+			count: 1
+			path: files/lib/data/character/CharacterAction.class.php
+
+		-
+			message: '#^Class rp\\data\\character\\CharacterEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/character/CharacterEditor.class.php
 
 		-
 			message: '#^Class rp\\data\\character\\CharacterEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/character/CharacterEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\character\\CharacterList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/character/CharacterList.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$avatarID\.$#'
@@ -169,6 +169,12 @@ parameters:
 			path: files/lib/data/character/CharacterProfile.class.php
 
 		-
+			message: '#^Class rp\\data\\character\\CharacterProfile extends generic class wcf\\data\\DatabaseObjectDecorator but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/character/CharacterProfile.class.php
+
+		-
 			message: '#^Method rp\\data\\character\\CharacterProfile\:\:getGame\(\) has invalid return type rp\\data\\character\\Game\.$#'
 			identifier: class.notFound
 			count: 1
@@ -199,6 +205,12 @@ parameters:
 			path: files/lib/data/character/CharacterProfileAction.class.php
 
 		-
+			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/character/avatar/CharacterAvatarAction.class.php
+
+		-
 			message: '#^PHPDoc tag @method for method rp\\data\\character\\avatar\\CharacterAvatarAction\:\:create\(\) return type contains unknown class rp\\data\\character\\avatar\\CharacterAvata\.$#'
 			identifier: class.notFound
 			count: 1
@@ -223,13 +235,13 @@ parameters:
 			path: files/lib/data/character/avatar/CharacterAvatarDecorator.class.php
 
 		-
-			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/character/avatar/CharacterAvatarEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\character\\avatar\\CharacterAvatarEditor\:\:deleteAll\(\) has parameter \$objectIDs with no value type specified in iterable type array\.$#'
+			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/character/avatar/CharacterAvatarEditor.class.php
@@ -241,10 +253,22 @@ parameters:
 			path: files/lib/data/character/avatar/CharacterAvatarEditor.class.php
 
 		-
+			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/character/avatar/CharacterAvatarList.class.php
+
+		-
 			message: '#^Strict comparison using \=\=\= between ''initials'' and ''initials'' will always evaluate to true\.$#'
 			identifier: identical.alwaysTrue
 			count: 1
 			path: files/lib/data/character/avatar/DefaultCharacterAvatar.class.php
+
+		-
+			message: '#^Class rp\\data\\classification\\ClassificationAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/classification/ClassificationAction.class.php
 
 		-
 			message: '#^Method rp\\data\\classification\\ClassificationCache\:\:getClassificationsByIDs\(\) has parameter \$classificationIDs with no value type specified in iterable type array\.$#'
@@ -253,19 +277,19 @@ parameters:
 			path: files/lib/data/classification/ClassificationCache.class.php
 
 		-
-			message: '#^Method rp\\data\\classification\\ClassificationEditor\:\:create\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\classification\\ClassificationEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/classification/ClassificationEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\classification\\ClassificationEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/classification/ClassificationEditor.class.php
 
 		-
 			message: '#^Method rp\\data\\classification\\ClassificationEditor\:\:saveTitles\(\) has parameter \$titles with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/classification/ClassificationEditor.class.php
-
-		-
-			message: '#^Method rp\\data\\classification\\ClassificationEditor\:\:update\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/classification/ClassificationEditor.class.php
@@ -277,6 +301,12 @@ parameters:
 			path: files/lib/data/classification/ClassificationEditor.class.php
 
 		-
+			message: '#^Class rp\\data\\classification\\ClassificationList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/classification/ClassificationList.class.php
+
+		-
 			message: '#^Call to an undefined method rp\\system\\event\\IEventController\:\:isLeader\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -284,18 +314,6 @@ parameters:
 
 		-
 			message: '#^Class rp\\data\\event\\Event has PHPDoc tag @property\-read for property \$additionalData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/event/Event.class.php
-
-		-
-			message: '#^Method rp\\data\\event\\Event\:\:__construct\(\) has parameter \$row with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/event/Event.class.php
-
-		-
-			message: '#^Method rp\\data\\event\\Event\:\:handleData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/event/Event.class.php
@@ -331,6 +349,12 @@ parameters:
 			path: files/lib/data/event/EventAction.class.php
 
 		-
+			message: '#^Class rp\\data\\event\\EventAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/event/EventAction.class.php
+
+		-
 			message: '#^Method rp\\data\\event\\EventAction\:\:appointmentSetStatus\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -349,7 +373,7 @@ parameters:
 			path: files/lib/data/event/EventAction.class.php
 
 		-
-			message: '#^Return type \(void\) of method rp\\data\\event\\EventAction\:\:delete\(\) should be compatible with return type \(int\) of method wcf\\data\\AbstractDatabaseObjectAction\:\:delete\(\)$#'
+			message: '#^Return type \(void\) of method rp\\data\\event\\EventAction\:\:delete\(\) should be compatible with return type \(int\) of method wcf\\data\\AbstractDatabaseObjectAction\<wcf\\data\\DatabaseObject,wcf\\data\\DatabaseObjectEditor\<wcf\\data\\DatabaseObject\>\>\:\:delete\(\)$#'
 			identifier: method.childReturnType
 			count: 1
 			path: files/lib/data/event/EventAction.class.php
@@ -361,10 +385,16 @@ parameters:
 			path: files/lib/data/event/EventAction.class.php
 
 		-
-			message: '#^Strict comparison using \=\=\= between rp\\system\\cache\\runtime\\Event and null will always evaluate to false\.$#'
+			message: '#^Strict comparison using \=\=\= between rp\\data\\event\\Event&rp\\system\\cache\\runtime\\Event and null will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
 			path: files/lib/data/event/EventAction.class.php
+
+		-
+			message: '#^Class rp\\data\\event\\EventEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/event/EventEditor.class.php
 
 		-
 			message: '#^Class rp\\data\\event\\EventEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
@@ -373,8 +403,20 @@ parameters:
 			path: files/lib/data/event/EventEditor.class.php
 
 		-
+			message: '#^Class rp\\data\\event\\EventList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/event/EventList.class.php
+
+		-
 			message: '#^Access to an undefined property rp\\data\\event\\ViewableEvent\:\:\$visitTime\.$#'
 			identifier: property.notFound
+			count: 1
+			path: files/lib/data/event/ViewableEvent.class.php
+
+		-
+			message: '#^Class rp\\data\\event\\ViewableEvent extends generic class wcf\\data\\DatabaseObjectDecorator but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/event/ViewableEvent.class.php
 
@@ -385,10 +427,28 @@ parameters:
 			path: files/lib/data/event/ViewableEvent.class.php
 
 		-
+			message: '#^Parameter \#3 \$fieldValue of method wcf\\system\\user\\storage\\UserStorageHandler\:\:update\(\) expects string, int\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: files/lib/data/event/ViewableEvent.class.php
+
+		-
 			message: '#^Property rp\\data\\event\\ViewableEvent\:\:\$eventDays type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/event/ViewableEvent.class.php
+
+		-
+			message: '#^Call to an undefined method wcf\\data\\modification\\log\\ModificationLog\:\:setEvent\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: files/lib/data/event/ViewableEventList.class.php
+
+		-
+			message: '#^Parameter \#1 \$logEntry of method rp\\data\\event\\ViewableEvent\:\:setLogEntry\(\) expects rp\\data\\modification\\log\\ViewableEventModificationLog, wcf\\data\\modification\\log\\ModificationLog given\.$#'
+			identifier: argument.type
+			count: 1
+			path: files/lib/data/event/ViewableEventList.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$distributionMode\.$#'
@@ -415,16 +475,40 @@ parameters:
 			path: files/lib/data/event/raid/attendee/EventRaidAttendee.class.php
 
 		-
+			message: '#^Class rp\\data\\event\\raid\\attendee\\EventRaidAttendeeAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/event/raid/attendee/EventRaidAttendeeAction.class.php
+
+		-
 			message: '#^Method rp\\data\\event\\raid\\attendee\\EventRaidAttendeeAction\:\:create\(\) should return rp\\data\\event\\raid\\attendee\\EventRaidAttendee but returns wcf\\data\\DatabaseObject\.$#'
 			identifier: return.type
 			count: 1
 			path: files/lib/data/event/raid/attendee/EventRaidAttendeeAction.class.php
 
 		-
+			message: '#^Class rp\\data\\event\\raid\\attendee\\EventRaidAttendeeEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/event/raid/attendee/EventRaidAttendeeEditor.class.php
+
+		-
 			message: '#^Class rp\\data\\event\\raid\\attendee\\EventRaidAttendeeEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/event/raid/attendee/EventRaidAttendeeEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\event\\raid\\attendee\\EventRaidAttendeeList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/event/raid/attendee/EventRaidAttendeeList.class.php
+
+		-
+			message: '#^Class rp\\data\\faction\\FactionAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/faction/FactionAction.class.php
 
 		-
 			message: '#^Call to an undefined method rp\\data\\faction\\FactionCache\:\:getEventByID\(\)\.$#'
@@ -439,8 +523,14 @@ parameters:
 			path: files/lib/data/faction/FactionCache.class.php
 
 		-
-			message: '#^Method rp\\data\\faction\\FactionEditor\:\:create\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\faction\\FactionEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/faction/FactionEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\faction\\FactionEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/faction/FactionEditor.class.php
 
@@ -451,50 +541,44 @@ parameters:
 			path: files/lib/data/faction/FactionEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\faction\\FactionEditor\:\:update\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/faction/FactionEditor.class.php
-
-		-
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: files/lib/data/faction/FactionEditor.class.php
 
 		-
-			message: '#^Call to an undefined method rp\\data\\game\\GameCache\:\:getEventByID\(\)\.$#'
-			identifier: method.notFound
+			message: '#^Class rp\\data\\faction\\FactionList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/data/game/GameCache.class.php
+			path: files/lib/data/faction/FactionList.class.php
 
 		-
-			message: '#^Method rp\\data\\game\\GameCache\:\:getGamesByID\(\) has parameter \$gameIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\game\\GameAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/data/game/GameCache.class.php
+			path: files/lib/data/game/GameAction.class.php
 
 		-
-			message: '#^Method rp\\data\\game\\GameCache\:\:resetCache\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files/lib/data/game/GameCache.class.php
-
-		-
-			message: '#^Access to an undefined property wcf\\data\\IStorableObject\:\:\$gameID\.$#'
+			message: '#^Access to an undefined property wcf\\data\\DatabaseObject\:\:\$gameID\.$#'
 			identifier: property.notFound
 			count: 1
 			path: files/lib/data/game/GameEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\game\\GameEditor\:\:create\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Call to static method getInstance\(\) on an unknown class rp\\data\\game\\GameCache\.$#'
+			identifier: class.notFound
 			count: 1
 			path: files/lib/data/game/GameEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\game\\GameEditor\:\:deleteAll\(\) has parameter \$objectIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\game\\GameEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/game/GameEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\game\\GameEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/game/GameEditor.class.php
 
@@ -505,22 +589,16 @@ parameters:
 			path: files/lib/data/game/GameEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\game\\GameEditor\:\:update\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/game/GameEditor.class.php
-
-		-
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: files/lib/data/game/GameEditor.class.php
 
 		-
-			message: '#^Parameter \#1 \$object of class rp\\data\\game\\GameEditor constructor expects wcf\\data\\DatabaseObject, wcf\\data\\IStorableObject given\.$#'
-			identifier: argument.type
+			message: '#^Class rp\\data\\game\\GameList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/data/game/GameEditor.class.php
+			path: files/lib/data/game/GameList.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\item\\Item\:\:\$icon\.$#'
@@ -547,12 +625,6 @@ parameters:
 			path: files/lib/data/item/Item.class.php
 
 		-
-			message: '#^Method rp\\data\\item\\Item\:\:handleData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/item/Item.class.php
-
-		-
 			message: '#^Method rp\\data\\item\\Item\:\:parseAdditionalData\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -561,6 +633,12 @@ parameters:
 		-
 			message: '#^Access to an undefined property wcf\\data\\DatabaseObject\:\:\$additionalData\.$#'
 			identifier: property.notFound
+			count: 1
+			path: files/lib/data/item/ItemAction.class.php
+
+		-
+			message: '#^Class rp\\data\\item\\ItemAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/item/ItemAction.class.php
 
@@ -577,16 +655,52 @@ parameters:
 			path: files/lib/data/item/ItemCache.class.php
 
 		-
+			message: '#^Class rp\\data\\item\\ItemEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/item/ItemEditor.class.php
+
+		-
 			message: '#^Class rp\\data\\item\\ItemEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/item/ItemEditor.class.php
 
 		-
+			message: '#^Class rp\\data\\item\\ItemEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/item/ItemEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\item\\ItemList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/item/ItemList.class.php
+
+		-
+			message: '#^Class rp\\data\\item\\database\\ItemDatabaseAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/item/database/ItemDatabaseAction.class.php
+
+		-
+			message: '#^Class rp\\data\\item\\database\\ItemDatabaseEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/item/database/ItemDatabaseEditor.class.php
+
+		-
 			message: '#^Class rp\\data\\item\\database\\ItemDatabaseEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/item/database/ItemDatabaseEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\item\\database\\ItemDatabaseList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/item/database/ItemDatabaseList.class.php
 
 		-
 			message: '#^Method rp\\data\\modification\\log\\EventModificationLogList\:\:setEventData\(\) has no return type specified\.$#'
@@ -599,6 +713,18 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/modification/log/EventModificationLogList.class.php
+
+		-
+			message: '#^Class rp\\data\\modification\\log\\ViewableEventModificationLog extends generic class wcf\\data\\DatabaseObjectDecorator but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/modification/log/ViewableEventModificationLog.class.php
+
+		-
+			message: '#^Class rp\\data\\point\\account\\I18nPointAccountList extends generic class wcf\\data\\I18nDatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/point/account/I18nPointAccountList.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\point\\account\\PointAccountEditor\:\:\$accountID\.$#'
@@ -625,7 +751,13 @@ parameters:
 			path: files/lib/data/point/account/PointAccountAction.class.php
 
 		-
-			message: '#^Return type \(void\) of method rp\\data\\point\\account\\PointAccountAction\:\:delete\(\) should be compatible with return type \(int\) of method wcf\\data\\AbstractDatabaseObjectAction\:\:delete\(\)$#'
+			message: '#^Class rp\\data\\point\\account\\PointAccountAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/point/account/PointAccountAction.class.php
+
+		-
+			message: '#^Return type \(void\) of method rp\\data\\point\\account\\PointAccountAction\:\:delete\(\) should be compatible with return type \(int\) of method wcf\\data\\AbstractDatabaseObjectAction\<wcf\\data\\DatabaseObject,wcf\\data\\DatabaseObjectEditor\<wcf\\data\\DatabaseObject\>\>\:\:delete\(\)$#'
 			identifier: method.childReturnType
 			count: 1
 			path: files/lib/data/point/account/PointAccountAction.class.php
@@ -649,16 +781,40 @@ parameters:
 			path: files/lib/data/point/account/PointAccountCache.class.php
 
 		-
+			message: '#^Class rp\\data\\point\\account\\PointAccountEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/point/account/PointAccountEditor.class.php
+
+		-
 			message: '#^Class rp\\data\\point\\account\\PointAccountEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/point/account/PointAccountEditor.class.php
 
 		-
-			message: '#^PHPDoc tag @method has invalid value \(PointAccount\)\: Unexpected token "\\n ", expected ''\('' at offset 312 on line 9$#'
+			message: '#^Class rp\\data\\point\\account\\PointAccountEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/point/account/PointAccountEditor.class.php
+
+		-
+			message: '#^PHPDoc tag @method has invalid value \(PointAccount\)\: Unexpected token "\\n ", expected ''\('' at offset 313 on line 9$#'
 			identifier: phpDoc.parseError
 			count: 1
 			path: files/lib/data/point/account/PointAccountEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\point\\account\\PointAccountList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/point/account/PointAccountList.class.php
+
+		-
+			message: '#^Class rp\\data\\race\\RaceAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/race/RaceAction.class.php
 
 		-
 			message: '#^Call to an undefined method rp\\data\\race\\RaceCache\:\:getEventByID\(\)\.$#'
@@ -673,8 +829,14 @@ parameters:
 			path: files/lib/data/race/RaceCache.class.php
 
 		-
-			message: '#^Method rp\\data\\race\\RaceEditor\:\:create\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\race\\RaceEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/race/RaceEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\race\\RaceEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/race/RaceEditor.class.php
 
@@ -685,16 +847,16 @@ parameters:
 			path: files/lib/data/race/RaceEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\race\\RaceEditor\:\:update\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/race/RaceEditor.class.php
-
-		-
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: files/lib/data/race/RaceEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\race\\RaceList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/race/RaceList.class.php
 
 		-
 			message: '#^Method rp\\data\\raid\\Raid\:\:getAttendees\(\) return type has no value type specified in iterable type array\.$#'
@@ -715,14 +877,32 @@ parameters:
 			path: files/lib/data/raid/Raid.class.php
 
 		-
+			message: '#^Class rp\\data\\raid\\RaidAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/RaidAction.class.php
+
+		-
 			message: '#^Method rp\\data\\raid\\RaidAction\:\:create\(\) should return rp\\data\\raid\\Raid but returns wcf\\data\\DatabaseObject\.$#'
 			identifier: return.type
 			count: 1
 			path: files/lib/data/raid/RaidAction.class.php
 
 		-
+			message: '#^Class rp\\data\\raid\\RaidEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/RaidEditor.class.php
+
+		-
 			message: '#^Class rp\\data\\raid\\RaidEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/data/raid/RaidEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\raid\\RaidEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/raid/RaidEditor.class.php
 
@@ -739,16 +919,28 @@ parameters:
 			path: files/lib/data/raid/RaidEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\raid\\RaidEditor\:\:resetCache\(\) has no return type specified\.$#'
-			identifier: missingType.return
+			message: '#^Class rp\\data\\raid\\RaidList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/data/raid/RaidEditor.class.php
+			path: files/lib/data/raid/RaidList.class.php
+
+		-
+			message: '#^Class rp\\data\\raid\\event\\I18nRaidEventList extends generic class wcf\\data\\I18nDatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/event/I18nRaidEventList.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\raid\\event\\RaidEvent\:\:\$size\.$#'
 			identifier: property.notFound
 			count: 1
 			path: files/lib/data/raid/event/RaidEvent.class.php
+
+		-
+			message: '#^Class rp\\data\\raid\\event\\RaidEventAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/event/RaidEventAction.class.php
 
 		-
 			message: '#^Undefined variable\: \$filename$#'
@@ -769,10 +961,34 @@ parameters:
 			path: files/lib/data/raid/event/RaidEventCache.class.php
 
 		-
+			message: '#^Class rp\\data\\raid\\event\\RaidEventEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/event/RaidEventEditor.class.php
+
+		-
 			message: '#^Class rp\\data\\raid\\event\\RaidEventEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/raid/event/RaidEventEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\raid\\event\\RaidEventEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/event/RaidEventEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\raid\\event\\RaidEventList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/event/RaidEventList.class.php
+
+		-
+			message: '#^Class rp\\data\\role\\RoleAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/role/RoleAction.class.php
 
 		-
 			message: '#^Call to an undefined method rp\\data\\role\\RoleCache\:\:getEventByID\(\)\.$#'
@@ -787,8 +1003,14 @@ parameters:
 			path: files/lib/data/role/RoleCache.class.php
 
 		-
-			message: '#^Method rp\\data\\role\\RoleEditor\:\:create\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\role\\RoleEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/role/RoleEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\role\\RoleEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/role/RoleEditor.class.php
 
@@ -799,16 +1021,22 @@ parameters:
 			path: files/lib/data/role/RoleEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\role\\RoleEditor\:\:update\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/role/RoleEditor.class.php
-
-		-
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: files/lib/data/role/RoleEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\role\\RoleList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/role/RoleList.class.php
+
+		-
+			message: '#^Class rp\\data\\server\\ServerAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/server/ServerAction.class.php
 
 		-
 			message: '#^Call to an undefined method rp\\data\\server\\ServerCache\:\:getEventByID\(\)\.$#'
@@ -823,8 +1051,14 @@ parameters:
 			path: files/lib/data/server/ServerCache.class.php
 
 		-
-			message: '#^Method rp\\data\\server\\ServerEditor\:\:create\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\server\\ServerEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/server/ServerEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\server\\ServerEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/server/ServerEditor.class.php
 
@@ -835,16 +1069,22 @@ parameters:
 			path: files/lib/data/server/ServerEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\server\\ServerEditor\:\:update\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/server/ServerEditor.class.php
-
-		-
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: files/lib/data/server/ServerEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\server\\ServerList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/server/ServerList.class.php
+
+		-
+			message: '#^Class rp\\data\\skill\\SkillAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/skill/SkillAction.class.php
 
 		-
 			message: '#^Method rp\\data\\skill\\SkillCache\:\:getSkillsByIDs\(\) has parameter \$skillIDs with no value type specified in iterable type array\.$#'
@@ -853,8 +1093,14 @@ parameters:
 			path: files/lib/data/skill/SkillCache.class.php
 
 		-
-			message: '#^Method rp\\data\\skill\\SkillEditor\:\:create\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class rp\\data\\skill\\SkillEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/skill/SkillEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\skill\\SkillEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/skill/SkillEditor.class.php
 
@@ -865,16 +1111,16 @@ parameters:
 			path: files/lib/data/skill/SkillEditor.class.php
 
 		-
-			message: '#^Method rp\\data\\skill\\SkillEditor\:\:update\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/skill/SkillEditor.class.php
-
-		-
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: files/lib/data/skill/SkillEditor.class.php
+
+		-
+			message: '#^Class rp\\data\\skill\\SkillList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/skill/SkillList.class.php
 
 		-
 			message: '#^Method rp\\event\\attendee\\AttendeesDeleted\:\:__construct\(\) has parameter \$attendees with no value type specified in iterable type array\.$#'
@@ -895,6 +1141,12 @@ parameters:
 			path: files/lib/event/character/BeforeFindCharacters.class.php
 
 		-
+			message: '#^Method rp\\event\\character\\CharactersDeleted\:\:__construct\(\) has parameter \$characters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/event/character/CharactersDeleted.class.php
+
+		-
 			message: '#^Property rp\\event\\character\\profile\\menu\\CharacterProfileMenuCollecting\:\:\$queue with generic class SplPriorityQueue does not specify its types\: TPriority, TValue$#'
 			identifier: missingType.generics
 			count: 1
@@ -911,6 +1163,12 @@ parameters:
 			identifier: class.notFound
 			count: 1
 			path: files/lib/event/event/EventsDeleted.class.php
+
+		-
+			message: '#^Property rp\\event\\interaction\\admin\\CharacterInteractionCollecting\:\:\$provider is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: files/lib/event/interaction/admin/CharacterInteractionCollecting.class.php
 
 		-
 			message: '#^Method rp\\event\\raid\\AddAttendeesChecking\:\:__construct\(\) has parameter \$attendeeIDs with no value type specified in iterable type array\.$#'
@@ -961,14 +1219,20 @@ parameters:
 			path: files/lib/event/raid/character/CharacterCollecting.class.php
 
 		-
-			message: '#^Call to an undefined method wcf\\data\\IStorableObject\:\:canEdit\(\)\.$#'
-			identifier: method.notFound
+			message: '#^Class rp\\form\\EventAddForm extends generic class wcf\\form\\AbstractFormBuilderForm but does not specify its types\: TIStorableObject$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/form/CharacterEditForm.class.php
+			path: files/lib/form/EventAddForm.class.php
 
 		-
 			message: '#^PHPDoc tag @var above assignment does not specify variable name\.$#'
 			identifier: varTag.noVariable
+			count: 1
+			path: files/lib/form/EventAddForm.class.php
+
+		-
+			message: '#^PHPDoc tag @var contains generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/form/EventAddForm.class.php
 
@@ -1003,6 +1267,12 @@ parameters:
 			path: files/lib/form/RaidAddForm.class.php
 
 		-
+			message: '#^Class rp\\form\\RaidAddForm extends generic class wcf\\form\\AbstractFormBuilderForm but does not specify its types\: TIStorableObject$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/form/RaidAddForm.class.php
+
+		-
 			message: '#^Parameter \#1 \$available of method wcf\\system\\form\\builder\\field\\AbstractFormField\:\:available\(\) expects bool, int given\.$#'
 			identifier: argument.type
 			count: 2
@@ -1011,6 +1281,12 @@ parameters:
 		-
 			message: '#^Property rp\\form\\RaidAddForm\:\:\$event \(rp\\data\\event\\Event\|null\) does not accept rp\\system\\cache\\runtime\\Event\.$#'
 			identifier: assign.propertyType
+			count: 1
+			path: files/lib/form/RaidAddForm.class.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
 			count: 1
 			path: files/lib/form/RaidAddForm.class.php
 
@@ -1031,12 +1307,6 @@ parameters:
 			identifier: notEqual.alwaysTrue
 			count: 1
 			path: files/lib/page/CalendarPage.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/page/CharacterListPage.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$characterName\.$#'
@@ -1069,14 +1339,32 @@ parameters:
 			path: files/lib/page/CharacterPage.class.php
 
 		-
+			message: '#^Class rp\\page\\PointListPage extends generic class wcf\\page\\MultipleLinkPage but does not specify its types\: TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/page/PointListPage.class.php
+
+		-
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: files/lib/page/PointListPage.class.php
 
 		-
+			message: '#^Class rp\\page\\RaidEventListPage extends generic class wcf\\page\\MultipleLinkPage but does not specify its types\: TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/page/RaidEventListPage.class.php
+
+		-
 			message: '#^Caught class rp\\page\\MappingError not found\.$#'
 			identifier: class.notFound
+			count: 1
+			path: files/lib/page/RaidListPage.class.php
+
+		-
+			message: '#^Class rp\\page\\RaidListPage extends generic class wcf\\page\\MultipleLinkPage but does not specify its types\: TDatabaseObjectList$#'
+			identifier: missingType.generics
 			count: 1
 			path: files/lib/page/RaidListPage.class.php
 
@@ -1111,16 +1399,10 @@ parameters:
 			path: files/lib/page/RaidPage.class.php
 
 		-
-			message: '#^Strict comparison using \=\=\= between rp\\system\\cache\\runtime\\Raid and null will always evaluate to false\.$#'
+			message: '#^Strict comparison using \=\=\= between rp\\data\\raid\\Raid&rp\\system\\cache\\runtime\\Raid and null will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
 			path: files/lib/page/RaidPage.class.php
-
-		-
-			message: '#^Method rp\\system\\RPCore\:\:__run\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files/lib/system/RPCore.class.php
 
 		-
 			message: '#^Method rp\\system\\attendee\\command\\DeleteAttendees\:\:__construct\(\) has parameter \$attendees with no value type specified in iterable type array\.$#'
@@ -1165,22 +1447,10 @@ parameters:
 			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
-
-		-
 			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\ClassificationCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/ClassificationCacheBuilder.class.php
 
 		-
 			message: '#^Method rp\\system\\cache\\builder\\ClassificationCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
@@ -1195,12 +1465,6 @@ parameters:
 			path: files/lib/system/cache/builder/ClassificationCacheBuilder.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\FactionCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/FactionCacheBuilder.class.php
-
-		-
 			message: '#^Method rp\\system\\cache\\builder\\FactionCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1213,40 +1477,10 @@ parameters:
 			path: files/lib/system/cache/builder/FactionCacheBuilder.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\GameCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/GameCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\GameCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/GameCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/GameCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\ItemCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/ItemCacheBuilder.class.php
-
-		-
 			message: '#^Method rp\\system\\cache\\builder\\ItemCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/cache/builder/ItemCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\MyCharactersCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/MyCharactersCacheBuilder.class.php
 
 		-
 			message: '#^Method rp\\system\\cache\\builder\\MyCharactersCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
@@ -1261,12 +1495,6 @@ parameters:
 			path: files/lib/system/cache/builder/MyCharactersCacheBuilder.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\PointAccountCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/PointAccountCacheBuilder.class.php
-
-		-
 			message: '#^Method rp\\system\\cache\\builder\\PointAccountCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1277,12 +1505,6 @@ parameters:
 			identifier: varTag.variableNotFound
 			count: 1
 			path: files/lib/system/cache/builder/PointAccountCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\RaceCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RaceCacheBuilder.class.php
 
 		-
 			message: '#^Method rp\\system\\cache\\builder\\RaceCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
@@ -1297,34 +1519,16 @@ parameters:
 			path: files/lib/system/cache/builder/RaceCacheBuilder.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\RaidEventCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RaidEventCacheBuilder.class.php
-
-		-
 			message: '#^Method rp\\system\\cache\\builder\\RaidEventCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/cache/builder/RaidEventCacheBuilder.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\RaidStatsCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RaidStatsCacheBuilder.class.php
-
-		-
 			message: '#^Method rp\\system\\cache\\builder\\RaidStatsCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/cache/builder/RaidStatsCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\RoleCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RoleCacheBuilder.class.php
 
 		-
 			message: '#^Method rp\\system\\cache\\builder\\RoleCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
@@ -1339,12 +1543,6 @@ parameters:
 			path: files/lib/system/cache/builder/RoleCacheBuilder.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\ServerCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/ServerCacheBuilder.class.php
-
-		-
 			message: '#^Method rp\\system\\cache\\builder\\ServerCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1355,12 +1553,6 @@ parameters:
 			identifier: varTag.variableNotFound
 			count: 1
 			path: files/lib/system/cache/builder/ServerCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\SkillCacheBuilder\:\:rebuild\(\) has parameter \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/SkillCacheBuilder.class.php
 
 		-
 			message: '#^Method rp\\system\\cache\\builder\\SkillCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
@@ -1375,16 +1567,40 @@ parameters:
 			path: files/lib/system/cache/builder/SkillCacheBuilder.class.php
 
 		-
+			message: '#^Method rp\\system\\cache\\eager\\data\\GameCacheData\:\:getGames\(\) has parameter \$gameIDs with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/cache/eager/data/GameCacheData.class.php
+
+		-
+			message: '#^Class rp\\system\\cache\\runtime\\CharacterProfileRuntimeCache extends generic class wcf\\system\\cache\\runtime\\AbstractRuntimeCache but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/system/cache/runtime/CharacterProfileRuntimeCache.class.php
+
+		-
 			message: '#^Class rp\\system\\cache\\runtime\\CharacterProfileRuntimeCache has PHPDoc tag @method for method getObjects\(\) parameter \#1 \$objectIDs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/cache/runtime/CharacterProfileRuntimeCache.class.php
 
 		-
+			message: '#^Class rp\\system\\cache\\runtime\\CharacterRuntimeCache extends generic class wcf\\system\\cache\\runtime\\AbstractRuntimeCache but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/system/cache/runtime/CharacterRuntimeCache.class.php
+
+		-
 			message: '#^Class rp\\system\\cache\\runtime\\CharacterRuntimeCache has PHPDoc tag @method for method getObjects\(\) parameter \#1 \$objectIDs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/cache/runtime/CharacterRuntimeCache.class.php
+
+		-
+			message: '#^Class rp\\system\\cache\\runtime\\EventRuntimeCache extends generic class wcf\\system\\cache\\runtime\\AbstractRuntimeCache but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/system/cache/runtime/EventRuntimeCache.class.php
 
 		-
 			message: '#^Class rp\\system\\cache\\runtime\\EventRuntimeCache has PHPDoc tag @method for method getObjects\(\) parameter \#1 \$objectIDs with no value type specified in iterable type array\.$#'
@@ -1411,6 +1627,12 @@ parameters:
 			path: files/lib/system/cache/runtime/EventRuntimeCache.class.php
 
 		-
+			message: '#^Class rp\\system\\cache\\runtime\\RaidRuntimeCache extends generic class wcf\\system\\cache\\runtime\\AbstractRuntimeCache but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/system/cache/runtime/RaidRuntimeCache.class.php
+
+		-
 			message: '#^Class rp\\system\\cache\\runtime\\RaidRuntimeCache has PHPDoc tag @method for method getObjects\(\) parameter \#1 \$objectIDs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1433,6 +1655,12 @@ parameters:
 			identifier: class.notFound
 			count: 1
 			path: files/lib/system/cache/runtime/RaidRuntimeCache.class.php
+
+		-
+			message: '#^Class rp\\system\\cache\\runtime\\ViewableEventRuntimeCache extends generic class wcf\\system\\cache\\runtime\\AbstractRuntimeCache but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/system/cache/runtime/ViewableEventRuntimeCache.class.php
 
 		-
 			message: '#^Class rp\\system\\cache\\runtime\\ViewableEventRuntimeCache has PHPDoc tag @method for method getObjects\(\) parameter \#1 \$objectIDs with no value type specified in iterable type array\.$#'
@@ -1537,6 +1765,24 @@ parameters:
 			path: files/lib/system/character/CharacterHandler.class.php
 
 		-
+			message: '#^Access to an undefined property rp\\data\\character\\Character\:\:\$avatarID\.$#'
+			identifier: property.notFound
+			count: 1
+			path: files/lib/system/character/command/DeleteCharacters.class.php
+
+		-
+			message: '#^Call to static method getInstance\(\) on an unknown class rp\\system\\character\\command\\EventHandler\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/character/command/DeleteCharacters.class.php
+
+		-
+			message: '#^Method rp\\system\\character\\command\\DeleteCharacters\:\:__construct\(\) has parameter \$characters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/character/command/DeleteCharacters.class.php
+
+		-
 			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
 			identifier: property.notFound
 			count: 1
@@ -1615,22 +1861,10 @@ parameters:
 			path: files/lib/system/character/profile/menu/PointsCharacterProfileMenu.class.php
 
 		-
-			message: '#^Access to an undefined property wcf\\data\\DatabaseObject\:\:\$characterID\.$#'
-			identifier: property.notFound
-			count: 2
-			path: files/lib/system/clipboard/action/CharacterClipboardAction.class.php
-
-		-
-			message: '#^Access to an undefined property wcf\\data\\DatabaseObject\:\:\$isDisabled\.$#'
-			identifier: property.notFound
+			message: '#^Class rp\\system\\clipboard\\action\\EventRaidAttendeeClipboardAction extends generic class wcf\\system\\clipboard\\action\\AbstractClipboardAction but does not specify its types\: TDatabaseobject$#'
+			identifier: missingType.generics
 			count: 1
-			path: files/lib/system/clipboard/action/CharacterClipboardAction.class.php
-
-		-
-			message: '#^Access to an undefined property wcf\\data\\DatabaseObject\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/clipboard/action/CharacterClipboardAction.class.php
+			path: files/lib/system/clipboard/action/EventRaidAttendeeClipboardAction.class.php
 
 		-
 			message: '#^Access to property \$eventID on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
@@ -1673,36 +1907,6 @@ parameters:
 			identifier: deadCode.unreachable
 			count: 1
 			path: files/lib/system/comment/manager/EventCommentManager.class.php
-
-		-
-			message: '#^Call to an undefined method wcf\\system\\form\\builder\\IFormNode\:\:getSaveValue\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/condition/AbstractCondition.class.php
-
-		-
-			message: '#^Call to an undefined method wcf\\system\\form\\builder\\IFormNode\:\:value\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/condition/AbstractCondition.class.php
-
-		-
-			message: '#^Method rp\\system\\condition\\ICondition\:\:addObjectListCondition\(\) has parameter \$conditionData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/condition/ICondition.class.php
-
-		-
-			message: '#^Method rp\\system\\condition\\character\\CharacterIDCondition\:\:addObjectListCondition\(\) has parameter \$conditionData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/condition/character/CharacterIDCondition.class.php
-
-		-
-			message: '#^Method rp\\system\\condition\\character\\CharacterNameCondition\:\:addObjectListCondition\(\) has parameter \$conditionData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/condition/character/CharacterNameCondition.class.php
 
 		-
 			message: '#^Method rp\\system\\event\\AbstractEventController\:\:saveForm\(\) has parameter \$formData with no value type specified in iterable type array\.$#'
@@ -1921,18 +2125,6 @@ parameters:
 			path: files/lib/system/form/builder/field/DynamicSelectFormField.class.php
 
 		-
-			message: '#^Method rp\\system\\form\\builder\\field\\character\\CharacterMultipleSelectionFormField\:\:options\(\) has parameter \$options with no value type specified in iterable type Traversable\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/form/builder/field/character/CharacterMultipleSelectionFormField.class.php
-
-		-
-			message: '#^Method rp\\system\\form\\builder\\field\\character\\CharacterMultipleSelectionFormField\:\:options\(\) has parameter \$options with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/form/builder/field/character/CharacterMultipleSelectionFormField.class.php
-
-		-
 			message: '#^Method rp\\system\\form\\builder\\field\\item\\ItemFormField\:\:getCharacters\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1951,6 +2143,72 @@ parameters:
 			path: files/lib/system/form/builder/field/item/ItemFormField.class.php
 
 		-
+			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$isPrimary\.$#'
+			identifier: property.notFound
+			count: 1
+			path: files/lib/system/gridView/admin/CharacterGridView.class.php
+
+		-
+			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canEdit\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: files/lib/system/gridView/admin/CharacterGridView.class.php
+
+		-
+			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:getPrimaryCharacter\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: files/lib/system/gridView/admin/CharacterGridView.class.php
+
+		-
+			message: '#^Class rp\\system\\gridView\\admin\\CharacterGridView extends generic class wcf\\system\\gridView\\AbstractGridView but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
+			identifier: missingType.generics
+			count: 1
+			path: files/lib/system/gridView/admin/CharacterGridView.class.php
+
+		-
+			message: '#^Method rp\\system\\gridView\\admin\\CharacterGridView\:\:readSearchResult\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/gridView/admin/CharacterGridView.class.php
+
+		-
+			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$isPrimary\.$#'
+			identifier: property.notFound
+			count: 1
+			path: files/lib/system/interaction/admin/CharacterInteractions.class.php
+
+		-
+			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canDelete\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: files/lib/system/interaction/admin/CharacterInteractions.class.php
+
+		-
+			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canDelete\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: files/lib/system/interaction/bulk/admin/CharacterBulkInteractions.class.php
+
+		-
+			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$isPrimary\.$#'
+			identifier: property.notFound
+			count: 1
+			path: files/lib/system/interaction/user/CharacterInteractions.class.php
+
+		-
+			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canDelete\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: files/lib/system/interaction/user/CharacterInteractions.class.php
+
+		-
+			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canEdit\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: files/lib/system/interaction/user/CharacterInteractions.class.php
+
+		-
 			message: '#^Expression in empty\(\) is always falsy\.$#'
 			identifier: empty.expr
 			count: 1
@@ -1961,6 +2219,24 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/item/database/IItemDatabase.class.php
+
+		-
+			message: '#^Generic type wcf\\system\\listView\\AbstractListView\<rp\\data\\character\\CharacterProfileList\> in PHPDoc tag @extends does not specify all template types of class wcf\\system\\listView\\AbstractListView\: TDatabaseObject, TDatabaseObjectList$#'
+			identifier: generics.lessTypes
+			count: 1
+			path: files/lib/system/listView/user/CharacterListView.class.php
+
+		-
+			message: '#^Method rp\\system\\listView\\user\\CharacterListView\:\:getInitializedEvent\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: files/lib/system/listView/user/CharacterListView.class.php
+
+		-
+			message: '#^Type rp\\data\\character\\CharacterProfileList in generic type wcf\\system\\listView\\AbstractListView\<rp\\data\\character\\CharacterProfileList\> in PHPDoc tag @extends is not subtype of template type TDatabaseObject of wcf\\data\\DatabaseObject of class wcf\\system\\listView\\AbstractListView\.$#'
+			identifier: generics.notSubtype
+			count: 1
+			path: files/lib/system/listView/user/CharacterListView.class.php
 
 		-
 			message: '#^Method rp\\system\\log\\modification\\EventModificationLogHandler\:\:add\(\) has parameter \$additionalData with no value type specified in iterable type array\.$#'
@@ -2085,12 +2361,6 @@ parameters:
 		-
 			message: '#^Call to method getLink\(\) on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
 			identifier: class.notFound
-			count: 1
-			path: files/lib/system/user/activity/event/EventUserActivityEvent.class.php
-
-		-
-			message: '#^Method rp\\system\\user\\activity\\event\\EventUserActivityEvent\:\:prepare\(\) has no return type specified\.$#'
-			identifier: missingType.return
 			count: 1
 			path: files/lib/system/user/activity/event/EventUserActivityEvent.class.php
 
@@ -2251,6 +2521,12 @@ parameters:
 			path: files/lib/util/RPUtil.class.php
 
 		-
+			message: '#^Right side of && is always true\.$#'
+			identifier: booleanAnd.rightAlwaysTrue
+			count: 2
+			path: files_wcf/lib/bootstrap/de.md-raidplaner.rp.php
+
+		-
 			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
 			identifier: property.notFound
 			count: 1
@@ -2293,67 +2569,7 @@ parameters:
 			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
 			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:getElement\(\) has parameter \$elements with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:getNameByData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:handleDelete\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:import\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:import\(\) has parameter \$row with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPClassificationPackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPClassificationPackageInstallationPlugin.class.php
@@ -2377,55 +2593,7 @@ parameters:
 			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
 			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:getElement\(\) has parameter \$elements with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:getNameByData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:handleDelete\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPFactionPackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPFactionPackageInstallationPlugin.class.php
@@ -2437,14 +2605,8 @@ parameters:
 			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:fetchElementData\(\) should return array\<string, int\|string\> but returns array\<string, array\<int\|string, string\|null\>\|int\|string\>\.$#'
+			identifier: return.type
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
 
@@ -2455,73 +2617,7 @@ parameters:
 			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:getElement\(\) has parameter \$elements with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:getNameByData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPGamePackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPGamePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPItemDatabasePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPItemDatabasePackageInstallationPlugin.class.php
-
-		-
 			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPItemDatabasePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPItemDatabasePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPItemDatabasePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPItemDatabasePackageInstallationPlugin.class.php
@@ -2539,67 +2635,19 @@ parameters:
 			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Call to method getCache\(\) on an unknown class rp\\data\\game\\GameCache\.$#'
+			identifier: class.notFound
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Instantiated class rp\\data\\game\\GameCache not found\.$#'
+			identifier: class.notFound
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
 
 		-
 			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:getElement\(\) has parameter \$elements with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:getNameByData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:handleDelete\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:import\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:import\(\) has parameter \$row with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRacePackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPRacePackageInstallationPlugin.class.php
@@ -2617,55 +2665,7 @@ parameters:
 			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
 			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:getElement\(\) has parameter \$elements with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:getNameByData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:handleDelete\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPRolePackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPRolePackageInstallationPlugin.class.php
@@ -2673,18 +2673,6 @@ parameters:
 		-
 			message: '#^Call to an undefined method DOMNode\:\:getAttribute\(\)\.$#'
 			identifier: method.notFound
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
 
@@ -2695,56 +2683,8 @@ parameters:
 			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
 
 		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:getElement\(\) has parameter \$elements with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:getNameByData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:handleDelete\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPServerPackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPServerPackageInstallationPlugin.class.php
-
-		-
 			message: '#^Call to an undefined method DOMNode\:\:getAttribute\(\)\.$#'
 			identifier: method.notFound
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:fetchElementData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:findExistingItem\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
 
@@ -2753,45 +2693,3 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:getElement\(\) has parameter \$elements with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:getNameByData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:handleDelete\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:handleDelete\(\) has parameter \$items with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:prepareImport\(\) has parameter \$data with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\package\\plugin\\RPSkillPackageInstallationPlugin\:\:prepareImport\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/package/plugin/RPSkillPackageInstallationPlugin.class.php
-
-		-
-			message: '#^Method wcf\\system\\template\\plugin\\CharacterFunctionTemplatePlugin\:\:execute\(\) has parameter \$tagArgs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files_wcf/lib/system/template/plugin/CharacterFunctionTemplatePlugin.class.php
