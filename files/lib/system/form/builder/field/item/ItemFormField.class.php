@@ -4,7 +4,7 @@ namespace rp\system\form\builder\field\item;
 
 use rp\data\character\Character;
 use rp\data\character\CharacterList;
-use rp\data\point\account\PointAccountCache;
+use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use wcf\data\IStorableObject;
 use wcf\system\form\builder\data\processor\CustomFormDataProcessor;
@@ -57,7 +57,7 @@ class ItemFormField extends AbstractFormField
      */
     public function getPointAccounts(): array
     {
-        return PointAccountCache::getInstance()->getAccounts();
+        return (new PointAccountCache())->getCache()->getAccounts();
     }
 
     #[\Override]

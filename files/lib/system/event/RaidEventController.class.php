@@ -5,13 +5,13 @@ namespace rp\system\event;
 use rp\data\character\CharacterList;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeList;
-use rp\data\point\account\PointAccountCache;
 use rp\data\raid\event\RaidEventCache;
 use rp\data\role\Role;
 use rp\data\role\RoleCache;
 use rp\event\character\AvailableCharactersChecking;
 use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\eager\GameCache;
+use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
@@ -114,7 +114,7 @@ final class RaidEventController extends AbstractEventController
                     ->required()
                     ->options(function () {
                         $options = [];
-                        $pointAccounts = PointAccountCache::getInstance()->getAccounts();
+                        $pointAccounts = (new PointAccountCache())->getCache()->getAccounts();
                         $raidEvents = RaidEventCache::getInstance()->getEvents();
 
                         // Map raid events by pointAccountID for quick lookup

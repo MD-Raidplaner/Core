@@ -3,8 +3,8 @@
 namespace rp\system\character\profile\menu;
 
 use rp\data\point\account\PointAccount;
-use rp\data\point\account\PointAccountCache;
 use rp\system\cache\builder\RaidStatsCacheBuilder;
+use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use rp\system\cache\tolerant\CharacterPointCache;
 use rp\util\RPUtil;
@@ -31,7 +31,7 @@ final class PointsCharacterProfileMenu implements ICharacterProfileMenu
         if (!isset($characterPoints[$characterID])) return '';
         $characterPoints = $characterPoints[$characterID];
 
-        $pointAccounts = PointAccountCache::getInstance()->getAccounts();
+        $pointAccounts = (new PointAccountCache())->getCache()->getAccounts();
         $raidStats = RaidStatsCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID]);
 
         $sql = "SELECT      raid.date, raidEvent.pointAccountID

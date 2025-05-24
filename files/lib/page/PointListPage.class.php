@@ -4,7 +4,7 @@ namespace rp\page;
 
 use CuyZ\Valinor\Mapper\MappingError;
 use rp\data\character\CharacterProfileList;
-use rp\data\point\account\PointAccountCache;
+use rp\system\cache\eager\PointAccountCache;
 use wcf\http\Helper;
 use wcf\page\MultipleLinkPage;
 use wcf\system\exception\IllegalLinkException;
@@ -35,7 +35,7 @@ class PointListPage extends MultipleLinkPage
         WCF::getTPL()->assign([
             'letter' => $this->letter,
             'letters' => \str_split(self::$availableLetters),
-            'pointAccounts' => PointAccountCache::getInstance()->getAccounts()
+            'pointAccounts' => (new PointAccountCache())->getCache()->getAccounts(),
         ]);
     }
 
