@@ -3,7 +3,7 @@
 namespace rp\system\cache\tolerant;
 
 use rp\data\character\CharacterProfileList;
-use rp\data\point\account\PointAccountCache;
+use rp\system\cache\eager\PointAccountCache;
 use wcf\system\cache\tolerant\AbstractTolerantCache;
 use wcf\system\database\util\PreparedStatementConditionBuilder;
 use wcf\system\WCF;
@@ -127,7 +127,7 @@ final class CharacterPointCache extends AbstractTolerantCache
     {
         $data = [];
 
-        $pointAccounts = PointAccountCache::getInstance()->getAccounts();
+        $pointAccounts = (new PointAccountCache())->getCache()->getAccounts();
 
         $characterList = new CharacterProfileList();
         $characterList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);

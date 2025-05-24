@@ -2,9 +2,9 @@
 
 namespace rp\acp\form;
 
-use rp\data\point\account\PointAccountCache;
 use rp\data\raid\event\RaidEvent;
 use rp\data\raid\event\RaidEventAction;
+use rp\system\cache\eager\PointAccountCache;
 use wcf\form\AbstractFormBuilderForm;
 use wcf\system\form\builder\container\FormContainer;
 use wcf\system\form\builder\data\processor\VoidFormDataProcessor;
@@ -51,7 +51,7 @@ class RaidEventAddForm extends AbstractFormBuilderForm
                     ->languageItemPattern('rp.raid.event.title\d+'),
                 SingleSelectionFormField::create('pointAccountID')
                     ->label('rp.acp.raid.event.point.account')
-                    ->options(PointAccountCache::getInstance()->getAccounts()),
+                    ->options((new PointAccountCache())->getCache()->getAccounts()),
                 FloatFormField::create('defaultPoints')
                     ->label('rp.acp.raid.event.defaultPoints')
                     ->description('rp.acp.raid.event.defaultPoints.description')

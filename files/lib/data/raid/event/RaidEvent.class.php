@@ -3,8 +3,8 @@
 namespace rp\data\raid\event;
 
 use rp\data\point\account\PointAccount;
-use rp\data\point\account\PointAccountCache;
 use rp\system\cache\eager\GameCache;
+use rp\system\cache\eager\PointAccountCache;
 use wcf\data\DatabaseObject;
 use wcf\data\ITitledLinkObject;
 use wcf\data\ITitledObject;
@@ -82,8 +82,7 @@ final class RaidEvent extends DatabaseObject implements ITitledLinkObject
     public function getPointAccount(): ?PointAccount
     {
         if ($this->pointAccount === null) {
-            $this->pointAccount = PointAccountCache::getInstance()->getAccountByID($this->pointAccountID);
-        }
+            $this->pointAccount = (new PointAccountCache())->getCache()->getAccount($this->pointAccountID);
 
         return $this->pointAccount;
     }

@@ -3,9 +3,9 @@
 namespace rp\form;
 
 use CuyZ\Valinor\Mapper\MappingError;
-use rp\data\point\account\PointAccountCache;
 use rp\data\raid\Raid;
 use rp\system\cache\eager\ItemCache;
+use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use rp\system\form\builder\field\item\ItemFormField;
 use wcf\http\Helper;
@@ -63,7 +63,7 @@ class RaidEditForm extends RaidAddForm
             while ($row = $statement->fetchArray()) {
                 $character = CharacterRuntimeCache::getInstance()->getObject($row['characterID']);
                 $item = (new ItemCache())->getCache()->getItem($row['itemID']);
-                $pointAccount = PointAccountCache::getInstance()->getAccountByID($row['pointAccountID']);
+                $pointAccount = (new PointAccountCache())->getCache()->getAccount($row['pointAccountID']);
 
                 $items[] = [
                     'characterID' => $character->getObjectID(),

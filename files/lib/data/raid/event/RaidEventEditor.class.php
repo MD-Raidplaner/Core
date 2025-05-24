@@ -2,8 +2,8 @@
 
 namespace rp\data\raid\event;
 
-use rp\system\cache\builder\PointAccountCacheBuilder;
 use rp\system\cache\builder\RaidEventCacheBuilder;
+use rp\system\cache\eager\PointAccountCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 
@@ -26,6 +26,6 @@ class RaidEventEditor extends DatabaseObjectEditor implements IEditableCachedObj
     public static function resetCache(): void
     {
         RaidEventCacheBuilder::getInstance()->reset();
-        PointAccountCacheBuilder::getInstance()->reset();
+        (new PointAccountCache())->rebuild();
     }
 }

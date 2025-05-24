@@ -6,10 +6,10 @@ use CuyZ\Valinor\Mapper\MappingError;
 use rp\data\character\CharacterList;
 use rp\data\event\Event;
 use rp\data\event\EventEditor;
-use rp\data\point\account\PointAccountCache;
 use rp\data\raid\event\RaidEventCache;
 use rp\data\raid\RaidAction;
 use rp\event\raid\character\CharacterCollecting;
+use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\runtime\EventRuntimeCache;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
 use rp\system\form\builder\field\item\ItemFormField;
@@ -87,7 +87,7 @@ class RaidAddForm extends AbstractFormBuilderForm
                     ->required()
                     ->options(function () {
                         $options = [];
-                        $pointAccounts = PointAccountCache::getInstance()->getAccounts();
+                        $pointAccounts = (new PointAccountCache())->getCache()->getAccounts();
                         $raidEvents = RaidEventCache::getInstance()->getEvents();
 
                         // Map raid events by pointAccountID for quick lookup
