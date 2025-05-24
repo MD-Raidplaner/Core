@@ -7,11 +7,12 @@
  */
 
 import { whenFirstSeen } from "WoltLabSuite/Core/LazyLoader";
+import { getCharacterPopover } from "./Api/Character/GetCharacterPopover";
 
 export function setup(options: BootstrapOptions): void {
   window.RP_API_URL = options.RP_API_URL;
 
-  setupCharacterPopover(options.endpointCharacterPopover);
+  setupCharacterPopover();
 
   whenFirstSeen("mdrp-attendee-drag-and-drop-box", () => {
     void import("./Component/Attendee/DragAndDrop/mdrp-attendee-drag-and-drop-box");
@@ -21,15 +22,13 @@ export function setup(options: BootstrapOptions): void {
   });
 }
 
-function setupCharacterPopover(endpoint: string): void {
-  if (endpoint === "") {
-    return;
-  }
-
+function setupCharacterPopover(): void {
   whenFirstSeen(".rpCharacterLink", () => {
     void import("WoltLabSuite/Core/Component/Popover").then(({ setupFor }) => {
       setupFor({
-        endpoint,
+        endpoint: async (objectId: number) => {
+          return (await getCharacterPopover(objectId)).unwrap();
+        },
         identifier: "de.md-raidplaner.rp.character",
         selector: ".rpCharacterLink",
       });
@@ -44,6 +43,5 @@ declare global {
 }
 
 interface BootstrapOptions {
-  endpointCharacterPopover: string;
   RP_API_URL: string;
 }

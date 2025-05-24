@@ -34,6 +34,7 @@ return static function (): void {
             $event->register(new \wcf\system\endpoint\controller\rp\characters\DeleteCharacter);
             $event->register(new \wcf\system\endpoint\controller\rp\characters\DisableCharacter);
             $event->register(new \wcf\system\endpoint\controller\rp\characters\EnableCharacter);
+            $event->register(new \wcf\system\endpoint\controller\rp\characters\GetCharacterPopover);
             $event->register(new \wcf\system\endpoint\controller\rp\characters\SetPrimaryCharacter);
             $event->register(new \wcf\system\endpoint\controller\rp\events\AvailableCharacters);
             $event->register(new \wcf\system\endpoint\controller\rp\events\CancelEvent);
