@@ -7,7 +7,7 @@ use rp\system\cache\eager\data\PointAccountCacheData;
 use wcf\system\cache\eager\AbstractEagerCache;
 
 /**
- * Eager cache implementation for items.
+ * Eager cache implementation for point accounts.
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
