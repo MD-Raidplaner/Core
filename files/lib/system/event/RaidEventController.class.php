@@ -3,8 +3,6 @@
 namespace rp\system\event;
 
 use rp\data\character\CharacterList;
-use rp\data\classification\Classification;
-use rp\data\classification\ClassificationCache;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeList;
 use rp\data\point\account\PointAccountCache;
@@ -12,6 +10,7 @@ use rp\data\raid\event\RaidEventCache;
 use rp\data\role\Role;
 use rp\data\role\RoleCache;
 use rp\event\character\AvailableCharactersChecking;
+use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\eager\GameCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
@@ -62,8 +61,7 @@ final class RaidEventController extends AbstractEventController
         $classDistributionContainer = FormContainer::create('classDistribution')
             ->label('rp.event.raid.distribution.class');
 
-        // @var Classification $classification */
-        foreach (ClassificationCache::getInstance()->getClassifications() as $classification) {
+        foreach ((new ClassificationCache())->getCache()->getClassifications() as $classification) {
             $classDistributionContainer->appendChild(
                 IntegerFormField::create($classification->identifier)
                     ->label($classification->getTitle())
@@ -316,7 +314,7 @@ final class RaidEventController extends AbstractEventController
             $availableDistributions = [];
             switch ($this->getEvent()->distributionMode) {
                 case 'class':
-                    $availableDistributions = ClassificationCache::getInstance()->getClassifications();
+                    $availableDistributions = (new ClassificationCache())->getCache()->getClassifications();
                     break;
                 case 'none':
                     $availableDistributions = [0 => WCF::getLanguage()->get('rp.event.raid.participants')];
@@ -410,7 +408,7 @@ final class RaidEventController extends AbstractEventController
 
         switch ($event->distributionMode) {
             case 'class':
-                foreach (ClassificationCache::getInstance()->getClassifications() as $classification) {
+                foreach ((new ClassificationCache())->getCache()->getClassifications() as $classification) {
                     $identifier = $classification->identifier;
                     $value = (int)$event->{$identifier};
                     if (!$value) {

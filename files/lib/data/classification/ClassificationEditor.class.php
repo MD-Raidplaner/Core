@@ -2,7 +2,7 @@
 
 namespace rp\data\classification;
 
-use rp\system\cache\builder\ClassificationCacheBuilder;
+use rp\system\cache\eager\ClassificationCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\language\category\LanguageCategory;
@@ -50,7 +50,7 @@ class ClassificationEditor extends DatabaseObjectEditor implements IEditableCach
     #[\Override]
     public static function resetCache(): void
     {
-        ClassificationCacheBuilder::getInstance()->reset();
+        (new ClassificationCache())->rebuild();
     }
 
     /**
