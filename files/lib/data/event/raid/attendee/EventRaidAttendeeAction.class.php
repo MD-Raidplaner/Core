@@ -16,7 +16,7 @@ use wcf\data\AbstractDatabaseObjectAction;
  */
 class EventRaidAttendeeAction extends AbstractDatabaseObjectAction
 {
-    [\Override]
+    #[\Override]
     public function create(): EventRaidAttendee
     {
         $this->parameters['data']['created'] = TIME_NOW;

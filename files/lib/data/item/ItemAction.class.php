@@ -21,7 +21,7 @@ class ItemAction extends AbstractDatabaseObjectAction
 {
     protected $className = ItemEditor::class;
 
-    [\Override]
+    #[\Override]
     public function create(): Item
     {
         $this->parameters['data']['time'] = TIME_NOW;

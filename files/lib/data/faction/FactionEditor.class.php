@@ -25,7 +25,7 @@ class FactionEditor extends DatabaseObjectEditor implements IEditableCachedObjec
 {
     protected static $baseClass = Faction::class;
 
-    [\Override]
+    #[\Override]
     public static function create(array $parameters = []): Faction
     {
         $titles = '';
@@ -48,7 +48,7 @@ class FactionEditor extends DatabaseObjectEditor implements IEditableCachedObjec
         return $faction;
     }
 
-    [\Override]
+    #[\Override]
     public static function resetCache(): void
     {
         FactionCacheBuilder::getInstance()->reset();
@@ -118,7 +118,7 @@ class FactionEditor extends DatabaseObjectEditor implements IEditableCachedObjec
         $this->update(['title' => $title]);
     }
 
-    [\Override]
+    #[\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

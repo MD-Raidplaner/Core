@@ -65,7 +65,7 @@ final class FactionCache extends SingletonFactory
         );
     }
 
-    [\Override]
+    #[\Override]
     protected function init(): void
     {
         $this->cachedFactions = FactionCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID], 'faction');

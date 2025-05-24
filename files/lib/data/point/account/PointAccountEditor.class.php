@@ -21,7 +21,7 @@ class PointAccountEditor extends DatabaseObjectEditor implements IEditableCached
 {
     protected static $baseClass = PointAccount::class;
 
-    [\Override]
+    #[\Override]
     public static function resetCache(): void
     {
         PointAccountCacheBuilder::getInstance()->reset();

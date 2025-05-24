@@ -118,7 +118,7 @@ class RaidEditor extends DatabaseObjectEditor implements IEditableCachedObject
         }
     }
 
-    [\Override]
+    #[\Override]
     public static function resetCache()
     {
         CharacterPointCacheBuilder::getInstance()->reset();

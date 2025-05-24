@@ -20,13 +20,13 @@ use wcf\system\WCF;
  */
 final class PointAccount extends DatabaseObject implements ITitledObject
 {
-    [\Override]
+    #[\Override]
     public function getTitle(): string
     {
         return WCF::getLanguage()->get($this->title);
     }
 
-    [\Override]
+    #[\Override]
     public function __toString(): string
     {
         return $this->getTitle();

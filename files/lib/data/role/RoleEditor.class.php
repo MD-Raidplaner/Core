@@ -24,7 +24,7 @@ class RoleEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
     protected static $baseClass = Role::class;
 
-    [\Override]
+    #[\Override]
     public static function create(array $parameters = []): Role
     {
         $titles = '';
@@ -47,7 +47,7 @@ class RoleEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $role;
     }
 
-    [\Override]
+    #[\Override]
     public static function resetCache(): void
     {
         RoleCacheBuilder::getInstance()->reset();
@@ -117,7 +117,7 @@ class RoleEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => $title]);
     }
 
-    [\Override]
+    #[\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

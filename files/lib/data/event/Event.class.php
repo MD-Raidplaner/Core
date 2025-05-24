@@ -247,7 +247,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $this->discussionProvider;
     }
 
-    [\Override]
+    #[\Override]
     public function getExcerpt($maxLength = 255): string
     {
         return  MessageUtil::truncateFormattedMessage($this->getSimplifiedFormattedNotes(), $maxLength);
@@ -268,7 +268,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return DateUtil::format($this->endTimeObj, $format);
     }
 
-    [\Override]
+    #[\Override]
     public function getFormattedMessage(): string
     {
         $processor = new HtmlOutputProcessor();
@@ -301,7 +301,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $this->getController()->getIcon($size);
     }
 
-    [\Override]
+    #[\Override]
     public function getLink(): string
     {
         return LinkHandler::getInstance()->getLink('Event', [
@@ -311,7 +311,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         ]);
     }
 
-    [\Override]
+    #[\Override]
     public function getMessage(): string
     {
         return $this->notes;
@@ -342,19 +342,19 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $processor->getHtml();
     }
 
-    [\Override]
+    #[\Override]
     public function getTime(): int
     {
         return $this->created;
     }
 
-    [\Override]
+    #[\Override]
     public function getTitle(): string
     {
         return $this->getController()->getTitle();
     }
 
-    [\Override]
+    #[\Override]
     protected function handleData($data): void
     {
         parent::handleData($data);
@@ -377,7 +377,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return false;
     }
 
-    [\Override]
+    #[\Override]
     public function isVisible(): bool
     {
         return $this->canRead();
@@ -391,7 +391,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         $this->discussionProvider = $discussionProvider;
     }
 
-    [\Override]
+    #[\Override]
     public function __get($name): mixed
     {
         $value = parent::__get($name);
@@ -402,7 +402,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         return $value;
     }
 
-    [\Override]
+    #[\Override]
     public function __toString(): string
     {
         return $this->getFormattedMessage();

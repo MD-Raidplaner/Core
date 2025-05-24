@@ -24,7 +24,7 @@ class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
     protected static $baseClass = Race::class;
 
-    [\Override]
+    #[\Override]
     public static function create(array $parameters = []): Race
     {
         $titles = '';
@@ -47,7 +47,7 @@ class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $race;
     }
 
-    [\Override]
+    #[\Override]
     public static function resetCache(): void
     {
         RaceCacheBuilder::getInstance()->reset();
@@ -117,7 +117,7 @@ class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => $title]);
     }
 
-    [\Override]
+    #[\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

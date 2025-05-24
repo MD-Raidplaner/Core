@@ -33,7 +33,7 @@ class ViewableEventModificationLog extends DatabaseObjectDecorator implements IV
         }
     }
 
-    [\Override]
+    #[\Override]
     public function getAffectedObject(): ?Event
     {
         return $this->event;

@@ -34,7 +34,7 @@ class AccessibleEventList extends ViewableEventList
         if (!WCF::getSession()->getPermission('mod.rp.canViewDeletedEvent')) $this->getConditionBuilder()->add('event.isDeleted = ?', [0]);
     }
 
-    [\Override]
+    #[\Override]
     public function readObjects(): void
     {
         if ($this->objectIDs === null) $this->readObjectIDs();

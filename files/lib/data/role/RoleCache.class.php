@@ -65,7 +65,7 @@ final class RoleCache extends SingletonFactory
         );
     }
 
-    [\Override]
+    #[\Override]
     protected function init(): void
     {
         $this->cachedIdentifier = RoleCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID], 'identifier');

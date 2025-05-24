@@ -81,7 +81,7 @@ class EventAction extends AbstractDatabaseObjectAction
         UserStorageHandler::getInstance()->resetAll('rpUnreadEvents');
     }
 
-    [\Override]
+    #[\Override]
     public function create(): Event
     {
         $this->parameters['data']['userID'] ??= WCF::getUser()->userID;
@@ -115,7 +115,7 @@ class EventAction extends AbstractDatabaseObjectAction
         return new Event($event->eventID);
     }
 
-    [\Override]
+    #[\Override]
     public function delete(): void
     {
         $eventIDs = [];

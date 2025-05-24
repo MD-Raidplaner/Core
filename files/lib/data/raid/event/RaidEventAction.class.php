@@ -25,7 +25,7 @@ class RaidEventAction extends AbstractDatabaseObjectAction
     protected $permissionsUpdate = ['admin.rp.canManageRaidEvent'];
     protected $requireACP = ['create', 'delete', 'update'];
 
-    [\Override]
+    #[\Override]
     public function create(): RaidEvent
     {
         $this->parameters['data']['gameID'] ??= RP_CURRENT_GAME_ID;
@@ -82,7 +82,7 @@ class RaidEventAction extends AbstractDatabaseObjectAction
         return $event;
     }
 
-    [\Override]
+    #[\Override]
     public function update(): void
     {
         parent::update();

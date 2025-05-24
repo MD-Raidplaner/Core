@@ -77,7 +77,7 @@ final class EventRaidAttendee extends DatabaseObject implements ITitledLinkObjec
         return $this->event ??= EventRuntimeCache::getInstance()->getObject($this->eventID);
     }
 
-    [\Override]
+    #[\Override]
     public function getLink(): string
     {
         return $this->getCharacter()->getLink();
@@ -114,13 +114,13 @@ final class EventRaidAttendee extends DatabaseObject implements ITitledLinkObjec
         return $this->possibleDistribution;
     }
 
-    [\Override]
+    #[\Override]
     public function getTitle(): string
     {
         return $this->characterName;
     }
 
-    [\Override]
+    #[\Override]
     public function __toString(): string
     {
         return $this->getTitle();

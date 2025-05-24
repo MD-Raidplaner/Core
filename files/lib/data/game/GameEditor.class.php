@@ -23,7 +23,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
     protected static $baseClass = Game::class;
 
-    [\Override]
+    #[\Override]
     public static function create(array $parameters = []): Game
     {
         $titles = [];
@@ -51,7 +51,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return $game;
     }
 
-    [\Override]
+    #[\Override]
     public static function deleteAll(array $objectIDs = []): int
     {
         // delete language items
@@ -76,7 +76,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
         return parent::deleteAll($objectIDs);
     }
 
-    [\Override]
+    #[\Override]
     public static function resetCache(): void
     {
         GameCache::getInstance()->resetCache();
@@ -140,7 +140,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
         $this->update(['title' => 'rp.game.' . $this->identifier]);
     }
 
-    [\Override]
+    #[\Override]
     public function update(array $parameters = []): void
     {
         $titles = [];

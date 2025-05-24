@@ -59,7 +59,7 @@ class RaidAction extends AbstractDatabaseObjectAction
         RaidEditor::resetCache();
     }
 
-    [\Override]
+    #[\Override]
     public function create(): Raid
     {
         $this->parameters['data']['gameID'] = RP_CURRENT_GAME_ID;
@@ -77,7 +77,7 @@ class RaidAction extends AbstractDatabaseObjectAction
         return $raid;
     }
 
-    [\Override]
+    #[\Override]
     public function update(): void
     {
         $this->parameters['data']['updatedBy'] = WCF::getUser()->username;

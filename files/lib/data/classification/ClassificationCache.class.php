@@ -116,7 +116,7 @@ final class ClassificationCache extends SingletonFactory
         return $this->cachedSkills;
     }
 
-    [\Override]
+    #[\Override]
     protected function init(): void
     {
         $this->cachedClassifications = ClassificationCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID], 'classification');

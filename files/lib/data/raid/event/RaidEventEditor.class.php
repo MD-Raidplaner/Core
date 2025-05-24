@@ -22,7 +22,7 @@ class RaidEventEditor extends DatabaseObjectEditor implements IEditableCachedObj
 {
     protected static $baseClass = RaidEvent::class;
 
-    [\Override]
+    #[\Override]
     public static function resetCache(): void
     {
         RaidEventCacheBuilder::getInstance()->reset();

@@ -21,7 +21,7 @@ class ItemEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
     protected static $baseClass = Item::class;
 
-    [\Override]
+    #[\Override]
     public static function resetCache(): void
     {
         ItemCacheBuilder::getInstance()->reset();

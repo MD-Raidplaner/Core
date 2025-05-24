@@ -77,7 +77,7 @@ class ViewableEventList extends EventList
         }
     }
 
-    [\Override]
+    #[\Override]
     public function readObjects(): void
     {
         parent::readObjects();

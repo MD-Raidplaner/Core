@@ -50,7 +50,7 @@ final class RaidEventCache extends SingletonFactory
         );
     }
 
-    [\Override]
+    #[\Override]
     protected function init(): void
     {
         $this->cachedRaidEvents = RaidEventCacheBuilder::getInstance()->getData(['gameID' => RP_CURRENT_GAME_ID]);

@@ -72,7 +72,7 @@ final class ItemCache extends SingletonFactory
         return $items;
     }
 
-    [\Override]
+    #[\Override]
     protected function init(): void
     {
         $cacheBuilder = ItemCacheBuilder::getInstance();

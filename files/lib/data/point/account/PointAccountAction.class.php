@@ -26,7 +26,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
     protected $permissionsUpdate = ['admin.rp.canManagePointAccount'];
     protected $requireACP = ['create', 'delete', 'update'];
 
-    [\Override]
+    #[\Override]
     public function create(): PointAccount
     {
         $this->parameters['data']['gameID'] ??= RP_CURRENT_GAME_ID;
@@ -77,7 +77,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
         return $account;
     }
 
-    [\Override]
+    #[\Override]
     public function delete(): void
     {
         parent::delete();
@@ -112,7 +112,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
         }
     }
 
-    [\Override]
+    #[\Override]
     public function update(): void
     {
         parent::update();

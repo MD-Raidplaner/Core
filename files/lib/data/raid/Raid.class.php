@@ -60,7 +60,7 @@ final class Raid extends DatabaseObject implements IRouteController, ITitledLink
         return $this->getRaidEvent()->getIcon($size);
     }
 
-    [\Override]
+    #[\Override]
     public function getLink(): string
     {
         return LinkHandler::getInstance()->getLink('Raid', [
@@ -82,13 +82,13 @@ final class Raid extends DatabaseObject implements IRouteController, ITitledLink
         return $this->raidEvent;
     }
 
-    [\Override]
+    #[\Override]
     public function getTitle(): string
     {
         return $this->getRaidEvent()->getTitle();
     }
 
-    [\Override]
+    #[\Override]
     public function __toString(): string
     {
         return $this->getTitle();

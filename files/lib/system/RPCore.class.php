@@ -24,7 +24,7 @@ final class RPCore extends AbstractApplication
     protected static Game $gameObj;
     protected $primaryController = CalendarPage::class;
 
-    [\Override]
+    #[\Override]
     public function __run()
     {
         $this->initGame();
