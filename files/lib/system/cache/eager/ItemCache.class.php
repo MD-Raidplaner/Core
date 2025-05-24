@@ -34,8 +34,8 @@ final class ItemCache extends AbstractEagerCache
         }
 
         return new ItemCacheData(
-            $itemNames,
-            $itemList->getObjects()
+            $itemList->getObjects(),
+            $itemNames
         );
     }
 }

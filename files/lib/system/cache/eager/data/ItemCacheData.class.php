@@ -12,10 +12,10 @@ use rp\data\item\Item;
 final class ItemCacheData
 {
     public function __construct(
-        /** @var array<string, int> */
-        public readonly array $itemNames,
         /** @var array<int, Item> */
         public readonly array $items,
+        /** @var array<string, int> */
+        public readonly array $itemNames
     ) {}
 
     /**

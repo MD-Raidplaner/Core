@@ -14,10 +14,10 @@ use rp\data\classification\Classification;
 final class ClassificationCacheData
 {
     public function __construct(
-        /** @var array<string, int> */
-        public readonly array $identifiers,
         /** @var array<int, Classification> */
         public readonly array $classifications,
+        /** @var array<string, int> */
+        public readonly array $identifiers,
         /** @var array<int, list<int>> */
         public readonly array $races,
         /** @var array<int, list<int>> */

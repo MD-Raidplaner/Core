@@ -17,25 +17,26 @@ use wcf\system\cache\eager\AbstractEagerCache;
  */
 final class FactionCache extends AbstractEagerCache
 {
+    public function __construct(
+        private readonly int $gameID = \RP_CURRENT_GAME_ID
+    ) {}
+
     #[\Override]
     protected function getCacheData(): FactionCacheData
     {
-        $identifiers = [];
-        $factions = [];
-
         $factionList = new FactionList();
         $factionList->getConditionBuilder()->add('isDisabled = ?', [0]);
-        $factionList->getConditionBuilder()->add('gameID = ?', [\RP_CURRENT_GAME_ID]);
+        $factionList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
         $factionList->readObjects();
 
+        $identifiers = [];
         foreach ($factionList->getObjects() as $faction) {
             $identifiers[$faction->identifier] = $faction->getObjectID();
-            $factions[$faction->getObjectID()] = $faction;
         }
 
         return new FactionCacheData(
-            $identifiers,
-            $factions
+            $factionList->getObjects(),
+            $identifiers
         );
     }
 }

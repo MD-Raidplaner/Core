@@ -19,22 +19,24 @@ use wcf\system\WCF;
  */
 final class ClassificationCache extends AbstractEagerCache
 {
+    public function __construct(
+        private readonly int $gameID = \RP_CURRENT_GAME_ID
+    ) {}
+
     #[\Override]
     protected function getCacheData(): ClassificationCacheData
     {
         $classificationList = new ClassificationList();
         $classificationList->getConditionBuilder()->add('isDisabled = ?', [0]);
-        $classificationList->getConditionBuilder()->add('gameID = ?', [\RP_CURRENT_GAME_ID]);
+        $classificationList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
         $classificationList->readObjects();
 
-        $classifications = [];
         $identifiers = [];
         $races = [];
         $roles = [];
         $skills = [];
 
         foreach ($classificationList as $object) {
-            $classifications[$object->getObjectID()] = $object;
             $identifiers[$object->identifier] = $object->getObjectID();
         }
 
@@ -66,8 +68,8 @@ final class ClassificationCache extends AbstractEagerCache
         $skills = $statement->fetchMap('classificationID', 'skillID', false);
 
         return new ClassificationCacheData(
+            $classificationList->getObjects(),
             $identifiers,
-            $classifications,
             $races,
             $roles,
             $skills

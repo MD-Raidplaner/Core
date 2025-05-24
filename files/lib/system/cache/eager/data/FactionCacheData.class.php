@@ -14,10 +14,10 @@ use rp\data\faction\Faction;
 final class FactionCacheData
 {
     public function __construct(
-        /** @var array<string, int> */
-        public readonly array $identifiers,
         /** @var array<int, Faction> */
         public readonly array $factions,
+        /** @var array<string, int> */
+        public readonly array $identifiers
     ) {}
 
     /**
