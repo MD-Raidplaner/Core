@@ -1,26 +1,36 @@
 <?php
 
-namespace rp\system\cache\builder;
+namespace rp\system\cache\tolerant;
 
-use rp\data\character\CharacterProfile;
 use rp\data\character\CharacterProfileList;
-use rp\data\point\account\PointAccount;
 use rp\data\point\account\PointAccountCache;
-use wcf\system\cache\builder\AbstractCacheBuilder;
+use wcf\system\cache\tolerant\AbstractTolerantCache;
 use wcf\system\database\util\PreparedStatementConditionBuilder;
 use wcf\system\WCF;
 
 /**
- * Cached the points of the primary character and its twinks.
+ * Eager cache implementation for ch.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-final class CharacterPointCacheBuilder extends AbstractCacheBuilder
+final class CharacterPointCache extends AbstractTolerantCache
 {
+    public function __construct(
+        private readonly int $userID,
+        private readonly int $gameID = \RP_CURRENT_GAME_ID
+    ) {}
+
     /**
      * Provides the default data structure for point information.
+     * 
+     * @return array{
+     *   received: array{color: string, points: int},
+     *   issued: array{color: string, points: int},
+     *   adjustments: array{color: string, points: int},
+     *   current: array{color: string, points: int}
+     * }
      */
     protected function getDefaultData(): array
     {
@@ -44,8 +54,17 @@ final class CharacterPointCacheBuilder extends AbstractCacheBuilder
         ];
     }
 
+    #[\Override]
+    public function getLifetime(): int
+    {
+        return 3_600;
+    }
+
     /**
      * Fetches the total points issued for each character from the item-to-raid table.
+     * 
+     * @param int[] $characterIDs
+     * @return array<int, array<int, int>> characterID => [pointAccountID => points]
      */
     private function fetchCharacterItems(array $characterIDs): array
     {
@@ -69,6 +88,9 @@ final class CharacterPointCacheBuilder extends AbstractCacheBuilder
 
     /**
      * Fetches the total raid points earned by each character from the raid and raid event tables.
+     * 
+     * @param int[] $characterIDs
+     * @return array<int, array<int, int>> characterID => [pointAccountID => points]
      */
     private function fetchCharacterRaidPoints(array $characterIDs): array
     {
@@ -92,16 +114,24 @@ final class CharacterPointCacheBuilder extends AbstractCacheBuilder
         return $characterPoints;
     }
 
+    /**
+     * @return array<int, array<int, array{
+     *     received: array{color: string, points: int},
+     *     issued: array{color: string, points: int},
+     *     adjustments: array{color: string, points: int},
+     *     current: array{color: string, points: int}
+     * }>>
+     */
     #[\Override]
-    protected function rebuild(array $parameters): array
+    protected function rebuildCacheData(): array
     {
         $data = [];
 
         $pointAccounts = PointAccountCache::getInstance()->getAccounts();
 
         $characterList = new CharacterProfileList();
-        $characterList->getConditionBuilder()->add('userID = ?', [$parameters['userID']]);
-        $characterList->getConditionBuilder()->add('gameID = ?', [$parameters['gameID']]);
+        $characterList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
+        $characterList->getConditionBuilder()->add('userID = ?', [$this->userID]);
         $characterList->readObjects();
         $characters = $characterList->getObjects();
         $characterIDs = \array_keys($characters);

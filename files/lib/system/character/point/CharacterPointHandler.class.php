@@ -3,7 +3,7 @@
 namespace rp\system\character\point;
 
 use rp\data\character\CharacterProfile;
-use rp\system\cache\builder\CharacterPointCacheBuilder;
+use rp\system\cache\tolerant\CharacterPointCache;
 use rp\util\RPUtil;
 use wcf\system\SingletonFactory;
 
@@ -104,10 +104,7 @@ final class CharacterPointHandler extends SingletonFactory
             return;
         }
 
-        $points = CharacterPointCacheBuilder::getInstance()->getData([
-            'gameID' => RP_CURRENT_GAME_ID,
-            'userID' => $primaryCharacter->userID
-        ]);
+        $points = (new CharacterPointCache($primaryCharacter->userID))->getCache();
 
         if (RP_SHOW_TWINKS) {
             $this->characterPoints = $points;

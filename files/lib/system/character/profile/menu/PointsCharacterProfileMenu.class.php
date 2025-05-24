@@ -4,9 +4,9 @@ namespace rp\system\character\profile\menu;
 
 use rp\data\point\account\PointAccount;
 use rp\data\point\account\PointAccountCache;
-use rp\system\cache\builder\CharacterPointCacheBuilder;
 use rp\system\cache\builder\RaidStatsCacheBuilder;
 use rp\system\cache\runtime\CharacterRuntimeCache;
+use rp\system\cache\tolerant\CharacterPointCache;
 use rp\util\RPUtil;
 use wcf\system\WCF;
 
@@ -26,10 +26,7 @@ final class PointsCharacterProfileMenu implements ICharacterProfileMenu
         if ($character === null) return '';
 
         $primaryCharacter = $character->getPrimaryCharacter();
-        $characterPoints = CharacterPointCacheBuilder::getInstance()->getData([
-            'gameID' => RP_CURRENT_GAME_ID,
-            'userID' => $primaryCharacter->userID
-        ]);
+        $characterPoints = (new CharacterPointCache($primaryCharacter->userID))->getCache();
 
         if (!isset($characterPoints[$characterID])) return '';
         $characterPoints = $characterPoints[$characterID];
