@@ -3,7 +3,7 @@
 namespace rp\data\faction;
 
 use rp\data\game\GameCache;
-use rp\system\cache\builder\FactionCacheBuilder;
+use rp\system\cache\eager\FactionCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\language\category\LanguageCategory;
@@ -51,7 +51,7 @@ class FactionEditor extends DatabaseObjectEditor implements IEditableCachedObjec
     #[\Override]
     public static function resetCache(): void
     {
-        FactionCacheBuilder::getInstance()->reset();
+        (new FactionCache())->rebuild();
     }
 
     /**
