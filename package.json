@@ -9,6 +9,6 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@woltlab/d.ts": "https://github.com/WoltLab/d.ts.git#ba4afb67c90e28b985a14e230a3f15d2bcf5003d"
+    "@woltlab/d.ts": "https://github.com/WoltLab/d.ts.git#035eb84cca87b723d3f960a6b3495f2efd644865"
   }
 }
