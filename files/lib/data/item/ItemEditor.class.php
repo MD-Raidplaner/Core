@@ -2,7 +2,7 @@
 
 namespace rp\data\item;
 
-use rp\system\cache\builder\ItemCacheBuilder;
+use rp\system\cache\eager\ItemCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 
@@ -24,6 +24,6 @@ class ItemEditor extends DatabaseObjectEditor implements IEditableCachedObject
     #[\Override]
     public static function resetCache(): void
     {
-        ItemCacheBuilder::getInstance()->reset();
+        (new ItemCache())->rebuild();
     }
 }
