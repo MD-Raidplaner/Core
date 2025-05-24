@@ -9,7 +9,7 @@ use wcf\system\database\util\PreparedStatementConditionBuilder;
 use wcf\system\WCF;
 
 /**
- * Eager cache implementation for ch.
+ * Caches the point information for characters for a specific user and game.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
