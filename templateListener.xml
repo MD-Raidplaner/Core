@@ -4,8 +4,8 @@
 		<templatelistener name="headIncludeJavaScript">
 			<environment>user</environment>
 			<templatename>headIncludeJavaScript</templatename>
-			<eventname>javascriptInclude</eventname>
-			<templatecode><![CDATA[{include application='rp' file='shared_headIncludeJavaScript'}]]></templatecode>
+			<eventname>javascriptInit</eventname>
+			<templatecode><![CDATA[{include application='rp' file='headIncludeJavaScript_javascriptInit'}]]></templatecode>
 		</templatelistener>
 	</import>
 </data>
