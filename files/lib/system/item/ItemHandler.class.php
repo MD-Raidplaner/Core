@@ -6,7 +6,7 @@ use rp\data\item\database\ItemDatabase;
 use rp\data\item\database\ItemDatabaseList;
 use rp\data\item\Item;
 use rp\data\item\ItemAction;
-use rp\data\item\ItemCache;
+use rp\system\cache\eager\ItemCache;
 use rp\util\RPUtil;
 use wcf\data\user\User;
 use wcf\system\language\LanguageFactory;
@@ -41,11 +41,11 @@ final class ItemHandler extends SingletonFactory
 
         $item = $searchItemID = null;
         if ($itemID) {
-            $item = ItemCache::getInstance()->getItemByID($itemID);
+            $item = (new ItemCache())->getCache()->getItem($itemID);
             $additionalData = $item ? $item->additionalData['additionalData'] : "";
         } else {
             $itemKey = RPUtil::generateItemUniqueKey($itemName, $additionalData);
-            $item = ItemCache::getInstance()->getItemByName($itemKey);
+            $item = (new ItemCache())->getCache()->getItemByName($itemKey);
         }
 
         $searchItemID = $item ? $item->searchItemID : null;
