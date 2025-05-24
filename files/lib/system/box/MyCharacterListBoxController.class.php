@@ -2,7 +2,7 @@
 
 namespace rp\system\box;
 
-use rp\system\cache\builder\MyCharactersCacheBuilder;
+use rp\system\cache\tolerant\MyCharactersCache;
 use wcf\system\box\AbstractBoxController;
 use wcf\system\WCF;
 
@@ -23,19 +23,17 @@ final class MyCharacterListBoxController extends AbstractBoxController
     #[\Override]
     protected function loadContent(): void
     {
-        if (!WCF::getUser()->userID)  return;
+        if (!WCF::getUser()->userID) {
+            return;
+        }
 
-        $characters = MyCharactersCacheBuilder::getInstance()->getData(
-            [
-                'userID' => WCF::getUser()->userID
-            ]
-        );
-        $characters = $characters[RP_CURRENT_GAME_ID] ?? [];
+        $characters = (new MyCharactersCache(WCF::getUser()->userID))->getCache();
+        if (empty($characters)) {
+            return;
+        }
 
-        if (empty($characters)) return;
-
-        $this->content = WCF::getTPL()->fetch('boxMyCharacterList', 'rp', [
+        $this->content = WCF::getTPL()->render('rp', 'boxMyCharacterList',  [
             'boxCharacters' => $characters,
-        ], true);
+        ]);
     }
 }
