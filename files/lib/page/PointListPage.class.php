@@ -27,7 +27,7 @@ class PointListPage extends MultipleLinkPage
     public $sortField = 'characterName';
     public $sortOrder = 'ASC';
 
-    /#[\Override]
+    #[\Override]
     public function assignVariables(): void
     {
         parent::assignVariables();
