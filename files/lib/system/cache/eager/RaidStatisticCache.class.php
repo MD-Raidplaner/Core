@@ -1,21 +1,29 @@
 <?php
 
-namespace rp\system\cache\builder;
+namespace rp\system\cache\eager;
 
-use wcf\system\cache\builder\AbstractCacheBuilder;
-use wcf\system\WCF;
+use wcf\system\cache\eager\AbstractEagerCache;
 
 /**
- * Caches raid stats.
+ * Eager cache implementation for raid event statistics.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * 
+ * @extends AbstractEagerCache<RaidEventCacheData>
  */
-final class RaidStatsCacheBuilder extends AbstractCacheBuilder
+final class RaidStatisticCache extends AbstractEagerCache
 {
+    public function __construct(
+        private readonly int $gameID = \RP_CURRENT_GAME_ID
+    ) {}
+
+    /**
+     * @return array<int, array{raid30: int, raid60: int, raid90: int, raidAll: int}>
+     */
     #[\Override]
-    protected function rebuild(array $parameters): array
+    protected function getCacheData(): array
     {
         $stats = [];
 
@@ -25,7 +33,7 @@ final class RaidStatsCacheBuilder extends AbstractCacheBuilder
                 ON          raid.raidEventID = raidEvent.eventID
                 WHERE       raid.gameID = ?";
         $statement = WCF::getDB()->prepare($sql);
-        $statement->execute([$parameters['gameID']]);
+        $statement->execute([$this->gameID]);
 
         // Calculate raid statistics for each point account
         while ($row = $statement->fetchArray()) {
