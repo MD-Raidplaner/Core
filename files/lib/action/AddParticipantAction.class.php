@@ -9,9 +9,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 use rp\data\event\Event;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeAction;
-use rp\data\role\RoleCache;
 use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\eager\RaceCache;
+use rp\system\cache\eager\RoleCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use rp\system\cache\runtime\EventRuntimeCache;
 use rp\system\character\AvailableCharacter;
@@ -98,7 +98,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                 DynamicSelectFormField::create('roleID')
                     ->label('rp.role.title')
                     ->required()
-                    ->options(RoleCache::getInstance()->getRoles())
+                    ->options((new RoleCache())->getCache()->getRoles())
                     ->triggerSelect(\sprintf('%s_%s', static::class, 'characterID'))
                     ->optionsMapping($roleMapping),
                 SingleSelectionFormField::create('status')
@@ -142,7 +142,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                 DynamicSelectFormField::create('roleID')
                     ->label('rp.role.title')
                     ->required()
-                    ->options(RoleCache::getInstance()->getRoles())
+                    ->options((new RoleCache())->getCache()->getRoles())
                     ->triggerSelect(\sprintf('%s_%s', static::class, 'classificationID'))
                     ->optionsMapping((new ClassificationCache())->getCache()->getClassificationRoles())
                     ->addValidator(new FormFieldValidator('check', function (SingleSelectionFormField $formField) {
