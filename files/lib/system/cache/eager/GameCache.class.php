@@ -24,8 +24,8 @@ final class GameCache extends AbstractEagerCache
         $gameList->readObjects();
 
         $identifiers = [];
-        foreach ($gameList->getObjects() as $game) {
-            $identifiers[$game->identifier] = $game->gameID;
+        foreach ($gameList as $game) {
+            $identifiers[$game->identifier] = $game->getObjectID();
         }
 
         return new GameCacheData(

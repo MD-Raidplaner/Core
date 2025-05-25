@@ -11,11 +11,13 @@ use wcf\system\database\exception\DatabaseQueryExecutionException;
 use wcf\system\exception\SystemException;
 
 /**
- * Caches the characters of the current user.
+ * Caches the character profiles for a specific user and game.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * 
+ * @extends AbstractTolerantCache<array<int, CharacterProfile>>
  */
 final class MyCharactersCache extends AbstractTolerantCache
 {

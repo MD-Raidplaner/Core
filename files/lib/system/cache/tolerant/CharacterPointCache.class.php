@@ -13,7 +13,14 @@ use wcf\system\WCF;
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
- * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
+ * 
+ * @extends AbstractTolerantCache<array<int, array<int, array{
+ *     received: array{color: string, points: int},
+ *     issued: array{color: string, points: int},
+ *     adjustments: array{color: string, points: int},
+ *     current: array{color: string, points: int}
+ * }>>>
  */
 final class CharacterPointCache extends AbstractTolerantCache
 {

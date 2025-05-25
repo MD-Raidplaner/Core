@@ -7,7 +7,7 @@ use rp\system\cache\eager\data\FactionCacheData;
 use wcf\system\cache\eager\AbstractEagerCache;
 
 /**
- * Eager cache implementation for classifications.
+ * Eager cache implementation for fractions.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
@@ -30,7 +30,7 @@ final class FactionCache extends AbstractEagerCache
         $factionList->readObjects();
 
         $identifiers = [];
-        foreach ($factionList->getObjects() as $faction) {
+        foreach ($factionList as $faction) {
             $identifiers[$faction->identifier] = $faction->getObjectID();
         }
 

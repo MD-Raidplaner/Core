@@ -3,6 +3,7 @@
 namespace rp\system\cache\eager;
 
 use wcf\system\cache\eager\AbstractEagerCache;
+use wcf\system\WCF;
 
 /**
  * Eager cache implementation for raid statistics.
