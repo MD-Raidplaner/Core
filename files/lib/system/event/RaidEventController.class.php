@@ -5,13 +5,13 @@ namespace rp\system\event;
 use rp\data\character\CharacterList;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeList;
-use rp\data\raid\event\RaidEventCache;
 use rp\data\role\Role;
 use rp\data\role\RoleCache;
 use rp\event\character\AvailableCharactersChecking;
 use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\eager\GameCache;
 use rp\system\cache\eager\PointAccountCache;
+use rp\system\cache\eager\RaidEventCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
@@ -115,7 +115,7 @@ final class RaidEventController extends AbstractEventController
                     ->options(function () {
                         $options = [];
                         $pointAccounts = (new PointAccountCache())->getCache()->getAccounts();
-                        $raidEvents = RaidEventCache::getInstance()->getEvents();
+                        $raidEvents = (new RaidEventCache())->getCache()->getEvents();
 
                         // Map raid events by pointAccountID for quick lookup
                         $raidEventsByPointAccount = [];
@@ -381,7 +381,7 @@ final class RaidEventController extends AbstractEventController
     #[\Override]
     public function getIcon(?int $size = null): string
     {
-        $raidEvent = RaidEventCache::getInstance()->getEventByID($this->getEvent()->raidEventID);
+        $raidEvent = (new RaidEventCache())->getCache()->getEvent($this->getEvent()->raidEventID);
         if ($raidEvent === null) return parent::getIcon($size);
         return $raidEvent->getIcon($size);
     }
@@ -454,7 +454,7 @@ final class RaidEventController extends AbstractEventController
     #[\Override]
     public function getTitle(): string
     {
-        $raidEvent = RaidEventCache::getInstance()->getEventByID($this->getEvent()->raidEventID) ?? 'Unknown';
+        $raidEvent = (new RaidEventCache())->getCache()->getEvent($this->getEvent()->raidEventID) ?? 'Unknown';
         return $raidEvent instanceof RaidEvent ? $raidEvent->getTitle() : $raidEvent;
     }
 

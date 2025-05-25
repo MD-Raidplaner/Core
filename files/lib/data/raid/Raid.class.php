@@ -3,7 +3,7 @@
 namespace rp\data\raid;
 
 use rp\data\raid\event\RaidEvent;
-use rp\data\raid\event\RaidEventCache;
+use rp\system\cache\eager\RaidEventCache;
 use wcf\data\DatabaseObject;
 use wcf\data\ITitledLinkObject;
 use wcf\system\request\IRouteController;
@@ -76,7 +76,7 @@ final class Raid extends DatabaseObject implements IRouteController, ITitledLink
     public function getRaidEvent()
     {
         if ($this->raidEvent === null) {
-            $this->raidEvent = RaidEventCache::getInstance()->getEventByID($this->raidEventID);
+            $this->raidEvent = (new RaidEventCache())->getCache()->getEvent($this->raidEventID);
         }
 
         return $this->raidEvent;
