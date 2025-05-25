@@ -2,7 +2,7 @@
 
 namespace rp\data\server;
 
-use rp\system\cache\builder\ServerCacheBuilder;
+use rp\system\cache\eager\ServerCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\language\category\LanguageCategory;
@@ -50,7 +50,7 @@ class ServerEditor extends DatabaseObjectEditor implements IEditableCachedObject
     #[\Override]
     public static function resetCache(): void
     {
-        ServerCacheBuilder::getInstance()->reset();
+        (new ServerCache())->rebuild();
     }
 
     /**
