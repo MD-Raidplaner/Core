@@ -2,7 +2,7 @@
 
 namespace rp\data\race;
 
-use rp\system\cache\builder\RaceCacheBuilder;
+use rp\system\cache\eager\RaceCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\language\category\LanguageCategory;
@@ -50,7 +50,7 @@ class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
     #[\Override]
     public static function resetCache(): void
     {
-        RaceCacheBuilder::getInstance()->reset();
+        (new RaceCache())->rebuild()
     }
 
     /**
