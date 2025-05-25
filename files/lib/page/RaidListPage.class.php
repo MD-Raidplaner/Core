@@ -3,8 +3,8 @@
 namespace rp\page;
 
 use rp\data\raid\event\RaidEvent;
-use rp\data\raid\event\RaidEventCache;
 use rp\data\raid\RaidList;
+use rp\system\cache\eager\RaidEventCache;
 use wcf\http\Helper;
 use wcf\page\MultipleLinkPage;
 use wcf\system\WCF;
@@ -60,7 +60,7 @@ final class RaidListPage extends MultipleLinkPage
             );
             $raidEventID = $parameters['raidEventID'] ?? 0;
             if ($raidEventID) {
-                $this->raidEvent = RaidEventCache::getInstance()->getEventByID($raidEventID);
+                $this->raidEvent = (new RaidEventCache())->getCache()->getEvent($raidEventID);
             }
         } catch (MappingError) {
             throw new IllegalLinkException();
