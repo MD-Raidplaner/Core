@@ -5,13 +5,13 @@ namespace rp\system\cache\eager;
 use wcf\system\cache\eager\AbstractEagerCache;
 
 /**
- * Eager cache implementation for raid event statistics.
+ * Eager cache implementation for raid statistics.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
- * @extends AbstractEagerCache<RaidEventCacheData>
+ * @extends AbstractEagerCache<array{raid30: int, raid60: int, raid90: int, raidAll: int}>
  */
 final class RaidStatisticCache extends AbstractEagerCache
 {
