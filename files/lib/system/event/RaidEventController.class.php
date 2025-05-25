@@ -6,12 +6,12 @@ use rp\data\character\CharacterList;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeList;
 use rp\data\role\Role;
-use rp\data\role\RoleCache;
 use rp\event\character\AvailableCharactersChecking;
 use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\eager\GameCache;
 use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\eager\RaidEventCache;
+use rp\system\cache\eager\RoleCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
@@ -246,7 +246,7 @@ final class RaidEventController extends AbstractEventController
             ->label('rp.event.raid.distribution.role');
 
         /** @var Role $role */
-        foreach (RoleCache::getInstance()->getRoles() as $role) {
+        foreach ((new RoleCache())->getCache()->getRoles() as $role) {
             $roleDistributionContainer->appendChild(
                 IntegerFormField::create($role->identifier)
                     ->label($role->getTitle())
@@ -320,7 +320,7 @@ final class RaidEventController extends AbstractEventController
                     $availableDistributions = [0 => WCF::getLanguage()->get('rp.event.raid.participants')];
                     break;
                 case 'role':
-                    $availableDistributions = RoleCache::getInstance()->getRoles();
+                    $availableDistributions = (new RoleCache())->getCache()->getRoles();
                     break;
             }
 
@@ -430,7 +430,7 @@ final class RaidEventController extends AbstractEventController
                 }
                 break;
             case 'role':
-                $roles = RoleCache::getInstance()->getRoles();
+                $roles = (new RoleCache())->getCache()->getRoles();
                 foreach ($roles as $role) {
                     $identifier = $role->identifier;
                     $value = (int)$event->{$identifier};

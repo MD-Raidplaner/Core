@@ -2,7 +2,7 @@
 
 namespace rp\data\role;
 
-use rp\system\cache\builder\RoleCacheBuilder;
+use rp\system\cache\eager\RoleCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\language\category\LanguageCategory;
@@ -50,7 +50,7 @@ class RoleEditor extends DatabaseObjectEditor implements IEditableCachedObject
     #[\Override]
     public static function resetCache(): void
     {
-        RoleCacheBuilder::getInstance()->reset();
+        (new RoleCache())->rebuild();
     }
 
     /**
