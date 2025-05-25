@@ -2,7 +2,7 @@
 
 namespace rp\data\skill;
 
-use rp\system\cache\builder\SkillCacheBuilder;
+use rp\system\cache\eager\SkillCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\language\category\LanguageCategory;
@@ -50,7 +50,7 @@ class SkillEditor extends DatabaseObjectEditor implements IEditableCachedObject
     #[\Override]
     public static function resetCache(): void
     {
-        SkillCacheBuilder::getInstance()->reset();
+        (new SkillCache())->rebuild();
     }
 
     /**
