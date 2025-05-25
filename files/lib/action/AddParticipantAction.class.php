@@ -9,9 +9,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 use rp\data\event\Event;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeAction;
-use rp\data\race\RaceCache;
 use rp\data\role\RoleCache;
 use rp\system\cache\eager\ClassificationCache;
+use rp\system\cache\eager\RaceCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use rp\system\cache\runtime\EventRuntimeCache;
 use rp\system\character\AvailableCharacter;
@@ -118,7 +118,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                 SingleSelectionFormField::create('raceID')
                     ->label('rp.race.title')
                     ->required()
-                    ->options(['' => 'wcf.global.noSelection'] + RaceCache::getInstance()->getRaces())
+                    ->options(['' => 'wcf.global.noSelection'] + (new RaceCache())->getCache()->getRaces())
                     ->addValidator(new FormFieldValidator('check', function (SingleSelectionFormField $formField) {
                         $value = $formField->getSaveValue();
 
