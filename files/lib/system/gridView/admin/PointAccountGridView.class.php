@@ -7,12 +7,14 @@ use rp\data\point\account\I18nPointAccountList;
 use rp\event\gridView\admin\PointAccountGridViewInitialized;
 use rp\system\cache\eager\GameCache;
 use rp\system\gridView\renderer\GameColumnRenderer;
+use rp\system\interaction\admin\PointAccountInteractions;
 use wcf\system\gridView\AbstractGridView;
 use wcf\system\gridView\filter\I18nTextFilter;
 use wcf\system\gridView\filter\SelectFilter;
 use wcf\system\gridView\GridViewColumn;
 use wcf\system\gridView\GridViewRowLink;
 use wcf\system\gridView\renderer\ObjectIdColumnRenderer;
+use wcf\system\interaction\Divider;
 use wcf\system\interaction\EditInteraction;
 use wcf\system\WCF;
 
