@@ -80,36 +80,10 @@ class PointAccountAction extends AbstractDatabaseObjectAction
     #[\Override]
     public function delete(): void
     {
-        parent::delete();
-
-        if (!empty($this->objects)) {
-            // identify i18n
-            $languageVariables = [];
-            foreach ($this->getObjects() as $object) {
-                if (\preg_match('~rp.point.account.title\d+~', $object->title)) {
-                    $languageVariables[] = $object->title;
-                }
-                if (\preg_match('~rp.point.account.description\d+~', $object->description)) {
-                    $languageVariables[] = $object->description;
-                }
-            }
-
-            // remove language variables
-            if (!empty($languageVariables)) {
-                $conditions = new PreparedStatementConditionBuilder();
-                $conditions->add("languageItem IN (?)", [$languageVariables]);
-
-                $sql = "SELECT  languageItemID
-                        FROM    wcf1_language_item
-                        " . $conditions;
-                $statement = WCF::getDB()->prepare($sql);
-                $statement->execute($conditions->getParameters());
-                $languageItemIDs = $statement->fetchAll(\PDO::FETCH_COLUMN);
-
-                $objectAction = new LanguageItemAction($languageItemIDs, 'delete');
-                $objectAction->executeAction();
-            }
-        }
+        throw new \BadMethodCallException(
+            'Deleting point accounts is not supported via the PointAccountAction class. ' .
+            'Use the DeleteAccounts command instead.'
+        );
     }
 
     #[\Override]

@@ -2,8 +2,8 @@
 
 namespace rp\acp\page;
 
-use rp\data\point\account\I18nPointAccountList;
-use wcf\page\MultipleLinkPage;
+use rp\system\gridView\admin\PointAccountGridView;
+use wcf\page\AbstractGridViewPage;
 
 /**
  * Shows the list of point accounts.
@@ -12,35 +12,20 @@ use wcf\page\MultipleLinkPage;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @property    I18nPointAccountList    $objectList
+ * @extends AbstractGridViewPage<PointAccountGridView>
  */
-final class PointAccountListPage extends MultipleLinkPage
+final class PointAccountListPage extends AbstractGridViewPage
 {
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'rp.acp.menu.link.point.account.list';
-
-    /**
-     * @inheritDoc
-     */
     public $neededModules = [
         'RP_POINTS_ENABLED',
         'RP_ITEM_ACCOUNT_EASYMODE_DISABLED'
     ];
-
-    /**
-     * @inheritDoc
-     */
     public $neededPermissions = ['admin.rp.canManagePointAccount'];
 
-    /**
-     * @inheritDoc
-     */
-    public $objectListClassName = I18nPointAccountList::class;
-
-    /**
-     * @inheritDoc
-     */
-    public $sqlOrderBy = 'titleI18n ASC';
+    #[\Override]
+    protected function createGridView(): PointAccountGridView
+    {
+        return new PointAccountGridView();
+    }
 }
