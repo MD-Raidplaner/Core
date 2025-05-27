@@ -2,6 +2,7 @@
 
 namespace rp\system\gridView\admin;
 
+use rp\acp\form\PointAccountEditForm;
 use rp\data\point\account\I18nPointAccountList;
 use rp\event\gridView\admin\PointAccountGridViewInitialized;
 use rp\system\cache\eager\GameCache;
@@ -10,6 +11,7 @@ use wcf\system\gridView\AbstractGridView;
 use wcf\system\gridView\filter\I18nTextFilter;
 use wcf\system\gridView\filter\SelectFilter;
 use wcf\system\gridView\GridViewColumn;
+use wcf\system\gridView\GridViewRowLink;
 use wcf\system\gridView\renderer\ObjectIdColumnRenderer;
 use wcf\system\WCF;
 
@@ -42,6 +44,7 @@ final class PointAccountGridView extends AbstractGridView
         ]);
 
         $this->setSortField('title');
+        $this->addRowLink(new GridViewRowLink(PointAccountEditForm::class));
     }
 
     #[\Override]
