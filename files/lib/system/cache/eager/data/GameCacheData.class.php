@@ -12,10 +12,10 @@ use rp\data\game\Game;
 final class GameCacheData
 {
     public function __construct(
-        /** @var Game[] */
+        /** @var array<int, Game> */
         public readonly array $games,
         /** @var array<string, int> */
-        public readonly array $identifier,
+        public readonly array $identifiers,
     ) {}
 
     /**
@@ -48,14 +48,14 @@ final class GameCacheData
      */
     public function getGameByIdentifier(string $identifier): ?Game
     {
-        if (!isset($this->identifier[$identifier])) return null;
-        return $this->getGame($this->identifier[$identifier]);
+        if (!isset($this->identifiers[$identifier])) return null;
+        return $this->getGame($this->identifiers[$identifier]);
     }
 
     /**
      * Returns the game with the given game ids.
      * 
-     * @return	Game[]
+     * @return array<int, Game>
      */
     public function getGames(array $gameIDs): array
     {
