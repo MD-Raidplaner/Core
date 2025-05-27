@@ -44,6 +44,7 @@ return static function (): void {
             $event->register(new \wcf\system\endpoint\controller\rp\events\TrashEvent);
             $event->register(new \wcf\system\endpoint\controller\rp\items\Tooltip);
             $event->register(new \wcf\system\endpoint\controller\rp\items\SearchItem);
+            $event->register(new \wcf\system\endpoint\controller\rp\point\accounts\DeleteAccount);
         }
     );
 

@@ -13,6 +13,7 @@ use wcf\system\gridView\filter\SelectFilter;
 use wcf\system\gridView\GridViewColumn;
 use wcf\system\gridView\GridViewRowLink;
 use wcf\system\gridView\renderer\ObjectIdColumnRenderer;
+use wcf\system\interaction\EditInteraction;
 use wcf\system\WCF;
 
 /**
@@ -42,6 +43,13 @@ final class PointAccountGridView extends AbstractGridView
                 ->renderer(new GameColumnRenderer())
                 ->filter(new SelectFilter((new GameCache())->getCache()->games)),
         ]);
+
+        $provider = new PointAccountInteractions();
+        $provider->addInteractions([
+            new Divider(),
+            new EditInteraction(PointAccountEditForm::class),
+        ]);
+        $this->setInteractionProvider($provider);
 
         $this->setSortField('title');
         $this->addRowLink(new GridViewRowLink(PointAccountEditForm::class));
