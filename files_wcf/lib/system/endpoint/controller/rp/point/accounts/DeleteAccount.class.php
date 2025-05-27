@@ -2,11 +2,13 @@
 
 namespace wcf\system\endpoint\controller\rp\point\accounts;
 
+use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use rp\data\point\account\PointAccount;
-use rp\system\point\account\command\DeleteAccounts;
+use rp\data\point\account\PointAccountEditor;
 use wcf\http\Helper;
+use wcf\system\endpoint\DeleteRequest;
 use wcf\system\endpoint\IController;
 use wcf\system\WCF;
 
@@ -25,15 +27,17 @@ final class DeleteAccount implements IController
     {
         $account = Helper::fetchObjectFromRequestParameter($variables['id'], PointAccount::class);
 
-        $this->assertAccountIsDeletable($account);
+        $this->assertAccountIsDeletable();
 
-        (new DeleteAccounts([$account]))();
+        $editor = new PointAccountEditor($account);
+        $editor->delete();
+        PointAccountEditor::resetCache();
 
         return new JsonResponse([]);
     }
 
-    private function assertAccountIsDeletable(PointAccount $account): void
+    private function assertAccountIsDeletable(): void
     {
-        WCF::getSession()->checkPermissions('admin.rp.canManagePointAccount');
+        WCF::getSession()->checkPermissions(['admin.rp.canManagePointAccount']);
     }
 }
