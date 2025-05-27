@@ -83,11 +83,12 @@ final class RaidEvent extends DatabaseObject implements ITitledLinkObject
     {
         if ($this->pointAccount === null) {
             $this->pointAccount = (new PointAccountCache())->getCache()->getAccount($this->pointAccountID);
+        }
 
         return $this->pointAccount;
     }
 
-   #[\Override]
+    #[\Override]
     public function getTitle(): string
     {
         return WCF::getLanguage()->get($this->title);
