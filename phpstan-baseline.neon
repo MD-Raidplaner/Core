@@ -271,12 +271,6 @@ parameters:
 			path: files/lib/data/classification/ClassificationAction.class.php
 
 		-
-			message: '#^Method rp\\data\\classification\\ClassificationCache\:\:getClassificationsByIDs\(\) has parameter \$classificationIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/classification/ClassificationCache.class.php
-
-		-
 			message: '#^Class rp\\data\\classification\\ClassificationEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
 			identifier: missingType.generics
 			count: 1
@@ -511,18 +505,6 @@ parameters:
 			path: files/lib/data/faction/FactionAction.class.php
 
 		-
-			message: '#^Call to an undefined method rp\\data\\faction\\FactionCache\:\:getEventByID\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/faction/FactionCache.class.php
-
-		-
-			message: '#^Method rp\\data\\faction\\FactionCache\:\:getFactionsByIDs\(\) has parameter \$factionIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/faction/FactionCache.class.php
-
-		-
 			message: '#^Class rp\\data\\faction\\FactionEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
 			identifier: missingType.generics
 			count: 1
@@ -649,12 +631,6 @@ parameters:
 			path: files/lib/data/item/ItemAction.class.php
 
 		-
-			message: '#^Method rp\\data\\item\\ItemCache\:\:getItemsByIDs\(\) has parameter \$itemIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/item/ItemCache.class.php
-
-		-
 			message: '#^Class rp\\data\\item\\ItemEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
 			identifier: missingType.generics
 			count: 1
@@ -769,18 +745,6 @@ parameters:
 			path: files/lib/data/point/account/PointAccountAction.class.php
 
 		-
-			message: '#^Call to an undefined method rp\\data\\point\\account\\PointAccountCache\:\:getEventByID\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/point/account/PointAccountCache.class.php
-
-		-
-			message: '#^Method rp\\data\\point\\account\\PointAccountCache\:\:getAccountsByIDs\(\) has parameter \$accountIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/point/account/PointAccountCache.class.php
-
-		-
 			message: '#^Class rp\\data\\point\\account\\PointAccountEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
 			identifier: missingType.generics
 			count: 1
@@ -815,18 +779,6 @@ parameters:
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/race/RaceAction.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\race\\RaceCache\:\:getEventByID\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/race/RaceCache.class.php
-
-		-
-			message: '#^Method rp\\data\\race\\RaceCache\:\:getRacesByIDs\(\) has parameter \$raceIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/race/RaceCache.class.php
 
 		-
 			message: '#^Class rp\\data\\race\\RaceEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
@@ -949,18 +901,6 @@ parameters:
 			path: files/lib/data/raid/event/RaidEventAction.class.php
 
 		-
-			message: '#^Method rp\\data\\raid\\event\\RaidEventCache\:\:getEventsByIDs\(\) has parameter \$eventIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/raid/event/RaidEventCache.class.php
-
-		-
-			message: '#^Method rp\\data\\raid\\event\\RaidEventCache\:\:getEventsByIDs\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/raid/event/RaidEventCache.class.php
-
-		-
 			message: '#^Class rp\\data\\raid\\event\\RaidEventEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
 			identifier: missingType.generics
 			count: 1
@@ -989,18 +929,6 @@ parameters:
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/role/RoleAction.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\role\\RoleCache\:\:getEventByID\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/role/RoleCache.class.php
-
-		-
-			message: '#^Method rp\\data\\role\\RoleCache\:\:getRolesByIDs\(\) has parameter \$roleIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/role/RoleCache.class.php
 
 		-
 			message: '#^Class rp\\data\\role\\RoleEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
@@ -1039,18 +967,6 @@ parameters:
 			path: files/lib/data/server/ServerAction.class.php
 
 		-
-			message: '#^Call to an undefined method rp\\data\\server\\ServerCache\:\:getEventByID\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/server/ServerCache.class.php
-
-		-
-			message: '#^Method rp\\data\\server\\ServerCache\:\:getServersByIDs\(\) has parameter \$serverIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/server/ServerCache.class.php
-
-		-
 			message: '#^Class rp\\data\\server\\ServerEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
 			identifier: missingType.generics
 			count: 1
@@ -1085,12 +1001,6 @@ parameters:
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/skill/SkillAction.class.php
-
-		-
-			message: '#^Method rp\\data\\skill\\SkillCache\:\:getSkillsByIDs\(\) has parameter \$skillIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/skill/SkillCache.class.php
 
 		-
 			message: '#^Class rp\\data\\skill\\SkillEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
@@ -1417,160 +1327,112 @@ parameters:
 			path: files/lib/system/attendee/command/DeleteAttendees.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:fetchCharacterItems\(\) has parameter \$characterIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Undefined variable\: \$data$#'
+			identifier: variable.undefined
 			count: 1
-			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
+			path: files/lib/system/cache/eager/ClassificationCache.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:fetchCharacterItems\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Call to an undefined method rp\\data\\race\\Race\:\:getIdentifier\(\)\.$#'
+			identifier: method.notFound
 			count: 1
-			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
+			path: files/lib/system/cache/eager/RaceCache.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:fetchCharacterRaidPoints\(\) has parameter \$characterIDs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Call to method getObjects\(\) on an unknown class rp\\system\\cache\\eager\\I18nRaidEventList\.$#'
+			identifier: class.notFound
 			count: 1
-			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
+			path: files/lib/system/cache/eager/RaidEventCache.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:fetchCharacterRaidPoints\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Call to method readObjects\(\) on an unknown class rp\\system\\cache\\eager\\I18nRaidEventList\.$#'
+			identifier: class.notFound
 			count: 1
-			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
+			path: files/lib/system/cache/eager/RaidEventCache.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:getDefaultData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Instantiated class rp\\system\\cache\\eager\\I18nRaidEventList not found\.$#'
+			identifier: class.notFound
 			count: 1
-			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
+			path: files/lib/system/cache/eager/RaidEventCache.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\CharacterPointCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Property rp\\system\\cache\\eager\\RaidEventCache\:\:\$gameID is never read, only written\.$#'
+			identifier: property.onlyWritten
 			count: 1
-			path: files/lib/system/cache/builder/CharacterPointCacheBuilder.class.php
+			path: files/lib/system/cache/eager/RaidEventCache.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\ClassificationCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Return type \(array\<int, array\{raid30\: int, raid60\: int, raid90\: int, raidAll\: int\}\>\) of method rp\\system\\cache\\eager\\RaidStatisticCache\:\:getCacheData\(\) should be compatible with return type \(array\{raid30\: int, raid60\: int, raid90\: int, raidAll\: int\}\|object\) of method wcf\\system\\cache\\eager\\AbstractEagerCache\<array\<string, int\>\>\:\:getCacheData\(\)$#'
+			identifier: method.childReturnType
 			count: 1
-			path: files/lib/system/cache/builder/ClassificationCacheBuilder.class.php
+			path: files/lib/system/cache/eager/RaidStatisticCache.class.php
 
 		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
+			message: '#^Parameter \#1 \$roles of class rp\\system\\cache\\eager\\data\\RoleCacheData constructor expects array\<int, rp\\system\\cache\\eager\\data\\Role\>, array\<rp\\data\\role\\Role\> given\.$#'
+			identifier: argument.type
 			count: 1
-			path: files/lib/system/cache/builder/ClassificationCacheBuilder.class.php
+			path: files/lib/system/cache/eager/RoleCache.class.php
 
 		-
-			message: '#^Method rp\\system\\cache\\builder\\FactionCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Call to an undefined method rp\\system\\cache\\eager\\data\\FactionCacheData\:\:getEventByID\(\)\.$#'
+			identifier: method.notFound
 			count: 1
-			path: files/lib/system/cache/builder/FactionCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/FactionCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\ItemCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/ItemCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\MyCharactersCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/MyCharactersCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/MyCharactersCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\PointAccountCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/PointAccountCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/PointAccountCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\RaceCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RaceCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/RaceCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\RaidEventCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RaidEventCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\RaidStatsCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RaidStatsCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\RoleCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/RoleCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/RoleCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\ServerCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/ServerCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/ServerCacheBuilder.class.php
-
-		-
-			message: '#^Method rp\\system\\cache\\builder\\SkillCacheBuilder\:\:rebuild\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/builder/SkillCacheBuilder.class.php
-
-		-
-			message: '#^Variable \$object in PHPDoc tag @var does not exist\.$#'
-			identifier: varTag.variableNotFound
-			count: 1
-			path: files/lib/system/cache/builder/SkillCacheBuilder.class.php
+			path: files/lib/system/cache/eager/data/FactionCacheData.class.php
 
 		-
 			message: '#^Method rp\\system\\cache\\eager\\data\\GameCacheData\:\:getGames\(\) has parameter \$gameIDs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/cache/eager/data/GameCacheData.class.php
+
+		-
+			message: '#^Method rp\\system\\cache\\eager\\data\\ItemCacheData\:\:getItems\(\) should return array\<int, rp\\data\\item\\Item\> but returns array\<string, int\>\.$#'
+			identifier: return.type
+			count: 1
+			path: files/lib/system/cache/eager/data/ItemCacheData.class.php
+
+		-
+			message: '#^Call to an undefined method rp\\system\\cache\\eager\\data\\RaidEventCacheData\:\:getEventByID\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: files/lib/system/cache/eager/data/RaidEventCacheData.class.php
+
+		-
+			message: '#^Method rp\\system\\cache\\eager\\data\\RoleCacheData\:\:getRole\(\) has invalid return type rp\\system\\cache\\eager\\data\\Role\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/eager/data/RoleCacheData.class.php
+
+		-
+			message: '#^Method rp\\system\\cache\\eager\\data\\RoleCacheData\:\:getRoleByIdentifier\(\) has invalid return type rp\\system\\cache\\eager\\data\\Role\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/eager/data/RoleCacheData.class.php
+
+		-
+			message: '#^Method rp\\system\\cache\\eager\\data\\RoleCacheData\:\:getRoles\(\) has invalid return type rp\\system\\cache\\eager\\data\\Role\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/eager/data/RoleCacheData.class.php
+
+		-
+			message: '#^Method rp\\system\\cache\\eager\\data\\RoleCacheData\:\:getRolesByIDs\(\) has invalid return type rp\\system\\cache\\eager\\data\\Role\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/eager/data/RoleCacheData.class.php
+
+		-
+			message: '#^Parameter \$roles of method rp\\system\\cache\\eager\\data\\RoleCacheData\:\:__construct\(\) has invalid type rp\\system\\cache\\eager\\data\\Role\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/eager/data/RoleCacheData.class.php
+
+		-
+			message: '#^Property rp\\system\\cache\\eager\\data\\RoleCacheData\:\:\$roles has unknown class rp\\system\\cache\\eager\\data\\Role as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/eager/data/RoleCacheData.class.php
 
 		-
 			message: '#^Class rp\\system\\cache\\runtime\\CharacterProfileRuntimeCache extends generic class wcf\\system\\cache\\runtime\\AbstractRuntimeCache but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
@@ -1685,6 +1547,18 @@ parameters:
 			identifier: class.notFound
 			count: 1
 			path: files/lib/system/cache/runtime/ViewableEventRuntimeCache.class.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$character contains unknown class rp\\system\\cache\\tolerant\\CharacterProfile\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/tolerant/CharacterPointCache.class.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$pointAccount contains unknown class rp\\system\\cache\\tolerant\\PointAccount\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/cache/tolerant/CharacterPointCache.class.php
 
 		-
 			message: '#^Method rp\\system\\calendar\\Calendar\:\:calculateEvent\(\) has parameter \$events with no value type specified in iterable type array\.$#'
@@ -1861,6 +1735,24 @@ parameters:
 			path: files/lib/system/character/profile/menu/PointsCharacterProfileMenu.class.php
 
 		-
+			message: '#^Binary operation "/" between int\<0, max\> and 0 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: files/lib/system/character/profile/menu/PointsCharacterProfileMenu.class.php
+
+		-
+			message: '#^Negated boolean expression is always true\.$#'
+			identifier: booleanNot.alwaysTrue
+			count: 1
+			path: files/lib/system/character/profile/menu/PointsCharacterProfileMenu.class.php
+
+		-
+			message: '#^Offset int on array\{raid30\: int, raid60\: int, raid90\: int, raidAll\: int\} on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 4
+			path: files/lib/system/character/profile/menu/PointsCharacterProfileMenu.class.php
+
+		-
 			message: '#^Class rp\\system\\clipboard\\action\\EventRaidAttendeeClipboardAction extends generic class wcf\\system\\clipboard\\action\\AbstractClipboardAction but does not specify its types\: TDatabaseobject$#'
 			identifier: missingType.generics
 			count: 1
@@ -1983,6 +1875,12 @@ parameters:
 		-
 			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$raidEventID\.$#'
 			identifier: property.notFound
+			count: 2
+			path: files/lib/system/event/RaidEventController.class.php
+
+		-
+			message: '#^Access to property \$identifier on an unknown class rp\\system\\cache\\eager\\data\\Role\.$#'
+			identifier: class.notFound
 			count: 2
 			path: files/lib/system/event/RaidEventController.class.php
 

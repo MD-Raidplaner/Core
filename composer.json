@@ -1,5 +1,5 @@
 {
-    "name": "mdrp",
+    "name": "md-raidplaner/rp",
     "type": "project",
     "require-dev": {
         "phpstan/phpstan": "^2.1"
