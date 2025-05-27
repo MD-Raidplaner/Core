@@ -50,7 +50,7 @@ class RaceEditor extends DatabaseObjectEditor implements IEditableCachedObject
     #[\Override]
     public static function resetCache(): void
     {
-        (new RaceCache())->rebuild()
+        (new RaceCache())->rebuild();
     }
 
     /**
