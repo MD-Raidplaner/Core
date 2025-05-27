@@ -36,7 +36,7 @@ final class CharacterInteractions extends AbstractInteractionProvider
                     if (!$character->canEdit()) {
                         return false;
                     }
-                    
+
                     return $character->isPrimary === 0;
                 },
                 invalidatesAllItems: true,
