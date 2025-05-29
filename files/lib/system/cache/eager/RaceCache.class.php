@@ -2,6 +2,7 @@
 
 namespace rp\system\cache\eager;
 
+use rp\data\race\RaceList;
 use rp\system\cache\eager\data\RaceCacheData;
 use wcf\system\cache\eager\AbstractEagerCache;
 
@@ -22,18 +23,18 @@ final class RaceCache extends AbstractEagerCache
     #[\Override]
     protected function getCacheData(): RaceCacheData
     {
-        $raceList = new \rp\data\race\RaceList();
+        $raceList = new RaceList();
         $raceList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
         $raceList->readObjects();
 
-        $identifier = [];
+        $identifiers = [];
         foreach ($raceList as $race) {
-            $identifier[$race->getIdentifier()] = $race->getObjectID();
+            $identifiers[$race->identifier] = $race->getObjectID();
         }
 
         return new RaceCacheData(
             $raceList->getObjects(),
-            $identifier
+            $identifiers
         );
     }
 }
