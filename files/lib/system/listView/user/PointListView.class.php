@@ -47,7 +47,7 @@ final class PointListView extends AbstractListView
     }
 
     #[\Override]
-    protected function getInitializedEvent(): ?PointListViewInitialized
+    protected function getInitializedEvent(): PointListViewInitialized
     {
         return new PointListViewInitialized($this);
     }
