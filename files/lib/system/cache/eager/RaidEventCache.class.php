@@ -2,6 +2,7 @@
 
 namespace rp\system\cache\eager;
 
+use rp\data\raid\event\I18nRaidEventList;
 use rp\system\cache\eager\data\RaidEventCacheData;
 use wcf\system\cache\eager\AbstractEagerCache;
 
