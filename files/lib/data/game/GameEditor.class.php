@@ -2,6 +2,7 @@
 
 namespace rp\data\game;
 
+use rp\system\cache\eager\GameCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\language\category\LanguageCategory;
@@ -79,7 +80,7 @@ class GameEditor extends DatabaseObjectEditor implements IEditableCachedObject
     #[\Override]
     public static function resetCache(): void
     {
-        GameCache::getInstance()->resetCache();
+        (new GameCache())->rebuild();
     }
 
     /**
