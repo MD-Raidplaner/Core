@@ -2,11 +2,11 @@
 
 namespace wcf\system\package\plugin;
 
-use rp\data\game\GameCache;
 use rp\data\race\Race;
 use rp\data\race\RaceEditor;
 use rp\data\race\RaceList;
 use rp\system\cache\eager\data\GameCacheData;
+use rp\system\cache\eager\GameCache;
 use wcf\data\IStorableObject;
 use wcf\system\database\util\PreparedStatementConditionBuilder;
 use wcf\system\devtools\pip\IDevtoolsPipEntryList;
