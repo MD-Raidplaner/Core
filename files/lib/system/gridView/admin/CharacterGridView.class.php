@@ -11,9 +11,6 @@ use rp\system\interaction\admin\CharacterInteractions;
 use rp\system\interaction\bulk\admin\CharacterBulkInteractions;
 use wcf\acp\form\UserEditForm;
 use wcf\data\DatabaseObject;
-use wcf\data\DatabaseObjectList;
-use wcf\system\database\util\PreparedStatementConditionBuilder;
-use wcf\system\exception\IllegalLinkException;
 use wcf\system\gridView\AbstractGridView;
 use wcf\system\gridView\filter\BooleanFilter;
 use wcf\system\gridView\filter\SelectFilter;
@@ -41,26 +38,9 @@ use wcf\system\WCF;
  */
 final class CharacterGridView extends AbstractGridView
 {
-    /**
-     * condition builder for character filtering
-     */
-    public PreparedStatementConditionBuilder $conditions;
 
-    public function __construct(
-        protected readonly ?int $searchID = null,
-    ) {
-        $this->conditions = new PreparedStatementConditionBuilder();
-
-        if ($this->searchID) {
-            $characterIDs = $this->readSearchResult();
-
-            if (empty($characterIDs)) {
-                throw new IllegalLinkException();
-            }
-
-            $this->conditions->add('member.characterID IN (?)', $characterIDs);
-        }
-
+    public function __construct()
+    {
         $this->addColumns([
             GridViewColumn::for("characterID")
                 ->label('wcf.global.objectID')
@@ -123,7 +103,7 @@ final class CharacterGridView extends AbstractGridView
                 ->hidden(),
             GridViewColumn::for('created')
                 ->label('rp.character.created')
-                ->sortable($this->searchID === null)
+                ->sortable()
                 ->renderer(new TimeColumnRenderer())
                 ->filter(new TimeFilter()),
             GridViewColumn::for('isPrimary')
@@ -140,10 +120,7 @@ final class CharacterGridView extends AbstractGridView
             }),
         ]);
         $this->setInteractionProvider($provider);
-
-        if ($this->searchID == null) {
-            $this->setBulkInteractionProvider(new CharacterBulkInteractions());
-        }
+        $this->setBulkInteractionProvider(new CharacterBulkInteractions());
 
         $this->addQuickInteraction(
             new ToggleInteraction(
@@ -160,10 +137,7 @@ final class CharacterGridView extends AbstractGridView
     #[\Override]
     protected function createObjectList(): CharacterProfileList
     {
-        $characterList = new CharacterProfileList();
-        $characterList->setConditionBuilder($this->conditions);
-
-        return $characterList;
+        return new CharacterProfileList();
     }
 
     #[\Override]
@@ -176,45 +150,5 @@ final class CharacterGridView extends AbstractGridView
     public function isAccessible(): bool
     {
         return WCF::getSession()->getPermission('admin.rp.canEditCharacter');
-    }
-
-    #[\Override]
-    public function isFilterable(): bool
-    {
-        if ($this->searchID) {
-            return false;
-        }
-
-        return $this->getFilterableColumns() !== [];
-    }
-
-    /**
-     * Fetches the result of the search with the given search id and returns the character ids.
-     */
-    protected function readSearchResult(): array
-    {
-        //get character search from database
-        $sql = "SELECT  searchData
-                FROM    wcf1_search
-                WHERE   searchID = ?
-                    AND userID = ?
-                    AND searchType = ?";
-        $statement = WCF::getDB()->prepare($sql);
-        $statement->execute([
-            $this->searchID,
-            WCF::getUser()->userID,
-            'characters'
-        ]);
-        $search = $statement->fetchArray();
-        if (!isset($search['searchData'])) {
-            throw new IllegalLinkException();
-        }
-
-        $data = \unserialize($search['searchData']);
-        $characterIDs = $data['matches'];
-        $this->setRowsPerPage($data['itemsPerPage']);
-        unset($data);
-
-        return $characterIDs;
     }
 }
