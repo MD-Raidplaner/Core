@@ -41,7 +41,7 @@ final class ClassificationCache extends AbstractEagerCache
         }
 
         $conditionBuilder = new PreparedStatementConditionBuilder();
-        $conditionBuilder->add('classificationID IN (?)', [\array_keys($data['classification'])]);
+        $conditionBuilder->add('classificationID IN (?)', [$classificationList->getObjectIDs()]);
 
         // get race classification
         $sql = "SELECT  *
