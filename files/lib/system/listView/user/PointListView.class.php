@@ -40,8 +40,8 @@ final class PointListView extends AbstractListView
     {
         $characterList = new CharacterProfileList();
 
-        $characterList->getConditionBuilder()->add('isDisabled = ?', [0]);
-        if (!\RP_SHOW_TWINKS) $characterList->getConditionBuilder()->add('isPrimary = ?', [1]);
+        $characterList->getConditionBuilder()->add('member.isDisabled = ?', [0]);
+        if (!\RP_SHOW_TWINKS) $characterList->getConditionBuilder()->add('member.isPrimary = ?', [1]);
 
         return $characterList;
     }
