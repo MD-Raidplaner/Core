@@ -1,10 +1,12 @@
 {capture assign='pageTitle'}
-    {$__wcf->getActivePage()->getTitle()}{if $raidEvent} ({$raidEvent->getTitle()}){/if}{if $pageNo > 1} -
-{lang}wcf.page.pageNo{/lang}{/if}
+    {$__wcf->getActivePage()->getTitle()}
+    {if $raidEvent} ({$raidEvent->getTitle()}){/if}
+    {if $listView->getPageNo() > 1} - {lang}wcf.page.pageNo{/lang}{/if}
 {/capture}
 {capture assign='contentTitle'}
-    {$__wcf->getActivePage()->getTitle()}{if $raidEvent} ({$raidEvent->getTitle()}){/if} <span
-        class="badge">{#$items}</span>
+    {$__wcf->getActivePage()->getTitle()}
+    {if $raidEvent} ({$raidEvent->getTitle()}){/if}
+    <span class="badge">{#$listView->countItems()}</span>
 {/capture}
 {if $raidEvent}
     {capture assign='contentDescription'}
@@ -14,13 +16,14 @@
 {/if}
 
 {capture assign='headContent'}
-    {if $pageNo < $pages}
-        <link rel="next" href="{link application='rp' controller='RaidList'}pageNo={$pageNo+1}{/link}">
+    {if $listView->getPageNo() < $listView->countPages()}
+        <link rel="next"
+            href="{link application='rp' controller='RaidList'}pageNo={$listView->getPageNo() + 1}{if $raidEvent}&raidEventID={$raidEvent->getObjectID()}{/if}{/link}">
     {/if}
-    {if $pageNo > 1}
-        <link rel="prev" href="{link application='rp' controller='RaidList'}{if $pageNo > 2}pageNo={$pageNo-1}{/if}{/link}">
+    {if $listView->getPageNo() > 1}
+        <link rel="prev"
+            href="{link application='rp' controller='RaidList'}{if $listView->getPageNo() > 2}pageNo={$listView->getPageNo() - 1}{/if}{if $raidEvent}&raidEventID={$raidEvent->getObjectID()}{/if}{/link}">
     {/if}
-    <link rel="canonical" href="{link application='rp' controller='RaidList'}{if $pageNo > 1}pageNo={$pageNo}{/if}{/link}">
 {/capture}
 
 {capture assign='contentHeaderNavigation'}
@@ -34,63 +37,10 @@
     {/if}
 {/capture}
 
-{capture assign='contentInteractionPagination'}
-    {pages print=true assign=pagesLinks controller='RaidList' application='rp' link="pageNo=%d"}
-{/capture}
-
 {include file='header'}
 
-{if $objects|count}
-    <div class="section sectionContainerList">
-        <ol class="containerList raidList doubleColumned">
-            {foreach from=$objects item=raid}
-                <li class="box64">
-                    <div>{unsafe:$raid->getIcon(64)}</div>
-
-                    <div>
-                        <div class="containerHeadline">
-                            <h3><a href="{$raid->getLink()}">{$raid->getTitle()}</a></h3>
-                        </div>
-
-                        <dl class="plain dataList containerContent small">
-                            <dt>{lang}rp.raid.time{/lang}</dt>
-                            <dd>{$raid->time|date}</dd>
-
-                            <dt>{lang}rp.raid.attendees{/lang}</dt>
-                            <dd>{$raid->getAttendees()|count}</dd>
-
-                            <dt>{lang}rp.raid.points{/lang}</dt>
-                            <dd>{#$raid->points}</dd>
-
-                            <dt>{lang}rp.raid.notes{/lang}</dt>
-                            <dd class="tooltip" title="{$raid->notes}">
-                                {if $raid->notes|empty}-{else}{$raid->notes|truncate:100}{/if}
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
-            {/foreach}
-        </ol>
-    </div>
-
-    <footer class="contentFooter">
-        {hascontent}
-        <div class="paginationBottom">
-            {content}{@$pagesLinks}{/content}
-        </div>
-        {/hascontent}
-
-        {hascontent}
-        <nav class="contentFooterNavigation">
-            <ul>
-                {content}{event name='contentFooterNavigation'}{/content}
-            </ul>
-        </nav>
-        {/hascontent}
-    </footer>
-{else}
-    <woltlab-core-notice type="info">{lang}wcf.global.noItems{/lang}</woltlab-core-notice>
-{/if}
-
+<div class="section">
+    {unsafe:$listView->render()}
+</div>
 
 {include file='footer'}
