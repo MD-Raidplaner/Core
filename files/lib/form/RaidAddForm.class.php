@@ -274,8 +274,6 @@ class RaidAddForm extends AbstractFormBuilderForm
         $formData['data'] = \array_merge($this->additionalFields, $formData['data']);
         $formData['event'] = $this->event;
 
-        wcfDebug($formData);
-
         $this->objectAction = new $this->objectActionClass(
             \array_filter([$this->formObject]),
             $action,
