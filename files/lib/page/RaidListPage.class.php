@@ -2,27 +2,27 @@
 
 namespace rp\page;
 
+use CuyZ\Valinor\Mapper\MappingError;
 use rp\data\raid\event\RaidEvent;
-use rp\data\raid\RaidList;
 use rp\system\cache\eager\RaidEventCache;
+use rp\system\listView\user\RaidListView;
 use wcf\http\Helper;
-use wcf\page\MultipleLinkPage;
+use wcf\page\AbstractListViewPage;
+use wcf\system\exception\IllegalLinkException;
 use wcf\system\WCF;
 
 /**
- * Shows the raids page.
+ * Shows the raid list page.
  *
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * 
+ * @extends AbstractListViewPage<RaidListView>
  */
-final class RaidListPage extends MultipleLinkPage
+final class RaidListPage extends AbstractListViewPage
 {
-    public $itemsPerPage = 60;
-    public $objectListClassName = RaidList::class;
     public ?RaidEvent $raidEvent = null;
-    public $sortField = 'time';
-    public $sortOrder = 'DESC';
 
     #[\Override]
     public function assignVariables(): void
@@ -35,13 +35,9 @@ final class RaidListPage extends MultipleLinkPage
     }
 
     #[\Override]
-    protected function initObjectList(): void
+    protected function createListView(): RaidListView
     {
-        parent::initObjectList();
-
-        if ($this->raidEvent) {
-            $this->objectList->getConditionBuilder()->add('raidEventID = ?', [$this->raidEvent->eventID]);
-        }
+        return new RaidListView($this->raidEvent?->getObjectID() ?? 0);
     }
 
     #[\Override]
@@ -58,10 +54,7 @@ final class RaidListPage extends MultipleLinkPage
                     }
                     EOT
             );
-            $raidEventID = $parameters['raidEventID'] ?? 0;
-            if ($raidEventID) {
-                $this->raidEvent = (new RaidEventCache())->getCache()->getEvent($raidEventID);
-            }
+            $this->raidEvent = (new RaidEventCache())->getCache()->getEvent($parameters['raidEventID'] ?? 0);
         } catch (MappingError) {
             throw new IllegalLinkException();
         }
