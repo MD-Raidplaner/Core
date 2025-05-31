@@ -17,7 +17,7 @@ use wcf\system\WCF;
 final class RaidStatisticCache extends AbstractEagerCache
 {
     public function __construct(
-        private readonly int $gameID = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME_ID
     ) {}
 
     /**
@@ -32,9 +32,9 @@ final class RaidStatisticCache extends AbstractEagerCache
                 FROM        rp1_raid raid
                 LEFT JOIN   rp1_raid_event raidEvent
                 ON          raid.raidEventID = raidEvent.eventID
-                WHERE       raid.gameID = ?";
+                WHERE       raid.game = ?";
         $statement = WCF::getDB()->prepare($sql);
-        $statement->execute([$this->gameID]);
+        $statement->execute([$this->game]);
 
         // Calculate raid statistics for each point account
         while ($row = $statement->fetchArray()) {

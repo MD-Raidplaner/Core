@@ -21,7 +21,7 @@ use wcf\system\WCF;
  * @property-read   int $characterID        unique id of the game
  * @property-read   string  $characterName      name of the character
  * @property-read   int|null    $userID     id of the user who created the character, or `null` if not already assigned.
- * @property-read   int $gameID     id of the game for created the character
+ * @property-read   string $game        game identifier of the character
  * @property-read   int $created        timestamp at which the character has been created
  * @property-read   int $lastUpdateTime     timestamp at which the character has been updated the last time
  * @property-read   string  $notes      notes of the character

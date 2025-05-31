@@ -23,7 +23,7 @@ final class MyCharactersCache extends AbstractTolerantCache
 {
     public function __construct(
         private readonly int $userID,
-        private readonly int $gameID = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME_ID
     ) {}
 
     #[\Override]
