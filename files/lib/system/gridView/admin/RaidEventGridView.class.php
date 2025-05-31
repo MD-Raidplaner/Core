@@ -15,6 +15,7 @@ use wcf\system\gridView\GridViewColumn;
 use wcf\system\gridView\GridViewRowLink;
 use wcf\system\gridView\renderer\DefaultColumnRenderer;
 use wcf\system\gridView\renderer\ObjectIdColumnRenderer;
+use wcf\system\gridView\renderer\PhraseColumnRenderer;
 use wcf\system\interaction\Divider;
 use wcf\system\interaction\EditInteraction;
 use wcf\system\WCF;
@@ -39,6 +40,7 @@ final class RaidEventGridView extends AbstractGridView
             GridViewColumn::for('title')
                 ->label('wcf.global.title')
                 ->titleColumn()
+                ->renderer(new PhraseColumnRenderer())
                 ->filter(new I18nTextFilter())
                 ->sortable(sortByDatabaseColumn: 'titleI18n'),
             GridViewColumn::for('pointAccountID')
