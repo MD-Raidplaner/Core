@@ -2,10 +2,10 @@
 
 namespace rp\system;
 
-use rp\data\game\Game;
 use rp\page\CalendarPage;
 use rp\system\character\point\CharacterPointHandler;
 use rp\system\game\GameHandler;
+use rp\system\game\GameItem;
 use wcf\system\application\AbstractApplication;
 
 // define current raidplaner version
@@ -21,7 +21,7 @@ use wcf\system\application\AbstractApplication;
 final class RPCore extends AbstractApplication
 {
     protected $abbreviation = 'rp';
-    protected static Game $gameObj;
+    protected static GameItem $gameObj;
     protected $primaryController = CalendarPage::class;
 
     #[\Override]
