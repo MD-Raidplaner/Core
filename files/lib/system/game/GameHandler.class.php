@@ -21,6 +21,15 @@ final class GameHandler extends SingletonFactory
     private array $games = [];
 
     /**
+     * Returns the current game item.
+     * 
+     * @return GameItem 
+     */
+    public function getCurrentGame(): GameItem {
+        return $this->getGameByIdentifier(\RP_CURRENT_GAME_ID);
+    }
+
+    /**
      * Return the game with the given identifier or `null` if no such game exists.
      */
     public function getGameByIdentifier(string $identifier): ?GameItem
