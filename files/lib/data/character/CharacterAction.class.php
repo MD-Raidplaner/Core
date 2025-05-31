@@ -75,18 +75,6 @@ class CharacterAction extends AbstractDatabaseObjectAction
         throw new \BadMethodCallException('delete() is not supported');
     }
 
-    protected function unmarkItems(?array $characterIDs = null): void
-    {
-        $characterIDs ??= $this->getObjectIDs();
-
-        if (!empty($characterIDs)) {
-            ClipboardHandler::getInstance()->unmark(
-                $characterIDs,
-                ClipboardHandler::getInstance()->getObjectTypeID('de.md-raidplaner.rp.character')
-            );
-        }
-    }
-
     #[\Override]
     public function update(): void
     {
