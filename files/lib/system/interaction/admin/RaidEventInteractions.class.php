@@ -20,7 +20,7 @@ final class RaidEventInteractions extends AbstractInteractionProvider
     public function __construct()
     {
         $this->addInteractions([
-            new DeleteInteraction("rp/raid/events/%s")
+            new DeleteInteraction("rp/raids/events/%s")
         ]);
 
         EventHandler::getInstance()->fire(
