@@ -47,7 +47,6 @@
             <item name="rp.acp.raid.event.image.mode.select"><![CDATA[Icon auswählen]]></item>
             <item name="rp.acp.raid.event.image.mode.upload"><![CDATA[Icon hochladen]]></item>
             <item name="rp.acp.raid.event.list"><![CDATA[Raid Termine]]></item>
-            <item name="rp.acp.raid.event.point.account"><![CDATA[Punktekonto]]></item>
             <item name="rp.acp.raid.event.showProfile"><![CDATA[Im Charakter-Profil anzeigen]]></item>
         </category>
 
@@ -207,6 +206,7 @@
 
         <category name="rp.point.account">
             <item name="rp.point.account.noDatas"><![CDATA[Es wurden keine Punktestände gefunden. <a href="{link application='rp' controller='PointList'}{/link}">Den aktiven Filter zurücksetzen.</a>]]></item>
+            <item name="rp.point.account.title"><![CDATA[Punktekonto]]></item>
         </category>
 
         <category name="rp.race">
@@ -227,7 +227,6 @@
         </category>
 
         <category name="rp.raid.event">
-            <item name="rp.raid.event.pointAccount"><![CDATA[Punktekonto]]></item>
             <item name="rp.raid.event.points"><![CDATA[Punkte]]></item>
             <item name="rp.raid.event.title"><![CDATA[Ereignis]]></item>
         </category>
