@@ -174,7 +174,7 @@ class CharacterAddForm extends AbstractFormBuilderForm
         ];
 
         $characterData = [
-            'gameID' => RP_CURRENT_GAME_ID,
+            'game' => \RP_CURRENT_GAME,
         ];
         foreach ($this->characterFields as $field) {
             if (isset($formData['data'][$field])) {

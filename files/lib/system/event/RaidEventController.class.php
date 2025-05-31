@@ -92,7 +92,7 @@ final class RaidEventController extends AbstractEventController
 
         $characters = [];
         $characterList = new CharacterList();
-        $characterList->getConditionBuilder()->add('gameID = ?', [RP_CURRENT_GAME_ID]);
+        $characterList->getConditionBuilder()->add('gameID = ?', [\RP_CURRENT_GAME]);
         $characterList->getConditionBuilder()->add('isDisabled = ?', [0]);
         $characterList->sqlOrderBy = 'characterName ASC';
         $characterList->readObjects();

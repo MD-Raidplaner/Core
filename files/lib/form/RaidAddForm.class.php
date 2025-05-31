@@ -176,7 +176,7 @@ class RaidAddForm extends AbstractFormBuilderForm
             $characters = $event->getCharacters();
             if (empty($characters)) {
                 $characterList = new CharacterList();
-                $characterList->getConditionBuilder()->add('member.gameID = ?', [RP_CURRENT_GAME_ID]);
+                $characterList->getConditionBuilder()->add('member.gameID = ?', [\RP_CURRENT_GAME]);
                 $characterList->getConditionBuilder()->add('member.isDisabled = ?', [0]);
                 $characterList->readObjects();
 

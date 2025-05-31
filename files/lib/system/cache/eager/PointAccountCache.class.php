@@ -17,7 +17,7 @@ use wcf\system\cache\eager\AbstractEagerCache;
 final class PointAccountCache extends AbstractEagerCache
 {
     public function __construct(
-        private readonly string $game = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME
     ) {}
 
     #[\Override]

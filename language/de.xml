@@ -339,8 +339,8 @@
             <item name="wcf.acp.option.rp_characters_list_default_sort_order"><![CDATA[Standard-Reihenfolge]]></item>
             <item name="wcf.acp.option.rp_characters_list_default_sort_order.description"><![CDATA[]]></item>
             <item name="wcf.acp.option.rp_characters_list_per_page"><![CDATA[Charaktere pro Seite]]></item>
-            <item name="wcf.acp.option.rp_current_game_id"><![CDATA[Aktuelles Spiel]]></item>
-            <item name="wcf.acp.option.rp_current_game_id.description"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Lege{else}Legen Sie{/if} das Aktuelle Spiel für den Raidplaner fest.]]></item>
+            <item name="wcf.acp.option.rp_current_game"><![CDATA[Aktuelles Spiel]]></item>
+            <item name="wcf.acp.option.rp_current_game.description"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Lege{else}Legen Sie{/if} das Aktuelle Spiel für den Raidplaner fest.]]></item>
             <item name="wcf.acp.option.rp_default_event_controller"><![CDATA[Termin Type [Standard]]]></item>
             <item name="wcf.acp.option.rp_enable_item"><![CDATA[Item aktivieren]]></item>
             <item name="wcf.acp.option.rp_item_account_easymode_disabled"><![CDATA[Einfacher Modus für Punktekonten deaktivieren]]></item>

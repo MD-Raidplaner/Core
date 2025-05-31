@@ -17,7 +17,7 @@ use wcf\system\WCF;
 final class RaidStatisticCache extends AbstractEagerCache
 {
     public function __construct(
-        private readonly string $game = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME
     ) {}
 
     /**

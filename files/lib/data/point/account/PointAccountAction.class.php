@@ -29,7 +29,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
     #[\Override]
     public function create(): PointAccount
     {
-        $this->parameters['data']['gameID'] ??= RP_CURRENT_GAME_ID;
+        $this->parameters['data']['gameID'] ??= \RP_CURRENT_GAME;
 
         // The title cannot be empty by design, but cannot be filled proper if the
         // multilingualism is enabled, therefore, we must fill the title with a dummy value.

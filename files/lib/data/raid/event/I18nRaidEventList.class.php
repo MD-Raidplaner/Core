@@ -25,6 +25,6 @@ class I18nRaidEventList extends I18nDatabaseObjectList
     {
         parent::__construct();
 
-        $this->conditionBuilder->add('raid_event.gameID = ?', [RP_CURRENT_GAME_ID]);
+        $this->conditionBuilder->add('raid_event.gameID = ?', [\RP_CURRENT_GAME]);
     }
 }

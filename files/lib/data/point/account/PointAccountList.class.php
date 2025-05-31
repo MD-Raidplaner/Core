@@ -24,6 +24,6 @@ class PointAccountList extends DatabaseObjectList
     {
         parent::__construct();
 
-        $this->conditionBuilder->add('point_account.gameID = ?', [RP_CURRENT_GAME_ID]);
+        $this->conditionBuilder->add('point_account.gameID = ?', [\RP_CURRENT_GAME]);
     }
 }

@@ -86,7 +86,7 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         $statement = WCF::getDB()->prepare($sql);
         $statement->execute([
             $userID,
-            RP_CURRENT_GAME_ID,
+            \RP_CURRENT_GAME,
             0,
         ]);
         $characters = $statement->fetchObject(Character::class);
@@ -126,7 +126,7 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         $statement = WCF::getDB()->prepare($sql);
         $statement->execute([
             $name,
-            RP_CURRENT_GAME_ID,
+            \RP_CURRENT_GAME,
         ]);
         $row = $statement->fetchArray();
         if (!$row) $row = [];

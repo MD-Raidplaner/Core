@@ -26,7 +26,7 @@ final class CharacterPointCache extends AbstractTolerantCache
 {
     public function __construct(
         private readonly int $userID,
-        private readonly string $game = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME
     ) {}
 
     /**

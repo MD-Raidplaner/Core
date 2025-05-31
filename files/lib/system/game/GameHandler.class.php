@@ -26,7 +26,7 @@ final class GameHandler extends SingletonFactory
      * @return GameItem 
      */
     public function getCurrentGame(): GameItem {
-        return $this->getGameByIdentifier(\RP_CURRENT_GAME_ID);
+        return $this->getGameByIdentifier(\RP_CURRENT_GAME);
     }
 
     /**
