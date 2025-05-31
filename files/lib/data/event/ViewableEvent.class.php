@@ -129,7 +129,7 @@ class ViewableEvent extends DatabaseObjectDecorator
                     );
                     $conditionBuilder->add('(event.created > tracked_visit.visitTime OR tracked_visit.visitTime IS NULL)');
                     $conditionBuilder->add('event.isDeleted = ?', [0]);
-                    $conditionBuilder->add('event.gameID = ?', [RP_CURRENT_GAME_ID]);
+                    $conditionBuilder->add('event.game = ?', [\RP_CURRENT_GAME]);
 
                     $sql = "SELECT      COUNT(*)
                             FROM        rp1_event event

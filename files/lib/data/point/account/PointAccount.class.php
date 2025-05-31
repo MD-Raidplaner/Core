@@ -16,7 +16,7 @@ use wcf\system\WCF;
  * @property-read   int $accountID      unique id of the point account
  * @property-read   string  $title      title of the point account or name of language item which contains the title
  * @property-read   string  $description        description of the point account or name of language item which contains the description
- * @property-read   int $gameID     id of the game
+ * @property-read   string $game        game identifier of the point account
  */
 final class PointAccount extends DatabaseObject implements ITitledObject
 {

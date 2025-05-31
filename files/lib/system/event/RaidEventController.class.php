@@ -8,13 +8,13 @@ use rp\data\event\raid\attendee\EventRaidAttendeeList;
 use rp\data\role\Role;
 use rp\event\character\AvailableCharactersChecking;
 use rp\system\cache\eager\ClassificationCache;
-use rp\system\cache\eager\GameCache;
 use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\eager\RaidEventCache;
 use rp\system\cache\eager\RoleCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
+use rp\system\game\GameHandler;
 use wcf\system\clipboard\ClipboardHandler;
 use wcf\system\event\EventHandler;
 use wcf\system\form\builder\container\FormContainer;
@@ -92,7 +92,7 @@ final class RaidEventController extends AbstractEventController
 
         $characters = [];
         $characterList = new CharacterList();
-        $characterList->getConditionBuilder()->add('gameID = ?', [RP_CURRENT_GAME_ID]);
+        $characterList->getConditionBuilder()->add('game = ?', [\RP_CURRENT_GAME]);
         $characterList->getConditionBuilder()->add('isDisabled = ?', [0]);
         $characterList->sqlOrderBy = 'characterName ASC';
         $characterList->readObjects();
@@ -404,7 +404,7 @@ final class RaidEventController extends AbstractEventController
     {
         $requirements = [];
         $event = $this->getEvent();
-        $game = (new GameCache())->getCache()->getCurrentGame();
+        $game = GameHandler::getInstance()->getCurrentGame();
 
         switch ($event->distributionMode) {
             case 'class':

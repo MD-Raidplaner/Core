@@ -29,7 +29,7 @@ return [
     DatabaseTable::create('rp1_classification')
         ->columns([
             ObjectIdDatabaseTableColumn::create('classificationID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             NotNullVarchar255DatabaseTableColumn::create('identifier'),
             NotNullVarchar255DatabaseTableColumn::create('title'),
             NotNullVarchar255DatabaseTableColumn::create('icon')
@@ -40,8 +40,8 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['classificationID']),
-            DatabaseTableIndex::create('identifier_gameID')
-                ->columns(['identifier', 'gameID'])
+            DatabaseTableIndex::create('identifier_game')
+                ->columns(['identifier', 'game'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
@@ -127,7 +127,7 @@ return [
     DatabaseTable::create('rp1_faction')
         ->columns([
             ObjectIdDatabaseTableColumn::create('factionID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             NotNullVarchar255DatabaseTableColumn::create('identifier'),
             NotNullVarchar255DatabaseTableColumn::create('title'),
             NotNullVarchar255DatabaseTableColumn::create('icon')
@@ -138,8 +138,8 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['factionID']),
-            DatabaseTableIndex::create('identifier_gameID')
-                ->columns(['identifier', 'gameID'])
+            DatabaseTableIndex::create('identifier_game')
+                ->columns(['identifier', 'game'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
@@ -163,7 +163,7 @@ return [
         ->columns([
             ObjectIdDatabaseTableColumn::create('eventID'),
             NotNullInt10DatabaseTableColumn::create('objectTypeID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             VarcharDatabaseTableColumn::create('title')
                 ->length(191),
             IntDatabaseTableColumn::create('userID')
@@ -248,55 +248,6 @@ return [
                 ->referencedTable('rp1_classification')
                 ->referencedColumns(['classificationID'])
                 ->onDelete('SET NULL'),
-        ]),
-
-    DatabaseTable::create('rp1_game')
-        ->columns([
-            ObjectIdDatabaseTableColumn::create('gameID'),
-            NotNullVarchar255DatabaseTableColumn::create('identifier'),
-            NotNullVarchar255DatabaseTableColumn::create('title'),
-            NotNullInt10DatabaseTableColumn::create('packageID'),
-        ])
-        ->indices([
-            DatabaseTablePrimaryIndex::create()
-                ->columns(['gameID']),
-            DatabaseTableIndex::create('identifier')
-                ->columns(['identifier'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['packageID'])
-                ->referencedTable('wcf1_package')
-                ->referencedColumns(['packageID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    PartialDatabaseTable::create('rp1_classification')
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    PartialDatabaseTable::create('rp1_event')
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    PartialDatabaseTable::create('rp1_faction')
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
         ]),
 
     DatabaseTable::create('rp1_item')
@@ -386,7 +337,7 @@ return [
                 ->notNull(),
             IntDatabaseTableColumn::create('userID')
                 ->length(10),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             IntDatabaseTableColumn::create('avatarID')
                 ->length(10),
             NotNullInt10DatabaseTableColumn::create('created')
@@ -407,8 +358,8 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['characterID']),
-            DatabaseTableIndex::create('characterName_gameID')
-                ->columns(['characterName', 'gameID'])
+            DatabaseTableIndex::create('characterName_game')
+                ->columns(['characterName', 'game'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
@@ -417,11 +368,6 @@ return [
                 ->referencedTable('wcf1_user')
                 ->referencedColumns(['userID'])
                 ->onDelete('SET NULL'),
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
         ]),
 
     PartialDatabaseTable::create('rp1_event_raid_attendee')
@@ -494,18 +440,11 @@ return [
             NotNullVarchar255DatabaseTableColumn::create('title'),
             NotNullVarchar255DatabaseTableColumn::create('description')
                 ->defaultValue(''),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
         ])
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['accountID']),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
         ]),
 
     PartialDatabaseTable::create('rp1_item_to_raid')
@@ -520,7 +459,7 @@ return [
     DatabaseTable::create('rp1_race')
         ->columns([
             ObjectIdDatabaseTableColumn::create('raceID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             NotNullVarchar255DatabaseTableColumn::create('identifier'),
             NotNullVarchar255DatabaseTableColumn::create('title'),
             NotNullVarchar255DatabaseTableColumn::create('icon')
@@ -531,16 +470,11 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['raceID']),
-            DatabaseTableIndex::create('identifier_gameID')
-                ->columns(['identifier', 'gameID'])
+            DatabaseTableIndex::create('identifier_game')
+                ->columns(['identifier', 'game'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
             DatabaseTableForeignKey::create()
                 ->columns(['packageID'])
                 ->referencedTable('wcf1_package')
@@ -583,7 +517,7 @@ return [
     DatabaseTable::create('rp1_raid')
         ->columns([
             ObjectIdDatabaseTableColumn::create('raidID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             NotNullInt10DatabaseTableColumn::create('raidEventID'),
             NotNullInt10DatabaseTableColumn::create('time'),
             NotNullVarchar255DatabaseTableColumn::create('addedBy'),
@@ -600,13 +534,6 @@ return [
             DatabaseTablePrimaryIndex::create()
                 ->columns(['raidID']),
         ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
-        ]),
 
     PartialDatabaseTable::create('rp1_item_to_raid')
         ->foreignKeys([
@@ -663,7 +590,7 @@ return [
                 ->defaultValue(''),
             IntDatabaseTableColumn::create('pointAccountID')
                 ->length(10),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             FloatDatabaseTableColumn::create('defaultPoints')
                 ->length(11)
                 ->decimals(2)
@@ -683,11 +610,6 @@ return [
                 ->referencedTable('rp1_point_account')
                 ->referencedColumns(['accountID'])
                 ->onDelete('SET NULL'),
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
         ]),
 
     PartialDatabaseTable::create('rp1_raid')
@@ -702,7 +624,7 @@ return [
     DatabaseTable::create('rp1_role')
         ->columns([
             ObjectIdDatabaseTableColumn::create('roleID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             NotNullVarchar255DatabaseTableColumn::create('identifier'),
             NotNullVarchar255DatabaseTableColumn::create('title'),
             NotNullVarchar255DatabaseTableColumn::create('icon')
@@ -713,16 +635,11 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['roleID']),
-            DatabaseTableIndex::create('identifier_gameID')
-                ->columns(['identifier', 'gameID'])
+            DatabaseTableIndex::create('identifier_game')
+                ->columns(['identifier', 'game'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
             DatabaseTableForeignKey::create()
                 ->columns(['packageID'])
                 ->referencedTable('wcf1_package')
@@ -751,7 +668,7 @@ return [
     DatabaseTable::create('rp1_server')
         ->columns([
             ObjectIdDatabaseTableColumn::create('serverID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             NotNullVarchar255DatabaseTableColumn::create('identifier'),
             NotNullVarchar255DatabaseTableColumn::create('title'),
             NotNullVarchar255DatabaseTableColumn::create('type')
@@ -763,16 +680,11 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['serverID']),
-            DatabaseTableIndex::create('identifier_gameID')
-                ->columns(['identifier', 'gameID'])
+            DatabaseTableIndex::create('identifier_game')
+                ->columns(['identifier', 'game'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
             DatabaseTableForeignKey::create()
                 ->columns(['packageID'])
                 ->referencedTable('wcf1_package')
@@ -783,7 +695,7 @@ return [
     DatabaseTable::create('rp1_skill')
         ->columns([
             ObjectIdDatabaseTableColumn::create('skillID'),
-            NotNullInt10DatabaseTableColumn::create('gameID'),
+            NotNullVarchar255DatabaseTableColumn::create('game'),
             NotNullVarchar255DatabaseTableColumn::create('identifier'),
             NotNullVarchar255DatabaseTableColumn::create('title'),
             NotNullVarchar255DatabaseTableColumn::create('icon')
@@ -794,16 +706,11 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['skillID']),
-            DatabaseTableIndex::create('identifier_gameID')
-                ->columns(['identifier', 'gameID'])
+            DatabaseTableIndex::create('identifier_game')
+                ->columns(['identifier', 'game'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['gameID'])
-                ->referencedTable('rp1_game')
-                ->referencedColumns(['gameID'])
-                ->onDelete('CASCADE'),
             DatabaseTableForeignKey::create()
                 ->columns(['packageID'])
                 ->referencedTable('wcf1_package')

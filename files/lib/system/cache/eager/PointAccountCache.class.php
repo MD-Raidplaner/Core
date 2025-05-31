@@ -17,14 +17,14 @@ use wcf\system\cache\eager\AbstractEagerCache;
 final class PointAccountCache extends AbstractEagerCache
 {
     public function __construct(
-        private readonly int $gameID = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME
     ) {}
 
     #[\Override]
     protected function getCacheData(): PointAccountCacheData
     {
         $pointAccountList = new PointAccountList();
-        $pointAccountList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
+        $pointAccountList->getConditionBuilder()->add('game = ?', [$this->game]);
         $pointAccountList->readObjects();
 
 

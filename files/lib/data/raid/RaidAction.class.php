@@ -62,7 +62,7 @@ class RaidAction extends AbstractDatabaseObjectAction
     #[\Override]
     public function create(): Raid
     {
-        $this->parameters['data']['gameID'] = RP_CURRENT_GAME_ID;
+        $this->parameters['data']['game'] = \RP_CURRENT_GAME;
         $this->parameters['data']['addedBy'] = WCF::getUser()->username;
 
         $raid = parent::create();

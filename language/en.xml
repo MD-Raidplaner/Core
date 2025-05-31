@@ -339,8 +339,8 @@
             <item name="wcf.acp.option.rp_characters_list_default_sort_order"><![CDATA[Sort Order]]></item>
             <item name="wcf.acp.option.rp_characters_list_default_sort_order.description"><![CDATA[Choose default sort order of character list.]]></item>
             <item name="wcf.acp.option.rp_characters_list_per_page"><![CDATA[Characters per Page]]></item>
-            <item name="wcf.acp.option.rp_current_game_id"><![CDATA[Current Game]]></item>
-            <item name="wcf.acp.option.rp_current_game_id.description"><![CDATA[Set the current game for the Raidplaner.]]></item>
+            <item name="wcf.acp.option.rp_current_game"><![CDATA[Current Game]]></item>
+            <item name="wcf.acp.option.rp_current_game.description"><![CDATA[Set the current game for the Raidplaner.]]></item>
             <item name="wcf.acp.option.rp_default_event_controller"><![CDATA[Termin Type [Default]]]></item>
             <item name="wcf.acp.option.rp_enable_item"><![CDATA[Enable Item]]></item>
             <item name="wcf.acp.option.rp_item_account_easymode_disabled"><![CDATA[Disable simple mode for points accounts]]></item>

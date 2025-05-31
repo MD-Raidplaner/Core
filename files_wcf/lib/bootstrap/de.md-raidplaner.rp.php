@@ -1,5 +1,7 @@
 <?php
 
+use rp\event\game\GameCollecting;
+use rp\system\game\GameItem;
 use wcf\event\acp\menu\item\ItemCollecting;
 use wcf\system\event\EventHandler;
 use wcf\system\menu\acp\AcpMenuItem;
@@ -129,5 +131,13 @@ return static function (): void {
                 )
             );
         }
+    });
+
+    $eventHandler->register(GameCollecting::class, static function (GameCollecting $event) {
+        $event->register(
+            new GameItem(
+                'default'
+            )
+        );
     });
 };

@@ -3,8 +3,8 @@
 namespace rp\data\raid\event;
 
 use rp\data\point\account\PointAccount;
-use rp\system\cache\eager\GameCache;
 use rp\system\cache\eager\PointAccountCache;
+use rp\system\game\GameHandler;
 use wcf\data\DatabaseObject;
 use wcf\data\ITitledLinkObject;
 use wcf\data\ITitledObject;
@@ -22,7 +22,7 @@ use wcf\util\StringUtil;
  * @property-read   int $eventID        unique id of the raid event
  * @property-read   string  $title      title of the race or name of language item which contains the title
  * @property-read   int|null    $pointAccountID     id of the point account, or `null` if not assigned
- * @property-read   int $gameID     id of the game
+ * @property-read   string $game        game identifier of the raid event
  * @property-read   float   $defaultPoints      default points of the raid event
  * @property-read   string  $icon       icon of the raid event
  * @property-read   int $showProfile        is `1` if the raid event is show in profile, otherwise `0`
@@ -54,7 +54,7 @@ final class RaidEvent extends DatabaseObject implements ITitledLinkObject
         return \sprintf(
             '%simages/%s/%s.png',
             WCF::getPath('rp'),
-            (new GameCache())->getCache()->getGame($this->gameID)->identifier,
+            GameHandler::getInstance()->getGameByIdentifier($this->game)->identifier,
             $this->icon ?? 'unknown'
         );
     }

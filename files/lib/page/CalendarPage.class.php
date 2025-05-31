@@ -35,7 +35,7 @@ final class CalendarPage extends AbstractPage
         $eventControllers = \array_filter(
             ObjectTypeCache::getInstance()->getObjectTypes('de.md-raidplaner.rp.event.controller'),
             fn($controller) => $controller->getProcessor()->isAccessible() &&
-                (RP_CURRENT_GAME_ID != 1 || $controller->objectType !== 'de.md-raidplaner.rp.event.controller.raid')
+                (\RP_CURRENT_GAME != 1 || $controller->objectType !== 'de.md-raidplaner.rp.event.controller.raid')
         );
 
         \uasort($eventControllers, function (ObjectType $a, ObjectType $b) {

@@ -26,6 +26,6 @@ class I18nPointAccountList extends I18nDatabaseObjectList
     {
         parent::__construct();
 
-        $this->conditionBuilder->add('point_account.gameID = ?', [RP_CURRENT_GAME_ID]);
+        $this->conditionBuilder->add('point_account.game = ?', [\RP_CURRENT_GAME]);
     }
 }

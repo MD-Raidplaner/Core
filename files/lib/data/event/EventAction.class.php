@@ -88,7 +88,7 @@ class EventAction extends AbstractDatabaseObjectAction
         $this->parameters['data']['username'] ??= WCF::getUser()->username;
         $this->parameters['data']['isDisabled'] = WCF::getSession()->getPermission('user.rp.canCreateEventWithoutModeration') ? 0 : 1;
         $this->parameters['data']['created'] = TIME_NOW;
-        $this->parameters['data']['gameID'] ??= RP_CURRENT_GAME_ID;
+        $this->parameters['data']['game'] ??= \RP_CURRENT_GAME;
 
         if (!empty($this->parameters['notes_htmlInputProcessor'])) {
             $this->parameters['data']['notes'] = $this->parameters['notes_htmlInputProcessor']->getHtml();

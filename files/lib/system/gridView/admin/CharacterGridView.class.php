@@ -6,7 +6,7 @@ use rp\acp\form\CharacterEditForm;
 use rp\data\character\CharacterProfile;
 use rp\data\character\CharacterProfileList;
 use rp\event\gridView\admin\CharacterGridViewInitialized;
-use rp\system\cache\eager\GameCache;
+use rp\system\game\GameHandler;
 use rp\system\interaction\admin\CharacterInteractions;
 use rp\system\interaction\bulk\admin\CharacterBulkInteractions;
 use wcf\acp\form\UserEditForm;
@@ -97,9 +97,9 @@ final class CharacterGridView extends AbstractGridView
                 ->label('rp.acp.character.owner')
                 ->renderer(new UserLinkColumnRenderer(UserEditForm::class))
                 ->filter(new UserFilter()),
-            GridViewColumn::for('gameID')
+            GridViewColumn::for('game')
                 ->label('rp.acp.character.game')
-                ->filter(new SelectFilter((new GameCache())->getCache()->games))
+                ->filter(new SelectFilter(GameHandler::getInstance()->getGames())
                 ->hidden(),
             GridViewColumn::for('created')
                 ->label('rp.character.created')
