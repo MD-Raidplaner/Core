@@ -46,26 +46,3 @@
 		transition: width 0.3s ease;
 	}
 }
-
-#rp-system-listView-user-RaidListView_items {
-	display: flex;
-
-	.listView__item {
-		flex-direction: row;
-		align-items: flex-start;
-		gap: 1rem;
-
-		@include screen-sm-down {
-			flex-direction: column;
-		}
-	}
-
-	.contentItemLink {
-		flex: none;
-		width: 64px;
-	}
-
-	.contentItemContent {
-		flex-grow: 1;
-	}
-}
