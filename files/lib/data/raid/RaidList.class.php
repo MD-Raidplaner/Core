@@ -24,6 +24,6 @@ class RaidList extends DatabaseObjectList
     {
         parent::__construct();
 
-        $this->conditionBuilder->add('raid.gameID = ?', [\RP_CURRENT_GAME]);
+        $this->conditionBuilder->add('raid.game = ?', [\RP_CURRENT_GAME]);
     }
 }

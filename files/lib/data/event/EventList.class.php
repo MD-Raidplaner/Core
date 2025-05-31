@@ -25,6 +25,6 @@ class EventList extends DatabaseObjectList
     {
         parent::__construct();
 
-        $this->conditionBuilder->add('event.gameID = ?', [\RP_CURRENT_GAME]);
+        $this->conditionBuilder->add('event.game = ?', [\RP_CURRENT_GAME]);
     }
 }

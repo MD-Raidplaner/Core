@@ -29,7 +29,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
     #[\Override]
     public function create(): PointAccount
     {
-        $this->parameters['data']['gameID'] ??= \RP_CURRENT_GAME;
+        $this->parameters['data']['game'] ??= \RP_CURRENT_GAME;
 
         // The title cannot be empty by design, but cannot be filled proper if the
         // multilingualism is enabled, therefore, we must fill the title with a dummy value.
@@ -53,7 +53,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
                 $this->parameters['title_i18n'],
                 'rp.point.account.title' . $account->accountID,
                 'rp.point.account',
-                $account->gameID
+                $account->game
             );
 
             $updateData['title'] = 'rp.point.account.title' . $account->accountID;
@@ -63,7 +63,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
                 $this->parameters['description_i18n'],
                 'rp.point.account.description' . $account->accountID,
                 'rp.point.account',
-                $account->gameID
+                $account->game
             );
 
             $updateData['description'] = 'rp.point.account.description' . $account->accountID;
@@ -100,7 +100,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
                     $this->parameters['title_i18n'],
                     'rp.point.account.title' . $object->accountID,
                     'rp.point.account',
-                    $object->gameID
+                    $object->game
                 );
 
                 $updateData['title'] = 'rp.point.account.title' . $object->accountID;
@@ -111,7 +111,7 @@ class PointAccountAction extends AbstractDatabaseObjectAction
                     $this->parameters['description_i18n'],
                     'rp.point.account.description' . $object->accountID,
                     'rp.point.account',
-                    $object->gameID
+                    $object->game
                 );
 
                 $updateData['description'] = 'rp.point.account.description' . $object->accountID;

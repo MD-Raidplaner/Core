@@ -37,11 +37,11 @@ final class SetPrimaryCharacter implements IController
                 SET     isPrimary = 0
                 WHERE   userID = ?
                     AND isPrimary = 1
-                    AND gameID = ?";
+                    AND game = ?";
         $statement = WCF::getDB()->prepare($sql);
         $statement->execute([
             $character->userID,
-            $character->gameID,
+            $character->game,
         ]);
 
         $editor = new CharacterEditor($character);

@@ -81,7 +81,7 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         $sql = "SELECT  *
                 FROM    rp1_member
                 WHERE   userID = ?
-                    AND gameID = ?
+                    AND game = ?
                     AND isDisabled = ?";
         $statement = WCF::getDB()->prepare($sql);
         $statement->execute([
@@ -122,7 +122,7 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         $sql = "SELECT  *
                 FROM    rp1_member
                 WHERE   characterName = ?
-                    AND gameID = ?";
+                    AND game = ?";
         $statement = WCF::getDB()->prepare($sql);
         $statement->execute([
             $name,
@@ -155,29 +155,29 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         if ($this->isPrimary || !$this->userID) {
             return new CharacterProfile($this);
         } else {
-            $characterPrimaryIDs = UserStorageHandler::getInstance()->getField('characterPrimaryIDs', $this->userID);
+            $characterPrimaries = UserStorageHandler::getInstance()->getField('characterPrimaries', $this->userID);
 
             // cache does not exist or is outdated
-            if ($characterPrimaryIDs === null) {
-                $sql = "SELECT  gameID, characterID
-                        FROM    rp" . WCF_N . "_member
+            if ($characterPrimaries === null) {
+                $sql = "SELECT  game, characterID
+                        FROM    rp_member
                         WHERE   userID = ?
                             AND isPrimary = ?";
-                $statement = WCF::getDB()->prepareStatement($sql);
+                $statement = WCF::getDB()->prepare($sql);
                 $statement->execute([$this->userID, 1]);
-                $characterPrimaryIDs = $statement->fetchMap('gameID', 'characterID');
+                $characterPrimaries = $statement->fetchMap('game', 'characterID');
 
-                // update storage characterPrimaryIDs
+                // update storage characterPrimaries
                 UserStorageHandler::getInstance()->update(
                     $this->userID,
-                    'characterPrimaryIDs',
-                    \serialize($characterPrimaryIDs)
+                    'characterPrimaries',
+                    \serialize($characterPrimaries)
                 );
             } else {
-                $characterPrimaryIDs = \unserialize($characterPrimaryIDs);
+                $characterPrimaries = \unserialize($characterPrimaries);
             }
 
-            return CharacterProfileRuntimeCache::getInstance()->getObject($characterPrimaryIDs[$this->gameID]);
+            return CharacterProfileRuntimeCache::getInstance()->getObject($characterPrimaries[$this->game]);
         }
     }
 

@@ -97,7 +97,7 @@ final class CharacterGridView extends AbstractGridView
                 ->label('rp.acp.character.owner')
                 ->renderer(new UserLinkColumnRenderer(UserEditForm::class))
                 ->filter(new UserFilter()),
-            GridViewColumn::for('gameID')
+            GridViewColumn::for('game')
                 ->label('rp.acp.character.game')
                 ->filter(new SelectFilter(GameHandler::getInstance()->getGames())
                 ->hidden(),

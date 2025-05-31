@@ -41,7 +41,7 @@ final class PointsCharacterProfileMenu implements ICharacterProfileMenu
                 LEFT JOIN   rp1_raid_event raidEvent
                 ON          raid.raidEventID = raidEvent.eventID
                 WHERE       attendee.characterID = ?
-                    AND     raid.gameID = ?";
+                    AND     raid.game = ?";
         $statement = WCF::getDB()->prepare($sql);
         $statement->execute([$characterID, \RP_CURRENT_GAME]);
         $raidDates = $statement->fetchMap('pointAccountID', 'date', false);

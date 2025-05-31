@@ -40,7 +40,7 @@ final class MyCharactersCache extends AbstractTolerantCache
     {
         $characterList = new CharacterProfileList();
         $characterList->getConditionBuilder()->add('userID = ?', [$this->userID]);
-        $characterList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
+        $characterList->getConditionBuilder()->add('game = ?', [$this->game]);
         $characterList->getConditionBuilder()->add('isDisabled = ?', [0]);
         $characterList->sqlOrderBy = 'characterName ASC';
         $characterList->readObjects();

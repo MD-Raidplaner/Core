@@ -24,6 +24,6 @@ class CharacterList extends DatabaseObjectList
     {
         parent::__construct();
 
-        $this->conditionBuilder->add('member.gameID = ?', [\RP_CURRENT_GAME]);
+        $this->conditionBuilder->add('member.game = ?', [\RP_CURRENT_GAME]);
     }
 }

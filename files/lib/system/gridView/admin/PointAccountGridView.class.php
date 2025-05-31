@@ -40,7 +40,7 @@ final class PointAccountGridView extends AbstractGridView
                 ->titleColumn()
                 ->filter(new I18nTextFilter())
                 ->sortable(sortByDatabaseColumn: 'titleI18n'),
-            GridViewColumn::for('gameID')
+            GridViewColumn::for('game')
                 ->label('rp.game.title')
                 ->renderer(new GameColumnRenderer())
                 ->filter(new SelectFilter(GameHandler::getInstance()->getGames()),
