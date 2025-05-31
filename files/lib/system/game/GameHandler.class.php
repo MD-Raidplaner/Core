@@ -15,7 +15,28 @@ use wcf\system\SingletonFactory;
  */
 final class GameHandler extends SingletonFactory
 {
+    /**
+     * @var array<string, GameItem>
+     */
     private array $games = [];
+
+    /**
+     * Return the game with the given identifier or `null` if no such game exists.
+     */
+    public function getGameByIdentifier(string $identifier): ?GameItem
+    {
+        return $this->games[$identifier] ?? null;
+    }
+
+    /**
+     * Returns all games that are currently registered.
+     * 
+     * @return array<string, GameItem>
+     */
+    public function getGames(): array
+    {
+        return $this->games;
+    }
 
     #[\Override]
     protected function init()
