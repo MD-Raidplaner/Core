@@ -7,7 +7,6 @@ use rp\data\character\avatar\CharacterAvatarAction;
 use rp\event\character\BeforeFindCharacters;
 use rp\system\character\CharacterHandler;
 use wcf\data\AbstractDatabaseObjectAction;
-use wcf\data\ISearchAction;
 use wcf\system\clipboard\ClipboardHandler;
 use wcf\system\event\EventHandler;
 use wcf\system\exception\SystemException;
@@ -28,9 +27,8 @@ use wcf\util\ImageUtil;
  * @method  CharacterEditor[]    getObjects()
  * @method  CharacterEditor  getSingleObject()
  */
-class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAction
+class CharacterAction extends AbstractDatabaseObjectAction
 {
-    protected $allowGuestAccess = ['getSearchResultList'];
     protected $className = CharacterEditor::class;
     protected $permissionsCreate = ['admin.rp.canAddCharacter'];
     protected $permissionsDelete = ['admin.rp.canDeleteCharacter'];
@@ -75,38 +73,6 @@ class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAct
     public function delete(): void
     {
         throw new \BadMethodCallException('delete() is not supported');
-    }
-
-    #[\Override]
-    public function getSearchResultList(): array
-    {
-        $searchString = $this->parameters['data']['searchString'];
-        $excludedSearchValues = $this->parameters['data']['excludedSearchValues'] ?? [];
-        $list = [];
-
-        // find characters
-        $searchString = \addcslashes($searchString, '_%');
-
-        $event = new BeforeFindCharacters($searchString);
-        EventHandler::getInstance()->fire($event);
-
-        $characterProfileList = new CharacterProfileList();
-        $characterProfileList->getConditionBuilder()->add("characterName LIKE ?", [$event->getSearchString() . '%']);
-        if (!empty($excludedSearchValues)) {
-            $characterProfileList->getConditionBuilder()->add("characterName NOT IN (?)", [$excludedSearchValues]);
-        }
-        $characterProfileList->sqlLimit = 10;
-        $characterProfileList->readObjects();
-
-        foreach ($characterProfileList as $characterProfile) {
-            $list[] = [
-                'icon' => $characterProfile->getAvatar()->getImageTag(16),
-                'label' => $characterProfile->characterName,
-                'objectID' => $characterProfile->characterID,
-            ];
-        }
-
-        return $list;
     }
 
     protected function unmarkItems(?array $characterIDs = null): void
@@ -194,16 +160,6 @@ class CharacterAction extends AbstractDatabaseObjectAction implements ISearchAct
                 $avatarFile->setProcessed($avatar->getLocation());
             } catch (\RuntimeException $e) {
             }
-        }
-    }
-
-    #[\Override]
-    public function validateGetSearchResultList(): void
-    {
-        $this->readString('searchString', false, 'data');
-
-        if (isset($this->parameters['data']['excludedSearchValues']) && !\is_array($this->parameters['data']['excludedSearchValues'])) {
-            throw new UserInputException('excludedSearchValues');
         }
     }
 }
