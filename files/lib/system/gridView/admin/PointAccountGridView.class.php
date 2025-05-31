@@ -5,7 +5,7 @@ namespace rp\system\gridView\admin;
 use rp\acp\form\PointAccountEditForm;
 use rp\data\point\account\I18nPointAccountList;
 use rp\event\gridView\admin\PointAccountGridViewInitialized;
-use rp\system\cache\eager\GameCache;
+use rp\system\game\GameHandler;
 use rp\system\gridView\renderer\GameColumnRenderer;
 use rp\system\interaction\admin\PointAccountInteractions;
 use wcf\system\gridView\AbstractGridView;
@@ -43,7 +43,7 @@ final class PointAccountGridView extends AbstractGridView
             GridViewColumn::for('gameID')
                 ->label('rp.game.title')
                 ->renderer(new GameColumnRenderer())
-                ->filter(new SelectFilter((new GameCache())->getCache()->games)),
+                ->filter(new SelectFilter(GameHandler::getInstance()->getGames()),
         ]);
 
         $provider = new PointAccountInteractions();

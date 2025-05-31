@@ -2,7 +2,6 @@
 
 namespace rp\data\faction;
 
-use rp\data\game\GameCache;
 use rp\system\cache\eager\FactionCache;
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;

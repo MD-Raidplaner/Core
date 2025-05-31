@@ -4,8 +4,8 @@ namespace rp\system;
 
 use rp\data\game\Game;
 use rp\page\CalendarPage;
-use rp\system\cache\eager\GameCache;
 use rp\system\character\point\CharacterPointHandler;
+use rp\system\game\GameHandler;
 use wcf\system\application\AbstractApplication;
 
 // define current raidplaner version
@@ -51,6 +51,6 @@ final class RPCore extends AbstractApplication
      */
     protected function initGame(): void
     {
-        self::$gameObj = (new GameCache())->getCache()->getCurrentGame();
+        self::$gameObj = GameHandler::getInstance()->getCurrentGame();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace rp\system\gridView\renderer;
 
-use rp\system\cache\eager\GameCache;
+use rp\system\game\GameHandler;
 use wcf\data\DatabaseObject;
 use wcf\system\gridView\renderer\DefaultColumnRenderer;
 use wcf\util\StringUtil;
@@ -31,7 +31,7 @@ class GameColumnRenderer extends DefaultColumnRenderer
             return '';
         }
 
-        $game = (new GameCache())->getCache()->getGame($value);
+        $game = GameHandler::getInstance()->getGameByIdentifier($value);
         if ($game === null) {
             return '';
         }
