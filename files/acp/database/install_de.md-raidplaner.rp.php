@@ -533,7 +533,7 @@ return [
         ->indices([
             DatabaseTablePrimaryIndex::create()
                 ->columns(['raidID']),
-        ])
+        ]),
 
     PartialDatabaseTable::create('rp1_item_to_raid')
         ->foreignKeys([

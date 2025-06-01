@@ -99,7 +99,7 @@ final class CharacterGridView extends AbstractGridView
                 ->filter(new UserFilter()),
             GridViewColumn::for('game')
                 ->label('rp.acp.character.game')
-                ->filter(new SelectFilter(GameHandler::getInstance()->getGames())
+                ->filter(new SelectFilter(GameHandler::getInstance()->getGames()))
                 ->hidden(),
             GridViewColumn::for('created')
                 ->label('rp.character.created')

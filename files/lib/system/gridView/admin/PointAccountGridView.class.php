@@ -43,7 +43,7 @@ final class PointAccountGridView extends AbstractGridView
             GridViewColumn::for('game')
                 ->label('rp.game.title')
                 ->renderer(new GameColumnRenderer())
-                ->filter(new SelectFilter(GameHandler::getInstance()->getGames()),
+                ->filter(new SelectFilter(GameHandler::getInstance()->getGames())),
         ]);
 
         $provider = new PointAccountInteractions();
