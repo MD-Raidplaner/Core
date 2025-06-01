@@ -55,11 +55,11 @@ return [
     DatabaseTable::create('rp1_classification_to_faction')
         ->columns([
             NotNullInt10DatabaseTableColumn::create('classificationID'),
-            NotNullInt10DatabaseTableColumn::create('factionID'),
+            NotNullVarchar255DatabaseTableColumn::create('faction'),
         ])
         ->indices([
-            DatabaseTableIndex::create('classificationID_factionID')
-                ->columns(['classificationID', 'factionID'])
+            DatabaseTableIndex::create('classificationID_faction')
+                ->columns(['classificationID', 'faction'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
@@ -121,41 +121,6 @@ return [
                 ->columns(['classificationID'])
                 ->referencedTable('rp1_classification')
                 ->referencedColumns(['classificationID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    DatabaseTable::create('rp1_faction')
-        ->columns([
-            ObjectIdDatabaseTableColumn::create('factionID'),
-            NotNullVarchar255DatabaseTableColumn::create('game'),
-            NotNullVarchar255DatabaseTableColumn::create('identifier'),
-            NotNullVarchar255DatabaseTableColumn::create('title'),
-            NotNullVarchar255DatabaseTableColumn::create('icon')
-                ->defaultValue(''),
-            DefaultFalseBooleanDatabaseTableColumn::create('isDisabled'),
-            NotNullInt10DatabaseTableColumn::create('packageID'),
-        ])
-        ->indices([
-            DatabaseTablePrimaryIndex::create()
-                ->columns(['factionID']),
-            DatabaseTableIndex::create('identifier_game')
-                ->columns(['identifier', 'game'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['packageID'])
-                ->referencedTable('wcf1_package')
-                ->referencedColumns(['packageID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    PartialDatabaseTable::create('rp1_classification_to_faction')
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['factionID'])
-                ->referencedTable('rp1_faction')
-                ->referencedColumns(['factionID'])
                 ->onDelete('CASCADE'),
         ]),
 
@@ -494,11 +459,11 @@ return [
     DatabaseTable::create('rp1_race_to_faction')
         ->columns([
             NotNullInt10DatabaseTableColumn::create('raceID'),
-            NotNullInt10DatabaseTableColumn::create('factionID'),
+            NotNullVarchar255DatabaseTableColumn::create('faction'),
         ])
         ->indices([
-            DatabaseTableIndex::create('raceID_factionID')
-                ->columns(['raceID', 'factionID'])
+            DatabaseTableIndex::create('raceID_faction')
+                ->columns(['raceID', 'faction'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
@@ -506,11 +471,6 @@ return [
                 ->columns(['raceID'])
                 ->referencedTable('rp1_race')
                 ->referencedColumns(['raceID'])
-                ->onDelete('CASCADE'),
-            DatabaseTableForeignKey::create()
-                ->columns(['factionID'])
-                ->referencedTable('rp1_faction')
-                ->referencedColumns(['factionID'])
                 ->onDelete('CASCADE'),
         ]),
 
