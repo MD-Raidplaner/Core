@@ -1,5 +1,6 @@
 <?php
 
+use rp\system\game\GameItem;
 use wcf\data\language\item\LanguageItemEditor;
 use wcf\data\option\OptionEditor;
 use wcf\data\package\PackageCache;
@@ -7,16 +8,7 @@ use wcf\system\language\LanguageFactory;
 use wcf\system\WCF;
 
 // set default game
-$sql = "INSERT INTO rp1_game
-                    (identifier, title, packageID)
-        VALUES      (?, ?, ?)";
-$statement = WCF::getDB()->prepare($sql);
-$statement->execute([
-    'default',
-    'rp.game.default',
-    PackageCache::getInstance()->getPackageByIdentifier('de.md-raidplaner.rp')->packageID,
-]);
-$gameID = WCF::getDB()->getInsertID('rp1_game', 'gameID');
+$game = 'default';
 
 $titles = [
     'de' => 'Standard',
@@ -48,19 +40,19 @@ $sql = "UPDATE  wcf1_option
         WHERE   optionName = ?";
 $statement = WCF::getDB()->prepare($sql);
 $statement->execute([
-    $gameID,
-    'rp_current_game_id',
+    $game,
+    'rp_current_game',
 ]);
 OptionEditor::resetCache();
 
 
 // set default point account
 $sql = "INSERT INTO rp1_point_account
-                    (title, description, gameID)
+                    (title, description, game)
         VALUES      (?, ?, ?)";
 $statement = WCF::getDB()->prepare($sql);
 $statement->execute([
     'Default',
     'Default-Pool',
-    $gameID,
+    $game,
 ]);

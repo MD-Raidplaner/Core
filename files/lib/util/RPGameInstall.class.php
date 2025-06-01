@@ -20,7 +20,7 @@ use wcf\util\StringUtil;
 final class RPGameInstall
 {
     public function __construct(
-        private readonly int $gameID,
+        private readonly string $game,
         private readonly string $pointAccountName,
         private readonly array $events,
         private readonly int $packageID,
@@ -32,7 +32,7 @@ final class RPGameInstall
     private function createPointAccount(): PointAccount
     {
         return PointAccountEditor::create([
-            'gameID' => $this->gameID,
+            'game' => $this->game,
             'title' => $this->pointAccountName,
         ]);
     }
@@ -44,7 +44,7 @@ final class RPGameInstall
     {
         foreach ($this->events as $event) {
             $eventObj = RaidEventEditor::create([
-                'gameID' => $this->gameID,
+                'game' => $this->game,
                 'pointAccountID' => $pointAccount->getObjectID(),
                 'icon' => $event['icon'],
             ]);

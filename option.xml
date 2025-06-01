@@ -43,7 +43,7 @@
             <!-- /general -->
 
             <!-- rp.settings -->
-            <option name="rp_current_game_id">
+            <option name="rp_current_game">
                 <categoryname>rp.settings</categoryname>
                 <optiontype>gameSelect</optiontype>
             </option>

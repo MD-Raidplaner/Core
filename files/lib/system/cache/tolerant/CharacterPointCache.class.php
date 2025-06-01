@@ -26,7 +26,7 @@ final class CharacterPointCache extends AbstractTolerantCache
 {
     public function __construct(
         private readonly int $userID,
-        private readonly int $gameID = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME
     ) {}
 
     /**
@@ -137,7 +137,7 @@ final class CharacterPointCache extends AbstractTolerantCache
         $pointAccounts = (new PointAccountCache())->getCache()->getAccounts();
 
         $characterList = new CharacterProfileList();
-        $characterList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
+        $characterList->getConditionBuilder()->add('game = ?', [$this->game]);
         $characterList->getConditionBuilder()->add('userID = ?', [$this->userID]);
         $characterList->readObjects();
         $characters = $characterList->getObjects();
