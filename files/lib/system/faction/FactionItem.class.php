@@ -8,6 +8,7 @@ use wcf\system\database\exception\DatabaseQueryExecutionException;
 use wcf\system\exception\ClassNotFoundException;
 use wcf\system\exception\SystemException;
 use wcf\system\WCF;
+use wcf\util\StringUtil;
 
 /**
  * Represents a faction item with a unique identifier.
