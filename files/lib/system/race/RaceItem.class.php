@@ -39,10 +39,6 @@ final class RaceItem
      */
     public function getIcon(int $size, string $type = ''): string
     {
-        if ($this->icon === null) {
-            return '';
-        }
-
         return \sprintf(
             '<img src="%s" style="width: %dpx; height: %dpx" alt="" class="raceIcon jsTooltip" title="%s" loading="lazy">',
             StringUtil::encodeHTML($this->getIconPath($type)),
@@ -57,7 +53,7 @@ final class RaceItem
      */
     public function getIconPath(string $type): string
     {
-        $icon = $this->icon . match ($type) {
+        $icon = ($this->icon ?? $this->identifier) . match ($type) {
             'female' => '_female',
             'male' => '_male',
             default => '',
