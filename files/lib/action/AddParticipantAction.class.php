@@ -10,12 +10,12 @@ use rp\data\event\Event;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeAction;
 use rp\system\cache\eager\ClassificationCache;
-use rp\system\cache\eager\RoleCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use rp\system\cache\runtime\EventRuntimeCache;
 use rp\system\character\AvailableCharacter;
 use rp\system\form\builder\field\DynamicSelectFormField;
 use rp\system\race\RaceHandler;
+use rp\system\role\RoleHandler;
 use wcf\http\Helper;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\PermissionDeniedException;
@@ -95,10 +95,10 @@ final class AddParticipantAction implements RequestHandlerInterface
                     ->label('rp.event.raid.attendee.character')
                     ->required()
                     ->options($availableCharacters),
-                DynamicSelectFormField::create('roleID')
+                DynamicSelectFormField::create('role')
                     ->label('rp.role.title')
                     ->required()
-                    ->options((new RoleCache())->getCache()->getRoles())
+                    ->options(RoleHandler::getInstance()->getRoles())
                     ->triggerSelect(\sprintf('%s_%s', static::class, 'characterID'))
                     ->optionsMapping($roleMapping),
                 SingleSelectionFormField::create('status')
@@ -139,10 +139,10 @@ final class AddParticipantAction implements RequestHandlerInterface
                             $formField->addValidationError(new FormFieldValidationError('empty'));
                         }
                     })),
-                DynamicSelectFormField::create('roleID')
+                DynamicSelectFormField::create('role')
                     ->label('rp.role.title')
                     ->required()
-                    ->options((new RoleCache())->getCache()->getRoles())
+                    ->options(RoleHandler::getInstance()->getRoles())
                     ->triggerSelect(\sprintf('%s_%s', static::class, 'classificationID'))
                     ->optionsMapping((new ClassificationCache())->getCache()->getClassificationRoles())
                     ->addValidator(new FormFieldValidator('check', function (SingleSelectionFormField $formField) {

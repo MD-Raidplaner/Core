@@ -5,16 +5,15 @@ namespace rp\system\event;
 use rp\data\character\CharacterList;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeList;
-use rp\data\role\Role;
 use rp\event\character\AvailableCharactersChecking;
 use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\eager\RaidEventCache;
-use rp\system\cache\eager\RoleCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
 use rp\system\game\GameHandler;
+use rp\system\role\RoleHandler;
 use wcf\system\clipboard\ClipboardHandler;
 use wcf\system\event\EventHandler;
 use wcf\system\form\builder\container\FormContainer;
@@ -245,8 +244,7 @@ final class RaidEventController extends AbstractEventController
         $roleDistributionContainer = FormContainer::create('roleDistribution')
             ->label('rp.event.raid.distribution.role');
 
-        /** @var Role $role */
-        foreach ((new RoleCache())->getCache()->getRoles() as $role) {
+        foreach (RoleHandler::getInstance()->getRoles() as $role) {
             $roleDistributionContainer->appendChild(
                 IntegerFormField::create($role->identifier)
                     ->label($role->getTitle())
@@ -320,7 +318,7 @@ final class RaidEventController extends AbstractEventController
                     $availableDistributions = [0 => WCF::getLanguage()->get('rp.event.raid.participants')];
                     break;
                 case 'role':
-                    $availableDistributions = (new RoleCache())->getCache()->getRoles();
+                    $availableDistributions = RoleHandler::getInstance()->getRoles();
                     break;
             }
 
@@ -430,7 +428,7 @@ final class RaidEventController extends AbstractEventController
                 }
                 break;
             case 'role':
-                $roles = (new RoleCache())->getCache()->getRoles();
+                $roles = RoleHandler::getInstance()->getRoles();
                 foreach ($roles as $role) {
                     $identifier = $role->identifier;
                     $value = (int)$event->{$identifier};
