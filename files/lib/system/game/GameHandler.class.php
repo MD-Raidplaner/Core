@@ -7,7 +7,7 @@ use wcf\system\event\EventHandler;
 use wcf\system\SingletonFactory;
 
 /**
- *
+ * GameHandler is a singleton factory that manages the games in the system.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
@@ -48,7 +48,7 @@ final class GameHandler extends SingletonFactory
     }
 
     #[\Override]
-    protected function init()
+    protected function init(): void
     {
         $event = new GameCollecting();
         EventHandler::getInstance()->fire($event);
