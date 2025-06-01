@@ -10,12 +10,12 @@ use rp\data\event\Event;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeAction;
 use rp\system\cache\eager\ClassificationCache;
-use rp\system\cache\eager\RaceCache;
 use rp\system\cache\eager\RoleCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use rp\system\cache\runtime\EventRuntimeCache;
 use rp\system\character\AvailableCharacter;
 use rp\system\form\builder\field\DynamicSelectFormField;
+use rp\system\race\RaceHandler;
 use wcf\http\Helper;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\PermissionDeniedException;
@@ -118,7 +118,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                 SingleSelectionFormField::create('raceID')
                     ->label('rp.race.title')
                     ->required()
-                    ->options(['' => 'wcf.global.noSelection'] + (new RaceCache())->getCache()->getRaces())
+                    ->options(['' => 'wcf.global.noSelection'] + RaceHandler::getInstance()->getRaces())
                     ->addValidator(new FormFieldValidator('check', function (SingleSelectionFormField $formField) {
                         $value = $formField->getSaveValue();
 

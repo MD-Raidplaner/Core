@@ -360,13 +360,6 @@
             <item name="wcf.acp.pip.rpGame.identifier"><![CDATA[Game Identifier]]></item>
             <item name="wcf.acp.pip.rpGame.identifier.error.notUnique"><![CDATA[This identifier is already used by another game.]]></item>
             <item name="wcf.acp.pip.rpGame.info"><![CDATA[The <kbd>rpGame</kbd> package installation plugin installs new games.]]></item>
-            <item name="wcf.acp.pip.rpRace.factions"><![CDATA[Factions]]></item>
-            <item name="wcf.acp.pip.rpRace.factions.description"><![CDATA[This race is part of the factions.]]></item>
-            <item name="wcf.acp.pip.rpRace.game"><![CDATA[Game]]></item>
-            <item name="wcf.acp.pip.rpRace.game.description"><![CDATA[This faction is part of the selected game.]]></item>
-            <item name="wcf.acp.pip.rpRace.icon"><![CDATA[Icon]]></item>
-            <item name="wcf.acp.pip.rpRace.icon.description"><![CDATA[The specified icon must be located in the <kbd>images/gameIdentifier/</kbd> directory of the end application. Allowed file extension: png]]></item>
-            <item name="wcf.acp.pip.rpRace.identifier"><![CDATA[Faction Identifier]]></item>
             <item name="wcf.acp.pip.rpRole.game"><![CDATA[Game]]></item>
             <item name="wcf.acp.pip.rpRole.game.description"><![CDATA[This role is part of the selected game.]]></item>
             <item name="wcf.acp.pip.rpRole.icon"><![CDATA[Icon]]></item>
