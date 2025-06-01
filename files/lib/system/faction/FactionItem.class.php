@@ -2,8 +2,6 @@
 
 namespace rp\system\faction;
 
-use LogicException;
-use Error;
 use rp\system\game\GameHandler;
 use rp\system\game\GameItem;
 use wcf\system\database\exception\DatabaseQueryExecutionException;
