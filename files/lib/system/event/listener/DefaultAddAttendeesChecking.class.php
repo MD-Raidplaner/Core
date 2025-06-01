@@ -28,7 +28,7 @@ final class DefaultAddAttendeesChecking
                 'characterID' => $character->getObjectID(),
                 'characterName' => $character->getTitle(),
                 'classificationID' => $character->classificationID,
-                'roleID' => $character->roleID,
+                'role' => $character->role,
             ]);
         }
     }

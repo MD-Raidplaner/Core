@@ -91,11 +91,11 @@ return [
     DatabaseTable::create('rp1_classification_to_role')
         ->columns([
             NotNullInt10DatabaseTableColumn::create('classificationID'),
-            NotNullInt10DatabaseTableColumn::create('roleID'),
+            NotNullVarchar255DatabaseTableColumn::create('role'),
         ])
         ->indices([
-            DatabaseTableIndex::create('classificationID_roleID')
-                ->columns(['classificationID', 'roleID'])
+            DatabaseTableIndex::create('classificationID_role')
+                ->columns(['classificationID', 'role'])
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
@@ -189,8 +189,7 @@ return [
                 ->defaultValue(''),
             IntDatabaseTableColumn::create('classificationID')
                 ->length(10),
-            IntDatabaseTableColumn::create('roleID')
-                ->length(10),
+            NotNullVarchar255DatabaseTableColumn::create('role'),
             NotNullVarchar255DatabaseTableColumn::create('notes')
                 ->defaultValue(''),
             NotNullInt10DatabaseTableColumn::create('created')
@@ -459,8 +458,7 @@ return [
             NotNullVarchar255DatabaseTableColumn::create('characterName'),
             IntDatabaseTableColumn::create('classificationID')
                 ->length(10),
-            IntDatabaseTableColumn::create('roleID')
-                ->length(10),
+            NotNullVarchar255DatabaseTableColumn::create('role'),
         ])
         ->indices([
             DatabaseTableIndex::create('raidID_characterID')
@@ -483,11 +481,6 @@ return [
                 ->referencedTable('rp1_raid')
                 ->referencedColumns(['raidID'])
                 ->onDelete('CASCADE'),
-            DatabaseTableForeignKey::create()
-                ->columns(['roleID'])
-                ->referencedTable('rp1_role')
-                ->referencedColumns(['roleID'])
-                ->onDelete('SET NULL'),
         ]),
 
     DatabaseTable::create('rp1_raid_event')
@@ -526,50 +519,6 @@ return [
                 ->referencedTable('rp1_raid_event')
                 ->referencedColumns(['eventID'])
                 ->onDelete('CASCADE'),
-        ]),
-
-    DatabaseTable::create('rp1_role')
-        ->columns([
-            ObjectIdDatabaseTableColumn::create('roleID'),
-            NotNullVarchar255DatabaseTableColumn::create('game'),
-            NotNullVarchar255DatabaseTableColumn::create('identifier'),
-            NotNullVarchar255DatabaseTableColumn::create('title'),
-            NotNullVarchar255DatabaseTableColumn::create('icon')
-                ->defaultValue(''),
-            DefaultFalseBooleanDatabaseTableColumn::create('isDisabled'),
-            NotNullInt10DatabaseTableColumn::create('packageID'),
-        ])
-        ->indices([
-            DatabaseTablePrimaryIndex::create()
-                ->columns(['roleID']),
-            DatabaseTableIndex::create('identifier_game')
-                ->columns(['identifier', 'game'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['packageID'])
-                ->referencedTable('wcf1_package')
-                ->referencedColumns(['packageID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    PartialDatabaseTable::create('rp1_classification_to_role')
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['roleID'])
-                ->referencedTable('rp1_role')
-                ->referencedColumns(['roleID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    PartialDatabaseTable::create('rp1_event_raid_attendee')
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['roleID'])
-                ->referencedTable('rp1_role')
-                ->referencedColumns(['roleID'])
-                ->onDelete('SET NULL'),
         ]),
 
     DatabaseTable::create('rp1_server')

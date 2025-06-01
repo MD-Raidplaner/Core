@@ -119,12 +119,12 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
   #showSwitchDialog(template: string): void {
     const dialog = dialogFactory().fromHtml(template).asPrompt();
     const characterId = dialog.content.querySelector<HTMLSelectElement>('select[name="characterID"]');
-    const roleId = dialog.content.querySelector<HTMLSelectElement>('select[name="roleId"]');
+    const role = dialog.content.querySelector<HTMLSelectElement>('select[name="role"]');
     dialog.addEventListener("primary", async () => {
       (await deleteAttendee(this.attendeeId)).unwrap();
       this.dispatchEvent(new CustomEvent("delete"));
 
-      const response = await createAttendee(this.eventId, characterId!.value, parseInt(roleId!.value), this.status);
+      const response = await createAttendee(this.eventId, characterId!.value, role!.value, this.status);
       if (!response.ok) {
         const validationError = response.error.getValidationError();
         if (validationError === undefined) {
