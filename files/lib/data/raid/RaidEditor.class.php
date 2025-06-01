@@ -55,7 +55,7 @@ class RaidEditor extends DatabaseObjectEditor implements IEditableCachedObject
                     'characterID' => $attendee->characterID,
                     'characterName' => $attendee->characterName,
                     'classificationID' => $attendee->classificationID,
-                    'roleID' => $attendee->roleID,
+                    'role' => $attendee->role,
                 ];
             }
         } else {
@@ -70,7 +70,7 @@ class RaidEditor extends DatabaseObjectEditor implements IEditableCachedObject
         if (empty($attendees)) return;
 
         $sql = "INSERT IGNORE INTO  rp1_raid_attendee
-                                    (raidID, characterID, characterName, classificationID, roleID)
+                                    (raidID, characterID, characterName, classificationID, role)
                 VALUES              (?, ?, ?, ?, ?)";
         $statement = WCF::getDB()->prepare($sql);
         WCF::getDB()->beginTransaction();
@@ -80,7 +80,7 @@ class RaidEditor extends DatabaseObjectEditor implements IEditableCachedObject
                 $attendee['characterID'],
                 $attendee['characterName'],
                 $attendee['classificationID'],
-                $attendee['roleID'],
+                $attendee['role'],
             ]);
         }
         WCF::getDB()->commitTransaction();

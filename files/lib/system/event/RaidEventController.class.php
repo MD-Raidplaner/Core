@@ -303,8 +303,8 @@ final class RaidEventController extends AbstractEventController
                         $attendees[$attendee->status][0][] = $attendee;
                         break;
                     case 'role':
-                        $attendees[$attendee->status][$attendee->roleID] ??= [];
-                        $attendees[$attendee->status][$attendee->roleID][] = $attendee;
+                        $attendees[$attendee->status][$attendee->role] ??= [];
+                        $attendees[$attendee->status][$attendee->role][] = $attendee;
                         break;
                 }
             }

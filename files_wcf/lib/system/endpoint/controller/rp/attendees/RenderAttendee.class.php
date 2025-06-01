@@ -34,7 +34,7 @@ final class RenderAttendee implements IController
                 $distributionID = $attendee->classificationID;
                 break;
             case 'role':
-                $distributionID = $attendee->roleID;
+                $distributionID = $attendee->role;
                 break;
         }
 

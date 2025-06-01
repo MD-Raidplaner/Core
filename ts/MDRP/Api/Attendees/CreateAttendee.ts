@@ -12,7 +12,7 @@ import { ApiResult, apiResultFromError, apiResultFromValue } from "WoltLabSuite/
 export async function createAttendee(
   eventId: number,
   characterId: string,
-  roleId: number,
+  role: string,
   status: number,
   guestToken: string = "",
 ): Promise<ApiResult<Response>> {
@@ -21,7 +21,7 @@ export async function createAttendee(
     const payload = {
         eventID: eventId,
         characterID: characterId,
-        roleID: roleId,
+        role: role,
         status,
         guestToken,
     };

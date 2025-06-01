@@ -79,13 +79,13 @@ final class AddParticipantAction implements RequestHandlerInterface
             foreach ($availableCharacters as $characterID => $character) {
                 $characterClassificationID = $character->getClassificationID();
 
-                foreach ($classificationRoles as $roleID => $classifications) {
+                foreach ($classificationRoles as $role => $classifications) {
                     foreach ($classifications as $classificationID) {
                         if ($characterClassificationID !== $classificationID) {
                             continue;
                         }
 
-                        $roleMapping[$characterID][] = $roleID;
+                        $roleMapping[$characterID][] = $role;
                     }
                 }
             }
@@ -207,7 +207,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                     'characterName' => $character->characterName,
                     'classificationID' => $availableCharacter->getClassificationID(),
                     'internID' => $availableCharacter->getID(),
-                    'roleID' => $formData['roleID'],
+                    'role' => $formData['role'],
                     'status' => $formData['status'],
                 ];
             } else {
@@ -215,7 +215,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                     'characterName' => $formData['characterName'],
                     'email' => $formData['email'],
                     'classificationID' => $formData['classificationID'],
-                    'roleID' => $formData['roleID'],
+                    'role' => $formData['role'],
                     'status' => EventRaidAttendee::STATUS_LOGIN,
                 ];
             }
@@ -231,7 +231,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                     $distributionID = $attendee->classificationID;
                     break;
                 case 'role':
-                    $distributionID = $attendee->roleID;
+                    $distributionID = $attendee->role;
                     break;
             }
 

@@ -23,7 +23,7 @@ final class CreateAttendee
         private readonly string $characterName,
         private readonly int $classificationID,
         private readonly int|string $internID,
-        private readonly int $roleID,
+        private readonly string $role,
         private readonly int $status,
     ) {
     }
@@ -37,7 +37,7 @@ final class CreateAttendee
                 'classificationID' => $this->classificationID,
                 'eventID' => $this->event->eventID,
                 'internID' => $this->internID,
-                'roleID' => $this->roleID,
+                'role' => $this->role,
                 'status' => $this->status,
             ]
         ]);

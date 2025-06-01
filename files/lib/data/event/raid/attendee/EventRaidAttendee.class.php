@@ -25,7 +25,7 @@ use wcf\system\WCF;
  * @property-read   string  $email      email address of the participant for a guest registration
  * @property-read   string  $internID       special id for the character of the attendee
  * @property-read   int $classificationID       id of the classification
- * @property-read   int $roleID     id of the role
+ * @property-read   string $role        role of the attendee (e.g. `tank`, `healer`, `dps`)
  * @property-read   string  $notes      notes of the attendee
  * @property-read   int $created        timestamp at which the attendee has been created
  * @property-read   int $addByLeader        is `1` if the attendee added by raid leader, otherwise `0`
@@ -101,7 +101,7 @@ final class EventRaidAttendee extends DatabaseObject implements ITitledLinkObjec
                     $this->possibleDistribution[] = 'none';
                     break;
                 case 'role':
-                    $sql = "SELECT  roleID
+                    $sql = "SELECT  role
                             FROM    rp1_classification_to_role
                             WHERE   classificationID = ?";
                     $statement = WCF::getDB()->prepare($sql);

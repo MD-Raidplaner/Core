@@ -18,7 +18,7 @@ final class UpdateAttendeeStatus
 {
     public function __construct(
         private readonly EventRaidAttendee $attendee,
-        private readonly int $roleID,
+        private readonly string $role,
         private readonly string $status,
     ) {
     }
@@ -26,7 +26,7 @@ final class UpdateAttendeeStatus
     public function __invoke(): void
     {
         $data = [
-            'roleID' => $this->roleID,
+            'role' => $this->role,
             'status' => $this->status,
         ];
 
