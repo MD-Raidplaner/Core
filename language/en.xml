@@ -356,12 +356,6 @@
             <item name="wcf.acp.option.rp_show_twinks.description"><![CDATA[With Twink display enabled, points for main characters and Twinks are counted separately. When disabled, all points are attributed to the main character.]]></item>
         </category>
 
-        <category name="wcf.acp.pip">
-            <item name="wcf.acp.pip.rpGame.identifier"><![CDATA[Game Identifier]]></item>
-            <item name="wcf.acp.pip.rpGame.identifier.error.notUnique"><![CDATA[This identifier is already used by another game.]]></item>
-            <item name="wcf.acp.pip.rpGame.info"><![CDATA[The <kbd>rpGame</kbd> package installation plugin installs new games.]]></item>
-        </category>
-
         <category name="wcf.like">
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment"><![CDATA[Reacted with {@$reaction->render()} to the comment by {if $commentAuthor}<a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}a guest{/if} on the event <a href="{$comment->getLink()}">{$event->getTitle()}</a>.]]></item>
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment.response"><![CDATA[Reacted with {@$reaction->render()} to the response by {if $responseAuthor}<a href="{link controller='User' object=$responseAuthor}{/link}">{$responseAuthor->username}</a>{else}a guest{/if} on the comment by {if $commentAuthor}<a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}a guest{/if} on the event <a href="{$response->getLink()}">{$event->getTitle()}</a>.]]></item>

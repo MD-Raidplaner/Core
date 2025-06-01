@@ -356,13 +356,6 @@
             <item name="wcf.acp.option.rp_show_twinks.description"><![CDATA[Bei aktivierter Twink-Anzeige werden Punkte für Hauptcharaktere und Twinks separat gezählt. Bei Deaktivierung werden alle Punkte dem Hauptcharakter zugeordnet.]]></item>
         </category>
 
-        <category name="wcf.acp.pip">
-            <item name="wcf.acp.pip.rpGame.identifier"><![CDATA[Bezeichner des Spiels]]></item>
-            <item name="wcf.acp.pip.rpGame.identifier.error.notUnique"><![CDATA[Der angegebene Bezeichner wird beits von einem anderen Spiel verwendet.]]></item>
-            <item name="wcf.acp.pip.rpGame.identifier.error.tooFewSegments"><![CDATA[Der angegebene Bezeichner enthält nur {#$segmentCount} Abschnitt{if $segmentCount > 1}e{/if}.]]></item>
-            <item name="wcf.acp.pip.rpGame.info"><![CDATA[Das <kbd>rpGame</kbd>-Package Installation Plugin installiert neue Spiele.]]></item>
-        </category>
-
         <category name="wcf.like">
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment"><![CDATA[Hat mit {@$reaction->render()} auf den Kommentar {if $commentAuthor}von <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}eines Gasts{/if} zum Termin <a href="{$comment->getLink()}">{$event->getTitle()}</a> reagiert.]]></item>
             <item name="wcf.like.title.de.md-raidplaner.rp.eventComment.response"><![CDATA[Hat mit {@$reaction->render()} auf die Antwort {if $responseAuthor}von <a href="{link controller='User' object=$responseAuthor}{/link}">{$responseAuthor->username}</a>{else}eines Gasts{/if} zum Kommentar {if $commentAuthor}von <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a>{else}eines Gasts{/if} zum Termin <a href="{$response->getLink()}">{$event->getTitle()}</a> reagiert.]]></item>
