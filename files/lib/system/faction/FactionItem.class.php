@@ -43,7 +43,7 @@ final class FactionItem
         }
 
         return \sprintf(
-            '<img src="%s" style="width: %dpx; height: %dpx" alt="" class="gameIcon jsTooltip" title="%s" loading="lazy">',
+            '<img src="%s" style="width: %dpx; height: %dpx" alt="" class="factionIcon jsTooltip" title="%s" loading="lazy">',
             StringUtil::encodeHTML($this->getIconPath()),
             $size,
             $size,
