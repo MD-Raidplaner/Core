@@ -20,6 +20,8 @@ final class GameCollecting implements IPsr14Event
     private array $games = [];
 
     /**
+     * Returns the registered game items.
+     * 
      * @return GameItem[]
      */
     public function getGames(): array
@@ -27,8 +29,18 @@ final class GameCollecting implements IPsr14Event
         return $this->games;
     }
 
+    /**
+     * Registers a game item.
+     */
     public function register(GameItem $game): void
     {
-        $this->games[] = $game;
+        if (\array_key_exists($game->identifier, $this->games)) {
+            throw new \InvalidArgumentException(\sprintf(
+                'Game with identifier %s already exists',
+                $game->identifier
+            ));
+        }
+
+        $this->games[$game->identifier] = $game;
     }
 }
