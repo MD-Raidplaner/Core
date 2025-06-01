@@ -38,10 +38,6 @@ final class FactionItem
      */
     public function getIcon(int $size): string
     {
-        if ($this->icon === null) {
-            return '';
-        }
-
         return \sprintf(
             '<img src="%s" style="width: %dpx; height: %dpx" alt="" class="factionIcon jsTooltip" title="%s" loading="lazy">',
             StringUtil::encodeHTML($this->getIconPath()),
@@ -60,7 +56,7 @@ final class FactionItem
             '%simages/%s/%s.webp',
             WCF::getPath('rp'),
             $this->getGame()->identifier,
-            $this->icon
+            $this->icon ?? $this->identifier
         );
     }
 
