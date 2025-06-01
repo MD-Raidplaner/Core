@@ -175,6 +175,7 @@
 
         <category name="rp.game">
             <item name="rp.game.title"><![CDATA[Games]]></item>
+            <item name="rp.game.default"><![CDATA[Default]]></item>
         </category>
 
         <category name="rp.item">
