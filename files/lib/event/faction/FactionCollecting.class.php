@@ -7,7 +7,7 @@ use rp\system\faction\FactionItem;
 use wcf\event\IPsr14Event;
 
 /**
- * Requests the collection of game items.
+ * Requests the collection of faction items.
  *
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
