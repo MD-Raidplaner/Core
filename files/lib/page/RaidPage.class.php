@@ -4,8 +4,8 @@ namespace rp\page;
 
 use CuyZ\Valinor\Mapper\MappingError;
 use rp\data\raid\Raid;
-use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\runtime\RaidRuntimeCache;
+use rp\system\classification\ClassificationHandler;
 use wcf\http\Helper;
 use wcf\page\AbstractPage;
 use wcf\system\exception\IllegalLinkException;
@@ -42,15 +42,13 @@ final class RaidPage extends AbstractPage
         $attendees = $this->raid->getAttendees();
         $classDistributions = [];
         foreach ($attendees as $attendee) {
-            $classificationID = $attendee['classificationID'];
-            $classification = (new ClassificationCache)->getCache()->getClassification($classificationID);
-
+            $classification = ClassificationHandler::getInstance()->getClassificationByIdentifier($attendee['classification'] ?? '');
             if ($classification === null) {
                 continue;
             }
 
-            if (!isset($classDistributions[$classificationID])) {
-                $classDistributions[$classificationID] = [
+            if (!isset($classDistributions[$classification])) {
+                $classDistributions[$classification] = [
                     'attendees' => [],
                     'count' => 0,
                     'object' => $classification,
@@ -58,13 +56,13 @@ final class RaidPage extends AbstractPage
                 ];
             }
 
-            $classDistributions[$classificationID]['count']++;
-            $classDistributions[$classificationID]['attendees'][] = $attendee;
+            $classDistributions[$classification]['count']++;
+            $classDistributions[$classification]['attendees'][] = $attendee;
         }
 
-        $totalAttendees = count($attendees);
-        foreach ($classDistributions as $classificationID => $distribution) {
-            $classDistributions[$classificationID]['percent'] = $totalAttendees > 0
+        $totalAttendees = \count($attendees);
+        foreach ($classDistributions as $classification => $distribution) {
+            $classDistributions[$classification]['percent'] = $totalAttendees > 0
                 ? \number_format(($distribution['count'] / $totalAttendees) * 100)
                 : 0;
         }

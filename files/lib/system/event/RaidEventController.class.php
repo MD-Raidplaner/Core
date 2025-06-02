@@ -6,11 +6,11 @@ use rp\data\character\CharacterList;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeList;
 use rp\event\character\AvailableCharactersChecking;
-use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\eager\PointAccountCache;
 use rp\system\cache\eager\RaidEventCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\character\CharacterHandler;
+use rp\system\classification\ClassificationHandler;
 use rp\system\form\builder\field\character\CharacterMultipleSelectionFormField;
 use rp\system\game\GameHandler;
 use rp\system\role\RoleHandler;
@@ -60,7 +60,7 @@ final class RaidEventController extends AbstractEventController
         $classDistributionContainer = FormContainer::create('classDistribution')
             ->label('rp.event.raid.distribution.class');
 
-        foreach ((new ClassificationCache())->getCache()->getClassifications() as $classification) {
+        foreach (ClassificationHandler::getInstance()->getClassifications() as $classification) {
             $classDistributionContainer->appendChild(
                 IntegerFormField::create($classification->identifier)
                     ->label($classification->getTitle())
@@ -295,8 +295,8 @@ final class RaidEventController extends AbstractEventController
 
                 switch ($this->getEvent()->distributionMode) {
                     case 'class':
-                        $attendees[$attendee->status][$attendee->classificationID] ??= [];
-                        $attendees[$attendee->status][$attendee->classificationID][] = $attendee;
+                        $attendees[$attendee->status][$attendee->classification] ??= [];
+                        $attendees[$attendee->status][$attendee->classification][] = $attendee;
                         break;
                     case 'none':
                         $attendees[$attendee->status][0] ??= [];
@@ -312,7 +312,7 @@ final class RaidEventController extends AbstractEventController
             $availableDistributions = [];
             switch ($this->getEvent()->distributionMode) {
                 case 'class':
-                    $availableDistributions = (new ClassificationCache())->getCache()->getClassifications();
+                    $availableDistributions = ClassificationHandler::getInstance()->getClassifications();
                     break;
                 case 'none':
                     $availableDistributions = [0 => WCF::getLanguage()->get('rp.event.raid.participants')];
@@ -406,7 +406,7 @@ final class RaidEventController extends AbstractEventController
 
         switch ($event->distributionMode) {
             case 'class':
-                foreach ((new ClassificationCache())->getCache()->getClassifications() as $classification) {
+                foreach (ClassificationHandler::getInstance()->getClassifications() as $classification) {
                     $identifier = $classification->identifier;
                     $value = (int)$event->{$identifier};
                     if (!$value) {

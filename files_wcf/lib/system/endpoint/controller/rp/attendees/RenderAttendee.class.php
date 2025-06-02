@@ -28,10 +28,10 @@ final class RenderAttendee implements IController
         $parameters = Helper::mapApiParameters($request, RenderAttendeeParameters::class);
         $attendee = Helper::fetchObjectFromRequestParameter($parameters->attendeeID, EventRaidAttendee::class);
 
-        $distributionID = 0;
+        $distributionID = 0; // TODO distributionID convert to string and change variable name to $distribution
         switch ($attendee->getEvent()->distributionMode) {
             case 'class':
-                $distributionID = $attendee->classificationID;
+                $distributionID = $attendee->classification;
                 break;
             case 'role':
                 $distributionID = $attendee->role;

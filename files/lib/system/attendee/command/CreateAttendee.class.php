@@ -21,7 +21,7 @@ final class CreateAttendee
         private readonly Event $event,
         private readonly int $characterID,
         private readonly string $characterName,
-        private readonly int $classificationID,
+        private readonly string $classification,
         private readonly int|string $internID,
         private readonly string $role,
         private readonly int $status,
@@ -34,7 +34,7 @@ final class CreateAttendee
             'data' => [
                 'characterID' => $this->characterID,
                 'characterName' => $this->characterName,
-                'classificationID' => $this->classificationID,
+                'classification' => $this->classification,
                 'eventID' => $this->event->eventID,
                 'internID' => $this->internID,
                 'role' => $this->role,

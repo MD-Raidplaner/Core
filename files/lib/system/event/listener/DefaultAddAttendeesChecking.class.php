@@ -27,7 +27,7 @@ final class DefaultAddAttendeesChecking
             $event->setAttendee([
                 'characterID' => $character->getObjectID(),
                 'characterName' => $character->getTitle(),
-                'classificationID' => $character->classificationID,
+                'classification' => $character->classification,
                 'role' => $character->role,
             ]);
         }
