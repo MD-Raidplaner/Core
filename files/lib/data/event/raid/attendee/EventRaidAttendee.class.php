@@ -7,9 +7,9 @@ use rp\data\character\CharacterProfile;
 use rp\data\event\Event;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use rp\system\cache\runtime\EventRuntimeCache;
+use rp\system\classification\ClassificationHandler;
 use wcf\data\DatabaseObject;
 use wcf\data\ITitledLinkObject;
-use wcf\system\WCF;
 
 /**
  * Represents a event raid attendee.
@@ -24,7 +24,7 @@ use wcf\system\WCF;
  * @property-read   int $characterName      character name
  * @property-read   string  $email      email address of the participant for a guest registration
  * @property-read   string  $internID       special id for the character of the attendee
- * @property-read   int $classificationID       id of the classification
+ * @property-read   string $classification      classification of the attendee (e.g. `dps`, `tank`, `healer`)
  * @property-read   string $role        role of the attendee (e.g. `tank`, `healer`, `dps`)
  * @property-read   string  $notes      notes of the attendee
  * @property-read   int $created        timestamp at which the attendee has been created
@@ -95,18 +95,13 @@ final class EventRaidAttendee extends DatabaseObject implements ITitledLinkObjec
 
             switch ($this->getEvent()->distributionMode) {
                 case 'class':
-                    $this->possibleDistribution[] = $this->classificationID;
+                    $this->possibleDistribution[] = $this->classification;
                     break;
                 case 'none':
                     $this->possibleDistribution[] = 'none';
                     break;
                 case 'role':
-                    $sql = "SELECT  role
-                            FROM    rp1_classification_to_role
-                            WHERE   classificationID = ?";
-                    $statement = WCF::getDB()->prepare($sql);
-                    $statement->execute([$this->classificationID]);
-                    $this->possibleDistribution = $statement->fetchAll(\PDO::FETCH_COLUMN);
+                    $this->possibleDistribution = ClassificationHandler::getInstance()->getRoleMapByClassification($this->classification);
                     break;
             }
         }

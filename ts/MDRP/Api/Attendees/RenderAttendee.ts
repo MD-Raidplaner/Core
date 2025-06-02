@@ -24,6 +24,6 @@ export async function renderAttendee(attendeeId: number): Promise<ApiResult<Resp
 }
 
 type Response = {
-  distributionId: number;
+  distribution: string;
   template: string;
 };

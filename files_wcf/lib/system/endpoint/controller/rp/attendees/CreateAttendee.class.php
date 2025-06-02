@@ -47,7 +47,7 @@ final class CreateAttendee implements IController
             $event,
             $character->characterID,
             $character->characterName,
-            $availableCharacter->getClassificationID(),
+            $availableCharacter->getClassification(),
             $availableCharacter->getID(),
             $parameters->role,
             $parameters->status,

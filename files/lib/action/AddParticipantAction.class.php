@@ -9,10 +9,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use rp\data\event\Event;
 use rp\data\event\raid\attendee\EventRaidAttendee;
 use rp\data\event\raid\attendee\EventRaidAttendeeAction;
-use rp\system\cache\eager\ClassificationCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use rp\system\cache\runtime\EventRuntimeCache;
 use rp\system\character\AvailableCharacter;
+use rp\system\classification\ClassificationHandler;
 use rp\system\form\builder\field\DynamicSelectFormField;
 use rp\system\race\RaceHandler;
 use rp\system\role\RoleHandler;
@@ -73,20 +73,14 @@ final class AddParticipantAction implements RequestHandlerInterface
 
         if (WCF::getUser()->userID) {
             $availableCharacters = $this->event->getController()->getContentData('availableCharacters');
-            $classificationRoles = (new ClassificationCache())->getCache()->getClassificationRoles();
+            $classificationRolesMap = ClassificationHandler::getInstance()->getRoleMapByClassification();
 
             $roleMapping = [];
             foreach ($availableCharacters as $characterID => $character) {
-                $characterClassificationID = $character->getClassificationID();
+                $classification = $character->getClassification();
 
-                foreach ($classificationRoles as $role => $classifications) {
-                    foreach ($classifications as $classificationID) {
-                        if ($characterClassificationID !== $classificationID) {
-                            continue;
-                        }
-
-                        $roleMapping[$characterID][] = $role;
-                    }
+                if (isset($classificationRolesMap[$classification])) {
+                    $roleMapping[$characterID] = $classificationRolesMap[$classification];
                 }
             }
 
@@ -126,12 +120,12 @@ final class AddParticipantAction implements RequestHandlerInterface
                             $formField->addValidationError(new FormFieldValidationError('empty'));
                         }
                     })),
-                DynamicSelectFormField::create('classificationID')
+                DynamicSelectFormField::create('classification')
                     ->label('rp.classification.title')
                     ->required()
-                    ->options((new ClassificationCache())->getCache()->getClassifications())
+                    ->options(ClassificationHandler::getInstance()->getClassifications())
                     ->triggerSelect(\sprintf('%s_%s', static::class, 'raceID'))
-                    ->optionsMapping((new ClassificationCache())->getCache()->getClassificationRaces())
+                    ->optionsMapping(ClassificationHandler::getInstance()->getRoleMapByClassification())
                     ->addValidator(new FormFieldValidator('check', function (SingleSelectionFormField $formField) {
                         $value = $formField->getSaveValue();
 
@@ -143,8 +137,8 @@ final class AddParticipantAction implements RequestHandlerInterface
                     ->label('rp.role.title')
                     ->required()
                     ->options(RoleHandler::getInstance()->getRoles())
-                    ->triggerSelect(\sprintf('%s_%s', static::class, 'classificationID'))
-                    ->optionsMapping((new ClassificationCache())->getCache()->getClassificationRoles())
+                    ->triggerSelect(\sprintf('%s_%s', static::class, 'classification'))
+                    ->optionsMapping(ClassificationHandler::getInstance()->getRoleMapByClassification())
                     ->addValidator(new FormFieldValidator('check', function (SingleSelectionFormField $formField) {
                         $value = $formField->getSaveValue();
 
@@ -205,7 +199,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                 $attendeeData = [
                     'characterID' => $character->characterID,
                     'characterName' => $character->characterName,
-                    'classificationID' => $availableCharacter->getClassificationID(),
+                    'classification' => $availableCharacter->getClassification(),
                     'internID' => $availableCharacter->getID(),
                     'role' => $formData['role'],
                     'status' => $formData['status'],
@@ -214,7 +208,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                 $attendeeData = [
                     'characterName' => $formData['characterName'],
                     'email' => $formData['email'],
-                    'classificationID' => $formData['classificationID'],
+                    'classification' => $formData['classification'],
                     'role' => $formData['role'],
                     'status' => EventRaidAttendee::STATUS_LOGIN,
                 ];
@@ -225,20 +219,20 @@ final class AddParticipantAction implements RequestHandlerInterface
 
             $attendee = (new EventRaidAttendeeAction([], 'create', ['data' => $attendeeData]))->executeAction()['returnValues'];
 
-            $distributionID = 0;
+            $distribution = '';
             switch ($this->event->distributionMode) {
                 case 'class':
-                    $distributionID = $attendee->classificationID;
+                    $distribution = $attendee->classification;
                     break;
                 case 'role':
-                    $distributionID = $attendee->role;
+                    $distribution = $attendee->role;
                     break;
             }
 
             return new JsonResponse([
                 'result' => [
                     'attendeeId' => $attendee->attendeeID,
-                    'distributionId' => $distributionID,
+                    'distribution' => $distribution,
                     'status' => $attendee->status,
                 ],
             ]);

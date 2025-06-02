@@ -26,104 +26,6 @@ use wcf\system\database\table\index\DatabaseTablePrimaryIndex;
 use wcf\system\database\table\PartialDatabaseTable;
 
 return [
-    DatabaseTable::create('rp1_classification')
-        ->columns([
-            ObjectIdDatabaseTableColumn::create('classificationID'),
-            NotNullVarchar255DatabaseTableColumn::create('game'),
-            NotNullVarchar255DatabaseTableColumn::create('identifier'),
-            NotNullVarchar255DatabaseTableColumn::create('title'),
-            NotNullVarchar255DatabaseTableColumn::create('icon')
-                ->defaultValue(''),
-            DefaultFalseBooleanDatabaseTableColumn::create('isDisabled'),
-            NotNullInt10DatabaseTableColumn::create('packageID'),
-        ])
-        ->indices([
-            DatabaseTablePrimaryIndex::create()
-                ->columns(['classificationID']),
-            DatabaseTableIndex::create('identifier_game')
-                ->columns(['identifier', 'game'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['packageID'])
-                ->referencedTable('wcf1_package')
-                ->referencedColumns(['packageID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    DatabaseTable::create('rp1_classification_to_faction')
-        ->columns([
-            NotNullInt10DatabaseTableColumn::create('classificationID'),
-            NotNullVarchar255DatabaseTableColumn::create('faction'),
-        ])
-        ->indices([
-            DatabaseTableIndex::create('classificationID_faction')
-                ->columns(['classificationID', 'faction'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['classificationID'])
-                ->referencedTable('rp1_classification')
-                ->referencedColumns(['classificationID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    DatabaseTable::create('rp1_classification_to_race')
-        ->columns([
-            NotNullInt10DatabaseTableColumn::create('classificationID'),
-            NotNullVarchar255DatabaseTableColumn::create('race'),
-        ])
-        ->indices([
-            DatabaseTableIndex::create('classificationID_race')
-                ->columns(['classificationID', 'race'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['classificationID'])
-                ->referencedTable('rp1_classification')
-                ->referencedColumns(['classificationID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    DatabaseTable::create('rp1_classification_to_role')
-        ->columns([
-            NotNullInt10DatabaseTableColumn::create('classificationID'),
-            NotNullVarchar255DatabaseTableColumn::create('role'),
-        ])
-        ->indices([
-            DatabaseTableIndex::create('classificationID_role')
-                ->columns(['classificationID', 'role'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['classificationID'])
-                ->referencedTable('rp1_classification')
-                ->referencedColumns(['classificationID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    DatabaseTable::create('rp1_classification_to_skill')
-        ->columns([
-            NotNullInt10DatabaseTableColumn::create('classificationID'),
-            NotNullInt10DatabaseTableColumn::create('skillID'),
-        ])
-        ->indices([
-            DatabaseTableIndex::create('classificationID_skillID')
-                ->columns(['classificationID', 'skillID'])
-                ->type(DatabaseTableIndex::UNIQUE_TYPE),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['classificationID'])
-                ->referencedTable('rp1_classification')
-                ->referencedColumns(['classificationID'])
-                ->onDelete('CASCADE'),
-        ]),
-
     DatabaseTable::create('rp1_event')
         ->columns([
             ObjectIdDatabaseTableColumn::create('eventID'),
@@ -187,8 +89,8 @@ return [
                 ->length(5)
                 ->notNull()
                 ->defaultValue(''),
-            IntDatabaseTableColumn::create('classificationID')
-                ->length(10),
+            VarcharDatabaseTableColumn::create('classification')
+                ->length(255),
             NotNullVarchar255DatabaseTableColumn::create('role'),
             NotNullVarchar255DatabaseTableColumn::create('notes')
                 ->defaultValue(''),
@@ -207,11 +109,6 @@ return [
                 ->referencedTable('rp1_event')
                 ->referencedColumns(['eventID'])
                 ->onDelete('CASCADE'),
-            DatabaseTableForeignKey::create()
-                ->columns(['classificationID'])
-                ->referencedTable('rp1_classification')
-                ->referencedColumns(['classificationID'])
-                ->onDelete('SET NULL'),
         ]),
 
     DatabaseTable::create('rp1_item')
@@ -456,8 +353,8 @@ return [
             IntDatabaseTableColumn::create('characterID')
                 ->length(10),
             NotNullVarchar255DatabaseTableColumn::create('characterName'),
-            IntDatabaseTableColumn::create('classificationID')
-                ->length(10),
+            VarcharDatabaseTableColumn::create('classification')
+                ->length(255),
             NotNullVarchar255DatabaseTableColumn::create('role'),
         ])
         ->indices([
@@ -466,11 +363,6 @@ return [
                 ->type(DatabaseTableIndex::UNIQUE_TYPE),
         ])
         ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['classificationID'])
-                ->referencedTable('rp1_classification')
-                ->referencedColumns(['classificationID'])
-                ->onDelete('SET NULL'),
             DatabaseTableForeignKey::create()
                 ->columns(['characterID'])
                 ->referencedTable('rp1_member')

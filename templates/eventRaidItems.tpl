@@ -1,5 +1,5 @@
-<mdrp-attendee-drag-and-drop-box class="contentItem attendeeBox" distribution-id="{$__availableDistributionID}"
-    droppable="distribution{$__availableDistributionID}" status="{$__status}">
+<mdrp-attendee-drag-and-drop-box class="contentItem attendeeBox" distribution="{$__availableDistribution}"
+    droppable="distribution_{$__availableDistribution}" status="{$__status}">
     <div class="contentItemLink">
         {if $availableDistribution|isset}
             <div class="contentItemImage">
@@ -12,8 +12,8 @@
         </div>
     </div>
     <div class="attendeeList">
-        {if $attendees[$__status][$__availableDistributionID]|isset}
-            {foreach from=$attendees[$__status][$__availableDistributionID] item=attendee}
+        {if $attendees[$__status][$__availableDistribution]|isset}
+            {foreach from=$attendees[$__status][$__availableDistribution] item=attendee}
                 {include application='rp' file='eventRaidAttendeeItems'}
             {/foreach}
         {/if}

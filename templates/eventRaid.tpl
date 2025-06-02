@@ -11,10 +11,10 @@
 
             <div class="contentItemList">
                 {if $event->distributionMode === 'none'}
-                    {include application='rp' file='eventRaidItems' __availableDistributionID='0' __title='rp.event.raid.participants'|language}
+                    {include application='rp' file='eventRaidItems' __availableDistribution='' __title='rp.event.raid.participants'|language}
                 {else}
                     {foreach from=$availableDistributions item=availableDistribution}
-                        {include application='rp' file='eventRaidItems' __availableDistributionID=$availableDistribution->getObjectID() __title=$availableDistribution->getTitle()}
+                        {include application='rp' file='eventRaidItems' __availableDistribution=$availableDistribution __title=$availableDistribution->getTitle()}
                     {/foreach}
                 {/if}
             </div>

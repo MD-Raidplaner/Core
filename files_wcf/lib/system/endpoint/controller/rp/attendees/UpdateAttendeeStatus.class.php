@@ -33,7 +33,7 @@ final class UpdateAttendeeStatus implements IController
 
         (new \rp\system\attendee\command\UpdateAttendeeStatus(
             $attendee,
-            $attendee->getEvent()->distributionMode === 'role' ? $parameters->distributionId : 0,
+            $attendee->getEvent()->distributionMode === 'role' ? $parameters->distribution : '',
             $parameters->status
         ))();
 
@@ -60,8 +60,8 @@ final class UpdateAttendeeStatus implements IController
 final class UpdateAttendeeStatusParameters
 {
     public function __construct(
-        /** @var positive-int */
-        public readonly int $distributionId,
+        /** @var non-empty-string */
+        public readonly string $distribution,
         /** @var non-empty-string */
         public readonly string $status,
     ) {

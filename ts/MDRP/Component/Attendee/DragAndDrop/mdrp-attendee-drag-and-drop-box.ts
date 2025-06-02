@@ -45,19 +45,19 @@ export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
     const droppableTo = event.dataTransfer.getData("droppableTo");
     if (!droppableTo.includes(droppable)) return;
 
-    const distributionId = this.distributionId;
+    const distribution = this.distribution;
     const status = this.status;
 
     if (
       status === event.dataTransfer.getData("currentStatus") &&
-      distributionId === parseInt(event.dataTransfer.getData("distributionId"))
+      distribution === event.dataTransfer.getData("distribution")
     ) {
       return;
     }
 
     const attendeeId = parseInt(event.dataTransfer.getData("attendeeId"));
 
-    const response = await updateAttendeeStatus(attendeeId, this.distributionId, this.status);
+    const response = await updateAttendeeStatus(attendeeId, this.distribution, this.status);
     if (!response.ok) {
       const validationError = response.error.getValidationError();
       if (validationError === undefined) {
@@ -69,7 +69,7 @@ export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
 
     const attendeeList = this.querySelector<HTMLElement>(".attendeeList");
     const attendee = document.getElementById(event.dataTransfer.getData("id"))!;
-    attendee.setAttribute("distribution-id", this.distributionId.toString());
+    attendee.setAttribute("distribution", this.distribution);
     attendeeList?.insertAdjacentElement("beforeend", attendee);
 
     showNotification();
@@ -83,8 +83,8 @@ export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
     this.classList.remove("selected");
   }
 
-  get distributionId(): number {
-    return parseInt(this.getAttribute("distribution-id")!);
+  get distribution(): string {
+    return this.getAttribute("distribution")!;
   }
 
   get droppable(): string {

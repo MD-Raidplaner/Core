@@ -3,7 +3,7 @@
 namespace rp\system\character;
 
 /**
- * Represents an available character with an ID, name, classification ID, and role ID.
+ * Represents an available character with an ID, name, classification, and role.
  *
  * The AvailableCharacter class is immutable and provides methods to access its properties.
  * 
@@ -20,16 +20,15 @@ final class AvailableCharacter
         private readonly int|string $id,
         private readonly string $name,
         private readonly ?string $race = null,
-        private readonly ?int $classificationID = null
-    ) {
-    }
+        private readonly ?string $classification = null
+    ) {}
 
     /**
-     * Return the classification id of the character.
+     * Return the classification of the character.
      */
-    public function getClassificationID(): ?int
+    public function getClassification(): ?string
     {
-        return $this->classificationID;
+        return $this->classification;
     }
 
     /**

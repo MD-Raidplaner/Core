@@ -1,9 +1,9 @@
 
 <mdrp-attendee-drag-and-drop-item id="attendee{$attendee->attendeeID}"
     class="attendee{if $event->getController()->isLeader()} draggable{/if}" attendee-id="{$attendee->attendeeID}"
-    character-id="{$attendee->characterID}" distribution-id="{$__availableDistributionID}"
+    character-id="{$attendee->characterID}" distribution="{$__availableDistribution}"
     event-id="{$attendee->eventID}" {if $event->getController()->isLeader()}draggable="true" {/if}
-    droppable-to="{implode from=$attendee->getPossibleDistribution() item=distributionID}distribution{$distributionID}{/implode}"
+    droppable-to="{implode from=$attendee->getPossibleDistribution() item=distribution}distribution_{$distribution}{/implode}"
     user-id="{$attendee->getCharacter()->userID}">
     <div class="attendee__avatar">
         {character object=$attendee->getCharacter() type='avatar24' ariaHidden='true'}

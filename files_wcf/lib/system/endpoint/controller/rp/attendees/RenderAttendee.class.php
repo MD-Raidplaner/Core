@@ -28,23 +28,27 @@ final class RenderAttendee implements IController
         $parameters = Helper::mapApiParameters($request, RenderAttendeeParameters::class);
         $attendee = Helper::fetchObjectFromRequestParameter($parameters->attendeeID, EventRaidAttendee::class);
 
-        $distributionID = 0;
+        $distribution = '';
         switch ($attendee->getEvent()->distributionMode) {
             case 'class':
-                $distributionID = $attendee->classificationID;
+                $distribution = $attendee->classification;
                 break;
             case 'role':
-                $distributionID = $attendee->role;
+                $distribution = $attendee->role;
                 break;
         }
 
         return new JsonResponse([
-            'distributionId' => $distributionID,
-            'template' => WCF::getTPL()->fetch('eventRaidAttendeeItems', 'rp', [
-                'attendee' => $attendee,
-                'event' => $attendee->getEvent(),
-                '__availableDistributionID' => $distributionID,
-            ]),
+            'distribution' => $distribution,
+            'template' => WCF::getTPL()->render(
+                'rp',
+                'eventRaidAttendeeItems',
+                [
+                    'attendee' => $attendee,
+                    'event' => $attendee->getEvent(),
+                    '__availableDistribution' => $distribution,
+                ]
+            ),
         ]);
     }
 }
@@ -55,6 +59,5 @@ final class RenderAttendeeParameters
     public function __construct(
         /** @var positive-int **/
         public readonly int $attendeeID,
-    ) {
-    }
+    ) {}
 }
