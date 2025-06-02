@@ -77,7 +77,7 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
 
     const currentBox = this.closest<HTMLElement>(".attendeeBox");
     event.dataTransfer!.setData("currentStatus", currentBox!.getAttribute("status")!);
-    event.dataTransfer!.setData("distributionId", currentBox!.getAttribute("distribution-id")!);
+    event.dataTransfer!.setData("distribution", currentBox!.getAttribute("distribution")!);
 
     document.querySelectorAll(".attendeeBox").forEach((attendeeBox: HTMLElement) => {
       const droppable = attendeeBox.getAttribute("droppable")!;
@@ -101,7 +101,7 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
     }
 
     const box = document.querySelector<MDRPAttendeeDragAndDropBoxElement>(
-      `mdrp-attendee-drag-and-drop-box[distribution-id="${response.value.distributionId}"][status="${this.status}"]`,
+      `mdrp-attendee-drag-and-drop-box[distribution="${response.value.distribution}"][status="${this.status}"]`,
     );
     const attendeeList = box?.querySelector<HTMLElement>(".attendeeList");
     attendeeList?.insertAdjacentHTML("beforeend", response.value.template);
@@ -146,7 +146,7 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
       this.#dialog = dialogFactory().fromHtml(this.#statusDialog).asPrompt();
       const status = this.#dialog.content.querySelector<HTMLSelectElement>('select[name="status"]');
       this.#dialog.addEventListener("primary", async () => {
-        const response = await updateAttendeeStatus(this.attendeeId, this.distributionId, status!.value);
+        const response = await updateAttendeeStatus(this.attendeeId, this.distribution, status!.value);
         if (!response.ok) {
           const validationError = response.error.getValidationError();
           if (validationError === undefined) {
@@ -157,7 +157,7 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
         }
 
         const dragAndDropBox = document.querySelector(
-          `mdrp-attendee-drag-and-drop-box[status="${status!.value}"][distribution-id="${this.distributionId}"]`,
+          `mdrp-attendee-drag-and-drop-box[status="${status!.value}"][distribution-id="${this.distribution}"]`,
         );
         const attendeeList = dragAndDropBox?.querySelector<HTMLElement>(".attendeeList");
         attendeeList?.insertAdjacentElement("beforeend", this);
@@ -175,8 +175,8 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
     return this.closest<MDRPAttendeeDragAndDropBoxElement>("mdrp-attendee-drag-and-drop-box")!;
   }
 
-  get distributionId(): number {
-    return parseInt(this.getAttribute("distribution-id")!);
+  get distribution(): string {
+    return this.getAttribute("distribution-id")!;
   }
 
   get droppableTo(): string {

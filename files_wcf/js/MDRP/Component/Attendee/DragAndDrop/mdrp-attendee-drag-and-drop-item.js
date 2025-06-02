@@ -58,7 +58,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
             event.dataTransfer.effectAllowed = "move";
             const currentBox = this.closest(".attendeeBox");
             event.dataTransfer.setData("currentStatus", currentBox.getAttribute("status"));
-            event.dataTransfer.setData("distributionId", currentBox.getAttribute("distribution-id"));
+            event.dataTransfer.setData("distribution", currentBox.getAttribute("distribution"));
             document.querySelectorAll(".attendeeBox").forEach((attendeeBox) => {
                 const droppable = attendeeBox.getAttribute("droppable");
                 const droppableTo = this.droppableTo;
@@ -77,7 +77,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
                 this.remove();
                 return;
             }
-            const box = document.querySelector(`mdrp-attendee-drag-and-drop-box[distribution-id="${response.value.distributionId}"][status="${this.status}"]`);
+            const box = document.querySelector(`mdrp-attendee-drag-and-drop-box[distribution="${response.value.distribution}"][status="${this.status}"]`);
             const attendeeList = box?.querySelector(".attendeeList");
             attendeeList?.insertAdjacentHTML("beforeend", response.value.template);
             (0, Notification_1.show)();
@@ -113,7 +113,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
                 this.#dialog = (0, Dialog_1.dialogFactory)().fromHtml(this.#statusDialog).asPrompt();
                 const status = this.#dialog.content.querySelector('select[name="status"]');
                 this.#dialog.addEventListener("primary", async () => {
-                    const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(this.attendeeId, this.distributionId, status.value);
+                    const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(this.attendeeId, this.distribution, status.value);
                     if (!response.ok) {
                         const validationError = response.error.getValidationError();
                         if (validationError === undefined) {
@@ -122,7 +122,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
                         (0, Dialog_1.dialogFactory)().fromHtml(`<p>${validationError.message}</p>`).asAlert();
                         return;
                     }
-                    const dragAndDropBox = document.querySelector(`mdrp-attendee-drag-and-drop-box[status="${status.value}"][distribution-id="${this.distributionId}"]`);
+                    const dragAndDropBox = document.querySelector(`mdrp-attendee-drag-and-drop-box[status="${status.value}"][distribution-id="${this.distribution}"]`);
                     const attendeeList = dragAndDropBox?.querySelector(".attendeeList");
                     attendeeList?.insertAdjacentElement("beforeend", this);
                 });
@@ -135,8 +135,8 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
         get box() {
             return this.closest("mdrp-attendee-drag-and-drop-box");
         }
-        get distributionId() {
-            return parseInt(this.getAttribute("distribution-id"));
+        get distribution() {
+            return this.getAttribute("distribution-id");
         }
         get droppableTo() {
             return this.getAttribute("droppable-to");

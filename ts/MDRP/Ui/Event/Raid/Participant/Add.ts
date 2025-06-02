@@ -26,7 +26,7 @@ async function addParticipant(button: HTMLElement): Promise<void> {
     }
 
     const box = document.querySelector<MDRPAttendeeDragAndDropBoxElement>(
-      `mdrp-attendee-drag-and-drop-box[distribution-id="${response.value.distributionId}"][status="${result.status}"]`,
+      `mdrp-attendee-drag-and-drop-box[distribution="${response.value.distribution}"][status="${result.status}"]`,
     );
     const attendeeList = box?.querySelector<HTMLElement>(".attendeeList");
     attendeeList?.insertAdjacentHTML("beforeend", response.value.template);
@@ -45,6 +45,6 @@ export function setup(button: HTMLElement): void {
 
 interface Participant {
   attendeeId: number;
-  distributionId: number;
+  distribution: string;
   status: number;
 }

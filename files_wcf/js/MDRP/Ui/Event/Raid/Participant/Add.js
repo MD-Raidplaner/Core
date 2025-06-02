@@ -20,7 +20,7 @@ define(["require", "exports", "WoltLabSuite/Core/Component/Dialog", "WoltLabSuit
                 }
                 return;
             }
-            const box = document.querySelector(`mdrp-attendee-drag-and-drop-box[distribution-id="${response.value.distributionId}"][status="${result.status}"]`);
+            const box = document.querySelector(`mdrp-attendee-drag-and-drop-box[distribution="${response.value.distribution}"][status="${result.status}"]`);
             const attendeeList = box?.querySelector(".attendeeList");
             attendeeList?.insertAdjacentHTML("beforeend", response.value.template);
             button.hidden = true;

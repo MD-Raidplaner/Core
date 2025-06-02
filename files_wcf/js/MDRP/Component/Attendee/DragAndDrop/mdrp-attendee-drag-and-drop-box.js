@@ -37,14 +37,14 @@ define(["require", "exports", "tslib", "../../../Ui/Event/Raid/Participant/DragA
             const droppableTo = event.dataTransfer.getData("droppableTo");
             if (!droppableTo.includes(droppable))
                 return;
-            const distributionId = this.distributionId;
+            const distribution = this.distribution;
             const status = this.status;
             if (status === event.dataTransfer.getData("currentStatus") &&
-                distributionId === parseInt(event.dataTransfer.getData("distributionId"))) {
+                distribution === event.dataTransfer.getData("distribution")) {
                 return;
             }
             const attendeeId = parseInt(event.dataTransfer.getData("attendeeId"));
-            const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(attendeeId, this.distributionId, this.status);
+            const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(attendeeId, this.distribution, this.status);
             if (!response.ok) {
                 const validationError = response.error.getValidationError();
                 if (validationError === undefined) {
@@ -55,7 +55,7 @@ define(["require", "exports", "tslib", "../../../Ui/Event/Raid/Participant/DragA
             }
             const attendeeList = this.querySelector(".attendeeList");
             const attendee = document.getElementById(event.dataTransfer.getData("id"));
-            attendee.setAttribute("distribution-id", this.distributionId.toString());
+            attendee.setAttribute("distribution", this.distribution);
             attendeeList?.insertAdjacentElement("beforeend", attendee);
             (0, Notification_1.show)();
         }
@@ -65,8 +65,8 @@ define(["require", "exports", "tslib", "../../../Ui/Event/Raid/Participant/DragA
             event.preventDefault();
             this.classList.remove("selected");
         }
-        get distributionId() {
-            return parseInt(this.getAttribute("distribution-id"));
+        get distribution() {
+            return this.getAttribute("distribution");
         }
         get droppable() {
             return this.getAttribute("droppable");
