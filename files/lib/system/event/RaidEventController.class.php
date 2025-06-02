@@ -315,7 +315,7 @@ final class RaidEventController extends AbstractEventController
                     $availableDistributions = ClassificationHandler::getInstance()->getClassifications();
                     break;
                 case 'none':
-                    $availableDistributions = [0 => WCF::getLanguage()->get('rp.event.raid.participants')];
+                    $availableDistributions = ['' => WCF::getLanguage()->get('rp.event.raid.participants')];
                     break;
                 case 'role':
                     $availableDistributions = RoleHandler::getInstance()->getRoles();

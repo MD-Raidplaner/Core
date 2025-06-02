@@ -219,20 +219,20 @@ final class AddParticipantAction implements RequestHandlerInterface
 
             $attendee = (new EventRaidAttendeeAction([], 'create', ['data' => $attendeeData]))->executeAction()['returnValues'];
 
-            $distributionID = 0;
+            $distribution = '';
             switch ($this->event->distributionMode) {
                 case 'class':
-                    $distributionID = $attendee->classification;
+                    $distribution = $attendee->classification;
                     break;
                 case 'role':
-                    $distributionID = $attendee->role;
+                    $distribution = $attendee->role;
                     break;
             }
 
             return new JsonResponse([
                 'result' => [
                     'attendeeId' => $attendee->attendeeID,
-                    'distributionId' => $distributionID,
+                    'distribution' => $distribution,
                     'status' => $attendee->status,
                 ],
             ]);
