@@ -2,6 +2,10 @@
 
 namespace rp\system\classification;
 
+use rp\event\classification\ClassificationCollecting;
+use wcf\system\event\EventHandler;
+use wcf\system\SingletonFactory;
+
 /**
  * ClassificationHandler is a singleton factory that manages the classifications in the system.
  * 
@@ -172,6 +176,37 @@ final class ClassificationHandler extends SingletonFactory
         }
 
         return $classifications;
+    }
+
+    /**
+     * Returns a map of classification identifiers to their associated roles.
+     * - If no argument is given, returns the full map: [classificationIdentifier => [role1, role2, ...]]
+     * - If a string is given, it's treated as a classification identifier
+     * - If a ClassificationItem is given, it returns only its roles
+     * 
+     * @param ClassificationItem|string|null $classification    Optional classification object or identifier
+     * @return array<string, array<string>>|array<string> Map of roles or just roles[] for one classification
+     */
+    public function getRoleMapByClassification(ClassificationItem|string|null $classification = null): array {
+        if (\is_string($classification)) {
+            $classification = $this->getClassificationByIdentifier($classification);
+            if ($classification === null) {
+                return [];
+            }
+        }
+
+        if ($classification instanceof ClassificationItem) {
+            return $classification->roles;
+        }
+    
+        $roleMap = [];
+        foreach ($this->classifications as $classificationItem) {
+            foreach ($classificationItem->roles as $role) {
+                $roleMap[$classificationItem->identifier][] = $role;
+            }
+        }
+
+        return $roleMap;
     }
 
     #[\Override]
