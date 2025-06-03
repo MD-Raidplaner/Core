@@ -35,6 +35,7 @@
 		<instruction type="language" />
 		<instruction type="objectTypeDefinition" />
 		<instruction type="objectType" />
+		<instruction type="coreObject" />
 		<instruction type="userNotificationEvent" />
 		<instruction type="clipboardAction" />
 		<instruction type="packageInstallationPlugin" />
