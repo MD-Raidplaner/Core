@@ -4,8 +4,6 @@ namespace rp\system;
 
 use rp\page\CalendarPage;
 use rp\system\character\point\CharacterPointHandler;
-use rp\system\game\GameHandler;
-use rp\system\game\GameItem;
 use wcf\system\application\AbstractApplication;
 
 // define current raidplaner version
@@ -21,14 +19,8 @@ use wcf\system\application\AbstractApplication;
 final class RPCore extends AbstractApplication
 {
     protected $abbreviation = 'rp';
-    protected static GameItem $gameObj;
+    protected static GameHandler $gameHandler;
     protected $primaryController = CalendarPage::class;
-
-    #[\Override]
-    public function __run()
-    {
-        $this->initGame();
-    }
 
     /**
      * Returns the character point handler
@@ -36,21 +28,5 @@ final class RPCore extends AbstractApplication
     public function getCharacterPointHandler(): CharacterPointHandler
     {
         return CharacterPointHandler::getInstance();
-    }
-
-    /**
-     * Returns the current game object.
-     */
-    public function getGame(): Game
-    {
-        return self::$gameObj;
-    }
-
-    /**
-     * Initialises the current game.
-     */
-    protected function initGame(): void
-    {
-        self::$gameObj = GameHandler::getInstance()->getCurrentGame();
     }
 }
