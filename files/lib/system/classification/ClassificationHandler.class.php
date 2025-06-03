@@ -209,6 +209,37 @@ final class ClassificationHandler extends SingletonFactory
         return $roleMap;
     }
 
+    /**
+     * Returns a map of classification identifiers to their associated skills.
+     * - If no argument is given, returns the full map: [classificationIdentifier => [skill1, skill2, ...]]
+     * - If a string is given, it's treated as a classification identifier
+     * - If a ClassificationItem is given, it returns only its skills
+     * 
+     * @param ClassificationItem|string|null $classification    Optional classification object or identifier
+     * @return array<string, array<string>>|array<string> Map of skills or just skills[] for one classification
+     */
+    public function getSkillMapByClassification(ClassificationItem|string|null $classification = null): array {
+        if (\is_string($classification)) {
+            $classification = $this->getClassificationByIdentifier($classification);
+            if ($classification === null) {
+                return [];
+            }
+        }
+
+        if ($classification instanceof ClassificationItem) {
+            return $classification->skills;
+        }
+    
+        $skillMap = [];
+        foreach ($this->classifications as $classificationItem) {
+            foreach ($classificationItem->skills as $skill) {
+                $skillMap[$classificationItem->identifier][] = $skill;
+            }
+        }
+
+        return $skillMap;
+    }
+
     #[\Override]
     protected function init(): void
     {
