@@ -10,5 +10,5 @@ require(['MDRP/BootstrapFrontend'], function({ setup }) {
         RP_API_URL: '{$__wcf->getPath('rp')}',
     });
 
-    document.body.setAttribute('rp-game', '{$__rp->getGame()->identifier}');
+    document.body.setAttribute('rp-game', '{$__wcf->getGameHandler()->getCurrentGame()->identifier}');
 });
