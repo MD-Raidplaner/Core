@@ -16,18 +16,10 @@ use wcf\util\StringUtil;
  */
 class GameColumnRenderer extends DefaultColumnRenderer
 {
-    public function __construct(
-        public readonly string $fallbackValue = 'title'
-    ) {}
-
     #[\Override]
     public function render(mixed $value, DatabaseObject $row): string
     {
         if (!$value) {
-            if ($this->fallbackValue) {
-                return StringUtil::encodeHTML($row->{$this->fallbackValue} ?? '');
-            }
-
             return '';
         }
 
