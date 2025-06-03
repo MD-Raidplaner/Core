@@ -17,8 +17,21 @@ final class GameItem
         public readonly string $identifier,
     ) {}
 
+    /**
+     * Returns the title of the game.
+     */
+    public function getTitle(): string
+    {
+        return WCF::getLanguage()->get(
+            \sprintf(
+                'rp.game.%s',
+                $this->identifier
+            )
+        );
+    }
+
     public function __toString()
     {
-        return WCF::getLanguage()->get(\sprintf('rp.game.%s', $this->identifier));
+        return $this->getTitle();
     }
 }
