@@ -14,7 +14,7 @@
                     {include application='rp' file='eventRaidItems' __availableDistribution='' __title='rp.event.raid.participants'|language}
                 {else}
                     {foreach from=$availableDistributions item=availableDistribution}
-                        {include application='rp' file='eventRaidItems' __availableDistribution=$availableDistribution __title=$availableDistribution->getTitle()}
+                        {include application='rp' file='eventRaidItems' __availableDistribution=$availableDistribution->identifier __title=$availableDistribution->getTitle()}
                     {/foreach}
                 {/if}
             </div>
