@@ -19,7 +19,6 @@ use wcf\system\application\AbstractApplication;
 final class RPCore extends AbstractApplication
 {
     protected $abbreviation = 'rp';
-    protected static GameHandler $gameHandler;
     protected $primaryController = CalendarPage::class;
 
     /**
