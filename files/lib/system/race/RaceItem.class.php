@@ -3,6 +3,7 @@
 namespace rp\system\race;
 
 use rp\system\game\GameHandler;
+use rp\system\game\GameItem;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 
@@ -24,7 +25,6 @@ final class RaceItem
          */
         public readonly array $factions = [],
     ) {}
-
 
     /**
      * Returns the game object associated with this race.
@@ -83,6 +83,6 @@ final class RaceItem
 
     public function __toString()
     {
-        $this->getTitle();
+        return $this->getTitle();
     }
 }
