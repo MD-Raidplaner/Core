@@ -47,8 +47,8 @@ final class RaidPage extends AbstractPage
                 continue;
             }
 
-            if (!isset($classDistributions[$classification])) {
-                $classDistributions[$classification] = [
+            if (!isset($classDistributions[$classification->identifier])) {
+                $classDistributions[$classification->identifier] = [
                     'attendees' => [],
                     'count' => 0,
                     'object' => $classification,
@@ -56,8 +56,8 @@ final class RaidPage extends AbstractPage
                 ];
             }
 
-            $classDistributions[$classification]['count']++;
-            $classDistributions[$classification]['attendees'][] = $attendee;
+            $classDistributions[$classification->identifier]['count']++;
+            $classDistributions[$classification->identifier]['attendees'][] = $attendee;
         }
 
         $totalAttendees = \count($attendees);
