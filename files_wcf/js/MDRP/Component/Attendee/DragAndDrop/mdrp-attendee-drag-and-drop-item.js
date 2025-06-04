@@ -122,7 +122,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
                         (0, Dialog_1.dialogFactory)().fromHtml(`<p>${validationError.message}</p>`).asAlert();
                         return;
                     }
-                    const dragAndDropBox = document.querySelector(`mdrp-attendee-drag-and-drop-box[status="${status.value}"][distribution-id="${this.distribution}"]`);
+                    const dragAndDropBox = document.querySelector(`mdrp-attendee-drag-and-drop-box[status="${status.value}"][distribution="${this.distribution}"]`);
                     const attendeeList = dragAndDropBox?.querySelector(".attendeeList");
                     attendeeList?.insertAdjacentElement("beforeend", this);
                 });
@@ -136,7 +136,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
             return this.closest("mdrp-attendee-drag-and-drop-box");
         }
         get distribution() {
-            return this.getAttribute("distribution-id");
+            return this.getAttribute("distribution");
         }
         get droppableTo() {
             return this.getAttribute("droppable-to");

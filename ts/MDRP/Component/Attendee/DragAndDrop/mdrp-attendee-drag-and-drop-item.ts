@@ -157,7 +157,7 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
         }
 
         const dragAndDropBox = document.querySelector(
-          `mdrp-attendee-drag-and-drop-box[status="${status!.value}"][distribution-id="${this.distribution}"]`,
+          `mdrp-attendee-drag-and-drop-box[status="${status!.value}"][distribution="${this.distribution}"]`,
         );
         const attendeeList = dragAndDropBox?.querySelector<HTMLElement>(".attendeeList");
         attendeeList?.insertAdjacentElement("beforeend", this);
@@ -176,7 +176,7 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
   }
 
   get distribution(): string {
-    return this.getAttribute("distribution-id")!;
+    return this.getAttribute("distribution")!;
   }
 
   get droppableTo(): string {
