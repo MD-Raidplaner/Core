@@ -365,9 +365,9 @@ final class RaidEventController extends AbstractEventController
         if ($this->getEvent()->isCanceled || $this->isExpired() || !WCF::getSession()->getPermission('user.rp.canParticipate')) $canParticipate = false;
         if (WCF::getUser()->userID && \count($this->getContentData('availableCharacters')) === 0) $canParticipate = false;
 
-        return WCF::getTPL()->fetch(
-            'eventRaidHeaderNavigation',
+        return WCF::getTPL()->render(
             'rp',
+            'eventRaidHeaderNavigation',
             [
                 'canParticipate' => $canParticipate,
                 'hasAttendee' => $this->getContentData('hasAttendee'),
