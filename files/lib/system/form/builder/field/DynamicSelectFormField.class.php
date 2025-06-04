@@ -93,7 +93,7 @@ class DynamicSelectFormField extends SingleSelectionFormField
             }
 
             foreach ($values as $value) {
-                if (!\is_numeric($value)) {
+                if (!\is_string($value)) {
                     throw new \InvalidArgumentException(
                         "Options mapping values contain invalid values of type " . \gettype($value) . " for field '{$this->getId()}'."
                     );
