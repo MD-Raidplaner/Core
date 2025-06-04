@@ -2,6 +2,11 @@
 
 namespace rp\system\classification;
 
+use rp\system\game\GameHandler;
+use rp\system\game\GameItem;
+use wcf\system\WCF;
+use wcf\util\StringUtil;
+
 /**
  * Represents a classification item with a unique identifier.
  * 
