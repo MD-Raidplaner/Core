@@ -3,6 +3,7 @@
 namespace rp\system\role;
 
 use rp\system\game\GameHandler;
+use rp\system\game\GameItem;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 
