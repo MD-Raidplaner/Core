@@ -18,14 +18,14 @@ use wcf\system\cache\eager\AbstractEagerCache;
 final class ServerCache extends AbstractEagerCache
 {
     public function __construct(
-        private readonly int $gameID = \RP_CURRENT_GAME_ID
+        private readonly string $game = \RP_CURRENT_GAME
     ) {}
 
     #[\Override]
     protected function getCacheData(): ServerCacheData
     {
         $serverList = new ServerList();
-        $serverList->getConditionBuilder()->add('gameID = ?', [$this->gameID]);
+        $serverList->getConditionBuilder()->add('game = ?', [$this->game]);
         $serverList->readObjects();
 
         $identifiers = [];

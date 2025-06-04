@@ -24,6 +24,6 @@ class ServerList extends DatabaseObjectList
     {
         parent::__construct();
 
-        $this->conditionBuilder->add('server.gameID = ?', [RP_CURRENT_GAME_ID]);
+        $this->conditionBuilder->add('server.game = ?', [RP_CURRENT_GAME]);
     }
 }
