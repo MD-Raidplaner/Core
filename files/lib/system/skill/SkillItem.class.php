@@ -79,6 +79,6 @@ final class SkillItem
 
     public function __toString()
     {
-        $this->getTitle();
+        return $this->getTitle();
     }
 }

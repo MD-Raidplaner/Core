@@ -78,6 +78,6 @@ final class RoleItem
 
     public function __toString()
     {
-        $this->getTitle();
+        return $this->getTitle();
     }
 }

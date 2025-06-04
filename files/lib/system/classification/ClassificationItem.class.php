@@ -91,6 +91,6 @@ final class ClassificationItem
 
     public function __toString()
     {
-        $this->getTitle();
+        return $this->getTitle();
     }
 }
