@@ -93,7 +93,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                     ->label('rp.role.title')
                     ->required()
                     ->options(RoleHandler::getInstance()->getRoles())
-                    ->triggerSelect(\sprintf('%s_%s', static::class, 'characterID'))
+                    ->triggerSelect('characterID')
                     ->optionsMapping($roleMapping),
                 SingleSelectionFormField::create('status')
                     ->label('rp.event.raid.status')

@@ -55,7 +55,7 @@ class DynamicSelectFormField extends SingleSelectionFormField
             throw new \LogicException("\$triggerSelect property has not been set for class '" . static::class . "'.");
         }
 
-        return $this->triggerSelect;
+        return \sprintf('%s%s', $this->getDocument()->getPrefix(), $this->triggerSelect);
     }
 
     /**
