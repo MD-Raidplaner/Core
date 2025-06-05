@@ -8,6 +8,7 @@ import MDRPAttendeeDragAndDropBoxElement from "./mdrp-attendee-drag-and-drop-box
 import UiDropdownSimple from "WoltLabSuite/Core/Ui/Dropdown/Simple";
 import WoltlabCoreDialogElement from "WoltLabSuite/Core/Element/woltlab-core-dialog";
 import { Autobind } from "./Autobind";
+import { DragContext } from "./DragContext";
 import { availableCharacters } from "../../../Api/Events/AvailableCharacters";
 import { createAttendee } from "../../../Api/Attendees/CreateAttendee";
 import { dialogFactory } from "WoltLabSuite/Core/Component/Dialog";
@@ -70,14 +71,17 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
 
   @Autobind
   dragStartHandler(event: DragEvent): void {
-    event.dataTransfer!.setData("id", this.id);
-    event.dataTransfer!.setData("attendeeId", this.attendeeId.toString());
-    event.dataTransfer!.setData("droppableTo", this.droppableTo);
     event.dataTransfer!.effectAllowed = "move";
 
     const currentBox = this.closest<HTMLElement>(".attendeeBox");
-    event.dataTransfer!.setData("currentStatus", currentBox!.getAttribute("status")!);
-    event.dataTransfer!.setData("distribution", currentBox!.getAttribute("distribution")!);
+
+    DragContext.set({
+        attendeeId: this.attendeeId,
+        droppableTo: this.droppableTo,
+        currentStatus: parseInt(currentBox!.getAttribute("status")!),
+        distribution: currentBox!.getAttribute("distribution")!,
+        id: this.id,
+    });
 
     document.querySelectorAll(".attendeeBox").forEach((attendeeBox: HTMLElement) => {
       const droppable = attendeeBox.getAttribute("droppable")!;
@@ -146,7 +150,7 @@ export class MDRPAttendeeDragAndDropItemElement extends HTMLElement {
       this.#dialog = dialogFactory().fromHtml(this.#statusDialog).asPrompt();
       const status = this.#dialog.content.querySelector<HTMLSelectElement>('select[name="status"]');
       this.#dialog.addEventListener("primary", async () => {
-        const response = await updateAttendeeStatus(this.attendeeId, this.distribution, status!.value);
+        const response = await updateAttendeeStatus(this.attendeeId, this.distribution, parseInt(status!.value));
         if (!response.ok) {
           const validationError = response.error.getValidationError();
           if (validationError === undefined) {

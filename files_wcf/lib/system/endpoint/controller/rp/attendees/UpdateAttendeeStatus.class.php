@@ -62,8 +62,8 @@ final class UpdateAttendeeStatusParameters
     public function __construct(
         /** @var non-empty-string */
         public readonly string $distribution,
-        /** @var non-empty-string */
-        public readonly string $status,
+        /** @var int<0, max> */
+        public readonly int $status,
     ) {
     }
 }

@@ -19,7 +19,8 @@ final class UpdateAttendeeStatus
     public function __construct(
         private readonly EventRaidAttendee $attendee,
         private readonly string $role,
-        private readonly string $status,
+        /** @var int<0, max> */
+        private readonly int $status,
     ) {
     }
 

@@ -3,7 +3,7 @@
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  */
-define(["require", "exports", "tslib", "./Autobind", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/UpdateAttendeeStatus", "WoltLabSuite/Core/Ui/Notification"], function (require, exports, tslib_1, Autobind_1, Dialog_1, UpdateAttendeeStatus_1, Notification_1) {
+define(["require", "exports", "tslib", "./Autobind", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/UpdateAttendeeStatus", "WoltLabSuite/Core/Ui/Notification", "./DragContext"], function (require, exports, tslib_1, Autobind_1, Dialog_1, UpdateAttendeeStatus_1, Notification_1, DragContext_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MDRPAttendeeDragAndDropBoxElement = void 0;
@@ -20,11 +20,16 @@ define(["require", "exports", "tslib", "./Autobind", "WoltLabSuite/Core/Componen
             });
         }
         dragOverHandler(event) {
+            event.preventDefault();
             if (!event.dataTransfer || event.dataTransfer.effectAllowed !== "move")
                 return;
-            event.preventDefault();
+            const dragContext = DragContext_1.DragContext.get();
+            if (!dragContext) {
+                console.warn("DragContext is not set, cannot handle drag over event.");
+                return;
+            }
             const droppable = this.droppable;
-            const droppableTo = event.dataTransfer.getData("droppableTo");
+            const droppableTo = dragContext.droppableTo;
             if (!droppableTo.includes(droppable))
                 return;
             this.classList.add("selected");
@@ -33,18 +38,23 @@ define(["require", "exports", "tslib", "./Autobind", "WoltLabSuite/Core/Componen
             if (!event.dataTransfer || event.dataTransfer.effectAllowed !== "move")
                 return;
             event.preventDefault();
+            const dragContext = DragContext_1.DragContext.get();
+            if (!dragContext) {
+                console.warn("DragContext is not set, cannot handle drop event.");
+                return;
+            }
             const droppable = this.droppable;
-            const droppableTo = event.dataTransfer.getData("droppableTo");
+            const droppableTo = dragContext.droppableTo;
             if (!droppableTo.includes(droppable))
                 return;
             const distribution = this.distribution;
             const status = this.status;
-            if (status === event.dataTransfer.getData("currentStatus") &&
-                distribution === event.dataTransfer.getData("distribution")) {
+            if (status === dragContext.currentStatus &&
+                distribution === dragContext.distribution) {
                 return;
             }
-            const attendeeId = parseInt(event.dataTransfer.getData("attendeeId"));
-            const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(attendeeId, this.distribution, this.status);
+            ;
+            const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(dragContext.attendeeId, this.distribution, this.status);
             if (!response.ok) {
                 const validationError = response.error.getValidationError();
                 if (validationError === undefined) {
@@ -54,10 +64,11 @@ define(["require", "exports", "tslib", "./Autobind", "WoltLabSuite/Core/Componen
                 return;
             }
             const attendeeList = this.querySelector(".attendeeList");
-            const attendee = document.getElementById(event.dataTransfer.getData("id"));
+            const attendee = document.getElementById(dragContext.id);
             attendee.setAttribute("distribution", this.distribution);
             attendeeList?.insertAdjacentElement("beforeend", attendee);
             (0, Notification_1.show)();
+            DragContext_1.DragContext.clear();
         }
         dragLeaveHandler(event) {
             if (!event.dataTransfer || event.dataTransfer.effectAllowed !== "move")
@@ -72,7 +83,7 @@ define(["require", "exports", "tslib", "./Autobind", "WoltLabSuite/Core/Componen
             return this.getAttribute("droppable");
         }
         get status() {
-            return this.getAttribute("status");
+            return parseInt(this.getAttribute("status"));
         }
     }
     exports.MDRPAttendeeDragAndDropBoxElement = MDRPAttendeeDragAndDropBoxElement;

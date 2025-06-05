@@ -8,6 +8,7 @@ import { Autobind } from "./Autobind";
 import { dialogFactory } from "WoltLabSuite/Core/Component/Dialog";
 import { updateAttendeeStatus } from "../../../Api/Attendees/UpdateAttendeeStatus";
 import { show as showNotification } from "WoltLabSuite/Core/Ui/Notification";
+import { DragContext } from "./DragContext";
 
 export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
   connectedCallback() {
@@ -26,11 +27,18 @@ export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
 
   @Autobind
   dragOverHandler(event: DragEvent): void {
-    if (!event.dataTransfer || event.dataTransfer.effectAllowed !== "move") return;
     event.preventDefault();
 
+    if (!event.dataTransfer || event.dataTransfer.effectAllowed !== "move") return;
+
+    const dragContext = DragContext.get();
+    if (!dragContext) {
+      console.warn("DragContext is not set, cannot handle drag over event.");
+      return;
+    }
+
     const droppable = this.droppable;
-    const droppableTo = event.dataTransfer.getData("droppableTo");
+    const droppableTo = dragContext.droppableTo;
     if (!droppableTo.includes(droppable)) return;
 
     this.classList.add("selected");
@@ -41,23 +49,27 @@ export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
     if (!event.dataTransfer || event.dataTransfer.effectAllowed !== "move") return;
     event.preventDefault();
 
+    const dragContext = DragContext.get();
+    if (!dragContext) {
+      console.warn("DragContext is not set, cannot handle drop event.");
+      return;
+    }
+
     const droppable = this.droppable;
-    const droppableTo = event.dataTransfer.getData("droppableTo");
+    const droppableTo = dragContext.droppableTo;
     if (!droppableTo.includes(droppable)) return;
 
     const distribution = this.distribution;
     const status = this.status;
 
     if (
-      status === event.dataTransfer.getData("currentStatus") &&
-      distribution === event.dataTransfer.getData("distribution")
+      status === dragContext.currentStatus &&
+      distribution === dragContext.distribution
     ) {
       return;
-    }
+    };
 
-    const attendeeId = parseInt(event.dataTransfer.getData("attendeeId"));
-
-    const response = await updateAttendeeStatus(attendeeId, this.distribution, this.status);
+    const response = await updateAttendeeStatus(dragContext.attendeeId, this.distribution, this.status);
     if (!response.ok) {
       const validationError = response.error.getValidationError();
       if (validationError === undefined) {
@@ -68,11 +80,12 @@ export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
     }
 
     const attendeeList = this.querySelector<HTMLElement>(".attendeeList");
-    const attendee = document.getElementById(event.dataTransfer.getData("id"))!;
+    const attendee = document.getElementById(dragContext.id)!;
     attendee.setAttribute("distribution", this.distribution);
     attendeeList?.insertAdjacentElement("beforeend", attendee);
 
     showNotification();
+    DragContext.clear();
   }
 
   @Autobind
@@ -91,8 +104,8 @@ export class MDRPAttendeeDragAndDropBoxElement extends HTMLElement {
     return this.getAttribute("droppable")!;
   }
 
-  get status(): string {
-    return this.getAttribute("status")!;
+  get status(): number {
+    return parseInt(this.getAttribute("status")!);
   }
 }
 

@@ -3,7 +3,7 @@
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  */
-define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "./Autobind", "../../../Api/Events/AvailableCharacters", "../../../Api/Attendees/CreateAttendee", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/DeleteAttendee", "WoltLabSuite/Core/Language", "../../../Api/Attendees/RenderAttendee", "WoltLabSuite/Core/Ui/Notification", "../../../Api/Attendees/UpdateAttendeeStatus"], function (require, exports, tslib_1, Simple_1, Autobind_1, AvailableCharacters_1, CreateAttendee_1, Dialog_1, DeleteAttendee_1, Language_1, RenderAttendee_1, Notification_1, UpdateAttendeeStatus_1) {
+define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "./Autobind", "./DragContext", "../../../Api/Events/AvailableCharacters", "../../../Api/Attendees/CreateAttendee", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/DeleteAttendee", "WoltLabSuite/Core/Language", "../../../Api/Attendees/RenderAttendee", "WoltLabSuite/Core/Ui/Notification", "../../../Api/Attendees/UpdateAttendeeStatus"], function (require, exports, tslib_1, Simple_1, Autobind_1, DragContext_1, AvailableCharacters_1, CreateAttendee_1, Dialog_1, DeleteAttendee_1, Language_1, RenderAttendee_1, Notification_1, UpdateAttendeeStatus_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MDRPAttendeeDragAndDropItemElement = void 0;
@@ -52,13 +52,15 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
             });
         }
         dragStartHandler(event) {
-            event.dataTransfer.setData("id", this.id);
-            event.dataTransfer.setData("attendeeId", this.attendeeId.toString());
-            event.dataTransfer.setData("droppableTo", this.droppableTo);
             event.dataTransfer.effectAllowed = "move";
             const currentBox = this.closest(".attendeeBox");
-            event.dataTransfer.setData("currentStatus", currentBox.getAttribute("status"));
-            event.dataTransfer.setData("distribution", currentBox.getAttribute("distribution"));
+            DragContext_1.DragContext.set({
+                attendeeId: this.attendeeId,
+                droppableTo: this.droppableTo,
+                currentStatus: parseInt(currentBox.getAttribute("status")),
+                distribution: currentBox.getAttribute("distribution"),
+                id: this.id,
+            });
             document.querySelectorAll(".attendeeBox").forEach((attendeeBox) => {
                 const droppable = attendeeBox.getAttribute("droppable");
                 const droppableTo = this.droppableTo;
@@ -113,7 +115,7 @@ define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "
                 this.#dialog = (0, Dialog_1.dialogFactory)().fromHtml(this.#statusDialog).asPrompt();
                 const status = this.#dialog.content.querySelector('select[name="status"]');
                 this.#dialog.addEventListener("primary", async () => {
-                    const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(this.attendeeId, this.distribution, status.value);
+                    const response = await (0, UpdateAttendeeStatus_1.updateAttendeeStatus)(this.attendeeId, this.distribution, parseInt(status.value));
                     if (!response.ok) {
                         const validationError = response.error.getValidationError();
                         if (validationError === undefined) {

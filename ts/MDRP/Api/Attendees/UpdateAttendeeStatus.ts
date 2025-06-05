@@ -12,7 +12,7 @@ import { ApiResult, apiResultFromError, apiResultFromValue } from "WoltLabSuite/
 export async function updateAttendeeStatus(
   attendeeId: number,
   distribution: string,
-  status: string,
+  status: number,
 ): Promise<ApiResult<[]>> {
   try {
     await prepareRequest(`${window.WSC_RPC_API_URL}rp/attendees/${attendeeId}/updateStatus`)
