@@ -3,7 +3,7 @@
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  */
-define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "../../../Ui/Event/Raid/Participant/DragAndDrop/Autobind", "../../../Api/Events/AvailableCharacters", "../../../Api/Attendees/CreateAttendee", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/DeleteAttendee", "WoltLabSuite/Core/Language", "../../../Api/Attendees/RenderAttendee", "WoltLabSuite/Core/Ui/Notification", "../../../Api/Attendees/UpdateAttendeeStatus"], function (require, exports, tslib_1, Simple_1, Autobind_1, AvailableCharacters_1, CreateAttendee_1, Dialog_1, DeleteAttendee_1, Language_1, RenderAttendee_1, Notification_1, UpdateAttendeeStatus_1) {
+define(["require", "exports", "tslib", "WoltLabSuite/Core/Ui/Dropdown/Simple", "./Autobind", "../../../Api/Events/AvailableCharacters", "../../../Api/Attendees/CreateAttendee", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/DeleteAttendee", "WoltLabSuite/Core/Language", "../../../Api/Attendees/RenderAttendee", "WoltLabSuite/Core/Ui/Notification", "../../../Api/Attendees/UpdateAttendeeStatus"], function (require, exports, tslib_1, Simple_1, Autobind_1, AvailableCharacters_1, CreateAttendee_1, Dialog_1, DeleteAttendee_1, Language_1, RenderAttendee_1, Notification_1, UpdateAttendeeStatus_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MDRPAttendeeDragAndDropItemElement = void 0;

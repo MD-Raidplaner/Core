@@ -3,7 +3,7 @@
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  */
-define(["require", "exports", "tslib", "../../../Ui/Event/Raid/Participant/DragAndDrop/Autobind", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/UpdateAttendeeStatus", "WoltLabSuite/Core/Ui/Notification"], function (require, exports, tslib_1, Autobind_1, Dialog_1, UpdateAttendeeStatus_1, Notification_1) {
+define(["require", "exports", "tslib", "./Autobind", "WoltLabSuite/Core/Component/Dialog", "../../../Api/Attendees/UpdateAttendeeStatus", "WoltLabSuite/Core/Ui/Notification"], function (require, exports, tslib_1, Autobind_1, Dialog_1, UpdateAttendeeStatus_1, Notification_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MDRPAttendeeDragAndDropBoxElement = void 0;

@@ -7,7 +7,7 @@
 import MDRPAttendeeDragAndDropBoxElement from "./mdrp-attendee-drag-and-drop-box";
 import UiDropdownSimple from "WoltLabSuite/Core/Ui/Dropdown/Simple";
 import WoltlabCoreDialogElement from "WoltLabSuite/Core/Element/woltlab-core-dialog";
-import { Autobind } from "../../../Ui/Event/Raid/Participant/DragAndDrop/Autobind";
+import { Autobind } from "./Autobind";
 import { availableCharacters } from "../../../Api/Events/AvailableCharacters";
 import { createAttendee } from "../../../Api/Attendees/CreateAttendee";
 import { dialogFactory } from "WoltLabSuite/Core/Component/Dialog";

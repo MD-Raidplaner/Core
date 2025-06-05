@@ -4,7 +4,7 @@
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  */
 
-import { Autobind } from "../../../Ui/Event/Raid/Participant/DragAndDrop/Autobind";
+import { Autobind } from "./Autobind";
 import { dialogFactory } from "WoltLabSuite/Core/Component/Dialog";
 import { updateAttendeeStatus } from "../../../Api/Attendees/UpdateAttendeeStatus";
 import { show as showNotification } from "WoltLabSuite/Core/Ui/Notification";
