@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$distributionMode\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/action/AddParticipantAction.class.php
-
-		-
 			message: '#^Call to an undefined method rp\\system\\event\\IEventController\:\:getContentData\(\)\.$#'
 			identifier: method.notFound
 			count: 5
@@ -247,12 +241,6 @@ parameters:
 			path: files/lib/data/event/Event.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\event\\EventEditor\:\:\$getObjectID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/event/EventAction.class.php
-
-		-
 			message: '#^Access to property \$objectTypeID on an unknown class rp\\system\\cache\\runtime\\Event\.$#'
 			identifier: class.notFound
 			count: 1
@@ -331,12 +319,6 @@ parameters:
 			path: files/lib/data/event/EventList.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\event\\ViewableEvent\:\:\$visitTime\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/event/ViewableEvent.class.php
-
-		-
 			message: '#^Class rp\\data\\event\\ViewableEvent extends generic class wcf\\data\\DatabaseObjectDecorator but does not specify its types\: TDatabaseObject$#'
 			identifier: missingType.generics
 			count: 1
@@ -371,12 +353,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: files/lib/data/event/ViewableEventList.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$distributionMode\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/event/raid/attendee/EventRaidAttendee.class.php
 
 		-
 			message: '#^Expression on left side of \?\? is not nullable\.$#'
@@ -913,18 +889,6 @@ parameters:
 			path: files/lib/form/EventAddForm.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$points\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/form/RaidAddForm.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$raidEventID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/form/RaidAddForm.class.php
-
-		-
 			message: '#^Access to property \$raidID on an unknown class rp\\system\\cache\\runtime\\Event\.$#'
 			identifier: class.notFound
 			count: 1
@@ -1007,30 +971,6 @@ parameters:
 			identifier: identical.alwaysFalse
 			count: 1
 			path: files/lib/page/CharacterPage.class.php
-
-		-
-			message: '#^Call to method canRead\(\) on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/page/EventPage.class.php
-
-		-
-			message: '#^Call to method getLink\(\) on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/page/EventPage.class.php
-
-		-
-			message: '#^Property rp\\page\\EventPage\:\:\$event \(rp\\data\\event\\ViewableEvent\|null\) does not accept rp\\system\\cache\\runtime\\ViewableEvent\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: files/lib/page/EventPage.class.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between rp\\data\\event\\ViewableEvent&rp\\system\\cache\\runtime\\ViewableEvent and null will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
-			count: 1
-			path: files/lib/page/EventPage.class.php
 
 		-
 			message: '#^Call to method getLink\(\) on an unknown class rp\\system\\cache\\runtime\\Raid\.$#'
@@ -1477,12 +1417,6 @@ parameters:
 			path: files/lib/system/event/AbstractEventController.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$appointments\.$#'
-			identifier: property.notFound
-			count: 2
-			path: files/lib/system/event/AppointmentEventController.class.php
-
-		-
 			message: '#^Property rp\\system\\event\\DefaultEventController\:\:\$savedFields type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1504,36 +1438,6 @@ parameters:
 			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
 			identifier: property.notFound
 			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$deadline\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$distributionMode\.$#'
-			identifier: property.notFound
-			count: 3
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$leaders\.$#'
-			identifier: property.notFound
-			count: 2
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$participants\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$raidEventID\.$#'
-			identifier: property.notFound
-			count: 2
 			path: files/lib/system/event/RaidEventController.class.php
 
 		-
@@ -1769,24 +1673,6 @@ parameters:
 			identifier: method.notFound
 			count: 2
 			path: files/lib/system/interaction/user/CharacterInteractions.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\|rp\\data\\event\\ViewableEvent\:\:\$isCancelled\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/interaction/user/EventContentInteractions.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\|rp\\data\\event\\ViewableEvent\:\:\$raidID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/interaction/user/EventContentInteractions.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\system\\event\\IEventController\:\:isLeader\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/interaction/user/EventContentInteractions.class.php
 
 		-
 			message: '#^Expression in empty\(\) is always falsy\.$#'
@@ -2125,12 +2011,6 @@ parameters:
 			path: files/lib/system/user/notification/event/EventCommentUserNotificationEvent.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$leaders\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/user/notification/object/type/EventCommentUserNotificationObjectType.class.php
-
-		-
 			message: '#^Method rp\\util\\RPGameInstall\:\:__construct\(\) has parameter \$events with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -2161,18 +2041,6 @@ parameters:
 			path: files_wcf/lib/system/endpoint/controller/rp/attendees/DeleteAttendee.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$distributionMode\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files_wcf/lib/system/endpoint/controller/rp/attendees/RenderAttendee.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\event\\Event\:\:\$distributionMode\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files_wcf/lib/system/endpoint/controller/rp/attendees/UpdateAttendeeStatus.class.php
-
-		-
 			message: '#^Access to an undefined property rp\\data\\event\\raid\\attendee\\EventRaidAttendee\:\:\$userID\.$#'
 			identifier: property.notFound
 			count: 1
@@ -2183,12 +2051,6 @@ parameters:
 			identifier: method.notFound
 			count: 1
 			path: files_wcf/lib/system/endpoint/controller/rp/attendees/UpdateAttendeeStatus.class.php
-
-		-
-			message: '#^Parameter \#1 \$eventID of static method rp\\data\\event\\ViewableEvent\:\:getEvent\(\) expects int, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: files_wcf/lib/system/endpoint/controller/rp/events/GetEventContentHeaderTitle.class.php
 
 		-
 			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
