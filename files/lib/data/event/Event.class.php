@@ -118,6 +118,22 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
     }
 
     /**
+     * Returns true if this user can edit his event.
+     */
+    public function canEditOwnEvent(): bool
+    {
+        if (
+            $this->userID &&
+            $this->userID == WCF::getUser()->userID &&
+            WCF::getSession()->getPermission('user.rp.canEditOwnEvent')
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Returns true if the given user has access to this event. If the given $user is null,
      * the function uses the current user.
      */

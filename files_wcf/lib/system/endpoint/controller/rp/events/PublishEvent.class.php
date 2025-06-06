@@ -11,37 +11,32 @@ use wcf\system\endpoint\IController;
 use wcf\system\endpoint\PostRequest;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\PermissionDeniedException;
+use wcf\system\WCF;
 
 /**
- * API endpoint for the trash a events.
+ * API endpoint for publishing an event.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-#[PostRequest('/rp/events/{id:\d+}/trash')]
-final class TrashEvent implements IController
+#[PostRequest('/rp/events/{id:\d+}/publish')]
+final class PublishEvent implements IController
 {
     #[\Override]
     public function __invoke(ServerRequestInterface $request, array $variables): ResponseInterface
     {
+        $this->assertEventIsEditable();
+
         $event = Helper::fetchObjectFromRequestParameter($variables['id'], Event::class);
 
-        $this->assertEventIsEditable($event);
-
-        (new \rp\system\event\command\TrashEvent($event))();
+        (new \rp\system\event\command\EnableDisableEvent($event, false))();
 
         return new JsonResponse([]);
     }
 
-    private function assertEventIsEditable(Event $event): void
+    private function assertEventIsEditable(): void
     {
-        if ($event->isDeleted) {
-            throw new IllegalLinkException();
-        }
-
-        if (!$event->canTrash()) {
-            throw new PermissionDeniedException();
-        }
+        WCF::getSession()->checkPermissions(['mod.rp.canEditEvent']);
     }
 }

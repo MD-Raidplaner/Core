@@ -36,12 +36,12 @@ final class RestoreEvent implements IController
 
     private function assertEventIsEditable(Event $event): void
     {
-        if (!$event->isDeleted) {
-            throw new IllegalLinkException();
-        }
-
         if (!$event->canRestore()) {
             throw new PermissionDeniedException();
+        }
+
+        if (!$event->isDeleted) {
+            throw new IllegalLinkException();
         }
     }
 }

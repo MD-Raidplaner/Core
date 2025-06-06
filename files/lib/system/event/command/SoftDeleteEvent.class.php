@@ -4,17 +4,17 @@ namespace rp\system\event\command;
 
 use rp\data\event\Event;
 use rp\data\event\EventAction;
-use rp\event\event\EventTrashed;
+use rp\event\event\EventSoftDeleted;
 use wcf\system\event\EventHandler;
 
 /**
- * Trash a event.
+ * Soft delete an event.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  */
-final class TrashEvent
+final class SoftDeleteEvent
 {
     public function __construct(
         private readonly Event $event,
@@ -28,7 +28,7 @@ final class TrashEvent
         );
         $action->executeAction();
 
-        $event = new EventTrashed(new Event($this->event->eventID));
+        $event = new EventSoftDeleted(new Event($this->event->eventID));
         EventHandler::getInstance()->fire($event);
     }
 }
