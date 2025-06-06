@@ -7,11 +7,15 @@ use rp\data\event\AccessibleEventList;
 use rp\data\event\EventAction;
 use rp\data\event\EventEditor;
 use rp\data\event\ViewableEvent;
+use rp\system\cache\runtime\ViewableEventRuntimeCache;
+use rp\system\interaction\user\EventContentInteractions;
 use wcf\http\Helper;
 use wcf\page\AbstractPage;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\PermissionDeniedException;
+use wcf\system\interaction\StandaloneInteractionContextMenuComponent;
 use wcf\system\MetaTagHandler;
+use wcf\system\request\LinkHandler;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 
@@ -37,6 +41,13 @@ final class EventPage extends AbstractPage
         WCF::getTPL()->assign([
             'event' => $this->event,
             'eventID' => $this->eventID,
+            'interactionContextMenu' => StandaloneInteractionContextMenuComponent::forContentInteractionButton(
+                new EventContentInteractions(),
+                $this->event,
+                LinkHandler::getInstance()->getControllerLink(RaidEventListPage::class),
+                WCF::getLanguage()->getDynamicVariable('rp.event.edit'),
+                "rp/events/{$this->eventID}/content-header-title"
+            ),
             'nextEvent' => $this->nextEvent,
             'previousEvent' => $this->previousEvent,
         ]);
@@ -120,9 +131,13 @@ final class EventPage extends AbstractPage
             throw new IllegalLinkException();
         }
 
-        $this->event = ViewableEvent::getEvent($this->eventID);
+        $this->event = ViewableEventRuntimeCache::getInstance()->getObject($this->eventID);
         if ($this->event === null) {
             throw new IllegalLinkException();
+        }
+
+        if (!$this->event->canRead()) {
+            throw new PermissionDeniedException();
         }
 
         $this->canonicalURL = $this->event->getLink();

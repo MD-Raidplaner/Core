@@ -13,34 +13,34 @@ use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\PermissionDeniedException;
 
 /**
- * API endpoint for the cancel a events.
+ * API endpoint for moving an event to the trash (soft delete).
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-#[PostRequest('/rp/events/{id:\d+}/raid-cancel')]
-final class CancelEvent implements IController
+#[PostRequest('/rp/events/{id:\d+}/soft-delete')]
+final class SoftDeleteEvent implements IController
 {
     #[\Override]
     public function __invoke(ServerRequestInterface $request, array $variables): ResponseInterface
     {
         $event = Helper::fetchObjectFromRequestParameter($variables['id'], Event::class);
 
-        $this->assertEventIsCancelable($event);
+        $this->assertEventIsEditable($event);
 
-        (new \rp\system\event\command\CancelEvent($event))();
+        (new \rp\system\event\command\SoftDeleteEvent($event))();
 
         return new JsonResponse([]);
     }
 
-    private function assertEventIsCancelable(Event $event): void
+    private function assertEventIsEditable(Event $event): void
     {
-        if (!$event->canCancel()) {
+        if (!$event->canTrash()) {
             throw new PermissionDeniedException();
         }
 
-        if ($event->isCanceled) {
+        if ($event->isDeleted) {
             throw new IllegalLinkException();
         }
     }

@@ -31,22 +31,6 @@ class ViewableEvent extends DatabaseObjectDecorator
     protected ?UserProfile $userProfile = null;
 
     /**
-     * Returns true if this user can edit his event.
-     */
-    public function canEditOwnEvent(): bool
-    {
-        if (
-            $this->userID &&
-            $this->userID == WCF::getUser()->userID &&
-            WCF::getSession()->getPermission('user.rp.canEditOwnEvent')
-        ) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * Returns delete note if applicable.
      */
     public function getDeleteNote(): string

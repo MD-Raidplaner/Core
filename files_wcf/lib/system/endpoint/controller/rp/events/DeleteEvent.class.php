@@ -9,11 +9,12 @@ use rp\data\event\Event;
 use wcf\http\Helper;
 use wcf\system\endpoint\DeleteRequest;
 use wcf\system\endpoint\IController;
+use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\PermissionDeniedException;
 use wcf\system\WCF;
 
 /**
- * API endpoint for the deletion of events.
+ * API endpoint for the deletion an event.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
@@ -38,6 +39,10 @@ final class DeleteEvent implements IController
     {
         if (!$event->canDelete()) {
             throw new PermissionDeniedException();
+        }
+
+        if ($event->isDeleted) {
+            throw new IllegalLinkException();
         }
     }
 }

@@ -41,9 +41,11 @@ return static function (): void {
             $event->register(new \wcf\system\endpoint\controller\rp\events\AvailableCharacters);
             $event->register(new \wcf\system\endpoint\controller\rp\events\CancelEvent);
             $event->register(new \wcf\system\endpoint\controller\rp\events\DeleteEvent);
-            $event->register(new \wcf\system\endpoint\controller\rp\events\EnableDisableEvent);
+            $event->register(new \wcf\system\endpoint\controller\rp\events\GetEventContentHeaderTitle);
+            $event->register(new \wcf\system\endpoint\controller\rp\events\PublishEvent);
             $event->register(new \wcf\system\endpoint\controller\rp\events\RestoreEvent);
-            $event->register(new \wcf\system\endpoint\controller\rp\events\TrashEvent);
+            $event->register(new \wcf\system\endpoint\controller\rp\events\SoftDeleteEvent);
+            $event->register(new \wcf\system\endpoint\controller\rp\events\UnPublishEvent);
             $event->register(new \wcf\system\endpoint\controller\rp\items\Tooltip);
             $event->register(new \wcf\system\endpoint\controller\rp\items\SearchItem);
             $event->register(new \wcf\system\endpoint\controller\rp\point\accounts\DeleteAccount);

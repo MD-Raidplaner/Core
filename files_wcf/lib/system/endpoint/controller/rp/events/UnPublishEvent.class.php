@@ -14,14 +14,14 @@ use wcf\system\exception\PermissionDeniedException;
 use wcf\system\WCF;
 
 /**
- * API endpoint for the enable/disable a events.
+ * API endpoint for unpublishing an event.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-#[PostRequest('/rp/events/{id:\d+}/enable-disable')]
-final class EnableDisableEvent implements IController
+#[PostRequest('/rp/events/{id:\d+}/unpublish')]
+final class UnPublishEvent implements IController
 {
     #[\Override]
     public function __invoke(ServerRequestInterface $request, array $variables): ResponseInterface
@@ -29,9 +29,8 @@ final class EnableDisableEvent implements IController
         $this->assertEventIsEditable();
 
         $event = Helper::fetchObjectFromRequestParameter($variables['id'], Event::class);
-        $parameters = Helper::mapApiParameters($request, EnableDisableEventParameters::class);
 
-        (new \rp\system\event\command\EnableDisableEvent($event, $parameters->isEnabled))();
+        (new \rp\system\event\command\EnableDisableEvent($event, true))();
 
         return new JsonResponse([]);
     }
@@ -40,12 +39,4 @@ final class EnableDisableEvent implements IController
     {
         WCF::getSession()->checkPermissions(['mod.rp.canEditEvent']);
     }
-}
-
-/** @internal */
-final class EnableDisableEventParameters
-{
-    public function __construct(
-        public readonly bool $isEnabled,
-    ) {}
 }

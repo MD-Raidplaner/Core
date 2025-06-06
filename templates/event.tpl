@@ -1,56 +1,12 @@
 {capture assign='pageTitle'}{$event->getTitle()}{/capture}
 
 {capture assign='contentHeader'}
-    <header class="contentHeader rpEventHeader" data-object-id="{$event->eventID}" data-is-deleted="{$event->isDeleted}"
-        data-is-disabled="{$event->isDisabled}">
+    <header class="contentHeader rpEventHeader">
         <div class="contentHeaderIcon">
             {unsafe:$event->getIcon(64)}
         </div>
 
-        <div class="contentHeaderTitle">
-            <h1 class="contentTitle">
-                {$event->getTitle()}
-
-                {if $event->isNew()}
-                    <span class="badge label green">{lang}wcf.message.new{/lang}</span>
-                {/if}
-
-                {if $event->isDisabled}
-                    <span class="badge label green jsIsDisabled">{lang}wcf.message.status.disabled{/lang}</span>
-                {/if}
-
-                {if $event->isDeleted}
-                    <span class="badge label red jsIsDeleted">{lang}wcf.message.status.deleted{/lang}</span>
-                {/if}
-            </h1>
-            <ul class="inlineList commaSeparated contentHeaderMetaData">
-                <li>
-                    {icon name='clock'}
-                    {$event->getFormattedStartTime()} - {$event->getFormattedEndTime()}
-                </li>
-
-                <li>
-                    {icon name='user'}
-                    {user object=$event->getUserProfile()}
-                </li>
-
-                <li>
-                    {icon name='eye'}
-                    {lang}rp.event.views{/lang}
-                </li>
-
-                {if $event->getDiscussionProvider()->getDiscussionCountPhrase()}
-                    <li>
-                        {icon name='comments'}
-                        {if $event->getDiscussionProvider()->getDiscussionLink()}<a
-                            href="{$event->getDiscussionProvider()->getDiscussionLink()}">{else}<span>
-                                {/if}
-                                {$event->getDiscussionProvider()->getDiscussionCountPhrase()}
-                                {if $event->getDiscussionProvider()->getDiscussionLink()}</a>{else}</span>{/if}
-                    </li>
-                {/if}
-            </ul>
-        </div>
+        {include application='rp' file='eventContentHeaderTitle'}
 
         {hascontent}
         <nav class="contentHeaderNavigation">
@@ -146,33 +102,7 @@
 {/if}
 
 {capture assign='contentInteractionButtons'}
-    <div id="eventDropdown" class="contentInteractionButton dropdown jsOnly jsEventDropdown" style="display: none;">
-        <button type="button" class="button small dropdownToggle">
-            {icon name='sliders'}
-            <span>{lang}rp.event.settings{/lang}</span>
-        </button>
-        <ul class="dropdownMenu jsEventDropdownItems">
-            <li data-option-name="delete"><span>{lang}rp.event.delete{/lang}</span></li>
-            <li data-option-name="restore"><span>{lang}rp.event.restore{/lang}</span></li>
-            <li data-option-name="trash"><span>{lang}rp.event.trash{/lang}</span></li>
-            <li data-option-name="enable"><span>{lang}rp.event.enable{/lang}</span> </li>
-            <li data-option-name="disable"><span>{lang}rp.event.disable{/lang}</span></li>
-            {if $event->isRaidEvent()}
-                <li data-option-name="cancel"><span>{lang}rp.event.raid.cancel{/lang}</span></li>
-                {if !$event->raidID && $event->getController()->isLeader()}
-                    <li data-option-name="transform"
-                        data-link="{link controller='RaidAdd' application='rp'}eventID={$event->eventID}{/link}">
-                        <span>{lang}rp.event.raid.transform{/lang}</span>
-                    </li>
-                {/if}
-            {/if}
-            <li class="dropdownDivider"></li>
-            <li data-option-name="editLink"
-                data-link="{link controller='EventEdit' application='rp' id=$event->eventID}{/link}">
-                <span>{lang}rp.event.edit{/lang}</span>
-            </li>
-        </ul>
-    </div>
+    {unsafe:$interactionContextMenu->render()}
 {/capture}
 
 {event name='beforeHeader'}
@@ -210,16 +140,7 @@
     </div>
 {/if}
 
-<div id="event{$event->eventID}" class="event" data-can-cancel="{if $event->canCancel()}true{else}false{/if}"
-    data-can-delete="{if $event->canDelete()}true{else}false{/if}"
-    data-can-edit="{if $event->canEdit() || $event->canEditOwnEvent()}true{else}false{/if}"
-    data-can-restore="{if $event->canRestore() || $event->canEditOwnEvent()}true{else}false{/if}"
-    data-can-transform="{if $event->isRaidEvent() && !$event->raidID && $event->getController()->isLeader()}true{else}false{/if}"
-    data-can-trash="{if $event->canTrash()}true{else}false{/if}"
-    data-canceled="{if $event->isCanceled}true{else}false{/if}"
-    data-deleted="{if $event->isDeleted}true{else}false{/if}"
-    data-enabled="{if !$event->isDisabled}true{else}false{/if}" data-event-id="{$event->eventID}"
-    data-title="{$event->getTitle()}">
+<div id="event{$event->eventID}" class="event" data-event-id="{$event->eventID}" data-title="{$event->getTitle()}">
     {unsafe:$event->getController()->getContent()}
 </div>
 
@@ -246,7 +167,7 @@
                         <span class="eventNavigationEventIcon">
                             {icon size=48 name='chevron-left'}
                         </span>
-                        <span class="eventNavigationEventImage">{@$previousEvent->getIcon(96)}</span>
+                        <span class="eventNavigationEventImage">{$previousEvent->getIcon(96)}</span>
                         <span class="eventNavigationEventContent">
                             <span class="eventNavigationEntityName">{lang}rp.event.previousEvent{/lang}</span>
                             <span class="eventNavigationEventTitle">
@@ -263,7 +184,7 @@
                         <span class="eventNavigationEventIcon">
                             {icon size=48 name='chevron-right'}
                         </span>
-                        <span class="eventNavigationEventImage">{@$nextEvent->getIcon(96)}</span>
+                        <span class="eventNavigationEventImage">{$nextEvent->getIcon(96)}</span>
                         <span class="eventNavigationEventContent">
                             <span class="eventNavigationEntityName">{lang}rp.event.nextEvent{/lang}</span>
                             <span class="eventNavigationEventTitle">
@@ -281,16 +202,6 @@
 
 {event name='beforeComments'}
 
-{@$event->getDiscussionProvider()->renderDiscussions()}
+{unsafe:$event->getDiscussionProvider()->renderDiscussions()}
 
 {include file='footer'}
-
-<script data-relocate="true">
-    require(['MDRP/Ui/Event/Editor'], function({ UiEventEditor }) {
-        WoltLabLanguage.registerPhrase("rp.event.raid.cancel.confirmMessage", '{jslang __literal=true}rp.event.raid.cancel.confirmMessage{/jslang}');
-        {jsphrase name='wcf.message.status.deleted'}
-        {jsphrase name='wcf.message.status.disabled'}
-
-        new UiEventEditor();
-    });
-</script>

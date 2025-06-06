@@ -83,13 +83,12 @@
         <category name="rp.event">
             <item name="rp.event.accepted"><![CDATA[Accepted]]></item>
             <item name="rp.event.add"><![CDATA[Create Event]]></item>
+            <item name="rp.event.button.publish"><![CDATA[Enable]]></item>
+            <item name="rp.event.button.unpublish"><![CDATA[Disable]]></item>
             <item name="rp.event.canceled"><![CDATA[Canceled]]></item>
             <item name="rp.event.comment"><![CDATA[Event Comment]]></item>
             <item name="rp.event.commentResponse"><![CDATA[Reply to Event Comment]]></item>
-            <item name="rp.event.delete"><![CDATA[Delete permanently]]></item>
-            <item name="rp.event.disable"><![CDATA[Disable]]></item>
             <item name="rp.event.edit"><![CDATA[Edit event]]></item>
-            <item name="rp.event.enable"><![CDATA[Enable]]></item>
             <item name="rp.event.enableComments"><![CDATA[Enable comments]]></item>
             <item name="rp.event.endTime"><![CDATA[End Time]]></item>
             <item name="rp.event.endTime.error.invalid"><![CDATA[You have specified an invalid date for the end of the event. The end of the event must not be before the start.]]></item>
@@ -105,13 +104,8 @@
             <item name="rp.event.participation"><![CDATA[Participation]]></item>
             <item name="rp.event.previousEvent"><![CDATA[Previous Event]]></item>
             <item name="rp.event.recentActivity"><![CDATA[<strong>{$author}</strong> created the {if $eventObj->isRaidEvent()}raid{else}event{/if} <strong>{$eventObj->getTitle()}</strong>.]]></item>
-            <item name="rp.event.restore"><![CDATA[Restore]]></item>
-            <item name="rp.event.settings"><![CDATA[Settings]]></item>
             <item name="rp.event.startTime"><![CDATA[Start time]]></item>
             <item name="rp.event.startTime.error.invalid"><![CDATA[You have specified an invalid date for the start of the event.]]></item>
-            <item name="rp.event.trash"><![CDATA[Move to Trash]]></item>
-            <item name="rp.event.trash.confirmMessage"><![CDATA[Do you really want to move this event to the trash?]]></item>
-            <item name="rp.event.trash.reason"><![CDATA[Reason (optional)]]></item>
             <item name="rp.event.type"><![CDATA[Event Type]]></item>
             <item name="rp.event.views"><![CDATA[{#$event->views} View{if $event->views != 1}s{/if}]]></item>
         </category>
