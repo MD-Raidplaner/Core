@@ -46,9 +46,13 @@ final class AvailableCharacters implements IController
         }
 
         return new JsonResponse([
-            'template' => WCF::getTPL()->fetch('eventAvailableCharacters', 'rp', [
-                'availableCharacters' => $event->getAvailableCharacters(),
-            ]),
+            'template' => WCF::getTPL()->render(
+                'rp',
+                'eventAvailableCharacters',
+                [
+                    'availableCharacters' => $event->getAvailableCharacters(),
+                ]
+            ),
         ]);
     }
 

@@ -96,11 +96,15 @@ final class PointsCharacterProfileMenu implements ICharacterProfileMenu
             return \strcasecmp($a->getTitle(), $b->getTitle());
         });
 
-        return WCF::getTPL()->fetch('characterProfilePoints', 'rp', [
-            'characterPoints' => $characterPoints,
-            'characterStats' => $characterStats,
-            'pointAccounts' => $pointAccounts,
-        ]);
+        return WCF::getTPL()->render(
+            'rp',
+            'characterProfilePoints',
+            [
+                'characterPoints' => $characterPoints,
+                'characterStats' => $characterStats,
+                'pointAccounts' => $pointAccounts,
+            ]
+        );
     }
 
     #[\Override]

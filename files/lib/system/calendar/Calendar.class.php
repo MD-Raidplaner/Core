@@ -148,12 +148,16 @@ final class Calendar
 
     public function getTemplate(): string
     {
-        return WCF::getTPL()->fetch('renderCalendar', 'rp', [
-            'days' => $this->calendarDays,
-            'monthName' => $this->monthName,
-            'weekDays' => DateUtil::getWeekDays(),
-            'year' => $this->year,
-        ], true);
+        return WCF::getTPL()->render(
+            'rp',
+            'renderCalendar',
+            [
+                'days' => $this->calendarDays,
+                'monthName' => $this->monthName,
+                'weekDays' => DateUtil::getWeekDays(),
+                'year' => $this->year,
+            ]
+        );
     }
 
     private function initEventDays(): void

@@ -61,6 +61,6 @@ final class CommentEventDiscussionProvider extends AbstractEventDiscussionProvid
             'likeData' => (MODULE_LIKE) ? $commentList->getLikeData() : [],
         ]);
 
-        return WCF::getTPL()->fetch('eventComments', 'rp');
+        return WCF::getTPL()->render('rp', 'eventComments', []);
     }
 }

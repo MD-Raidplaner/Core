@@ -267,7 +267,7 @@ final class RaidEventController extends AbstractEventController
     {
         WCF::getTPL()->assign($this->getContentData());
 
-        return WCF::getTPL()->fetch('eventRaid', 'rp');
+        return WCF::getTPL()->render('rp', 'eventRaid', []);
     }
 
     /**

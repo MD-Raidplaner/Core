@@ -38,14 +38,18 @@ class EventRaidAttendeeClipboardAction extends AbstractClipboardAction
         // handle actions
         switch ($action->actionName) {
             case 'updateStatus':
-                $item->addInternalData('template', WCF::getTPL()->fetch('eventRaidAttendeeStatusDialog', 'rp', [
-                    'statusData' => [
-                        EventRaidAttendee::STATUS_CONFIRMED => WCF::getLanguage()->get('rp.event.raid.container.confirmed'),
-                        EventRaidAttendee::STATUS_LOGIN => WCF::getLanguage()->get('rp.event.raid.container.login'),
-                        EventRaidAttendee::STATUS_RESERVE => WCF::getLanguage()->get('rp.event.raid.container.reserve'),
-                        EventRaidAttendee::STATUS_LOGOUT => WCF::getLanguage()->get('rp.event.raid.container.logout'),
+                $item->addInternalData('template', WCF::getTPL()->render(
+                    'rp',
+                    'eventRaidAttendeeStatusDialog',
+                    [
+                        'statusData' => [
+                            EventRaidAttendee::STATUS_CONFIRMED => WCF::getLanguage()->get('rp.event.raid.container.confirmed'),
+                            EventRaidAttendee::STATUS_LOGIN => WCF::getLanguage()->get('rp.event.raid.container.login'),
+                            EventRaidAttendee::STATUS_RESERVE => WCF::getLanguage()->get('rp.event.raid.container.reserve'),
+                            EventRaidAttendee::STATUS_LOGOUT => WCF::getLanguage()->get('rp.event.raid.container.logout'),
+                        ]
                     ]
-                ]));
+                ));
                 $item->addInternalData('objectIDs', $item->getParameters()['objectIDs']);
                 break;
 

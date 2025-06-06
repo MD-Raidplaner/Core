@@ -19,9 +19,13 @@ final class AboutCharacterProfileMenu implements ICharacterProfileMenu
     {
         $character = CharacterProfileRuntimeCache::getInstance()->getObject($characterID);
 
-        return WCF::getTPL()->fetch('characterProfileAbout', 'rp', [
-            'notes' => $character->notes ?? '',
-        ]);
+        return WCF::getTPL()->render(
+            'rp',
+            'characterProfileAbout',
+            [
+                'notes' => $character->notes ?? '',
+            ]
+        );
     }
 
     #[\Override]

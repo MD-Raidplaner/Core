@@ -27,9 +27,9 @@ final class Tooltip implements IController
         $item = Helper::fetchObjectFromRequestParameter($variables['id'], Item::class);
 
         return new JsonResponse([
-            'tooltip' => WCF::getTPL()->fetch(
-                'itemTooltip',
+            'tooltip' => WCF::getTPL()->render(
                 'rp',
+                'itemTooltip',
                 [
                     'item' => $item,
                 ],

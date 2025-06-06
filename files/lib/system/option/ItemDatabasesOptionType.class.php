@@ -68,7 +68,7 @@ class ItemDatabasesOptionType extends AbstractOptionType
             'availableDatabases' => $databases,
         ]);
 
-        return WCF::getTPL()->fetch('itemDatabaseOptionType', 'rp');
+        return WCF::getTPL()->render('rp', 'itemDatabaseOptionType', []);
     }
 
     #[\Override]

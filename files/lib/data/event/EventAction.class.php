@@ -50,9 +50,9 @@ class EventAction extends AbstractDatabaseObjectAction
         $action->executeAction();
 
         return [
-            'template' => WCF::getTPL()->fetch(
-                'userListItem',
+            'template' => WCF::getTPL()->render(
                 'rp',
+                'userListItem',
                 [
                     'user' => new UserProfile(WCF::getUser()),
                 ]
