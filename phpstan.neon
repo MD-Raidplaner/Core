@@ -1,5 +1,6 @@
 includes:
-    - phpstan-baseline.neon
+    - phpstan-ambient.neon
+    - ../../../../wscdownload/WCF-6.2/phpstan-ambient.neon
 
 parameters:
     level: 6
@@ -16,7 +17,3 @@ parameters:
         - identifier: method.unused
         - identifier: new.static
         - identifier: trait.unused 
-    universalObjectCratesClasses:
-    dynamicConstantNames:
-        - MODULE_TAGGING
-        - RELATIVE_WCF_DIR

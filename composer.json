@@ -1,7 +1,10 @@
 {
-    "name": "md-raidplaner/rp",
-    "type": "project",
-    "require-dev": {
-        "phpstan/phpstan": "^2.1"
-    }
+  "name": "md-raidplaner/rp",
+  "type": "project",
+  "require-dev": {
+    "phpstan/phpstan": "^2.1"
+  },
+  "scripts": {
+    "stan": "vendor/bin/phpstan analyse --memory-limit=512M --generate-baseline"
+  }
 }
