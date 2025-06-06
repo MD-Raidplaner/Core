@@ -1,20 +1,20 @@
 <?php
 
-namespace rp\system\event;
+namespace rp\system\event\type;
 
 use wcf\system\cache\runtime\UserProfileRuntimeCache;
 use wcf\system\WCF;
 
 /**
- * Default event implementation for event controllers.
+ * Default event implementation for event types.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-final class AppointmentEventController extends DefaultEventController
+final class AppointmentEventType extends DefaultEventType
 {
-    protected string $eventController = 'de.md-raidplaner.rp.event.controller.appointment';
+    protected string $eventType = 'appointment';
     protected string $eventNodesPosition = 'right';
 
     #[\Override]

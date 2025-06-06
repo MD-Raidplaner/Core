@@ -1,6 +1,6 @@
 <?php
 
-namespace rp\system\event;
+namespace rp\system\event\type;
 
 use wcf\system\form\builder\container\FormContainer;
 use wcf\system\form\builder\field\TitleFormField;
@@ -8,15 +8,15 @@ use wcf\system\form\builder\IFormDocument;
 use wcf\system\WCF;
 
 /**
- * Default event implementation for event controllers.
+ * Default event implementation for event types.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-class DefaultEventController extends AbstractEventController
+class DefaultEventType extends AbstractEventType
 {
-    protected string $eventController = 'de.md-raidplaner.rp.event.controller.default';
+    protected string $eventType = 'default';
     protected string $eventNodesPosition = 'center';
     protected array $savedFields = [
         'enableComments',

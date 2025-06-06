@@ -3,10 +3,6 @@
     xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/objectTypeDefinition.xsd">
     <import>
         <definition>
-            <name>de.md-raidplaner.rp.event.controller</name>
-            <interfacename>rp\system\event\IEventController</interfacename>
-        </definition>
-        <definition>
             <name>de.md-raidplaner.rp.event.discussionProvider</name>
             <interfacename>rp\system\event\discussion\IEventDiscussionProvider</interfacename>
         </definition>

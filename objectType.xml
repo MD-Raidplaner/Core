@@ -34,24 +34,6 @@
         </type>
         <!-- /discussion providers -->
 
-        <!-- event controllers -->
-        <type>
-            <name>de.md-raidplaner.rp.event.controller.appointment</name>
-            <definitionname>de.md-raidplaner.rp.event.controller</definitionname>
-            <classname>rp\system\event\AppointmentEventController</classname>
-        </type>
-        <type>
-            <name>de.md-raidplaner.rp.event.controller.default</name>
-            <definitionname>de.md-raidplaner.rp.event.controller</definitionname>
-            <classname>rp\system\event\DefaultEventController</classname>
-        </type>
-        <type>
-            <name>de.md-raidplaner.rp.event.controller.raid</name>
-            <definitionname>de.md-raidplaner.rp.event.controller</definitionname>
-            <classname>rp\system\event\RaidEventController</classname>
-        </type>
-        <!-- /event controllers -->
-
         <!-- message -->
         <type>
             <name>de.md-raidplaner.rp.event.notes</name>

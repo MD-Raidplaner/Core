@@ -27,6 +27,15 @@ return static function (): void {
     );
 
     $eventHandler->register(
+        \rp\event\event\EventTypeCollecting::class,
+        static function (\rp\event\event\EventTypeCollecting $event) {
+            $event->register('appointment', \rp\system\event\type\AppointmentEventType::class);
+            $event->register('default', \rp\system\event\type\DefaultEventType::class);
+            $event->register('raid', \rp\system\event\type\RaidEventType::class);
+        }
+    );
+
+    $eventHandler->register(
         \wcf\event\endpoint\ControllerCollecting::class,
         static function (\wcf\event\endpoint\ControllerCollecting $event) {
             $event->register(new \wcf\system\endpoint\controller\rp\attendees\CreateAttendee);

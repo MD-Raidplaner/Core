@@ -1,10 +1,9 @@
 <?php
 
-namespace rp\system\event;
+namespace rp\system\event\type;
 
 use rp\data\event\Event;
 use rp\event\event\EventCreateForm;
-use wcf\data\object\type\ObjectTypeCache;
 use wcf\system\event\EventHandler;
 use wcf\system\exception\PermissionDeniedException;
 use wcf\system\form\builder\container\IFormContainer;
@@ -22,13 +21,13 @@ use wcf\system\style\FontAwesomeIcon;
 use wcf\system\WCF;
 
 /**
- * Default implementation for event controllers.
+ * Default implementation for event types.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-abstract class AbstractEventController implements IEventController
+abstract class AbstractEventType implements IEventType
 {
     /**
      * database object of this event
@@ -36,9 +35,9 @@ abstract class AbstractEventController implements IEventController
     protected ?Event $event = null;
 
     /**
-     * type name of this event controller
+     * type name of this event type
      */
-    protected string $eventController = '';
+    protected string $eventType = '';
 
     /**
      * Position where Notes should be displayed in this event.
@@ -61,7 +60,7 @@ abstract class AbstractEventController implements IEventController
     #[\Override]
     public function createForm(IFormDocument $form): void
     {
-        $event = new EventCreateForm($form, $this->eventController);
+        $event = new EventCreateForm($form, $this->eventType);
         EventHandler::getInstance()->fire($event);
     }
 
@@ -299,7 +298,7 @@ abstract class AbstractEventController implements IEventController
         $data = \array_intersect_key($formData['data'], \array_flip($this->savedFields)) + $data;
         $formData['data'] = \array_diff_key($formData['data'], \array_flip($this->savedFields));
 
-        $data['objectTypeID'] = (ObjectTypeCache::getInstance()->getObjectTypeByName('de.md-raidplaner.rp.event.controller', $this->eventController))->objectTypeID;
+        $data['eventType'] = $this->eventType;
 
         $data['additionalData'] = \serialize($formData['data']);
         unset($formData['data']);

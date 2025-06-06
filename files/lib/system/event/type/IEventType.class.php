@@ -1,21 +1,21 @@
 <?php
 
-namespace rp\system\event;
+namespace rp\system\event\type;
 
 use rp\data\event\Event;
 use wcf\system\form\builder\IFormDocument;
 
 /**
- * Interface for dynamic event controller.
+ * Interface for dynamic event type.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  */
-interface IEventController
+interface IEventType
 {
     /**
-     * Checks the permissions of this event controller.
+     * Checks the permissions of this event type.
      */
     public function checkPermissions(): void;
 
@@ -74,7 +74,7 @@ interface IEventController
 
     /**
      * Returns `true` if the position matches the event nodes position present in 
-     * the controller, otherwise `false`.
+     * the type, otherwise `false`.
      */
     public function showEventNodes(string $position): bool;
 }
