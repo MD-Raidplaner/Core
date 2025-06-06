@@ -159,44 +159,40 @@
 {event name='afterFooter'}
 
 {if $previousEvent || $nextEvent}
-    <div class="section">
-        <nav>
-            <ul class="eventNavigation">
-                {if $previousEvent}
-                    <li class="previousEventButton eventNavigationEvent eventNavigationEventWithImage">
-                        <span class="eventNavigationEventIcon">
-                            {icon size=48 name='chevron-left'}
-                        </span>
-                        <span class="eventNavigationEventImage">{$previousEvent->getIcon(96)}</span>
-                        <span class="eventNavigationEventContent">
-                            <span class="eventNavigationEntityName">{lang}rp.event.previousEvent{/lang}</span>
-                            <span class="eventNavigationEventTitle">
-                                <a href="{$previousEvent->getLink()}" rel="prev" class="eventNavigationEventLink">
-                                    {$previousEvent->getTitle()}
-                                </a>
-                            </span>
-                        </span>
-                    </li>
-                {/if}
-
-                {if $nextEvent}
-                    <li class="nextEventButton eventNavigationEvent eventNavigationEventWithImage">
-                        <span class="eventNavigationEventIcon">
-                            {icon size=48 name='chevron-right'}
-                        </span>
-                        <span class="eventNavigationEventImage">{$nextEvent->getIcon(96)}</span>
-                        <span class="eventNavigationEventContent">
-                            <span class="eventNavigationEntityName">{lang}rp.event.nextEvent{/lang}</span>
-                            <span class="eventNavigationEventTitle">
-                                <a href="{$nextEvent->getLink()}" rel="next" class="eventNavigationEventLink">
-                                    {$nextEvent->getTitle()}
-                                </a>
-                            </span>
-                        </span>
-                    </li>
-                {/if}
-            </ul>
-        </nav>
+    <div class="section event__navigation">
+        {if $previousEvent}
+            <div class="event__navigation__item event__navigation__item--previous event__navigation__item--withImage">
+                <div class="event__navigation__item__icon">
+                    {icon size=48 name='chevron-left'}
+                </div>
+                <div class="event__navigation__item__image">{unsafe:$previousEvent->getIcon(96)}</div>
+                <div class="event__navigation__item__content">
+                    <div class="event__navigation__item__entityName">{lang}rp.event.previousEvent{/lang}</div>
+                    <div class="event__navigation__item__title">
+                        <a href="{$previousEvent->getLink()}" rel="prev" class="event__navigation__item__link eventLink"
+                            data-object-id="{$previousEvent->getObjectID()}">
+                            {$previousEvent->getTitle()}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {/if}
+        {if $nextEvent}
+            <div class="event__navigation__item event__navigation__item--next event__navigation__item--withImage">
+                <div class="event__navigation__item__icon">
+                    {icon size=48 name='chevron-right'}
+                </div>
+                <div class="event__navigation__item__image">{unsafe:$nextEvent->getIcon(96)}</div>
+                <div class="event__navigation__item__content">
+                    <div class="event__navigation__item__entityName">{lang}rp.event.nextEvent{/lang}</div>
+                    <div class="event__navigation__item__title">
+                        <a href="{$nextEvent->getLink()}" rel="next" class="event__navigation__item__link eventLink" data-object-id="{$nextEvent->getObjectID()}">
+                            {$nextEvent->getTitle()}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {/if}
     </div>
 {/if}
 
