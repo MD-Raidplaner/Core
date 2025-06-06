@@ -182,7 +182,7 @@ final class RPServerPackageInstallationPlugin extends AbstractXMLPackageInstalla
     protected function findExistingItem(array $data): array
     {
         $sql = "SELECT  *
-                FROM    rp" . WCF_N . "_server
+                FROM    rp1_server
                 WHERE   identifier = ?
                     AND packageID = ?";
         $parameters = [

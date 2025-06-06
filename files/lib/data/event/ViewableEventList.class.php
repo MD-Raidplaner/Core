@@ -50,7 +50,7 @@ class ViewableEventList extends EventList
             if (!empty($this->sqlSelects)) $this->sqlSelects .= ',';
             $this->sqlSelects .= 'tracked_visit.visitTime';
             $this->sqlJoins .= "
-                LEFT JOIN   wcf" . WCF_N . "_tracked_visit tracked_visit
+                LEFT JOIN   wcf1_tracked_visit tracked_visit
                 ON          tracked_visit.objectTypeID = " . VisitTracker::getInstance()->getObjectTypeID('de.md-raidplaner.rp.event') . "
                         AND tracked_visit.objectID = event.eventID
                         AND tracked_visit.userID = " . WCF::getUser()->userID;

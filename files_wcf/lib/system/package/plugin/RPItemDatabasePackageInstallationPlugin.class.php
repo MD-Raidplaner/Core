@@ -111,7 +111,7 @@ final class RPItemDatabasePackageInstallationPlugin extends AbstractXMLPackageIn
     protected function findExistingItem(array $data): array
     {
         $sql = "SELECT  *
-                FROM    rp" . WCF_N . "_" . $this->tableName . "
+                FROM    rp1_" . $this->tableName . "
                 WHERE   identifier = ?
                     AND packageID = ?";
         $parameters = [
