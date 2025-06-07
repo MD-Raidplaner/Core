@@ -194,7 +194,7 @@ return [
             IntDatabaseTableColumn::create('userID')
                 ->length(10),
             NotNullVarchar255DatabaseTableColumn::create('game'),
-            IntDatabaseTableColumn::create('avatarID')
+            IntDatabaseTableColumn::create('avatarFileID')
                 ->length(10),
             NotNullInt10DatabaseTableColumn::create('created')
                 ->defaultValue(0),
@@ -224,6 +224,11 @@ return [
                 ->referencedTable('wcf1_user')
                 ->referencedColumns(['userID'])
                 ->onDelete('SET NULL'),
+            DatabaseTableForeignKey::create()
+                ->columns(['avatarFileID'])
+                ->referencedTable('wcf1_file')
+                ->referencedColumns(['fileID'])
+                ->onDelete('SET NULL'),
         ]),
 
     PartialDatabaseTable::create('rp1_event_raid_attendee')
@@ -242,52 +247,6 @@ return [
                 ->referencedTable('rp1_member')
                 ->referencedColumns(['characterID'])
                 ->onDelete('CASCADE'),
-        ]),
-
-    DatabaseTable::create('rp1_member_avatar')
-        ->columns([
-            ObjectIdDatabaseTableColumn::create('avatarID'),
-            NotNullVarchar255DatabaseTableColumn::create('avatarName')
-                ->defaultValue(''),
-            VarcharDatabaseTableColumn::create('avatarExtension')
-                ->length(7)
-                ->notNull()
-                ->defaultValue(''),
-            SmallintDatabaseTableColumn::create('width')
-                ->length(5)
-                ->notNull()
-                ->defaultValue(0),
-            SmallintDatabaseTableColumn::create('height')
-                ->length(5)
-                ->notNull()
-                ->defaultValue(0),
-            IntDatabaseTableColumn::create('characterID')
-                ->length(10),
-            VarcharDatabaseTableColumn::create('fileHash')
-                ->length(40)
-                ->notNull()
-                ->defaultValue(''),
-            DefaultFalseBooleanDatabaseTableColumn::create('hasWebP'),
-        ])
-        ->indices([
-            DatabaseTablePrimaryIndex::create()
-                ->columns(['avatarID']),
-        ])
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['characterID'])
-                ->referencedTable('rp1_member')
-                ->referencedColumns(['characterID'])
-                ->onDelete('CASCADE'),
-        ]),
-
-    PartialDatabaseTable::create('rp1_member')
-        ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['avatarID'])
-                ->referencedTable('rp1_member_avatar')
-                ->referencedColumns(['avatarID'])
-                ->onDelete('SET NULL'),
         ]),
 
     DatabaseTable::create('rp1_point_account')
