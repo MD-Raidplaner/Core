@@ -2,6 +2,7 @@
 
 namespace rp\data\event;
 
+use wcf\data\DatabaseObjectDecorator;
 use wcf\data\DatabaseObjectList;
 
 /**

@@ -2,6 +2,7 @@
 
 namespace rp\data\character;
 
+use wcf\data\DatabaseObjectDecorator;
 use wcf\data\DatabaseObjectList;
 
 /**
