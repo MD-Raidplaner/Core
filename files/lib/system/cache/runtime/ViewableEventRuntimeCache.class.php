@@ -13,7 +13,7 @@ use wcf\system\cache\runtime\AbstractRuntimeCache;
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
  * @method  ViewableEvent[] getCachedObjects()
- * @method  ViewableEvent   getObject($objectID)
+ * @method  ViewableEvent|null  getObject($objectID)
  * @method  ViewableEvent[] getObjects(array $objectIDs)
  */
 final class ViewableEventRuntimeCache extends AbstractRuntimeCache

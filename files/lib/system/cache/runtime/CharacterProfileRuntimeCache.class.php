@@ -14,7 +14,7 @@ use wcf\system\cache\runtime\AbstractRuntimeCache;
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
  * @method  CharacterProfile[]  getCachedObjects()
- * @method  CharacterProfile    getObject($objectID)
+ * @method  CharacterProfile|null   getObject($objectID)
  * @method  CharacterProfile[]  getObjects(array $objectIDs)
  */
 final class CharacterProfileRuntimeCache extends AbstractRuntimeCache
