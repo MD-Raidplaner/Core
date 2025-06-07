@@ -2,14 +2,19 @@
 
 namespace rp\data\character;
 
-use rp\data\character\avatar\CharacterAvatar;
+use PDOException;
 use rp\data\character\avatar\CharacterAvatarDecorator;
 use rp\data\character\avatar\DefaultCharacterAvatar;
 use rp\system\game\GameHandler;
 use rp\system\game\GameItem;
 use wcf\data\DatabaseObjectDecorator;
 use wcf\data\ITitledLinkObject;
+use wcf\system\cache\runtime\FileRuntimeCache;
+use wcf\system\database\exception\DatabaseQueryException;
+use wcf\system\database\exception\DatabaseQueryExecutionException;
+use wcf\system\exception\SystemException;
 use wcf\system\user\storage\UserStorageHandler;
+use wcf\system\WCF;
 
 /**
  * Decorates the character object and provides functions to retrieve data for character profiles.
@@ -30,6 +35,24 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
     protected static $baseClass = Character::class;
 
     /**
+     * Returns true if the active user can edit the avatar of this character.
+     */
+    public function canEditAvatar(): bool
+    {
+        if (WCF::getSession()->getPermission('admin.rp.canEditCharacter')) {
+            return true;
+        }
+
+        if ($this->userID !== WCF::getUser()->userID) {
+            return false;
+        }
+
+
+        return WCF::getSession()->getPermission('user.rp.canUploadCharacterAvatar')
+            && WCF::getSession()->getPermission('user.rp.canEditOwnCharacter');
+    }
+
+    /**
      * Returns the character's avatar.
      */
     public function getAvatar(): CharacterAvatarDecorator
@@ -37,39 +60,35 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
         if ($this->avatar === null) {
             $avatar = null;
 
-            if ($this->avatarID) {
-                if (!$this->fileHash) {
-                    $avatars = [];
+            if ($this->avatarFileID) {
+                $avatars = [];
 
-                    if ($this->userID) {
-                        $data = UserStorageHandler::getInstance()->getField('characterAvatars', $this->userID);
-                        if ($data !== null) {
-                            $avatars = \unserialize($data);
-                        }
+                if ($this->userID) {
+                    $data = UserStorageHandler::getInstance()->getField('characterAvatars', $this->userID);
+                    if ($data !== null) {
+                        $avatars = \unserialize($data);
+                    }
 
-                        if (isset($avatars[$this->characterID])) {
-                            $avatar = $avatars[$this->characterID];
-                        } else {
-                            $avatar = new CharacterAvatar($this->avatarID);
-
-                            $avatars[$this->characterID] = $avatar;
-                            UserStorageHandler::getInstance()->update(
-                                $this->userID,
-                                'characterAvatars',
-                                \serialize($avatars)
-                            );
-                        }
+                    if (isset($avatars[$this->characterID])) {
+                        $avatar = $avatars[$this->characterID];
                     } else {
-                        $avatar = new CharacterAvatar($this->avatarID);
+                        $avatar = FileRuntimeCache::getInstance()->getObject($this->avatarFileID);
+
+                        $avatars[$this->characterID] = $avatar;
+                        UserStorageHandler::getInstance()->update(
+                            $this->userID,
+                            'characterAvatars',
+                            \serialize($avatars)
+                        );
                     }
                 } else {
-                    $avatar = new CharacterAvatar(null, $this->getDecoratedObject()->data);
+                    $avatar = FileRuntimeCache::getInstance()->getObject($this->avatarFileID);
                 }
             }
 
             // use default avatar
             if ($avatar === null) {
-                $avatar = new DefaultCharacterAvatar($this->characterName);
+                $avatar = new DefaultCharacterAvatar($this->characterName ?: '');
             }
 
             $this->avatar = new CharacterAvatarDecorator($avatar);
@@ -105,6 +124,14 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
     public function getTitle(): string
     {
         return $this->getDecoratedObject()->getTitle();
+    }
+
+    /**
+     * Sets the avatar for this character.
+     */
+    public function setFileAvatar(File $file): void
+    {
+        $this->avatar = new CharacterAvatarDecorator($file);
     }
 
     #[\Override]

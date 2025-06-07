@@ -2,6 +2,7 @@
 
 namespace rp\data\character\avatar;
 
+use rp\system\file\processor\CharacterAvatarFileProcessor;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 
@@ -17,7 +18,7 @@ class DefaultCharacterAvatar implements ICharacterAvatar, ISafeFormatAvatar
     /**
      * image size
      */
-    public int $size = CharacterAvatar::AVATAR_SIZE;
+    public int $size = CharacterAvatarFileProcessor::AVATAR_SIZE;
 
     /**
      * content of the `src` attribute
@@ -71,7 +72,12 @@ SVG;
     {
         if ($size === null) $size = $this->size;
 
-        return '<img src="' . StringUtil::encodeHTML($this->getURL($size)) . '" width="' . $size . '" height="' . $size . '" alt="" class="characterAvatarImage">';
+        return \sprintf(
+            '<img src="%s" width="%d" height="%d" alt="" class="characterAvatarImage">',
+            StringUtil::encodeHTML($this->getURL($size)),
+            $size,
+            $size
+        );
     }
 
     /**
@@ -79,13 +85,18 @@ SVG;
      */
     protected function getPerceptiveLuminance(int $r, int $g, int $b): float
     {
-        return 1 - (0.299 * $r + 0.587 * $g + 0.114 * $b) / 255;
+        return 1 - (0.200 * $r + 0.587 * $g + 0.114 * $b) / 255;
     }
 
     #[\Override]
     public function getSafeImageTag(?int $size = null): string
     {
-        return '<img src="' . StringUtil::encodeHTML($this->getSafeURL($size)) . '" width="' . $size . '" height="' . $size . '" alt="" class="characterAvatarImage">';
+        return \sprintf(
+            '<img src="%s" width="%d" height="%d" alt="" class="characterAvatarImage">',
+            StringUtil::encodeHTML($this->getSafeURL($size)),
+            $size,
+            $size
+        );
     }
 
     #[\Override]
