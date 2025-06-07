@@ -2,7 +2,6 @@
 
 namespace rp\data\character;
 
-use rp\data\character\avatar\CharacterAvatar;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use wcf\data\DatabaseObject;
 use wcf\data\IPopoverObject;
@@ -22,7 +21,7 @@ use wcf\system\WCF;
  * @property-read   string  $characterName      name of the character
  * @property-read   int|null    $userID     id of the user who created the character, or `null` if not already assigned.
  * @property-read   string $game        game identifier of the character
- * @property-read   int|null $avatarID      
+ * @property-read   int|null $avatarFileID     id of the avatar file, or `null` if no avatar has been assigned   
  * @property-read   int $created        timestamp at which the character has been created
  * @property-read   int $lastUpdateTime     timestamp at which the character has been updated the last time
  * @property-read   string  $notes      notes of the character
@@ -100,21 +99,6 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
         }
 
         return $characterProfile;
-    }
-
-    /**
-     * Returns the absolute location of the icon file.
-     *
-     * @return string[]
-     */
-    public function getAvatarFileUploadFileLocations(): array
-    {
-        if ($this->avatarID) {
-            $avatar = new CharacterAvatar($this->avatarID);
-            return [$avatar->getLocation()];
-        }
-
-        return [];
     }
 
     /**
