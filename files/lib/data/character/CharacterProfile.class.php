@@ -6,6 +6,7 @@ use rp\data\character\avatar\CharacterAvatar;
 use rp\data\character\avatar\CharacterAvatarDecorator;
 use rp\data\character\avatar\DefaultCharacterAvatar;
 use rp\system\game\GameHandler;
+use rp\system\game\GameItem;
 use wcf\data\DatabaseObjectDecorator;
 use wcf\data\ITitledLinkObject;
 use wcf\system\user\storage\UserStorageHandler;
@@ -16,6 +17,9 @@ use wcf\system\user\storage\UserStorageHandler;
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+ * 
+ * @mixin   Character
+ * @extends DatabaseObjectDecorator<Character>
  */
 final class CharacterProfile extends DatabaseObjectDecorator implements ITitledLinkObject
 {
@@ -86,7 +90,7 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
     /**
      * Returns game object of this character.
      */
-    public function getGame(): Game
+    public function getGame(): GameItem
     {
         return GameHandler::getInstance()->getGameByIdentifier($this->game);
     }
@@ -106,6 +110,6 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
     #[\Override]
     public function __toString(): string
     {
-        return $this->getDecoratedObject()->__toString();
+        return $this->getTitle();
     }
 }
