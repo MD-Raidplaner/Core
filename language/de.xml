@@ -305,7 +305,6 @@
             <item name="wcf.acp.group.option.user.rp.canViewCharacterProfile"><![CDATA[Kann Charakter Profile sehen]]></item>
             <item name="wcf.acp.group.option.user.rp.canViewCharacterList"><![CDATA[Kann Charakter-Liste sehen]]></item>
             <item name="wcf.acp.group.option.user.rp.characterAvatarAllowedFileExtensions"><![CDATA[Erlaubte Dateiendungen]]></item>
-            <item name="wcf.acp.group.option.user.rp.characterAvatarMaxSize"><![CDATA[Maximale Dateigröße]]></item>
         </category>
 
         <category name="wcf.acp.modificationLog">
