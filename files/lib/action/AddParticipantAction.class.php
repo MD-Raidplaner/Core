@@ -51,11 +51,15 @@ final class AddParticipantAction implements RequestHandlerInterface
         }
 
         if (WCF::getUser()->userID) {
-            if (!count($this->event->getType()->getContentData('availableCharacters'))) {
+            /** @var AvailableCharacter[] $availableCharacters */
+            $availableCharacters = $this->event->getType()->getContentData('availableCharacters');
+            if (empty($availableCharacters)) {
                 throw new UserInputException('availableCharacters');
             }
 
-            if ($this->event->getType()->getContentData('hasAttendee')) {
+            /** @var bool $hasAttendee */
+            $hasAttendee = $this->event->getType()->getContentData('hasAttendee');
+            if ($hasAttendee) {
                 throw new UserInputException('hasAttendee');
             }
         }
