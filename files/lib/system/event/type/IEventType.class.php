@@ -35,7 +35,11 @@ interface IEventType
     /**
      * Returns content data based on $key. If $key is null, all content data is returned.
      * 
-     * @return array<string, mixed>|mixed|null
+     * @template TKey of string
+     * @template TValue
+     * 
+     * @param TKey|null $key
+     * @return ($key is null ? array<TKey, TValue> : TValue|null)
      */
     public function getContentData(?string $key = null): mixed;
 
