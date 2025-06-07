@@ -11,9 +11,8 @@ use wcf\data\DatabaseObjectEditor;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
- * @method static   Event   create(array $parameters = [])
- * @method  Event   getDecoratedObject()
  * @mixin   Event
+ * @extends DatabaseObjectEditor<Event>
  */
 class EventEditor extends DatabaseObjectEditor
 {

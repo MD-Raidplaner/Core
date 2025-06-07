@@ -13,9 +13,8 @@ use wcf\util\ImageUtil;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  *
- * @method static CharacterAvatar       create(array $parameters = [])
- * @method      CharacterAvatar     getDecoratedObject()
  * @mixin       CharacterAvatar
+ * @extends DatabaseObjectEditor<CharacterAvatar>
  */
 class CharacterAvatarEditor extends DatabaseObjectEditor
 {

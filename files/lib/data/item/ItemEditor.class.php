@@ -13,9 +13,8 @@ use wcf\data\IEditableCachedObject;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method static   Item    create(array $parameters = [])
- * @method  Item    getDecoratedObject()
  * @mixin   Item
+ * @extends DatabaseObjectEditor<Item>
  */
 class ItemEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {

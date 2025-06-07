@@ -17,8 +17,8 @@ use wcf\system\WCF;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
- * @method  Server     getDecoratedObject()
  * @mixin   Server
+ * @extends DatabaseObjectEditor<Server>
  */
 class ServerEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {

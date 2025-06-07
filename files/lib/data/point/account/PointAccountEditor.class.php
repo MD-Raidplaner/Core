@@ -13,8 +13,8 @@ use wcf\data\IEditableCachedObject;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
- * @method static   PointAccount    create(array $parameters = [])
- * @method  PointAccount  
+ * @method  PointAccount
+ * @extends DatabaseObjectEditor<PointAccount>
  */
 class PointAccountEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {

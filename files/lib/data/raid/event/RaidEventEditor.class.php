@@ -14,9 +14,8 @@ use wcf\data\IEditableCachedObject;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
- * @method static   RaidEvent       create(array $parameters = [])
- * @method  RaidEvent       getDecoratedObject()
  * @mixin   RaidEvent
+ * @extends DatabaseObjectEditor<RaidEvent>
  */
 class RaidEventEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
