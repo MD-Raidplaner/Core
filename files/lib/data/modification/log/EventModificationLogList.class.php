@@ -12,10 +12,7 @@ use wcf\data\modification\log\ModificationLogList;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  ViewableEventModificationLog    current()
- * @method  ViewableEventModificationLog[]  getObjects()
- * @method  ViewableEventModificationLog|null   search($objectID)
- * @property    ViewableEventModificationLog[]  $objects
+ * @extends ModificationLogList<ViewableEventModificationLog>
  */
 class EventModificationLogList extends ModificationLogList
 {

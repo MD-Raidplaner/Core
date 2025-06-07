@@ -11,10 +11,7 @@ use wcf\data\DatabaseObjectList;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  PointAccount    current()
- * @method  PointAccount[]  getObjects()
- * @method  PointAccount|null   search($objectID)
- * @property    PointAccount[]  $objects
+ * @extends DatabaseObjectList<PointAccount>
  */
 class PointAccountList extends DatabaseObjectList
 {

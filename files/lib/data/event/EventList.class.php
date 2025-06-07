@@ -11,10 +11,8 @@ use wcf\data\DatabaseObjectList;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  Event   current()
- * @method  Event[] getObjects()
- * @method  Event|null  search($objectID)
- * @property    Event[] $objects
+ * @template-covariant TDatabaseObject of Event|DatabaseObjectDecorator = Event
+ * @extends DatabaseObjectList<TDatabaseObject>
  */
 class EventList extends DatabaseObjectList
 {

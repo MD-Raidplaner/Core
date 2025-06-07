@@ -11,11 +11,7 @@ use wcf\data\DatabaseObjectList;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
  *
- * @method  CharacterAvatar     current()
- * @method  CharacterAvatar[]       getObjects()
- * @method  CharacterAvatar|null    getSingleObject()
- * @method  CharacterAvatar|null    search($objectID)
- * @property    CharacterAvatar[]   $objects
+ * @extends DatabaseObjectList<CharacterAvatar>
  */
 class CharacterAvatarList extends DatabaseObjectList
 {

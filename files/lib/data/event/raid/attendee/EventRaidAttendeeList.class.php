@@ -11,10 +11,7 @@ use wcf\data\DatabaseObjectList;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  EventRaidAttendee   current()
- * @method  EventRaidAttendee[] getObjects()
- * @method  EventRaidAttendee|null  search($objectID)
- * @property    EventRaidAttendee[] $objects
+ * @extends DatabaseObjectList<EventRaidAttendee>
  */
 class EventRaidAttendeeList extends DatabaseObjectList
 {

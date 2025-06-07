@@ -11,8 +11,7 @@ use wcf\system\WCF;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  Event   getDecoratedObject()
- * @mixin   Event
+ * @extends ViewableEventList<Event>
  */
 
 class AccessibleEventList extends ViewableEventList

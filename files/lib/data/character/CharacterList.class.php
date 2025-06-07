@@ -11,10 +11,8 @@ use wcf\data\DatabaseObjectList;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  Character   current()
- * @method  Character[] getObjects()
- * @method  Character|null  search($objectID)
- * @property    Character[] $objects
+ * @template-covariant TDatabaseObject of Character|DatabaseObjectDecorator<Character> = Character
+ * @extends DatabaseObjectList<TDatabaseObject>
  */
 class CharacterList extends DatabaseObjectList
 {

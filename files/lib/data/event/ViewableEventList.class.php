@@ -15,11 +15,7 @@ use wcf\system\WCF;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  ViewableEvent       current()
- * @method  ViewableEvent[]     getObjects()
- * @method  ViewableEvent|null      getSingleObject()
- * @method  ViewableEvent|null      search($objectID)
- * @property    ViewableEvent[]     $objects
+ * @extends EventList<ViewableEvent>
  */
 class ViewableEventList extends EventList
 {

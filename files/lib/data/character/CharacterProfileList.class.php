@@ -9,10 +9,7 @@ namespace rp\data\character;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  CharacterProfile    current()
- * @method  CharacterProfile[]  getObjects()
- * @method  CharacterProfile|null   search($objectID)
- * @property    CharacterProfile[]  $objects
+ * @extends CharacterList<CharacterProfile>
  */
 class CharacterProfileList extends CharacterList
 {

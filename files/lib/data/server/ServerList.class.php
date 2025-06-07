@@ -11,10 +11,7 @@ use wcf\data\DatabaseObjectList;
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  *
- * @method  Server      current()
- * @method  Server[]    getObjects()
- * @method  Server|null     search($objectID)
- * @property    Server[]    $objects
+ * @extends DatabaseObjectList<Server>
  */
 class ServerList extends DatabaseObjectList
 {
