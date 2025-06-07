@@ -22,10 +22,11 @@ use wcf\system\WCF;
  * @property-read   string  $characterName      name of the character
  * @property-read   int|null    $userID     id of the user who created the character, or `null` if not already assigned.
  * @property-read   string $game        game identifier of the character
+ * @property-read   int|null $avatarID      
  * @property-read   int $created        timestamp at which the character has been created
  * @property-read   int $lastUpdateTime     timestamp at which the character has been updated the last time
  * @property-read   string  $notes      notes of the character
- * @property-read   array   $additionalData       array with additional data of the character
+ * @property-read   mixed[] $additionalData     array of additional data, which can be used to store arbitrary data
  * @property-read   string  $guildName       guild name if character does not belong to this guild
  * @property-read   int $views      number of times the character's profile has been visited
  * @property-read   int $isPrimary      is `1` if the character is primary character of this game, otherwise `0`
@@ -89,6 +90,8 @@ final class Character extends DatabaseObject implements IPopoverObject, IRouteCo
             \RP_CURRENT_GAME,
             0,
         ]);
+
+        /** @var Character[] $characters */
         $characters = $statement->fetchObject(Character::class);
 
         $characterProfile = [];
