@@ -2,6 +2,7 @@
 
 namespace rp\system\cache\runtime;
 
+use rp\data\event\Event;
 use rp\data\event\EventList;
 use wcf\system\cache\runtime\AbstractRuntimeCache;
 
