@@ -253,6 +253,12 @@ abstract class AbstractEventType implements IEventType
     }
 
     #[\Override]
+    public function getContentData(?string $key = null): mixed
+    {
+        return null;
+    }
+
+    #[\Override]
     public function getContentHeaderNavigation(): string
     {
         return '';

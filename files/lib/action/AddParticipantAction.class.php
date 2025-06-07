@@ -39,7 +39,6 @@ use wcf\system\WCF;
 final class AddParticipantAction implements RequestHandlerInterface
 {
     private ?Event $event = null;
-    private RaidEventType $eventType;
 
     private function assertEventCanBeAdd(): void
     {
@@ -47,16 +46,16 @@ final class AddParticipantAction implements RequestHandlerInterface
             throw new PermissionDeniedException();
         }
 
-        if ($this->eventType->isExpired()) {
+        if ($this->event->getType()->isExpired()) {
             throw new UserInputException('isExpired');
         }
 
         if (WCF::getUser()->userID) {
-            if (!count($this->eventType->getContentData('availableCharacters'))) {
+            if (!count($this->event->getType()->getContentData('availableCharacters'))) {
                 throw new UserInputException('availableCharacters');
             }
 
-            if ($this->eventType->getContentData('hasAttendee')) {
+            if ($this->event->getType()->getContentData('hasAttendee')) {
                 throw new UserInputException('hasAttendee');
             }
         }
@@ -70,7 +69,7 @@ final class AddParticipantAction implements RequestHandlerInterface
         );
 
         if (WCF::getUser()->userID) {
-            $availableCharacters = $this->eventType->getContentData('availableCharacters');
+            $availableCharacters = $this->event->getType()->getContentData('availableCharacters');
             $classificationRolesMap = ClassificationHandler::getInstance()->getRoleMapByClassification();
 
             $roleMapping = [];
@@ -96,7 +95,7 @@ final class AddParticipantAction implements RequestHandlerInterface
                 SingleSelectionFormField::create('status')
                     ->label('rp.event.raid.status')
                     ->required()
-                    ->options($this->eventType->getContentData('raidStatus')),
+                    ->options($this->event->getType()->getContentData('raidStatus')),
             ]);
         } else {
             $form->appendChildren([
@@ -175,8 +174,6 @@ final class AddParticipantAction implements RequestHandlerInterface
             throw new IllegalLinkException();
         }
 
-        $this->eventType = $this->event->getType();
-
         $this->assertEventCanBeAdd();
 
         $form = $this->getForm();
@@ -192,7 +189,7 @@ final class AddParticipantAction implements RequestHandlerInterface
             $formData = $form->getData()['data'];
             $attendeeData = [];
             if (WCF::getUser()->userID) {
-                $availableCharacters = $this->eventType->getContentData('availableCharacters');
+                $availableCharacters = $this->event->getType()->getContentData('availableCharacters');
 
                 /** @var AvailableCharacter $availableCharacter */
                 $availableCharacter = $availableCharacters[$formData['characterID']];

@@ -33,6 +33,13 @@ interface IEventType
     public function getContent(): string;
 
     /**
+     * Returns content data based on $key. If $key is null, all content data is returned.
+     * 
+     * @return array<string, mixed>|mixed|null
+     */
+    public function getContentData(?string $key = null): mixed;
+
+    /**
      * Returns the header navigation.
      */
     public function getContentHeaderNavigation(): string;

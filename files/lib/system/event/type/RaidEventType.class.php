@@ -270,19 +270,18 @@ final class RaidEventType extends AbstractEventType
         return WCF::getTPL()->render('rp', 'eventRaid', []);
     }
 
-    /**
-     * Returns content data based on $key. If $key is null, all content data is returned.
-     */
+    #[\Override]
     public function getContentData(?string $key = null): mixed
     {
         if ($this->contentData === null) {
+            $event = $this->getEvent();
             $this->contentData = [];
 
             $hasAttendee = 0;
-
             $attendees = [];
+
             $attendeeList = new EventRaidAttendeeList();
-            $attendeeList->getConditionBuilder()->add('eventID = ?', [$this->getEvent()->getObjectID()]);
+            $attendeeList->getConditionBuilder()->add('eventID = ?', [$event->getObjectID()]);
             $attendeeList->readObjects();
 
             /** @var EventRaidAttendee $attendee */
@@ -291,47 +290,38 @@ final class RaidEventType extends AbstractEventType
                     $hasAttendee = $attendee->getObjectID();
                 }
 
-                $attendees[$attendee->status] ??= [];
+                $status = $attendee->status;
+                $attendees[$status] ??= [];
 
-                switch ($this->getEvent()->distributionMode) {
-                    case 'class':
-                        $attendees[$attendee->status][$attendee->classification] ??= [];
-                        $attendees[$attendee->status][$attendee->classification][] = $attendee;
-                        break;
-                    case 'none':
-                        $attendees[$attendee->status][0] ??= [];
-                        $attendees[$attendee->status][0][] = $attendee;
-                        break;
-                    case 'role':
-                        $attendees[$attendee->status][$attendee->role] ??= [];
-                        $attendees[$attendee->status][$attendee->role][] = $attendee;
-                        break;
-                }
+                $key = match ($event->distributionMode) {
+                    'class' => $attendee->classification,
+                    'role' => $attendee->role,
+                    'none' => 0,
+                    default => 0,
+                };
+
+                $attendees[$status][$key] ??= [];
+                $attendees[$status][$key][] = $attendee;
             }
 
-            $availableDistributions = [];
-            switch ($this->getEvent()->distributionMode) {
-                case 'class':
-                    $availableDistributions = ClassificationHandler::getInstance()->getClassifications();
-                    break;
-                case 'none':
-                    $availableDistributions = ['' => WCF::getLanguage()->get('rp.event.raid.participants')];
-                    break;
-                case 'role':
-                    $availableDistributions = RoleHandler::getInstance()->getRoles();
-                    break;
-            }
+            $availableDistributions = match ($event->distributionMode) {
+                'class' => ClassificationHandler::getInstance()->getClassifications(),
+                'role'  => RoleHandler::getInstance()->getRoles(),
+                'none'  => ['' => WCF::getLanguage()->get('rp.event.raid.participants')],
+                default => [],
+            };
 
             // check users characters
-            $event = new AvailableCharactersChecking(
+            $characterEvent = new AvailableCharactersChecking(
                 CharacterHandler::getInstance()->getCharacters(),
-                $this->getEvent()
+                $event
             );
-            EventHandler::getInstance()->fire($event);
+            EventHandler::getInstance()->fire($characterEvent);
 
-            $raidStatus = $this->isLeader()
-                ? [EventRaidAttendee::STATUS_CONFIRMED => WCF::getLanguage()->get('rp.event.raid.container.confirmed')]
-                : [];
+            $raidStatus = [];
+            if ($this->isLeader()) {
+                $raidStatus[EventRaidAttendee::STATUS_CONFIRMED] = WCF::getLanguage()->get('rp.event.raid.container.confirmed');
+            }
 
             $raidStatus += [
                 EventRaidAttendee::STATUS_LOGIN => WCF::getLanguage()->get('rp.event.raid.container.login'),
@@ -341,7 +331,7 @@ final class RaidEventType extends AbstractEventType
 
             $this->contentData = [
                 'attendees' => $attendees,
-                'availableCharacters' => $event->getAvailableCharacters(),
+                'availableCharacters' => $characterEvent->getAvailableCharacters(),
                 'availableDistributions' => $availableDistributions,
                 'availableRaidStatus' => [
                     EventRaidAttendee::STATUS_CONFIRMED => WCF::getLanguage()->get('rp.event.raid.container.confirmed'),
@@ -350,12 +340,15 @@ final class RaidEventType extends AbstractEventType
                     EventRaidAttendee::STATUS_LOGOUT => WCF::getLanguage()->get('rp.event.raid.container.logout'),
                 ],
                 'hasAttendee' => $hasAttendee,
-                'hasMarkedItems' => ClipboardHandler::getInstance()->hasMarkedItems(ClipboardHandler::getInstance()->getObjectTypeID('de.md-raidplaner.rp.raid.attendee')),
                 'raidStatus' => $raidStatus,
             ];
         }
 
-        return $key === null ? $this->contentData : ($this->contentData[$key] ?? null);
+        if ($key === null) {
+            return $this->contentData;
+        }
+
+        return $this->contentData[$key] ?? null;
     }
 
     #[\Override]
