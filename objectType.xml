@@ -34,6 +34,14 @@
         </type>
         <!-- /discussion providers -->
 
+        <!-- file -->
+        <type>
+            <name>de.md-raidplaner.rp.character.avatar</name>
+            <definitionname>com.woltlab.wcf.file</definitionname>
+            <classname>rp\system\file\processor\CharacterAvatarFileProcessor</classname>
+        </type>
+        <!-- /file -->
+
         <!-- message -->
         <type>
             <name>de.md-raidplaner.rp.event.notes</name>
@@ -67,23 +75,25 @@
         <type>
             <name>de.md-raidplaner.rp.eventComment.notification</name>
             <definitionname>com.woltlab.wcf.notification.objectType</definitionname>
-            <classname>rp\system\user\notification\object\type\EventCommentUserNotificationObjectType</classname>
+            <classname>
+                rp\system\user\notification\object\type\EventCommentUserNotificationObjectType</classname>
             <category>de.md-raidplaner.rp.event</category>
         </type>
         <type>
             <name>de.md-raidplaner.rp.eventComment.response.notification</name>
             <definitionname>com.woltlab.wcf.notification.objectType</definitionname>
-            <classname>rp\system\user\notification\object\type\EventCommentResponseUserNotificationObjectType</classname>
+            <classname>
+                rp\system\user\notification\object\type\EventCommentResponseUserNotificationObjectType</classname>
             <category>de.md-raidplaner.rp.event</category>
         </type>
         <!-- /notification -->
 
         <!-- recent activity event -->
         <type>
-			<name>de.md-raidplaner.rp.event.recentActivityEvent</name>
-			<definitionname>com.woltlab.wcf.user.recentActivityEvent</definitionname>
-			<classname>rp\system\user\activity\event\EventUserActivityEvent</classname>
-		</type>
+            <name>de.md-raidplaner.rp.event.recentActivityEvent</name>
+            <definitionname>com.woltlab.wcf.user.recentActivityEvent</definitionname>
+            <classname>rp\system\user\activity\event\EventUserActivityEvent</classname>
+        </type>
         <!-- /recent activity event -->
 
         <!-- visit tracker -->

@@ -2,10 +2,10 @@
 
 namespace rp\system\character\command;
 
-use rp\data\character\avatar\CharacterAvatarEditor;
 use rp\data\character\Character;
 use rp\data\character\CharacterEditor;
 use rp\event\character\CharactersDeleted;
+use wcf\data\file\FileAction;
 use wcf\system\user\storage\UserStorageHandler;
 
 /**
@@ -25,10 +25,10 @@ final class DeleteCharacters
 
     public function __invoke(): void
     {
-        $avatarIDs = $userIDs = [];
+        $avatarFileIDs = $userIDs = [];
         foreach ($this->characters as $character) {
-            if ($character->avatarID) {
-                $avatarIDs[] = $character->avatarID;
+            if ($character->avatarFileID !== null) {
+                $avatarFileIDs[] = $character->avatarFileID;
             }
 
             if ($character->userID) {
@@ -36,8 +36,8 @@ final class DeleteCharacters
             }
         }
 
-        if (!empty($avatarIDs)) {
-            $editor = CharacterAvatarEditor::deleteAll($avatarIDs);
+        if (!empty($avatarFileIDs)) {
+            (new FileAction($avatarFileIDs, 'delete'))->executeAction();
         }
 
         if (!empty($userIDs)) {
