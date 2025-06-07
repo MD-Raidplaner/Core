@@ -2,17 +2,19 @@
 
 namespace rp\data\event;
 
+use rp\event\event\EventTypeCollecting;
 use rp\system\event\discussion\CommentEventDiscussionProvider;
 use rp\system\event\discussion\IEventDiscussionProvider;
 use rp\system\event\discussion\VoidEventDiscussionProvider;
-use rp\system\event\IEventController;
-use rp\system\event\RaidEventController;
+use rp\system\event\type\IEventType;
+use rp\system\event\type\RaidEventType;
 use wcf\data\DatabaseObject;
 use wcf\data\IMessage;
 use wcf\data\ITitledLinkObject;
 use wcf\data\object\type\ObjectTypeCache;
 use wcf\data\TUserContent;
 use wcf\data\user\UserProfile;
+use wcf\system\event\EventHandler;
 use wcf\system\html\output\HtmlOutputProcessor;
 use wcf\system\request\IRouteController;
 use wcf\system\request\LinkHandler;
@@ -29,7 +31,7 @@ use wcf\util\StringUtil;
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
  * 
  * @property-read   int $eventID        unique id of the event
- * @property-read   int $objectTypeID       id of the event controller object type
+ * @property-read   string $eventType       type of the event, e.g. `default`, `appointment`, `raid`
  * @property-read   string|null $title      name of the event
  * @property-read   int|null    $userID id of the user who created the event or `null` if the user does not exist anymore
  * @property-read   string  $username       name of the user who created the event
@@ -53,7 +55,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
 {
     use TUserContent;
 
-    protected ?IEventController $controller = null;
+    protected ?IEventType $eventTypeObj;
     protected ?IEventDiscussionProvider $discussionProvider = null;
     private \DateTime $endTimeObj;
     private \DateTime $startTimeObj;
@@ -109,7 +111,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
         }
 
         if ($this->isRaidEvent()) {
-            if ($this->getController()->isLeader()) {
+            if ($this->getType()->isLeader()) {
                 return true;
             }
         }
@@ -228,21 +230,6 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
     }
 
     /**
-     * Returns the event controller.
-     */
-    public function getController(): IEventController
-    {
-        if ($this->controller === null) {
-            $className = ObjectTypeCache::getInstance()->getObjectType($this->objectTypeID)->className;
-
-            $this->controller = new $className();
-            $this->controller->setEvent($this);
-        }
-
-        return $this->controller;
-    }
-
-    /**
      * Returns the responsible discussion provider for this event.
      */
     public function getDiscussionProvider(): IEventDiscussionProvider
@@ -314,7 +301,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
      */
     public function getIcon(int $size = 16): string
     {
-        return $this->getController()->getIcon($size);
+        return $this->getType()->getIcon($size);
     }
 
     #[\Override]
@@ -367,7 +354,24 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
     #[\Override]
     public function getTitle(): string
     {
-        return $this->getController()->getTitle();
+        return $this->getType()->getTitle();
+    }
+
+    /**
+     * Returns the type of the event.
+     */
+    public function getType(): IEventType
+    {
+        if (!isset($this->eventTypeObj)) {
+            $event = new EventTypeCollecting();
+            EventHandler::getInstance()->fire($event);
+
+            $className = $event->getType($this->eventType);
+            $this->eventTypeObj = new $className();
+            $this->eventTypeObj->setEvent($this);
+        }
+
+        return $this->eventTypeObj;
     }
 
     #[\Override]
@@ -389,7 +393,7 @@ final class Event extends DatabaseObject implements ITitledLinkObject, IRouteCon
      */
     public function isRaidEvent(): bool
     {
-        if ($this->getController() instanceof RaidEventController) return true;
+        if ($this->getType() instanceof RaidEventType) return true;
         return false;
     }
 

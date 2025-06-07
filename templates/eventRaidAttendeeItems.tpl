@@ -1,8 +1,8 @@
 
 <mdrp-attendee-drag-and-drop-item id="attendee{$attendee->attendeeID}"
-    class="attendee{if $event->getController()->isLeader()} draggable{/if}" attendee-id="{$attendee->attendeeID}"
+    class="attendee{if $event->getType()->isLeader()} draggable{/if}" attendee-id="{$attendee->attendeeID}"
     character-id="{$attendee->characterID}" distribution="{$__availableDistribution}"
-    event-id="{$attendee->eventID}" {if $event->getController()->isLeader()}draggable="true" {/if}
+    event-id="{$attendee->eventID}" {if $event->getType()->isLeader()}draggable="true" {/if}
     droppable-to="{implode from=$attendee->getPossibleDistribution() item=distribution}distribution_{$distribution}{/implode}"
     user-id="{$attendee->getCharacter()->userID}">
     <div class="attendee__avatar">
@@ -48,7 +48,7 @@
                     {lang}rp.event.raid.updateStatus{/lang}
                 </a>
             </li>
-            {if $event->getController()->getContentData('availableCharacters')|count > 1}
+            {if $event->getType()->getContentData('availableCharacters')|count > 1}
                 <li>
                     <a href="#" class="attendee__option attendee__option--character-switch">
                         {lang}rp.event.raid.attendee.character.switch{/lang}

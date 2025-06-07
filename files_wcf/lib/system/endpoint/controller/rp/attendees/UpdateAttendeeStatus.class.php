@@ -44,12 +44,12 @@ final class UpdateAttendeeStatus implements IController
     {
         $attendeeUserID = $attendee->userID;
         $currentUser = WCF::getUser();
-        $eventController = $attendee->getEvent()->getController();
+        $eventType = $attendee->getEvent()->getType();
 
         // Check if the attendee is a guest or if the user IDs are different
         if ($attendeeUserID === 0 || $attendeeUserID !== $currentUser->userID) {
             // Check if the current user is a leader of the event
-            if (!$eventController->isLeader()) {
+            if (!$eventType->isLeader()) {
                 throw new PermissionDeniedException();
             }
         }

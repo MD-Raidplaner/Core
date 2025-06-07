@@ -19,11 +19,11 @@ final class EventTypeCollecting
     private array $types = [];
 
     /**
-     * Returns the event controller for the given type.
+     * Returns the class name of the given event type.
      * 
      * @throws \InvalidArgumentException if the type is not registered
      */
-    public function getType(string $type): IEventController
+    public function getType(string $type): string
     {
         if (!isset($this->types[$type])) {
             throw new \InvalidArgumentException(
@@ -37,7 +37,7 @@ final class EventTypeCollecting
     /**
      * Returns the registered event types.
      * 
-     * @return array<string, string> An associative array where keys are event types and values are controller class names.
+     * @return array<string, string> An associative array where keys are event types and values are class names.
      */
     public function getTypes(): array
     {
@@ -45,7 +45,7 @@ final class EventTypeCollecting
     }
 
     /**
-     * Registers a new event type with its controller class.
+     * Registers a new event type.
      * 
      * @throws \InvalidArgumentException if the type is already registered
      */

@@ -95,7 +95,7 @@ final class EventContentInteractions extends AbstractInteractionProvider
                     if (
                         $event->isRaidEvent() &&
                         !$event->raidID &&
-                        $event->getController()->isLeader()
+                        $event->getType()->isLeader()
                     ) {
                         return true;
                     }

@@ -51,7 +51,7 @@ class RaidAddForm extends AbstractFormBuilderForm
     public function checkPermissions(): void
     {
         if ($this->formAction == 'create' && $this->event !== null) {
-            if ($this->event->getController()->isLeader()) {
+            if ($this->event->getType()->isLeader()) {
                 $this->neededPermissions = [];
             } else {
                 throw new PermissionDeniedException();

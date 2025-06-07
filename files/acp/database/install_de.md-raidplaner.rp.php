@@ -29,7 +29,7 @@ return [
     DatabaseTable::create('rp1_event')
         ->columns([
             ObjectIdDatabaseTableColumn::create('eventID'),
-            NotNullInt10DatabaseTableColumn::create('objectTypeID'),
+            NotNullVarchar255DatabaseTableColumn::create('eventType'),
             NotNullVarchar255DatabaseTableColumn::create('game'),
             VarcharDatabaseTableColumn::create('title')
                 ->length(191),
@@ -63,11 +63,6 @@ return [
                 ->columns(['eventID']),
         ])
         ->foreignKeys([
-            DatabaseTableForeignKey::create()
-                ->columns(['objectTypeID'])
-                ->referencedTable('wcf1_object_type')
-                ->referencedColumns(['objectTypeID'])
-                ->onDelete('CASCADE'),
             DatabaseTableForeignKey::create()
                 ->columns(['userID'])
                 ->referencedTable('wcf1_user')

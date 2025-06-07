@@ -58,7 +58,7 @@ final class EventPage extends AbstractPage
     {
         parent::checkPermissions();
 
-        $this->event->getController()->checkPermissions();
+        $this->event->getType()->checkPermissions();
     }
 
     #[\Override]

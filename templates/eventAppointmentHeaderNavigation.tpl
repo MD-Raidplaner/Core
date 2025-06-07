@@ -1,4 +1,4 @@
-{if $__wcf->user->userID && !$event->getController()->isExpired()}
+{if $__wcf->user->userID && !$event->getType()->isExpired()}
     <li>
         <button type="button" class="button jsAppointmentChange" data-event-id="{$event->eventID}">
             {icon name='pen-to-square'}

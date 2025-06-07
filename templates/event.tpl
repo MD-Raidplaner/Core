@@ -12,7 +12,7 @@
         <nav class="contentHeaderNavigation">
             <ul>
                 {content}
-                {unsafe:$event->getController()->getContentHeaderNavigation()}
+                {unsafe:$event->getType()->getContentHeaderNavigation()}
                 {/content}
             </ul>
         </nav>
@@ -37,7 +37,7 @@
             <div class="boxContent">
                 <dl class="plain dataList">
                     {content}
-                    {foreach from=$event->getController()->getRequirements() key=__key item=__value}
+                    {foreach from=$event->getType()->getRequirements() key=__key item=__value}
                         <dt>{lang}{$__key}{/lang}</dt>
                         <dd>{unsafe:$__value}</dd>
                     {/foreach}
@@ -64,12 +64,12 @@
         {if $event->leaders}
             <section class="box" data-static-box-identifier="de.md-raidplaner.rp.event.raid.leaders">
                 <h2 class="boxTitle">
-                    {lang}rp.event.raid.leader{if $event->getController()->getLeaders()|count > 1}s{/if}{/lang}
+                    {lang}rp.event.raid.leader{if $event->getType()->getLeaders()|count > 1}s{/if}{/lang}
                 </h2>
 
                 <div class="boxContent">
                     <ul class="sidebarItemList">
-                        {foreach from=$event->getController()->getLeaders() item=leader}
+                        {foreach from=$event->getType()->getLeaders() item=leader}
                             <li class="box24">
                                 {character object=$leader type='avatar24' ariaHidden='true' tabindex='-1'}
 
@@ -85,7 +85,7 @@
     {/capture}
 {/if}
 
-{if $event->getController()->showEventNodes('right')}
+{if $event->getType()->showEventNodes('right')}
     {hascontent}
     {capture append='sidebarRight'}
         <section class="box" data-static-box-identifier="de.md-raidplaner.rp.notes">
@@ -111,7 +111,7 @@
 
 {event name='afterHeader'}
 
-{if $event->getController()->showEventNodes('center')}
+{if $event->getType()->showEventNodes('center')}
     {hascontent}
     <section class="section">
         <h2 class="sectionTitle">{lang}rp.event.notes{/lang}</h2>
@@ -130,7 +130,7 @@
     {/hascontent}
 {/if}
 
-{if !$event->isDeleted && $event->getController()->isExpired()}
+{if !$event->isDeleted && $event->getType()->isExpired()}
     <woltlab-core-notice type="error">{lang}rp.event.expired{/lang}</woltlab-core-notice>
 {/if}
 
@@ -141,7 +141,7 @@
 {/if}
 
 <div id="event{$event->eventID}" class="event" data-event-id="{$event->eventID}" data-title="{$event->getTitle()}">
-    {unsafe:$event->getController()->getContent()}
+    {unsafe:$event->getType()->getContent()}
 </div>
 
 <footer class="contentFooter">
