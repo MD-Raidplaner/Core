@@ -29,6 +29,7 @@
 	&.event__navigation__item--next {
 		grid-area: next;
 		grid-template-areas: "content icon";
+		grid-template-columns: auto 60px;
 		text-align: right;
 	}
 
@@ -51,22 +52,44 @@
 	grid-area: icon;
 }
 
-body:not(.touch) .event__navigation__item:hover .event__navigation__item__icon {
-	color: var(--wcfContentLinkActive);
+body {
+	&:not(.touch) {
+		.event__navigation__item {
+			&:hover {
+				.event__navigation__item__icon {
+					color: var(--wcfContentLinkActive);
+				}
+			}
+		}
+	}
 }
 
 .event__navigation__item__image {
-	border-radius: 3px;
 	grid-area: image;
-	overflow: hidden;
+
+	> img {
+		border-radius: 3px;
+		height: 96px;
+		width: 96px;
+		object-fit: cover;
+		object-position: center center;
+	}
 }
 
-.event__navigation__item--previous.event__navigation__item--withImage .event__navigation__item__content {
-	margin-left: 20px;
+.event__navigation__item--previous {
+	&.event__navigation__item--withImage {
+		.event__navigation__item__content {
+			margin-left: 20px;
+		}
+	}
 }
 
-.event__navigation__item--next.event__navigation__item--withImage .event__navigation__item__content {
-	margin-right: 20px;
+.event__navigation__item--next {
+	&.event__navigation__item--withImage {
+		.event__navigation__item__content {
+			margin-right: 20px;
+		}
+	}
 }
 
 .event__navigation__item__content {
