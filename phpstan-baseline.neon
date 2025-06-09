@@ -1,48 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Call to an undefined method rp\\system\\event\\IEventController\:\:getContentData\(\)\.$#'
-			identifier: method.notFound
-			count: 5
-			path: files/lib/action/AddParticipantAction.class.php
-
-		-
-			message: '#^Property rp\\action\\AddParticipantAction\:\:\$event \(rp\\data\\event\\Event\|null\) does not accept rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: files/lib/action/AddParticipantAction.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\Character\:\:\$avatarID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/character/Character.class.php
-
-		-
-			message: '#^Argument of an invalid type rp\\data\\character\\Character supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: files/lib/data/character/Character.class.php
-
-		-
-			message: '#^Class rp\\data\\character\\Character has PHPDoc tag @property\-read for property \$additionalData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/character/Character.class.php
-
-		-
-			message: '#^Method rp\\data\\character\\Character\:\:getPrimaryCharacter\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: files/lib/data/character/Character.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterEditor\:\:\$avatarID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/character/CharacterAction.class.php
-
-		-
 			message: '#^Class rp\\data\\character\\CharacterAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
 			identifier: missingType.generics
 			count: 1
@@ -61,124 +19,16 @@ parameters:
 			path: files/lib/data/character/CharacterAction.class.php
 
 		-
-			message: '#^Class rp\\data\\character\\CharacterEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/character/CharacterEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\character\\CharacterEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/character/CharacterEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\character\\CharacterList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/character/CharacterList.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$avatarID\.$#'
-			identifier: property.notFound
+			message: '#^Parameter \#1 \$avatar of class rp\\data\\character\\avatar\\CharacterAvatarDecorator constructor expects rp\\data\\character\\avatar\\ICharacterAvatar\|wcf\\data\\file\\File, rp\\data\\character\\File given\.$#'
+			identifier: argument.type
 			count: 1
 			path: files/lib/data/character/CharacterProfile.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$characterID\.$#'
-			identifier: property.notFound
-			count: 3
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$characterName\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$fileHash\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$game\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Call to an undefined method wcf\\data\\DatabaseObject\:\:__toString\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Call to an undefined method wcf\\data\\DatabaseObject\:\:getLink\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Call to an undefined method wcf\\data\\DatabaseObject\:\:getTitle\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Class rp\\data\\character\\CharacterProfile extends generic class wcf\\data\\DatabaseObjectDecorator but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Method rp\\data\\character\\CharacterProfile\:\:getGame\(\) has invalid return type rp\\data\\character\\Game\.$#'
+			message: '#^Parameter \$file of method rp\\data\\character\\CharacterProfile\:\:setFileAvatar\(\) has invalid type rp\\data\\character\\File\.$#'
 			identifier: class.notFound
 			count: 1
 			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Method rp\\data\\character\\CharacterProfile\:\:getGame\(\) should return rp\\data\\character\\Game but returns rp\\system\\game\\GameItem\|null\.$#'
-			identifier: return.type
-			count: 1
-			path: files/lib/data/character/CharacterProfile.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterEditor\:\:\$avatarID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/data/character/CharacterProfileAction.class.php
-
-		-
-			message: '#^Method rp\\data\\character\\CharacterProfileAction\:\:setAvatar\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/character/CharacterProfileAction.class.php
-
-		-
-			message: '#^PHPDoc tag @throws with type InvalidArgumentException\|rp\\data\\character\\UserInputException is not subtype of Throwable$#'
-			identifier: throws.notThrowable
-			count: 1
-			path: files/lib/data/character/CharacterProfileAction.class.php
-
-		-
-			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/character/avatar/CharacterAvatarAction.class.php
-
-		-
-			message: '#^PHPDoc tag @method for method rp\\data\\character\\avatar\\CharacterAvatarAction\:\:create\(\) return type contains unknown class rp\\data\\character\\avatar\\CharacterAvata\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/data/character/avatar/CharacterAvatarAction.class.php
 
 		-
 			message: '#^Method rp\\data\\character\\avatar\\CharacterAvatarDecorator\:\:getImageTag\(\) has parameter \$size with no type specified\.$#'
@@ -193,37 +43,13 @@ parameters:
 			path: files/lib/data/character/avatar/CharacterAvatarDecorator.class.php
 
 		-
-			message: '#^Method rp\\data\\character\\avatar\\ICharacterAvatar\:\:getImageTag\(\) invoked with 2 parameters, 0\-1 required\.$#'
-			identifier: arguments.count
+			message: '#^Class rp\\data\\event\\AccessibleEventList @extends tag contains incompatible type \*NEVER\*\.$#'
+			identifier: generics.notCompatible
 			count: 1
-			path: files/lib/data/character/avatar/CharacterAvatarDecorator.class.php
+			path: files/lib/data/event/AccessibleEventList.class.php
 
 		-
-			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/character/avatar/CharacterAvatarEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/character/avatar/CharacterAvatarEditor.class.php
-
-		-
-			message: '#^Unable to resolve the template type T in call to method wcf\\system\\database\\statement\\PreparedStatement\:\:fetchObject\(\)$#'
-			identifier: argument.templateType
-			count: 1
-			path: files/lib/data/character/avatar/CharacterAvatarEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\character\\avatar\\CharacterAvatarList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/character/avatar/CharacterAvatarList.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\system\\event\\IEventController\:\:isLeader\(\)\.$#'
+			message: '#^Call to an undefined method rp\\system\\event\\type\\IEventType\:\:isLeader\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: files/lib/data/event/Event.class.php
@@ -235,26 +61,20 @@ parameters:
 			path: files/lib/data/event/Event.class.php
 
 		-
+			message: '#^Parameter \#1 \$event of method wcf\\system\\event\\EventHandler\:\:fire\(\) expects wcf\\system\\event\\IEvent, rp\\event\\event\\EventTypeCollecting given\.$#'
+			identifier: argument.type
+			count: 1
+			path: files/lib/data/event/Event.class.php
+
+		-
 			message: '#^Strict comparison using \=\=\= between array\<string\> and null will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
 			path: files/lib/data/event/Event.class.php
 
 		-
-			message: '#^Access to property \$objectTypeID on an unknown class rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/data/event/EventAction.class.php
-
-		-
 			message: '#^Call to an undefined static method Symfony\\Component\\CssSelector\\Parser\\Handler\\CommentHandler\:\:getInstance\(\)\.$#'
 			identifier: staticMethod.notFound
-			count: 1
-			path: files/lib/data/event/EventAction.class.php
-
-		-
-			message: '#^Call to method canRead\(\) on an unknown class rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: class.notFound
 			count: 1
 			path: files/lib/data/event/EventAction.class.php
 
@@ -277,12 +97,6 @@ parameters:
 			path: files/lib/data/event/EventAction.class.php
 
 		-
-			message: '#^Property rp\\data\\event\\EventAction\:\:\$event \(rp\\data\\event\\Event\|null\) does not accept rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: files/lib/data/event/EventAction.class.php
-
-		-
 			message: '#^Return type \(void\) of method rp\\data\\event\\EventAction\:\:delete\(\) should be compatible with return type \(int\) of method wcf\\data\\AbstractDatabaseObjectAction\<wcf\\data\\DatabaseObject,wcf\\data\\DatabaseObjectEditor\<wcf\\data\\DatabaseObject\>\>\:\:delete\(\)$#'
 			identifier: method.childReturnType
 			count: 1
@@ -293,36 +107,6 @@ parameters:
 			identifier: method.childReturnType
 			count: 1
 			path: files/lib/data/event/EventAction.class.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between rp\\data\\event\\Event&rp\\system\\cache\\runtime\\Event and null will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
-			count: 1
-			path: files/lib/data/event/EventAction.class.php
-
-		-
-			message: '#^Class rp\\data\\event\\EventEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/event/EventEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\event\\EventEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/event/EventEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\event\\EventList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/event/EventList.class.php
-
-		-
-			message: '#^Class rp\\data\\event\\ViewableEvent extends generic class wcf\\data\\DatabaseObjectDecorator but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/event/ViewableEvent.class.php
 
 		-
 			message: '#^Method rp\\data\\event\\ViewableEvent\:\:getEventDays\(\) return type has no value type specified in iterable type array\.$#'
@@ -341,24 +125,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/event/ViewableEvent.class.php
-
-		-
-			message: '#^Call to an undefined method wcf\\data\\modification\\log\\ModificationLog\:\:setEvent\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/data/event/ViewableEventList.class.php
-
-		-
-			message: '#^Parameter \#1 \$logEntry of method rp\\data\\event\\ViewableEvent\:\:setLogEntry\(\) expects rp\\data\\modification\\log\\ViewableEventModificationLog, wcf\\data\\modification\\log\\ModificationLog given\.$#'
-			identifier: argument.type
-			count: 1
-			path: files/lib/data/event/ViewableEventList.class.php
-
-		-
-			message: '#^Expression on left side of \?\? is not nullable\.$#'
-			identifier: nullCoalesce.expr
-			count: 1
-			path: files/lib/data/event/raid/attendee/EventRaidAttendee.class.php
 
 		-
 			message: '#^Method rp\\data\\event\\raid\\attendee\\EventRaidAttendee\:\:getCharacter\(\) never returns null so it can be removed from the return type\.$#'
@@ -383,24 +149,6 @@ parameters:
 			identifier: return.type
 			count: 1
 			path: files/lib/data/event/raid/attendee/EventRaidAttendeeAction.class.php
-
-		-
-			message: '#^Class rp\\data\\event\\raid\\attendee\\EventRaidAttendeeEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/event/raid/attendee/EventRaidAttendeeEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\event\\raid\\attendee\\EventRaidAttendeeEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/event/raid/attendee/EventRaidAttendeeEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\event\\raid\\attendee\\EventRaidAttendeeList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/event/raid/attendee/EventRaidAttendeeList.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\item\\Item\:\:\$icon\.$#'
@@ -451,52 +199,22 @@ parameters:
 			path: files/lib/data/item/ItemAction.class.php
 
 		-
-			message: '#^Class rp\\data\\item\\ItemEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/item/ItemEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\item\\ItemEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/item/ItemEditor.class.php
-
-		-
 			message: '#^Class rp\\data\\item\\ItemEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/item/ItemEditor.class.php
 
 		-
-			message: '#^Class rp\\data\\item\\ItemList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
+			message: '#^Class wcf\\data\\DatabaseObjectEditor specifies template type T of interface wcf\\data\\IEditableObject as rp\\data\\item\\Item but it''s already specified as wcf\\data\\IStorableObject\.$#'
+			identifier: generics.interfaceConflict
 			count: 1
-			path: files/lib/data/item/ItemList.class.php
+			path: files/lib/data/item/ItemEditor.class.php
 
 		-
 			message: '#^Class rp\\data\\item\\database\\ItemDatabaseAction extends generic class wcf\\data\\AbstractDatabaseObjectAction but does not specify its types\: TDatabaseObject, TDatabaseObjectEditor$#'
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/item/database/ItemDatabaseAction.class.php
-
-		-
-			message: '#^Class rp\\data\\item\\database\\ItemDatabaseEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/item/database/ItemDatabaseEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\item\\database\\ItemDatabaseEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/item/database/ItemDatabaseEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\item\\database\\ItemDatabaseList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/item/database/ItemDatabaseList.class.php
 
 		-
 			message: '#^Method rp\\data\\modification\\log\\EventModificationLogList\:\:setEventData\(\) has no return type specified\.$#'
@@ -509,18 +227,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/modification/log/EventModificationLogList.class.php
-
-		-
-			message: '#^Class rp\\data\\modification\\log\\ViewableEventModificationLog extends generic class wcf\\data\\DatabaseObjectDecorator but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/modification/log/ViewableEventModificationLog.class.php
-
-		-
-			message: '#^Class rp\\data\\point\\account\\I18nPointAccountList extends generic class wcf\\data\\I18nDatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/point/account/I18nPointAccountList.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\point\\account\\PointAccountEditor\:\:\$accountID\.$#'
@@ -559,34 +265,22 @@ parameters:
 			path: files/lib/data/point/account/PointAccountAction.class.php
 
 		-
-			message: '#^Class rp\\data\\point\\account\\PointAccountEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/point/account/PointAccountEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\point\\account\\PointAccountEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/point/account/PointAccountEditor.class.php
-
-		-
 			message: '#^Class rp\\data\\point\\account\\PointAccountEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/point/account/PointAccountEditor.class.php
 
 		-
-			message: '#^PHPDoc tag @method has invalid value \(PointAccount\)\: Unexpected token "\\n ", expected ''\('' at offset 313 on line 9$#'
-			identifier: phpDoc.parseError
+			message: '#^Class wcf\\data\\DatabaseObjectEditor specifies template type T of interface wcf\\data\\IEditableObject as rp\\data\\point\\account\\PointAccount but it''s already specified as wcf\\data\\IStorableObject\.$#'
+			identifier: generics.interfaceConflict
 			count: 1
 			path: files/lib/data/point/account/PointAccountEditor.class.php
 
 		-
-			message: '#^Class rp\\data\\point\\account\\PointAccountList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
+			message: '#^PHPDoc tag @method has invalid value \(PointAccount\)\: Unexpected token "\\n \* ", expected ''\('' at offset 244 on line 8$#'
+			identifier: phpDoc.parseError
 			count: 1
-			path: files/lib/data/point/account/PointAccountList.class.php
+			path: files/lib/data/point/account/PointAccountEditor.class.php
 
 		-
 			message: '#^Method rp\\data\\raid\\Raid\:\:getAttendees\(\) return type has no value type specified in iterable type array\.$#'
@@ -619,20 +313,20 @@ parameters:
 			path: files/lib/data/raid/RaidAction.class.php
 
 		-
-			message: '#^Class rp\\data\\raid\\RaidEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
+			message: '#^Parameter \#1 \$object of class rp\\data\\raid\\RaidEditor constructor expects rp\\data\\raid\\Raid, wcf\\data\\DatabaseObject given\.$#'
+			identifier: argument.type
 			count: 1
-			path: files/lib/data/raid/RaidEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\raid\\RaidEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/raid/RaidEditor.class.php
+			path: files/lib/data/raid/RaidAction.class.php
 
 		-
 			message: '#^Class rp\\data\\raid\\RaidEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
 			identifier: missingType.generics
+			count: 1
+			path: files/lib/data/raid/RaidEditor.class.php
+
+		-
+			message: '#^Class wcf\\data\\DatabaseObjectEditor specifies template type T of interface wcf\\data\\IEditableObject as rp\\data\\raid\\Raid but it''s already specified as wcf\\data\\IStorableObject\.$#'
+			identifier: generics.interfaceConflict
 			count: 1
 			path: files/lib/data/raid/RaidEditor.class.php
 
@@ -647,12 +341,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/raid/RaidEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\raid\\RaidList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/raid/RaidList.class.php
 
 		-
 			message: '#^Class rp\\data\\raid\\event\\I18nRaidEventList extends generic class wcf\\data\\I18nDatabaseObjectList but does not specify its types\: TDatabaseObject$#'
@@ -679,28 +367,16 @@ parameters:
 			path: files/lib/data/raid/event/RaidEventAction.class.php
 
 		-
-			message: '#^Class rp\\data\\raid\\event\\RaidEventEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/raid/event/RaidEventEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\raid\\event\\RaidEventEditor has PHPDoc tag @method for method create\(\) parameter \#1 \$parameters with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/data/raid/event/RaidEventEditor.class.php
-
-		-
 			message: '#^Class rp\\data\\raid\\event\\RaidEventEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/raid/event/RaidEventEditor.class.php
 
 		-
-			message: '#^Class rp\\data\\raid\\event\\RaidEventList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
+			message: '#^Class wcf\\data\\DatabaseObjectEditor specifies template type T of interface wcf\\data\\IEditableObject as rp\\data\\raid\\event\\RaidEvent but it''s already specified as wcf\\data\\IStorableObject\.$#'
+			identifier: generics.interfaceConflict
 			count: 1
-			path: files/lib/data/raid/event/RaidEventList.class.php
+			path: files/lib/data/raid/event/RaidEventEditor.class.php
 
 		-
 			message: '#^Access to an undefined property rp\\data\\server\\Server\:\:\$game\.$#'
@@ -739,14 +415,14 @@ parameters:
 			path: files/lib/data/server/ServerEditor.class.php
 
 		-
-			message: '#^Class rp\\data\\server\\ServerEditor extends generic class wcf\\data\\DatabaseObjectEditor but does not specify its types\: TDatabaseObject$#'
+			message: '#^Class rp\\data\\server\\ServerEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
 			identifier: missingType.generics
 			count: 1
 			path: files/lib/data/server/ServerEditor.class.php
 
 		-
-			message: '#^Class rp\\data\\server\\ServerEditor implements generic interface wcf\\data\\IEditableCachedObject but does not specify its types\: T$#'
-			identifier: missingType.generics
+			message: '#^Class wcf\\data\\DatabaseObjectEditor specifies template type T of interface wcf\\data\\IEditableObject as rp\\data\\server\\Server but it''s already specified as wcf\\data\\IStorableObject\.$#'
+			identifier: generics.interfaceConflict
 			count: 1
 			path: files/lib/data/server/ServerEditor.class.php
 
@@ -755,12 +431,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/data/server/ServerEditor.class.php
-
-		-
-			message: '#^Class rp\\data\\server\\ServerList extends generic class wcf\\data\\DatabaseObjectList but does not specify its types\: TDatabaseObject$#'
-			identifier: missingType.generics
-			count: 1
-			path: files/lib/data/server/ServerList.class.php
 
 		-
 			message: '#^Method rp\\event\\attendee\\AttendeesDeleted\:\:__construct\(\) has parameter \$attendees with no value type specified in iterable type array\.$#'
@@ -889,20 +559,8 @@ parameters:
 			path: files/lib/form/EventAddForm.class.php
 
 		-
-			message: '#^Access to property \$raidID on an unknown class rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/form/RaidAddForm.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\system\\event\\IEventController\:\:isLeader\(\)\.$#'
+			message: '#^Call to an undefined method rp\\system\\event\\type\\IEventType\:\:isLeader\(\)\.$#'
 			identifier: method.notFound
-			count: 1
-			path: files/lib/form/RaidAddForm.class.php
-
-		-
-			message: '#^Call to method isRaidEvent\(\) on an unknown class rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: class.notFound
 			count: 1
 			path: files/lib/form/RaidAddForm.class.php
 
@@ -916,12 +574,6 @@ parameters:
 			message: '#^Parameter \#1 \$available of method wcf\\system\\form\\builder\\field\\AbstractFormField\:\:available\(\) expects bool, int given\.$#'
 			identifier: argument.type
 			count: 2
-			path: files/lib/form/RaidAddForm.class.php
-
-		-
-			message: '#^Property rp\\form\\RaidAddForm\:\:\$event \(rp\\data\\event\\Event\|null\) does not accept rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: assign.propertyType
-			count: 1
 			path: files/lib/form/RaidAddForm.class.php
 
 		-
@@ -943,18 +595,6 @@ parameters:
 			path: files/lib/page/CalendarPage.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$characterName\.$#'
-			identifier: property.notFound
-			count: 2
-			path: files/lib/page/CharacterPage.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 2
-			path: files/lib/page/CharacterPage.class.php
-
-		-
 			message: '#^Access to an undefined property wcf\\system\\session\\SessionHandler\:\:\$spiderID\.$#'
 			identifier: property.notFound
 			count: 1
@@ -967,10 +607,22 @@ parameters:
 			path: files/lib/page/CharacterPage.class.php
 
 		-
-			message: '#^Strict comparison using \=\=\= between rp\\data\\character\\CharacterProfile and null will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
+			message: '#^Call to method canRead\(\) on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
+			identifier: class.notFound
 			count: 1
-			path: files/lib/page/CharacterPage.class.php
+			path: files/lib/page/EventPage.class.php
+
+		-
+			message: '#^Call to method getLink\(\) on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/page/EventPage.class.php
+
+		-
+			message: '#^Property rp\\page\\EventPage\:\:\$event \(rp\\data\\event\\ViewableEvent\|null\) does not accept rp\\system\\cache\\runtime\\ViewableEvent\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: files/lib/page/EventPage.class.php
 
 		-
 			message: '#^Call to method getLink\(\) on an unknown class rp\\system\\cache\\runtime\\Raid\.$#'
@@ -985,7 +637,7 @@ parameters:
 			path: files/lib/page/RaidPage.class.php
 
 		-
-			message: '#^Property rp\\page\\RaidPage\:\:\$raid \(rp\\data\\raid\\Raid\) does not accept rp\\system\\cache\\runtime\\Raid\.$#'
+			message: '#^Property rp\\page\\RaidPage\:\:\$raid \(rp\\data\\raid\\Raid\) does not accept rp\\system\\cache\\runtime\\Raid\|null\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: files/lib/page/RaidPage.class.php
@@ -1065,24 +717,6 @@ parameters:
 		-
 			message: '#^Class rp\\system\\cache\\runtime\\EventRuntimeCache has PHPDoc tag @method for method getObjects\(\) parameter \#1 \$objectIDs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/cache/runtime/EventRuntimeCache.class.php
-
-		-
-			message: '#^PHPDoc tag @method for method rp\\system\\cache\\runtime\\EventRuntimeCache\:\:getCachedObjects\(\) return type contains unknown class rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/system/cache/runtime/EventRuntimeCache.class.php
-
-		-
-			message: '#^PHPDoc tag @method for method rp\\system\\cache\\runtime\\EventRuntimeCache\:\:getObject\(\) return type contains unknown class rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/system/cache/runtime/EventRuntimeCache.class.php
-
-		-
-			message: '#^PHPDoc tag @method for method rp\\system\\cache\\runtime\\EventRuntimeCache\:\:getObjects\(\) return type contains unknown class rp\\system\\cache\\runtime\\Event\.$#'
-			identifier: class.notFound
 			count: 1
 			path: files/lib/system/cache/runtime/EventRuntimeCache.class.php
 
@@ -1225,18 +859,6 @@ parameters:
 			path: files/lib/system/calendar/DayEvent.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$isPrimary\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/character/CharacterHandler.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\Character\:\:\$avatarID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/character/command/DeleteCharacters.class.php
-
-		-
 			message: '#^Call to static method getInstance\(\) on an unknown class rp\\system\\character\\command\\EventHandler\.$#'
 			identifier: class.notFound
 			count: 1
@@ -1247,18 +869,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: files/lib/system/character/command/DeleteCharacters.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/character/point/CharacterPointHandler.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:getPrimaryCharacter\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/character/point/CharacterPointHandler.class.php
 
 		-
 			message: '#^Comparison operation "\>" between \(array\|float\|int\) and 0 results in an error\.$#'
@@ -1315,18 +925,6 @@ parameters:
 			path: files/lib/system/character/point/CharacterPointHandler.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$notes\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/character/profile/menu/AboutCharacterProfileMenu.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/character/profile/menu/PointsCharacterProfileMenu.class.php
-
-		-
 			message: '#^Binary operation "/" between int\<0, max\> and 0 results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
@@ -1381,124 +979,10 @@ parameters:
 			path: files/lib/system/comment/manager/EventCommentManager.class.php
 
 		-
-			message: '#^If condition is always true\.$#'
-			identifier: if.alwaysTrue
-			count: 1
-			path: files/lib/system/comment/manager/EventCommentManager.class.php
-
-		-
 			message: '#^Strict comparison using \=\=\= between rp\\data\\event\\Event and null will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
 			path: files/lib/system/comment/manager/EventCommentManager.class.php
-
-		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			identifier: deadCode.unreachable
-			count: 1
-			path: files/lib/system/comment/manager/EventCommentManager.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\AbstractEventController\:\:saveForm\(\) has parameter \$formData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/AbstractEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\AbstractEventController\:\:saveForm\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/AbstractEventController.class.php
-
-		-
-			message: '#^Property rp\\system\\event\\AbstractEventController\:\:\$savedFields type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/AbstractEventController.class.php
-
-		-
-			message: '#^Property rp\\system\\event\\DefaultEventController\:\:\$savedFields type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/DefaultEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\IEventController\:\:saveForm\(\) has parameter \$formData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/IEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\IEventController\:\:saveForm\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/IEventController.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Call to method getTitle\(\) on an unknown class rp\\system\\event\\RaidEvent\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Class rp\\system\\event\\RaidEvent not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\RaidEventController\:\:getLeaders\(\) has invalid return type rp\\system\\event\\CharacterProfile\.$#'
-			identifier: class.notFound
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\RaidEventController\:\:getLeaders\(\) should return array\<rp\\system\\event\\CharacterProfile\> but returns array\<rp\\data\\character\\CharacterProfile\>\.$#'
-			identifier: return.type
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\RaidEventController\:\:getRequirements\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\RaidEventController\:\:saveForm\(\) has parameter \$formData with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Method rp\\system\\event\\RaidEventController\:\:saveForm\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Parameter \#1 \$available of method wcf\\system\\form\\builder\\field\\AbstractFormField\:\:available\(\) expects bool, int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Property rp\\system\\event\\RaidEventController\:\:\$contentData type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
-
-		-
-			message: '#^Property rp\\system\\event\\RaidEventController\:\:\$savedFields type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: files/lib/system/event/RaidEventController.class.php
 
 		-
 			message: '#^Method rp\\system\\event\\command\\DeleteEvents\:\:__construct\(\) has parameter \$events with no value type specified in iterable type array\.$#'
@@ -1529,6 +1013,108 @@ parameters:
 			identifier: missingType.return
 			count: 1
 			path: files/lib/system/event/listener/DefaultAddAttendeesChecking.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\AbstractEventType\:\:saveForm\(\) has parameter \$formData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/AbstractEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\AbstractEventType\:\:saveForm\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/AbstractEventType.class.php
+
+		-
+			message: '#^Property rp\\system\\event\\type\\AbstractEventType\:\:\$savedFields type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/AbstractEventType.class.php
+
+		-
+			message: '#^Property rp\\system\\event\\type\\DefaultEventType\:\:\$savedFields type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/DefaultEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\IEventType\:\:saveForm\(\) has parameter \$formData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/IEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\IEventType\:\:saveForm\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/IEventType.class.php
+
+		-
+			message: '#^Call to method getTitle\(\) on an unknown class rp\\system\\event\\type\\RaidEvent\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Class rp\\system\\event\\type\\RaidEvent not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\RaidEventType\:\:getLeaders\(\) has invalid return type rp\\system\\event\\type\\CharacterProfile\.$#'
+			identifier: class.notFound
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\RaidEventType\:\:getLeaders\(\) should return array\<rp\\system\\event\\type\\CharacterProfile\> but returns array\<rp\\data\\character\\CharacterProfile\>\.$#'
+			identifier: return.type
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\RaidEventType\:\:getRequirements\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\RaidEventType\:\:saveForm\(\) has parameter \$formData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\event\\type\\RaidEventType\:\:saveForm\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Parameter \#1 \$available of method wcf\\system\\form\\builder\\field\\AbstractFormField\:\:available\(\) expects bool, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Property rp\\system\\event\\type\\RaidEventType\:\:\$contentData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Property rp\\system\\event\\type\\RaidEventType\:\:\$savedFields type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: files/lib/system/event/type/RaidEventType.class.php
+
+		-
+			message: '#^Method rp\\system\\file\\processor\\CharacterAvatarFileProcessor\:\:getImageCropperConfiguration\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: files/lib/system/file/processor/CharacterAvatarFileProcessor.class.php
 
 		-
 			message: '#^Call to an undefined method wcf\\system\\form\\builder\\IFormNode\:\:getValue\(\)\.$#'
@@ -1591,24 +1177,6 @@ parameters:
 			path: files/lib/system/form/builder/field/item/ItemFormField.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$isPrimary\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/gridView/admin/CharacterGridView.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canEdit\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/gridView/admin/CharacterGridView.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:getPrimaryCharacter\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/gridView/admin/CharacterGridView.class.php
-
-		-
 			message: '#^Class rp\\system\\gridView\\admin\\CharacterGridView extends generic class wcf\\system\\gridView\\AbstractGridView but does not specify its types\: TDatabaseObject, TDatabaseObjectList$#'
 			identifier: missingType.generics
 			count: 1
@@ -1639,40 +1207,10 @@ parameters:
 			path: files/lib/system/gridView/admin/RaidEventGridView.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$isPrimary\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/interaction/admin/CharacterInteractions.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canDelete\(\)\.$#'
+			message: '#^Call to an undefined method rp\\system\\event\\type\\IEventType\:\:isLeader\(\)\.$#'
 			identifier: method.notFound
 			count: 1
-			path: files/lib/system/interaction/admin/CharacterInteractions.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canDelete\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/interaction/bulk/admin/CharacterBulkInteractions.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$isPrimary\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/interaction/user/CharacterInteractions.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canDelete\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: files/lib/system/interaction/user/CharacterInteractions.class.php
-
-		-
-			message: '#^Call to an undefined method rp\\data\\character\\CharacterProfile\:\:canEdit\(\)\.$#'
-			identifier: method.notFound
-			count: 2
-			path: files/lib/system/interaction/user/CharacterInteractions.class.php
+			path: files/lib/system/interaction/user/EventContentInteractions.class.php
 
 		-
 			message: '#^Expression in empty\(\) is always falsy\.$#'
@@ -1807,19 +1345,7 @@ parameters:
 			path: files/lib/system/option/ItemDatabasesOptionType.class.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$characterID\.$#'
-			identifier: property.notFound
-			count: 2
-			path: files/lib/system/page/handler/CharacterPageHandler.class.php
-
-		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$characterName\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files/lib/system/page/handler/CharacterPageHandler.class.php
-
-		-
-			message: '#^Method rp\\system\\page\\handler\\CharacterPageHandler\:\:lookup\(\) should return array\<string\> but returns list\<array\<string, mixed\>\>\.$#'
+			message: '#^Method rp\\system\\page\\handler\\CharacterPageHandler\:\:lookup\(\) should return array\<string\> but returns list\<array\<string, int\|string\>\>\.$#'
 			identifier: return.type
 			count: 1
 			path: files/lib/system/page/handler/CharacterPageHandler.class.php
@@ -1839,18 +1365,6 @@ parameters:
 		-
 			message: '#^Call to method getLink\(\) on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
 			identifier: class.notFound
-			count: 1
-			path: files/lib/system/page/handler/EventPageHandler.class.php
-
-		-
-			message: '#^Strict comparison using \!\=\= between rp\\system\\cache\\runtime\\ViewableEvent and null will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: files/lib/system/page/handler/EventPageHandler.class.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between rp\\system\\cache\\runtime\\ViewableEvent and null will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
 			count: 1
 			path: files/lib/system/page/handler/EventPageHandler.class.php
 
@@ -1875,12 +1389,6 @@ parameters:
 		-
 			message: '#^Call to method getLink\(\) on an unknown class rp\\system\\cache\\runtime\\ViewableEvent\.$#'
 			identifier: class.notFound
-			count: 1
-			path: files/lib/system/user/activity/event/EventUserActivityEvent.class.php
-
-		-
-			message: '#^Strict comparison using \!\=\= between rp\\system\\cache\\runtime\\ViewableEvent and null will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
 			count: 1
 			path: files/lib/system/user/activity/event/EventUserActivityEvent.class.php
 
@@ -2035,22 +1543,28 @@ parameters:
 			path: files_wcf/lib/bootstrap/de.md-raidplaner.rp.php
 
 		-
-			message: '#^Access to an undefined property rp\\data\\character\\CharacterProfile\:\:\$userID\.$#'
-			identifier: property.notFound
-			count: 1
-			path: files_wcf/lib/system/endpoint/controller/rp/attendees/DeleteAttendee.class.php
-
-		-
 			message: '#^Access to an undefined property rp\\data\\event\\raid\\attendee\\EventRaidAttendee\:\:\$userID\.$#'
 			identifier: property.notFound
 			count: 1
 			path: files_wcf/lib/system/endpoint/controller/rp/attendees/UpdateAttendeeStatus.class.php
 
 		-
-			message: '#^Call to an undefined method rp\\system\\event\\IEventController\:\:isLeader\(\)\.$#'
+			message: '#^Call to an undefined method rp\\system\\event\\type\\IEventType\:\:isLeader\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: files_wcf/lib/system/endpoint/controller/rp/attendees/UpdateAttendeeStatus.class.php
+
+		-
+			message: '#^Parameter \#1 \$eventID of static method rp\\data\\event\\ViewableEvent\:\:getEvent\(\) expects int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: files_wcf/lib/system/endpoint/controller/rp/events/GetEventContentHeaderTitle.class.php
+
+		-
+			message: '#^Method wcf\\system\\template\\TemplateEngine\:\:render\(\) invoked with 4 parameters, 3 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: files_wcf/lib/system/endpoint/controller/rp/items/Tooltip.class.php
 
 		-
 			message: '#^Method wcf\\system\\package\\plugin\\RPItemDatabasePackageInstallationPlugin\:\:findExistingItem\(\) return type has no value type specified in iterable type array\.$#'
