@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="de.md-raidplaner.rp" xmlns="http://www.woltlab.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/package.xsd">
+	<packageinformation>
+		<packagename>MD-Raidplaner: Core</packagename>
+		<packagedescription></packagedescription>
+		<isapplication>1</isapplication>
+		<applicationdirectory>rp</applicationdirectory>
+		<version>1.0.0 Alpha 1</version>
+		<date>2025-11-24</date>
+	</packageinformation>
+
+	<authorinformation>
+		<author>MD-Raidplaner</author>
+		<authorurl>https://md-raidplaner.de</authorurl>
+	</authorinformation>
+
+	<requiredpackages>
+		<requiredpackage minversion="6.2.0 Beta 1">com.woltlab.wcf</requiredpackage>
+	</requiredpackages>
+
+	<excludedpackages>
+		<excludedpackage version="6.3.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+	</excludedpackages>
+
+	<instructions type="install">
+		<instruction type="file" application="rp" />
+		<instruction type="language" />
+	</instructions>
+</package>
