@@ -1,0 +1,4 @@
+files_wcf/js/MDRP/*.js linguist-generated
+*.php diff=php
+*.css diff=css
+*.scss diff=css

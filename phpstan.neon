@@ -1,0 +1,22 @@
+includes:
+    - phpstan-ambient.neon
+    - ../../../raw/WCF-6.2/phpstan-ambient.neon
+
+parameters:
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+
+    level: 6
+    paths:
+        - files
+        - files_wcf
+    scanDirectories:
+        - ../../../../coding/templates/php/wsc6.2/
+    excludePaths:
+        analyse:
+            - ../../../../coding/templates/php/wsc6.2/lib/system/api/
+    ignoreErrors:
+        - identifier: match.unhandled
+        - identifier: method.unused
+        - identifier: new.static
+        - identifier: trait.unused 
