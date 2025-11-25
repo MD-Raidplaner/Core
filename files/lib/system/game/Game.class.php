@@ -4,6 +4,7 @@ namespace rp\system\game;
 
 use rp\system\faction\Faction;
 use rp\system\race\Race;
+use rp\system\role\Role;
 use wcf\system\WCF;
 
 /**
@@ -18,12 +19,14 @@ final class Game
     /**
      * @var array<string, Faction> $factions
      * @var array<string, Race> $races
+     * @var array<string, Role> $roles
      */
     public function __construct(
         public readonly string $identifier,
         public readonly string $title = '',
         public readonly array $factions = [],
-        public readonly array $races = []
+        public readonly array $races = [],
+        public readonly array $roles = []
     ) {}
 
     /**
