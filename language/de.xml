@@ -6,6 +6,13 @@
 		<category name="rp.game">
 			<item name="rp.game.default"><![CDATA[Standard]]></item>
 		</category>
+
+		<category name="wcf.acp.option">
+			<item name="wcf.acp.option.category.rp"><![CDATA[Raidplaner]]></item>
+			<item name="wcf.acp.option.category.rp.settings"><![CDATA[Einstellungen]]></item>
+			<item name="wcf.acp.option.rp_current_game"><![CDATA[Aktuelles Spiel]]></item>
+			<item name="wcf.acp.option.rp_current_game.description"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Lege{else}Legen Sie{/if} das aktuelle Spiel für den Raidplaner fest.]]></item>
+		</category>
 	</import>
 </language>
         

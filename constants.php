@@ -9,7 +9,8 @@
  */
 
 // automatically defined constants
-define('RP_DIR', '');
-define('RELATIVE_RP_DIR', '');
+\define('RP_DIR', '');
+\define('RELATIVE_RP_DIR', '');
 
 // option constants
+\define('RP_CURRENT_GAME', 'default');

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/option.xsd">
+	<import>
+		<categories>
+			<category name="rp" />
+			<category name="rp.settings">
+				<parent>rp</parent>
+				<showorder>1</showorder>
+			</category>
+		</categories>
+		<options>
+
+			<!-- general -->
+			<option name="rp_install_date">
+				<categoryname>general</categoryname>
+				<optiontype>integer</optiontype>
+				<hidden>1</hidden>
+			</option>
+			<!-- /general -->
+
+			<!-- rp.settings -->
+			<option name="rp_current_game">
+				<categoryname>rp.settings</categoryname>
+				<optiontype>gameSelect</optiontype>
+			</option>
+			<!-- /rp.settings -->
+		</options>
+	</import>
+</data>
