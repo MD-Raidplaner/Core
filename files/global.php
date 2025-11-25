@@ -10,3 +10,7 @@ require_once(dirname(__FILE__) . '/app.config.inc.php');
 
 // include wcf
 require_once(RELATIVE_WCF_DIR . 'global.php');
+
+// include rp
+require_once(RELATIVE_RP_DIR . 'lib/system/RP.class.php');
+new \rp\system\RP();
