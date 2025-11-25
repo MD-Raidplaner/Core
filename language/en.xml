@@ -7,6 +7,14 @@
 			<item name="rp.game.default"><![CDATA[Default]]></item>
 		</category>
 
+		<category name="wcf.acp.group">
+			<item name="wcf.acp.group.option.admin.rp.canAddCharacter"><![CDATA[Can create characters]]></item>
+			<item name="wcf.acp.group.option.admin.rp.canDeleteCharacter"><![CDATA[Can delete characters]]></item>
+			<item name="wcf.acp.group.option.admin.rp.canEditCharacter"><![CDATA[Can edit characters]]></item>
+			<item name="wcf.acp.group.option.category.admin.rp"><![CDATA[Raidplaner]]></item>
+			<item name="wcf.acp.group.option.category.admin.rp.character"><![CDATA[Character]]></item>
+		</category>
+
 		<category name="wcf.acp.option">
 			<item name="wcf.acp.option.category.rp"><![CDATA[Raidplaner]]></item>
 			<item name="wcf.acp.option.category.rp.settings"><![CDATA[Settings]]></item>
