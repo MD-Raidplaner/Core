@@ -2,6 +2,7 @@
 
 namespace rp\system\game;
 
+use rp\system\faction\Faction;
 use wcf\system\WCF;
 
 /**
@@ -13,9 +14,13 @@ use wcf\system\WCF;
  */
 final class Game
 {
+    /**
+     * @var array<string, Faction> $factions
+     */
     public function __construct(
         public readonly string $identifier,
         public readonly string $title = '',
+        public readonly array $factions = [],
     ) {}
 
     /**
