@@ -12,6 +12,14 @@ return new class {
     public function __invoke(): void
     {
         $this->initGame();
+        $this->initACPMenuItems();
+    }
+
+    private function initACPMenuItems(): void {
+         EventHandler::getInstance()->register(
+            \wcf\event\acp\menu\item\ItemCollecting::class,
+            \rp\system\event\listener\AcpMenuItemCollectingListener::class
+        );
     }
 
     private function initGame(): void
