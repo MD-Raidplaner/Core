@@ -22,6 +22,7 @@
 			<option name="rp_current_game">
 				<categoryname>rp.settings</categoryname>
 				<optiontype>gameSelect</optiontype>
+				<defaultvalue>default</defaultvalue>
 			</option>
 			<!-- /rp.settings -->
 		</options>

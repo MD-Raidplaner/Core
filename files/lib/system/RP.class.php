@@ -38,7 +38,6 @@ final class RP
     private function initGame(): void
     {
         $games = GameEngine::getInstance()->games;
-
-        self::$game = $games['default'];
+        self::$game = $games[\RP_CURRENT_GAME] ?? $games['default'];
     }
 }
