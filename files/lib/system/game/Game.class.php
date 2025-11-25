@@ -6,6 +6,7 @@ use rp\system\classification\Classification;
 use rp\system\faction\Faction;
 use rp\system\race\Race;
 use rp\system\role\Role;
+use rp\system\skill\Skill;
 use wcf\system\WCF;
 
 /**
@@ -22,6 +23,7 @@ final class Game
      * @var array<string, Race> $races
      * @var array<string, Role> $roles
      * @var array<string, Classification> $classifications
+     * @var array<string, Skill> $skills
      */
     public function __construct(
         public readonly string $identifier,
@@ -30,6 +32,7 @@ final class Game
         public readonly array $races = [],
         public readonly array $roles = [],
         public readonly array $classifications = [],
+        public readonly array $skills = []
     ) {}
 
     /**
