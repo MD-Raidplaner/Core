@@ -42,7 +42,6 @@ final class Faction
         return \sprintf(
             '%simages/faction/%s.webp',
             WCF::getPath('rp'),
-            $this->identifier,
             $this->icon ?: $this->identifier
         );
     }
