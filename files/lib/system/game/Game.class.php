@@ -2,6 +2,8 @@
 
 namespace rp\system\game;
 
+use wcf\system\WCF;
+
 /**
  * Represents a game.
  * 
@@ -15,4 +17,17 @@ final class Game
         public readonly string $identifier,
         public readonly string $title = '',
     ) {}
+
+    /**
+     * Gets the title of the game.
+     */
+    public function getTitle(): string
+    {
+        return $this->title ?: WCF::getLanguage()->get(\sprintf('rp.game.%s', $this->identifier));
+    }
+
+    public function __toString(): string
+    {
+        return $this->getTitle();
+    }
 }
