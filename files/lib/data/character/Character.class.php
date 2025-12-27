@@ -7,6 +7,7 @@ use wcf\data\DatabaseObject;
 use wcf\data\IPopoverObject;
 use wcf\system\request\IRouteController;
 use wcf\system\request\LinkHandler;
+use wcf\system\WCF;
 
 /**
  * Represents a character.
@@ -18,6 +19,7 @@ use wcf\system\request\LinkHandler;
  * @property-read int $characterID      unique id of the character
  * @property-read string $characterName    name of the character
  * @property-read ?int $userID           user id of the character owner or null for guest characters
+ * @property-read string $username        username of the character owner
  * @property-read string $game            game identifier of the character
  * @property-read ?int $avatarFileID     file id of the character avatar or null if not set
  * @property-read int $created         timestamp of character creation
@@ -34,12 +36,19 @@ class Character extends DatabaseObject implements IPopoverObject, IRouteControll
     /**
      * Returns the character with the given name or null if no such character exists.
      */
-    public static function getCharacterByName(string $characterName): ?Character
+    public static function getCharacterByName(string $characterName): Character
     {
-        $characterList = new AccessibleCharacterList();
-        $characterList->getConditionBuilder()->add('characterName = ?', [$characterName]);
-        $characterList->readObjects();
-        return $characterList->getSingleObject();
+        $sql = "SELECT  character_table.*
+                FROM    rp1_character character_table
+                WHERE   character_table.characterName = ?";
+        $statement = WCF::getDB()->prepare($sql);
+        $statement->execute([$characterName]);
+        $row = $statement->fetchArray();
+        if (!$row) {
+            $row = [];
+        }
+
+        return new self(null, $row);
     }
 
     #[\Override]
@@ -73,7 +82,7 @@ class Character extends DatabaseObject implements IPopoverObject, IRouteControll
     #[\Override]
     public function getPopoverLinkClass(): string
     {
-        return 'userLink';
+        return 'characterLink';
     }
 
     #[\Override]

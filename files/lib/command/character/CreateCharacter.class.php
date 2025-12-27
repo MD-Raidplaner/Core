@@ -5,10 +5,13 @@ namespace rp\command\character;
 use rp\data\character\AccessibleCharacterList;
 use rp\data\character\Character;
 use rp\data\character\CharacterEditor;
+use rp\data\character\CharacterList;
 use rp\event\character\CharacterCreated;
 use rp\system\character\CharacterHandler;
+use wcf\system\cache\runtime\UserRuntimeCache;
 use wcf\system\event\EventHandler;
 use wcf\system\request\RequestHandler;
+use wcf\system\user\storage\UserStorageHandler;
 
 /**
  * Creates a new character.
@@ -36,13 +39,16 @@ final class CreateCharacter
 
         if ($data['userID'] !== null) {
             if (RequestHandler::getInstance()->isACPRequest()) {
-                $characterList = new AccessibleCharacterList();
+                $characterList = new CharacterList();
                 $characterList->getConditionBuilder()->add('character_table.userID = ?', [$data['userID']]);
                 $characterList->getConditionBuilder()->add('character_table.isPrimary = ?', [1]);
                 $data['isPrimary'] = $characterList->countObjects() === 0 ? 1 : 0;
             } else {
                 $data['isPrimary'] = CharacterHandler::getInstance()->getPrimaryCharacter() === null ? 1 : 0;
             }
+
+            $user = UserRuntimeCache::getInstance()->getObject($data['userID']);
+            $data['username'] = $user->username;
         } else {
             $data['isPrimary'] = 1;
             $data['isDisabled'] = 1;
@@ -54,6 +60,10 @@ final class CreateCharacter
         EventHandler::getInstance()->fire(
             new CharacterCreated($character, $this->formData)
         );
+
+        if ($character->userID) {
+            UserStorageHandler::getInstance()->reset([$character->userID], 'characterPrimaryIDs');
+        }
 
         return $character;
     }

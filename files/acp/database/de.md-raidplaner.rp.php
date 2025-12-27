@@ -27,6 +27,9 @@ return [
                 ->notNull(),
             IntDatabaseTableColumn::create('userID')
                 ->length(10),
+            VarcharDatabaseTableColumn::create('username')
+                ->length(100)
+                ->notNull(),
             VarcharDatabaseTableColumn::create('game')
                 ->length(100)
                 ->notNull(),

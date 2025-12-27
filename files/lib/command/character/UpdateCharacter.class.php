@@ -6,6 +6,7 @@ use rp\data\character\Character;
 use rp\data\character\CharacterEditor;
 use rp\event\character\CharacterUpdated;
 use wcf\system\event\EventHandler;
+use wcf\system\user\storage\UserStorageHandler;
 
 /**
  * Updates an existing character.
@@ -45,5 +46,9 @@ final class UpdateCharacter
                 $this->formData
             )
         );
+
+        if ($this->character->userID) {
+            UserStorageHandler::getInstance()->reset([$this->character->userID], 'characterPrimaryIDs');
+        }
     }
 }

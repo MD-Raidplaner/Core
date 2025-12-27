@@ -16,4 +16,11 @@ use wcf\data\DatabaseObjectList;
 class CharacterList extends DatabaseObjectList
 {
     public $className = Character::class;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->conditionBuilder->add('character_table.game = ?', [\RP_CURRENT_GAME]);
+    }
 }

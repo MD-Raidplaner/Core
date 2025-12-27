@@ -44,6 +44,7 @@ class CharacterAddForm extends AbstractForm
         'guildName',
         'notes',
         'userID',
+        'username',
     ];
 
     protected string $commandAction = CreateCharacter::class;
@@ -79,7 +80,7 @@ class CharacterAddForm extends AbstractForm
                         ) {
 
                             $character = Character::getCharacterByName($value);
-                            if ($character !== null) {
+                            if ($character->getObjectID()) {
                                 $formField->addValidationError(
                                     new FormFieldValidationError(
                                         'uniqueness',
@@ -91,7 +92,8 @@ class CharacterAddForm extends AbstractForm
                     })),
                 UserFormField::create('userID')
                     ->label('wcf.user.username')
-                    ->available(RequestHandler::getInstance()->isACPRequest()),
+                    ->available(RequestHandler::getInstance()->isACPRequest())
+                    ->required(),
                 TextFormField::create('guildName')
                     ->label('rp.character.guildName')
                     ->maximumLength(100),

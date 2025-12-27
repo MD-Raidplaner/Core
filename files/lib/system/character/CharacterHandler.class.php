@@ -2,14 +2,13 @@
 
 namespace rp\system\character;
 
-use rp\data\character\Character;
-use rp\data\character\MyCharacterList;
+use rp\data\character\CharacterProfile;
+use rp\data\character\CharacterProfileList;
 use wcf\system\SingletonFactory;
 use wcf\system\WCF;
-use Zend\Console\Prompt\Char;
 
 /**
- *
+ * Handles the characters of the current user.
  * 
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
@@ -19,14 +18,14 @@ final class CharacterHandler extends SingletonFactory
 {
     /**
      * Cached characters of the current user
-     * @var array<int, Character>
+     * @var array<int, CharacterProfile>
      */
     private array $characters = [];
 
     /**
      * Returns the character with the given id or null if no such character exists.
      */
-    public function getCharacter(int $characterID): ?Character
+    public function getCharacter(int $characterID): ?CharacterProfile
     {
         return $this->characters[$characterID] ?? null;
     }
@@ -34,7 +33,7 @@ final class CharacterHandler extends SingletonFactory
     /**
      * Returns all characters of the current user.
      * 
-     * @return array<int, Character>
+     * @return array<int, CharacterProfile>
      */
     public function getCharacters(): array
     {
@@ -44,7 +43,7 @@ final class CharacterHandler extends SingletonFactory
     /**
      * Returns the primary character of the current user or null if no such character exists.
      */
-    public function getPrimaryCharacter(): ?Character
+    public function getPrimaryCharacter(): ?CharacterProfile
     {
         return \array_reduce(
             $this->getCharacters(),
@@ -56,7 +55,8 @@ final class CharacterHandler extends SingletonFactory
     protected function init(): void
     {
         if (WCF::getUser()->getObjectID()) {
-            $characterList = new MyCharacterList();
+            $characterList = new CharacterProfileList();
+            $characterList->getConditionBuilder()->add('character_table.userID = ?', [WCF::getUser()->getObjectID()]);
             $characterList->getConditionBuilder()->add('character_table.isDisabled = ?', [0]);
             $characterList->readObjects();
             $this->characters = $characterList->getObjects();
