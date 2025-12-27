@@ -28,7 +28,7 @@ final class CreateCharacter
         private readonly array $formData
     ) {}
 
-    public function __invoke(): void
+    public function __invoke(): Character
     {
         $data = $this->data;
 
@@ -54,5 +54,7 @@ final class CreateCharacter
         EventHandler::getInstance()->fire(
             new CharacterCreated($character, $this->formData)
         );
+
+        return $character;
     }
 }
