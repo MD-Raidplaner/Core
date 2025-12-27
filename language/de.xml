@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/language.xsd"
-	languagecode="de" languagename="Deutsch">
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/language.xsd" languagecode="de" languagename="Deutsch">
 	<import>
+		<category name="rp.acp.menu">
+			<item name="rp.acp.menu.link.rp"><![CDATA[Raidplaner]]></item>
+			<item name="rp.acp.menu.link.character"><![CDATA[Charakter]]></item>
+			<item name="rp.acp.menu.link.character.add"><![CDATA[Charakter hinzufügen]]></item>
+			<item name="rp.acp.menu.link.character.list"><![CDATA[Charaktere]]></item>
+		</category>
+
+		<category name="rp.character">
+			<item name="rp.character.add"><![CDATA[Charakter hinzufügen]]></item>
+			<item name="rp.character.category.character"><![CDATA[Charakter]]></item>
+			<item name="rp.character.characterName"><![CDATA[Charaktername]]></item>
+			<item name="rp.character.characterName.error.uniqueness"><![CDATA[Charaktername ist bereits vergeben]]></item>
+			<item name="rp.character.edit"><![CDATA[Charakter bearbeiten]]></item>
+			<item name="rp.character.guildName"><![CDATA[Gildenname]]></item>
+			<item name="rp.character.list"><![CDATA[Charaktere]]></item>
+			<item name="rp.character.notes"><![CDATA[Notizen]]></item>
+		</category>
+
 		<category name="rp.game">
 			<item name="rp.game.default"><![CDATA[Standard]]></item>
 		</category>
