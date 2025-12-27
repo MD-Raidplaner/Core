@@ -2,6 +2,7 @@
 
 namespace rp\form;
 
+use wcf\data\IStorableObject;
 use wcf\form\AbstractFormBuilderForm;
 use wcf\system\request\LinkHandler;
 use wcf\system\WCF;
@@ -12,6 +13,9 @@ use wcf\system\WCF;
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
+ * 
+ * @template TIStorableObject of IStorableObject|null
+ * @extends AbstractFormBuilderForm<TIStorableObject>
  */
 abstract class AbstractForm extends AbstractFormBuilderForm
 {
@@ -31,6 +35,7 @@ abstract class AbstractForm extends AbstractFormBuilderForm
         unset($formData['data']);
         $data = \array_merge($this->additionalFields, $data);
 
+        $object = null;
         if ($this->formAction === 'create') {
             $command = new $this->commandAction($data, $formData);
             $object = $command();
@@ -43,7 +48,7 @@ abstract class AbstractForm extends AbstractFormBuilderForm
 
         WCF::getTPL()->assign('success', true);
 
-        if ($this->formAction === 'create' && $this->objectEditLinkController) {
+        if ($this->formAction === 'create' && $this->objectEditLinkController && $object !== null) {
             WCF::getTPL()->assign(
                 'objectEditLink',
                 LinkHandler::getInstance()->getControllerLink($this->objectEditLinkController, [

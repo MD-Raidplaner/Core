@@ -28,11 +28,12 @@ use wcf\system\WCF;
  * @author  Marco Daries
  * @copyright   2025 MD-Raidplaner
  * @license MD-Raidplaner is licensed under Creative Commons Attribution-ShareAlike 4.0 International
+ * 
+ * @extends AbstractForm<Character>
  */
 class CharacterAddForm extends AbstractForm
 {
     public $activeMenuItem = 'rp.acp.menu.link.character.add';
-    protected string $commandAction = CreateCharacter::class;
 
     /**
      * ids of the fields containing object data
@@ -45,11 +46,9 @@ class CharacterAddForm extends AbstractForm
         'userID',
     ];
 
-    //protected string $commandAction = CreateCharacter::class;
+    protected string $commandAction = CreateCharacter::class;
 
     public $neededPermissions = ['admin.rp.canAddCharacter'];
-
-    //public $objectEditLinkController = CharacterEditForm::class;
 
     #[\Override]
     protected function createForm(): void
@@ -163,9 +162,11 @@ class CharacterAddForm extends AbstractForm
         $characterData['additionalData'] = \serialize($formData['data']);
         unset($formData['data']);
 
+        $object = null;
         if ($this->formAction === 'create') {
             $command = new $this->commandAction($characterData, $formData);
             $object = $command();
+            \assert($object instanceof Character);
         } else {
             $command = new $this->commandAction($characterData, $formData, $this->formObject);
             $command();
@@ -175,7 +176,7 @@ class CharacterAddForm extends AbstractForm
 
         WCF::getTPL()->assign('success', true);
 
-        if ($this->formAction === 'create' && $this->objectEditLinkController) {
+        if ($this->formAction === 'create' && $this->objectEditLinkController && $object !== null) {
             WCF::getTPL()->assign(
                 'objectEditLink',
                 LinkHandler::getInstance()->getControllerLink($this->objectEditLinkController, [
