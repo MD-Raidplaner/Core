@@ -186,7 +186,7 @@ final class RP
     public static function getRolesByClassification(Classification|string|null $classification = null): array
     {
         if (\is_string($classification)) {
-            return self::getClassification($classification)?->roles ?? [];
+            return self::getClassification($classification)->roles ?? [];
         }
 
         if ($classification instanceof Classification) {
@@ -231,7 +231,7 @@ final class RP
     public static function getSkillsByClassification(Classification|string|null $classification = null): array
     {
         if (\is_string($classification)) {
-            return self::getClassification($classification)?->skills ?? [];
+            return self::getClassification($classification)->skills ?? [];
         }
 
         if ($classification instanceof Classification) {
