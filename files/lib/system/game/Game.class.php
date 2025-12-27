@@ -19,11 +19,11 @@ use wcf\system\WCF;
 final class Game
 {
     /**
-     * @var array<string, Faction> $factions
-     * @var array<string, Race> $races
-     * @var array<string, Role> $roles
-     * @var array<string, Classification> $classifications
-     * @var array<string, Skill> $skills
+     * @param array<string, Faction> $factions
+     * @param array<string, Race> $races
+     * @param array<string, Role> $roles
+     * @param array<string, Classification> $classifications
+     * @param array<string, Skill> $skills
      */
     public function __construct(
         public readonly string $identifier,
