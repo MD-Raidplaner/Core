@@ -16,5 +16,5 @@ use wcf\data\DatabaseObjectEditor;
  */
 final class CharacterEditor extends DatabaseObjectEditor
 {
-    protected static string $baseClass = Character::class;
+    protected static $baseClass = Character::class;
 }
