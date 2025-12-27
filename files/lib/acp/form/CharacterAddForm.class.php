@@ -2,6 +2,7 @@
 
 namespace rp\acp\form;
 
+use rp\command\character\CreateCharacter;
 use rp\data\character\Character;
 use rp\event\character\CharacterAddCreateForm;
 use rp\form\AbstractForm;
@@ -31,6 +32,7 @@ use wcf\system\WCF;
 class CharacterAddForm extends AbstractForm
 {
     public $activeMenuItem = 'rp.acp.menu.link.character.add';
+    protected string $commandAction = CreateCharacter::class;
 
     /**
      * ids of the fields containing object data
