@@ -17,13 +17,19 @@ use wcf\system\option\SelectOptionType;
 class GameSelectOptionType extends SelectOptionType
 {
     /**
-     * @return array<string, Game>
+     * @return array<string, string>
      */
     #[\Override]
     protected function getSelectOptions(Option $option): array
     {
         $games = GameEngine::getInstance()->games;
         \uasort($games, fn(Game $a, Game $b) => \strcmp($a->getTitle(), $b->getTitle()));
-        return $games;
+
+        $options = [];
+        foreach ($games as $identifier => $game) {
+            $options[$identifier] = $game->getTitle();
+        }
+
+        return $options;
     }
 }
