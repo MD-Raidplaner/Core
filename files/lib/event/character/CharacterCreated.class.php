@@ -14,8 +14,11 @@ use wcf\event\IPsr14Event;
  */
 final class CharacterCreated implements IPsr14Event
 {
+    /**
+     * @param mixed[] $formData
+     */
     public function __construct(
-        private readonly Character $character,
-        private readonly array $formData
+        public readonly Character $character,
+        public readonly array $formData
     ) {}
 }
