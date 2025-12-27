@@ -27,6 +27,7 @@
 	<instructions type="install">
 		<instruction type="file" application="rp" />
 		<instruction type="file" application="wcf">files_wcf.tar</instruction>
+		<instruction type="acpTemplate" application="rp" />
 		<instruction type="database" application="rp" />
 		<instruction type="option" />
 		<instruction type="userGroupOption" />
