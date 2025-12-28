@@ -34,6 +34,35 @@ use wcf\system\WCF;
 class Character extends DatabaseObject implements IPopoverObject, IRouteController, ICharacterContent
 {
     /**
+     * Returns true if the current user can delete this character.
+     */
+    public function canDelete(): bool
+    {
+        if (WCF::getSession()->getPermission('admin.rp.canDeleteCharacter')) {
+            return true;
+        }
+
+        if ($this->userID === WCF::getUser()->getObjectID() && WCF::getSession()->getPermission('user.rp.canDeleteOwnCharacter')) {
+            $characters = self::getCharactersByUserID($this->userID);
+            return \count($characters) === 1 || !$this->isPrimary;
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns true if the current user can edit this character.
+     */
+    public function canEdit(): bool
+    {
+        if (WCF::getSession()->getPermission('admin.rp.canEditCharacter')) {
+            return true;
+        }
+
+        return $this->userID === WCF::getUser()->getObjectID() && WCF::getSession()->getPermission('user.rp.canEditOwnCharacter');
+    }
+
+    /**
      * Returns the character with the given name or null if no such character exists.
      */
     public static function getCharacterByName(string $characterName): Character
@@ -49,6 +78,21 @@ class Character extends DatabaseObject implements IPopoverObject, IRouteControll
         }
 
         return new self(null, $row);
+    }
+
+    /**
+     * Returns all characters of the given user.
+     * 
+     * @return array<int, Character>
+     */
+    public static function getCharactersByUserID(int $userID): array
+    {
+        $characterList = new CharacterList();
+        $characterList->getConditionBuilder()->add('character_table.userID = ?', [$userID]);
+        $characterList->getConditionBuilder()->add('character_table.isDisabled = ?', [0]);
+        $characterList->readObjects();
+
+        return $characterList->getObjects();
     }
 
     #[\Override]
@@ -95,5 +139,17 @@ class Character extends DatabaseObject implements IPopoverObject, IRouteControll
     public function getTitle(): string
     {
         return $this->characterName;
+    }
+
+    #[\Override]
+    protected function handleData($data): void
+    {
+        parent::handleData($data);
+
+        // unserialize additional data
+        $this->data['additionalData'] = @\unserialize($data['additionalData']);
+        if (!\is_array($this->data['additionalData'])) {
+            $this->data['additionalData'] = [];
+        }
     }
 }

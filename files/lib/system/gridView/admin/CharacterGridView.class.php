@@ -2,17 +2,24 @@
 
 namespace rp\system\gridView\admin;
 
+use rp\acp\form\CharacterEditForm;
 use rp\data\character\CharacterProfile;
 use rp\data\character\CharacterProfileList;
 use rp\event\gridView\admin\CharacterGridViewInitialized;
+use rp\system\interaction\admin\CharacterInteractions;
+use rp\system\interaction\bulk\admin\CharacterBulkInteractions;
 use wcf\acp\form\UserEditForm;
 use wcf\data\DatabaseObject;
 use wcf\system\gridView\AbstractGridView;
 use wcf\system\gridView\GridViewColumn;
+use wcf\system\gridView\GridViewRowLink;
 use wcf\system\gridView\renderer\DefaultColumnRenderer;
 use wcf\system\gridView\renderer\ObjectIdColumnRenderer;
 use wcf\system\gridView\renderer\TimeColumnRenderer;
 use wcf\system\gridView\renderer\UserLinkColumnRenderer;
+use wcf\system\interaction\Divider;
+use wcf\system\interaction\EditInteraction;
+use wcf\system\interaction\ToggleInteraction;
 use wcf\system\view\filter\BooleanFilter;
 use wcf\system\view\filter\TextFilter;
 use wcf\system\view\filter\TimeFilter;
@@ -81,7 +88,26 @@ final class CharacterGridView extends AbstractGridView
                 ->hidden(),
         ]);
 
+        $provider = new CharacterInteractions();
+        $provider->addInteractions([
+            new Divider(),
+            new EditInteraction(CharacterEditForm::class, static function (CharacterProfile $character): string {
+                return $character->canEdit();
+            }),
+        ]);
+        $this->setInteractionProvider($provider);
+        $this->setBulkInteractionProvider(new CharacterBulkInteractions());
+
+        $this->addQuickInteraction(
+            new ToggleInteraction(
+                'enable',
+                'rp/core/characters/%s/enable',
+                'rp/core/characters/%s/disable',
+            )
+        );
+
         $this->setDefaultSortField('characterName');
+        $this->addRowLink(new GridViewRowLink(CharacterEditForm::class));
     }
 
     #[\Override]

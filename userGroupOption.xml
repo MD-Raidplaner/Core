@@ -9,6 +9,12 @@
 			<category name="admin.rp.character">
 				<parent>admin.rp</parent>
 			</category>
+			<category name="user.rp">
+				<parent>user</parent>
+			</category>
+			<category name="user.rp.character">
+				<parent>user.rp</parent>
+			</category>
 		</categories>
 		<options>
 			<!-- admin.rp.character -->
@@ -41,6 +47,30 @@
 				<usersonly>1</usersonly>
 			</option>
 			<!-- /admin.rp.character -->
+
+			<!-- user.rp.character -->
+			<option name="user.rp.canAddCharacter">
+				<categoryname>user.rp.character</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+				<usersonly>1</usersonly>
+			</option>
+			<option name="user.rp.canEditOwnCharacter">
+				<categoryname>user.rp.character</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+				<usersonly>1</usersonly>
+			</option>
+			<option name="user.rp.canDeleteOwnCharacter">
+				<categoryname>user.rp.character</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+				<usersonly>1</usersonly>
+			</option>
+			<!-- /user.rp.character -->
 		</options>
 	</import>
 </data>

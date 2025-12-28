@@ -3,6 +3,10 @@
 	xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/language.xsd"
 	languagecode="en" languagename="English">
 	<import>
+		<category name="rp.acp.character">
+			<item name="rp.acp.character.button.viewCharacter"><![CDATA[View Character]]></item>
+		</category>
+
 		<category name="rp.acp.menu">
 			<item name="rp.acp.menu.link.rp"><![CDATA[Raidplaner]]></item>
 			<item name="rp.acp.menu.link.character"><![CDATA[Character]]></item>
@@ -12,6 +16,7 @@
 
 		<category name="rp.character">
 			<item name="rp.character.add"><![CDATA[Add Character]]></item>
+			<item name="rp.character.button.setPrimary"><![CDATA[Set as Primary Character]]></item>
 			<item name="rp.character.category.character"><![CDATA[Character]]></item>
 			<item name="rp.character.created"><![CDATA[Created]]></item>
 			<item name="rp.character.characterName"><![CDATA[Character Name]]></item>
