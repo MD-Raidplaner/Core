@@ -103,6 +103,9 @@ final class CharacterGridView extends AbstractGridView
                 'enable',
                 'rp/core/characters/%s/enable',
                 'rp/core/characters/%s/disable',
+                isAvailableCallback: static function (CharacterProfile $character): bool {
+                    return !$character->isPrimary;
+                },
             )
         );
 

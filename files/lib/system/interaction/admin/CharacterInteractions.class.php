@@ -8,6 +8,7 @@ use rp\event\interaction\admin\CharacterInteractionCollecting;
 use wcf\system\event\EventHandler;
 use wcf\system\interaction\AbstractInteractionProvider;
 use wcf\system\interaction\DeleteInteraction;
+use wcf\system\interaction\InteractionEffect;
 use wcf\system\interaction\LinkableObjectInteraction;
 use wcf\system\interaction\RpcInteraction;
 
@@ -32,8 +33,9 @@ final class CharacterInteractions extends AbstractInteractionProvider
                 'rp/core/characters/%s/setPrimary',
                 'rp.character.button.setPrimary',
                 isAvailableCallback: static function (CharacterProfile $character): bool {
-                    return $character->isPrimary === 0;
+                    return !$character->isPrimary;
                 },
+                interactionEffect: InteractionEffect::ReloadList,
             ),
         ]);
 

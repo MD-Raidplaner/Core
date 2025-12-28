@@ -55,5 +55,9 @@ final class SetPrimaryCharacter implements IController
         if ($character->isPrimary) {
             throw new \InvalidArgumentException('Character is already set as primary character.');
         }
+
+        if ($character->isDisabled) {
+            throw new \InvalidArgumentException('Cannot set a disabled character as primary character.');
+        }
     }
 }

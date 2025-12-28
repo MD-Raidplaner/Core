@@ -41,7 +41,7 @@ final class CharacterProfile extends DatabaseObjectDecorator implements ITitledL
             // cache does not exist or is outdated
             if ($characterPrimaries === null) {
                 $sql = "SELECT  game, characterID
-                        FROM    rp_character
+                        FROM    rp1_character
                         WHERE   userID = ?
                             AND isPrimary = ?";
                 $statement = WCF::getDB()->prepare($sql);
