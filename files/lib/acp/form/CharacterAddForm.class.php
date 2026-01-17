@@ -4,7 +4,7 @@ namespace rp\acp\form;
 
 use rp\command\character\CreateCharacter;
 use rp\data\character\Character;
-use rp\event\character\CharacterAddCreateForm;
+use rp\event\character\CharacterAddAttribute;
 use rp\form\AbstractForm;
 use wcf\system\event\EventHandler;
 use wcf\system\form\builder\container\FormContainer;
@@ -103,14 +103,18 @@ class CharacterAddForm extends AbstractForm
         $dataTab->appendChild($dataContainer);
 
         // character tab
-        $characterTab = TabTabMenuFormContainer::create('characterTab');
-        $characterTab->label('rp.character.category.character');
-        $tabMenu->appendChild($characterTab);
+        $attributeTab = TabTabMenuFormContainer::create('attributeTab');
+        $attributeTab->label('rp.character.category.attributes');
+        $tabMenu->appendChild($attributeTab);
 
-        $characterGeneralTab = TabFormContainer::create('characterGeneralTab')
-            ->label('rp.character.category.character')
-            ->appendChild(FormContainer::create('characterGeneralSection'));
-        $characterTab->appendChild($characterGeneralTab);
+        $attributeGeneralTab = TabFormContainer::create('attributeGeneralTab')
+            ->label('rp.character.category.attributes')
+            ->appendChild(FormContainer::create('attributeGeneralSection'));
+        $attributeTab->appendChild($attributeGeneralTab);
+
+        EventHandler::getInstance()->fire(
+            new CharacterAddAttribute($attributeTab)
+        );
 
         $this->form->getDataHandler()->addProcessor(
             new CustomFormDataProcessor(
@@ -125,10 +129,6 @@ class CharacterAddForm extends AbstractForm
                     return $parameters;
                 }
             )
-        );
-
-        EventHandler::getInstance()->fire(
-            new CharacterAddCreateForm($this->form)
         );
     }
 
