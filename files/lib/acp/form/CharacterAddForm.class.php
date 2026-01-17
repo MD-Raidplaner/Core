@@ -108,7 +108,7 @@ class CharacterAddForm extends AbstractForm
         $tabMenu->appendChild($attributeTab);
 
         $attributeGeneralTab = TabFormContainer::create('attributeGeneralTab')
-            ->label('rp.character.category.attributes')
+            ->label('rp.character.category.attributes.general')
             ->appendChild(FormContainer::create('attributeGeneralSection'));
         $attributeTab->appendChild($attributeGeneralTab);
 

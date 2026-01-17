@@ -17,7 +17,8 @@
 		<category name="rp.character">
 			<item name="rp.character.add"><![CDATA[Add Character]]></item>
 			<item name="rp.character.button.setPrimary"><![CDATA[Set as Primary Character]]></item>
-			<item name="rp.character.category.attributes"><![CDATA[Attributes]]></item>
+			<item name="rp.character.category.attributes"><![CDATA[Attribute]]></item>
+			<item name="rp.character.category.attributes.general"><![CDATA[General]]></item>
 			<item name="rp.character.created"><![CDATA[Created]]></item>
 			<item name="rp.character.characterName"><![CDATA[Character Name]]></item>
 			<item name="rp.character.characterName.error.uniqueness"><![CDATA[Character name is already taken]]></item>

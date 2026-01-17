@@ -17,7 +17,8 @@
 		<category name="rp.character">
 			<item name="rp.character.add"><![CDATA[Charakter hinzufügen]]></item>
 			<item name="rp.character.button.setPrimary"><![CDATA[Als Hauptcharakter festlegen]]></item>
-			<item name="rp.character.category.attributes"><![CDATA[Charaktereigenschaften]]></item>
+			<item name="rp.character.category.attributes"><![CDATA[Eigenschaften]]></item>
+			<item name="rp.character.category.attributes.general"><![CDATA[Allgemein]]></item>
 			<item name="rp.character.created"><![CDATA[Erstellt]]></item>
 			<item name="rp.character.characterName"><![CDATA[Charaktername]]></item>
 			<item name="rp.character.characterName.error.uniqueness"><![CDATA[Charaktername ist bereits vergeben]]></item>
