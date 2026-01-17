@@ -19,3 +19,7 @@ require_once(__DIR__ . '/../app.config.inc.php');
 
 // include WCF
 require_once(RELATIVE_WCF_DIR . 'acp/global.php');
+
+// include rp
+require_once(RP_DIR . 'lib/system/RP.class.php');
+new rp\system\RP();
